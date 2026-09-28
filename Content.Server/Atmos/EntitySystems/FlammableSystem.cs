@@ -181,10 +181,15 @@ namespace Content.Server.Atmos.EntitySystems
             // This doesn't seem great either (lots more collisions generated) but there isn't a better way to solve it either that I can think of.
 
             if (!TryComp<PhysicsComponent>(uid, out var body))
+            {
+                _alertsSystem.ShowAlert(uid, "FireEmpty");
                 return;
+            }
 
             _fixture.TryCreateFixture(uid, component.FlammableCollisionShape, component.FlammableFixtureID, density: 0,
                 hard: false, collisionMask: (int) CollisionGroup.FullTileLayer, body: body);
+
+            _alertsSystem.ShowAlert(uid, "FireEmpty");
         }
 
         private void OnInteractUsing(EntityUid uid, FlammableComponent flammable, InteractUsingEvent args)
@@ -374,7 +379,8 @@ namespace Content.Server.Atmos.EntitySystems
             RaiseLocalEvent(uid, ref extinguished);
 
             UpdateAppearance(uid, flammable);
-            _alertsSystem.ClearAlert(uid, flammable.FireAlert); // Goob Edit - Fix Fire Alert
+            _alertsSystem.ClearAlert(uid, flammable.FireAlert);
+            _alertsSystem.ShowAlert(uid, "FireEmpty");
         }
 
         // Goobstation - now nullable
@@ -507,11 +513,13 @@ namespace Content.Server.Atmos.EntitySystems
                 if (!flammable.OnFire)
                 {
                     _alertsSystem.ClearAlert(uid, flammable.FireAlert);
+                    _alertsSystem.ShowAlert(uid, "FireEmpty");
                     // Goobstation - from EE at 7b0949568d07df81b298251c6fce9be4d7d03f18 (https://github.com/Simple-Station/Einstein-Engines/pull/2462)
                     RemCompDeferred<OnFireComponent>(uid);
                     continue;
                 }
 
+                _alertsSystem.ClearAlert(uid, "FireEmpty");
                 _alertsSystem.ShowAlert(uid, flammable.FireAlert);
 
                 // goob edit - fire immunity

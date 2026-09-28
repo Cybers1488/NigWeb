@@ -187,10 +187,14 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
             DirtyFields(uid, bloodstream, null, nameof(BloodstreamComponent.BleedAmount), nameof(BloodstreamComponent.BleedAmountFromWounds));
 
             if (bloodstream.BleedAmount == 0)
+            {
                 _alertsSystem.ClearAlert(uid, bloodstream.BleedingAlert);
+                _alertsSystem.ShowAlert(uid, "BleedEmpty");
+            }
             else
             {
-                var severity = (short) Math.Clamp(Math.Round(bloodstream.BleedAmount, MidpointRounding.ToZero), 0, 10);
+                _alertsSystem.ClearAlert(uid, "BleedEmpty");
+                var severity = (short) Math.Clamp(Math.Round(bloodstream.BleedAmount, MidpointRounding.ToZero), 1, 10);
                 _alertsSystem.ShowAlert(uid, bloodstream.BleedingAlert, severity);
             }
             // Goobstation end
@@ -610,10 +614,14 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
         DirtyField(ent, ent.Comp, nameof(BloodstreamComponent.BleedAmount));
 
         if (ent.Comp.BleedAmount == 0)
+        {
             _alertsSystem.ClearAlert(ent.Owner, ent.Comp.BleedingAlert);
+            _alertsSystem.ShowAlert(ent.Owner, "BleedEmpty");
+        }
         else
         {
-            var severity = (short)Math.Clamp(Math.Round(ent.Comp.BleedAmount, MidpointRounding.ToZero), 0, 10);
+            _alertsSystem.ClearAlert(ent.Owner, "BleedEmpty");
+            var severity = (short)Math.Clamp(Math.Round(ent.Comp.BleedAmount, MidpointRounding.ToZero), 1, 10);
             _alertsSystem.ShowAlert(ent.Owner, ent.Comp.BleedingAlert, severity);
         }
 

@@ -14,6 +14,7 @@
   - alertType: ModsuitPower # Goobstation - Modsuits
   - category: Internals
   - alertType: Fire
+  - alertType: FireEmpty
   - alertType: Handcuffed
   - alertType: Ensnared
   - category: Buckled
@@ -27,6 +28,7 @@
   - category: Breathing # Vox gang not calling this oxygen
   - category: Pressure
   - alertType: Bleed
+  - alertType: BleedEmpty
   - category: Temperature
   - category: Hunger
   - category: Thirst
@@ -100,8 +102,18 @@
   description: alerts-high-pressure-desc
 
 - type: alert
+  id: FireEmpty
+  icons:
+  - sprite: /Textures/Interface/Alerts/Fire/fire.rsi
+    state: fire_empty
+  name: Вы не горите
+  description: У вас нет возгорания.
+
+- type: alert
   id: Fire
-  icons: [ /Textures/Interface/Alerts/Fire/fire.png ]
+  icons:
+  - sprite: /Textures/Interface/Alerts/Fire/fire.rsi
+    state: fire_on
   clickEvent: !type:ResistFireAlertEvent
   name: alerts-on-fire-name
   description: alerts-on-fire-desc
@@ -462,6 +474,14 @@
   minSeverity: 0
   maxSeverity: 3
 # Goobstation end
+
+- type: alert
+  id: BleedEmpty
+  icons:
+  - sprite: /Textures/Interface/Alerts/bleed.rsi
+    state: bleedempty
+  name: У вас нет кровотечения
+  description: У вас нет кровотечения.
 
 - type: alert
   id: Bleed
