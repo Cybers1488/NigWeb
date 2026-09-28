@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "OpenSourceWeb",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "health0",
+      "directions": 1,
+      "delays": [ [ 0.5, 0.5, 0.5 ] ]
+    },
+    {
+      "name": "health1",
+      "directions": 1,
+      "delays": [ [ 1.0 ] ]
+    },
+    {
+      "name": "health2",
+      "directions": 1,
+      "delays": [ [ 1.0 ] ]
+    },
+    {
+      "name": "health3",
+      "directions": 1,
+      "delays": [ [ 1.0 ] ]
+    },
+    {
+      "name": "health4",
+      "directions": 1,
+      "delays": [ [ 1.0 ] ]
+    },
+    {
+      "name": "critical",
+      "directions": 1,
+      "delays": [ [ 0.5, 0.5 ] ]
+    },
+    {
+      "name": "dead",
+      "directions": 1,
+      "delays": [ [ 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.15 ] ]
+    }
+  ]
+}

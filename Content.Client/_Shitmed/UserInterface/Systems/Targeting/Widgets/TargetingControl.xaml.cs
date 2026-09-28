@@ -40,8 +40,10 @@ public sealed partial class TargetingControl : UIWidget
             bodyPartButton.Value.MouseFilter = MouseFilterMode.Stop;
             bodyPartButton.Value.OnPressed += _ => SetActiveBodyPart(bodyPartButton.Key);
 
-            TargetDoll.Texture = Theme.ResolveTexture("target_doll");
         }
+
+        BackgroundSprite.SetFromSpriteSpecifier(new Robust.Shared.Utility.SpriteSpecifier.Rsi(new Robust.Shared.Utility.ResPath("/Textures/Interface/Hud/zone_sel.rsi"), "base"));
+        BackgroundSprite.DisplayRect.Stretch = TextureRect.StretchMode.KeepAspectCentered;
     }
 
     private void SetActiveBodyPart(TargetBodyPart bodyPart) => _controller.CycleTarget(bodyPart);
@@ -52,7 +54,7 @@ public sealed partial class TargetingControl : UIWidget
             bodyPartButton.Value.Children.First().Visible = bodyPartButton.Key == bodyPart;
     }
 
-    protected override void OnThemeUpdated() => TargetDoll.Texture = Theme.ResolveTexture("target_doll");
+    protected override void OnThemeUpdated() {}
 
     public void SetTargetDollVisible(bool visible) => Visible = visible;
 
