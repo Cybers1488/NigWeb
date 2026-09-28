@@ -40,9 +40,9 @@ public abstract partial class SharedGravitySystem : EntitySystem
         SubscribeLocalEvent<GravityAffectedComponent, PhysicsBodyTypeChangedEvent>(OnBodyTypeChanged);
 
         // Alerts
-        SubscribeLocalEvent<AlertSyncEvent>(OnAlertsSync);
-        SubscribeLocalEvent<AlertsComponent, WeightlessnessChangedEvent>(OnWeightlessnessChanged);
-        SubscribeLocalEvent<AlertsComponent, EntParentChangedMessage>(OnAlertsParentChange);
+        // SubscribeLocalEvent<AlertSyncEvent>(OnAlertsSync);
+        // SubscribeLocalEvent<AlertsComponent, WeightlessnessChangedEvent>(OnWeightlessnessChanged);
+        // SubscribeLocalEvent<AlertsComponent, EntParentChangedMessage>(OnAlertsParentChange);
 
         // Impulse
         SubscribeLocalEvent<GravityAffectedComponent, ShooterImpulseEvent>(OnShooterImpulse);

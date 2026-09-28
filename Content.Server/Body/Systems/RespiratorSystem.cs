@@ -104,6 +104,7 @@ public sealed class RespiratorSystem : EntitySystem
     private void OnMapInit(Entity<RespiratorComponent> ent, ref MapInitEvent args)
     {
         ent.Comp.NextUpdate = _gameTiming.CurTime + ent.Comp.AdjustedUpdateInterval;
+        _alertsSystem.ShowAlert(ent.Owner, "OxygenNormal");
     }
 
     public override void Update(float frameTime)
@@ -483,6 +484,7 @@ public sealed class RespiratorSystem : EntitySystem
         foreach (var entity in organs)
         {
             _alertsSystem.ClearAlert(ent.Owner, entity.Comp1.Alert);
+            _alertsSystem.ShowAlert(ent.Owner, "OxygenNormal");
         }
 
         if (!TryComp<RespiratorComponent>(ent.Owner, out var respirator))

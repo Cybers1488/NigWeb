@@ -61,6 +61,8 @@ public sealed partial class TemperatureSystem
         SubscribeLocalEvent<TemperatureDamageComponent, OnTemperatureChangeEvent>(EnqueueDamage);
         SubscribeLocalEvent<TemperatureDamageComponent, EntityUnpausedEvent>(OnUnpaused);
 
+        SubscribeLocalEvent<TemperatureDamageComponent, MapInitEvent>(OnTempDamageMapInit);
+
         // Allows overriding thresholds based on the parent's thresholds.
         SubscribeLocalEvent<TemperatureDamageComponent, EntParentChangedMessage>(OnParentChange);
         SubscribeLocalEvent<ContainerTemperatureComponent, ComponentStartup>(OnParentThresholdStartup);
@@ -69,6 +71,11 @@ public sealed partial class TemperatureSystem
         _tempDamageQuery = GetEntityQuery<TemperatureDamageComponent>();
         _containerTemperatureQuery = GetEntityQuery<ContainerTemperatureComponent>();
         _thermalRegulatorQuery = GetEntityQuery<ThermalRegulatorComponent>();
+    }
+
+    private void OnTempDamageMapInit(Entity<TemperatureDamageComponent> ent, ref MapInitEvent args)
+    {
+        _alerts.ShowAlert(ent.Owner, "TempNormal");
     }
 
     private void UpdateDamage()
@@ -187,7 +194,7 @@ public sealed partial class TemperatureSystem
         if (alertLevel > 0)
             _alerts.ShowAlert(entity.AsNullable(), type, alertLevel);
         else
-            _alerts.ClearAlertCategory(entity.AsNullable(), TemperatureAlertCategory);
+            _alerts.ShowAlert(entity.AsNullable(), "TempNormal");
     }
 
     private void EnqueueDamage(Entity<TemperatureDamageComponent> ent, ref OnTemperatureChangeEvent args)

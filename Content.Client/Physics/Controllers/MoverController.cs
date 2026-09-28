@@ -124,9 +124,9 @@ public sealed class MoverController : SharedMoverController
         // Logger.Info($"[{_gameTiming.CurTick}/{subTick}] Sprint: {enabled}");
         base.SetSprinting(entity, subTick, walking);
 
-        if (walking && _cfg.GetCVar(CCVars.ToggleWalk))
-            _alerts.ShowAlert(entity.Owner, WalkingAlert, showCooldown: false, autoRemove: false);
-        else
-            _alerts.ClearAlert(entity.Owner, WalkingAlert);
+        // if (walking && _cfg.GetCVar(CCVars.ToggleWalk))
+        //     _alerts.ShowAlert(entity.Owner, WalkingAlert, showCooldown: false, autoRemove: false);
+        // else
+        //     _alerts.ClearAlert(entity.Owner, WalkingAlert);
     }
 }

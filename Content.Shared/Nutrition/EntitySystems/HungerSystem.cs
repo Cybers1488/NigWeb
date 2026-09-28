@@ -41,6 +41,7 @@ public sealed class HungerSystem : EntitySystem
 
     private void OnMapInit(EntityUid uid, HungerComponent component, MapInitEvent args)
     {
+        _alerts.ShowAlert(uid, "HungerNormal");
         // <goobstation> Starting hunger override
         if (component.StartingHunger is not null)
         {
@@ -161,7 +162,7 @@ public sealed class HungerSystem : EntitySystem
         }
         else
         {
-            _alerts.ClearAlertCategory(uid, component.HungerAlertCategory);
+            _alerts.ShowAlert(uid, "HungerNormal");
         }
 
         if (component.HungerThresholdDecayModifiers.TryGetValue(component.CurrentThreshold, out var modifier))

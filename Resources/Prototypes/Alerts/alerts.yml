@@ -51,11 +51,20 @@
     - map: [ "enum.AlertVisualLayers.Base" ]
 
 - type: alert
+  id: OxygenNormal
+  category: Breathing
+  icons:
+  - sprite: /Textures/Interface/Alerts/oxygen.rsi
+    state: oxygen_normal
+  name: Достаточно воздуха
+  description: Вам есть чем дышать.
+
+- type: alert
   id: LowOxygen
   category: Breathing
   icons:
-  - sprite: /Textures/Interface/Alerts/breathing.rsi
-    state: not_enough_oxy
+  - sprite: /Textures/Interface/Alerts/oxygen.rsi
+    state: oxygen_low
   name: alerts-low-oxygen-name
   description: alerts-low-oxygen-desc
 
@@ -69,13 +78,31 @@
   description: alerts-low-nitrogen-desc
 
 - type: alert
+  id: ToxinsNormal
+  category: Toxins
+  icons:
+  - sprite: /Textures/Interface/Alerts/toxins.rsi
+    state: toxins_normal
+  name: Интоксикация в норме
+  description: У вас нет признаков отравления.
+
+- type: alert
   id: Toxins
   category: Toxins
   icons:
-  - sprite: /Textures/Interface/Alerts/breathing.rsi
-    state: too_much_tox
+  - sprite: /Textures/Interface/Alerts/toxins.rsi
+    state: toxins_high
   name: alerts-high-toxin-name
   description: alerts-high-toxin-desc
+
+- type: alert
+  id: PressureNormal
+  category: Pressure
+  icons:
+  - sprite: /Textures/Interface/Alerts/pressure.rsi
+    state: pressure_normal
+  name: Нормальное давление
+  description: Давление в норме.
 
 - type: alert
   id: LowPressure
@@ -141,6 +168,15 @@
   maxSeverity: 3
   name: alerts-too-cold-name
   description: alerts-too-cold-desc
+
+- type: alert
+  id: TempNormal
+  category: Temperature
+  icons:
+  - sprite: /Textures/Interface/Alerts/temperature.rsi
+    state: temp_normal
+  name: Нормальная температура
+  description: Ваша температура в норме.
 
 - type: alert
   id: Hot
@@ -360,11 +396,20 @@
   description: alerts-piloting-desc
 
 - type: alert
+  id: HungerNormal
+  category: Hunger
+  icons:
+  - sprite: /Textures/Interface/Alerts/hunger.rsi
+    state: hunger_normal
+  name: Сытость
+  description: Вы не голодны.
+
+- type: alert
   id: Peckish
   category: Hunger
   icons:
   - sprite: /Textures/Interface/Alerts/hunger.rsi
-    state: peckish
+    state: hunger_low
   name: alerts-hunger-name
   description: alerts-hunger-desc
 
@@ -396,16 +441,25 @@
   category: Hunger
   icons:
   - sprite: /Textures/Interface/Alerts/hunger.rsi
-    state: starving
+    state: hunger_low
   name: alerts-starving-name
   description: alerts-starving-desc
+
+- type: alert
+  id: ThirstNormal
+  category: Thirst
+  icons:
+  - sprite: /Textures/Interface/Alerts/thirst.rsi
+    state: thirst_normal
+  name: Жажда
+  description: Вы не хотите пить.
 
 - type: alert
   id: Thirsty
   category: Thirst
   icons:
   - sprite: /Textures/Interface/Alerts/thirst.rsi
-    state: thirsty
+    state: thirst_low
   name: alerts-thirsty-name
   description: alerts-thirsty-desc
 
@@ -414,7 +468,7 @@
   category: Thirst
   icons:
   - sprite: /Textures/Interface/Alerts/thirst.rsi
-    state: parched
+    state: thirst_low
   name: alerts-parched-name
   description: alerts-parched-desc
 

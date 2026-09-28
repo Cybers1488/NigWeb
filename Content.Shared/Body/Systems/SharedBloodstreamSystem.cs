@@ -207,6 +207,7 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
     {
         ent.Comp.NextUpdate = _timing.CurTime + ent.Comp.AdjustedUpdateInterval;
         DirtyField(ent, ent.Comp, nameof(BloodstreamComponent.NextUpdate));
+        _alertsSystem.ShowAlert(ent.Owner, "ToxinsNormal");
     }
 
     // prevent the infamous UdderSystem debug assert, see https://github.com/space-wizards/space-station-14/pull/35314

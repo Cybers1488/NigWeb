@@ -34,6 +34,7 @@ namespace Content.Server.Atmos.EntitySystems
 
         public override void Initialize()
         {
+            SubscribeLocalEvent<BarotraumaComponent, MapInitEvent>(OnBarotraumaMapInit);
             SubscribeLocalEvent<PressureProtectionComponent, GotEquippedEvent>(OnPressureProtectionEquipped);
             SubscribeLocalEvent<PressureProtectionComponent, GotUnequippedEvent>(OnPressureProtectionUnequipped);
             SubscribeLocalEvent<PressureProtectionComponent, ComponentInit>(OnPressureProtectionChanged); // Goobstation - Update component state on toggle
@@ -41,6 +42,11 @@ namespace Content.Server.Atmos.EntitySystems
 
             SubscribeLocalEvent<PressureImmunityComponent, ComponentInit>(OnPressureImmuneInit);
             SubscribeLocalEvent<PressureImmunityComponent, ComponentRemove>(OnPressureImmuneRemove);
+        }
+
+        private void OnBarotraumaMapInit(EntityUid uid, BarotraumaComponent component, MapInitEvent args)
+        {
+            _alertsSystem.ShowAlert(uid, "PressureNormal");
         }
 
         private void OnPressureImmuneInit(EntityUid uid, PressureImmunityComponent pressureImmunity, ComponentInit args)
@@ -346,7 +352,7 @@ namespace Content.Server.Atmos.EntitySystems
                             _alertsSystem.ShowAlert(uid, barotrauma.HighPressureAlert, 1);
                             break;
                         default:
-                            _alertsSystem.ClearAlertCategory(uid, barotrauma.PressureAlertCategory);
+                            _alertsSystem.ShowAlert(uid, "PressureNormal");
                             break;
                     }
                 }

@@ -39,6 +39,7 @@ public sealed class ThirstSystem : EntitySystem
 
     private void OnMapInit(EntityUid uid, ThirstComponent component, MapInitEvent args)
     {
+        _alerts.ShowAlert(uid, "ThirstNormal");
         // Do not change behavior unless starting value is explicitly defined
         if (component.CurrentThirst < 0)
         {
@@ -161,7 +162,7 @@ public sealed class ThirstSystem : EntitySystem
         }
         else
         {
-            _alerts.ClearAlertCategory(uid, component.ThirstyCategory);
+            _alerts.ShowAlert(uid, "ThirstNormal");
         }
 
         DirtyField(uid, component, nameof(ThirstComponent.LastThirstThreshold));

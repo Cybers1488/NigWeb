@@ -58,6 +58,14 @@ public abstract class AlertsSystem : EntitySystem
 
                 removeList.Add(alertKey);
                 alertComp.Alerts.Remove(alertKey);
+
+                if (alertKey.AlertCategory == "Toxins")
+                    ShowAlert(uid, "ToxinsNormal");
+                if (alertKey.AlertCategory == "Hunger")
+                    ShowAlert(uid, "HungerNormal");
+                if (alertKey.AlertCategory == "Thirst")
+                    ShowAlert(uid, "ThirstNormal");
+
                 removed = true;
             }
 
@@ -244,6 +252,13 @@ public abstract class AlertsSystem : EntitySystem
             return;
         }
 
+        if (category == "Toxins")
+            ShowAlert(entity, "ToxinsNormal");
+        if (category == "Hunger")
+            ShowAlert(entity, "HungerNormal");
+        if (category == "Thirst")
+            ShowAlert(entity, "ThirstNormal");
+
         AfterClearAlert((entity, entity.Comp));
 
         Dirty(entity);
@@ -266,6 +281,13 @@ public abstract class AlertsSystem : EntitySystem
             {
                 return;
             }
+
+            if (alert.AlertKey.AlertCategory == "Toxins")
+                ShowAlert(entity, "ToxinsNormal");
+            if (alert.AlertKey.AlertCategory == "Hunger")
+                ShowAlert(entity, "HungerNormal");
+            if (alert.AlertKey.AlertCategory == "Thirst")
+                ShowAlert(entity, "ThirstNormal");
 
             AfterClearAlert((entity, entity.Comp));
 
@@ -318,6 +340,9 @@ public abstract class AlertsSystem : EntitySystem
 
     private void HandleComponentStartup(EntityUid uid, AlertsComponent component, ComponentStartup args)
     {
+        ShowAlert(uid, "ToxinsNormal");
+        ShowAlert(uid, "HungerNormal");
+        ShowAlert(uid, "ThirstNormal");
         RaiseLocalEvent(uid, new AlertSyncEvent(uid), true);
     }
 

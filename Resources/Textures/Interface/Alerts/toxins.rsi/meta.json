@@ -7,7 +7,7 @@
     "y": 32
   },
   "states": [
-    { "name": "thirst_normal" },
-    { "name": "thirst_low", "delays": [ [ 0.3, 0.3 ] ] }
+    { "name": "toxins_normal" },
+    { "name": "toxins_high", "delays": [ [ 0.6, 0.6 ] ] }
   ]
 }

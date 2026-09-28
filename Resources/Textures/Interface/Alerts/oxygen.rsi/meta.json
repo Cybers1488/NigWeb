@@ -7,7 +7,7 @@
     "y": 32
   },
   "states": [
-    { "name": "thirst_normal" },
-    { "name": "thirst_low", "delays": [ [ 0.3, 0.3 ] ] }
+    { "name": "oxygen_normal" },
+    { "name": "oxygen_low", "delays": [ [ 0.5, 0.5 ] ] }
   ]
 }
