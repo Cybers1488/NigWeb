@@ -15,7 +15,7 @@
   - category: Internals
   - alertType: Fire
   - alertType: FireEmpty
-  - alertType: Handcuffed
+  - category: Handcuffed
   - alertType: Ensnared
   - category: Buckled
   - alertType: Pulling
@@ -24,7 +24,7 @@
   - alertType: Corporeal
   - alertType: Stun
   - alertType: KnockedDown # goobstation
-  - alertType: BrokenBones # Shitmed Change
+  - category: BrokenBones # Shitmed Change
   - category: Breathing # Vox gang not calling this oxygen
   - category: Pressure
   - alertType: Bleed
@@ -226,10 +226,18 @@
 
 - type: alert
   id: Handcuffed
+  category: Handcuffed
   clickEvent: !type:RemoveCuffsAlertEvent
-  icons: [ /Textures/Interface/Alerts/Handcuffed/Handcuffed.png ]
+  icons: [ /Textures/Interface/Alerts/Handcuffed/cuffs_cuffed.png ]
   name: alerts-handcuffed-name
   description: alerts-handcuffed-desc
+
+- type: alert
+  id: HandcuffedNormal
+  category: Handcuffed
+  icons: [ /Textures/Interface/Alerts/Handcuffed/cuffs_normal.png ]
+  name: alerts-handcuffed-name
+  description: Вы не скованы.
 
 - type: alert
   id: Ensnared

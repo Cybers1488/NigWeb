@@ -387,7 +387,8 @@ public sealed class PullingSystem : EntitySystem
         if (TryComp<PullerComponent>(oldPuller, out var pullerComp))
         {
             var pullerUid = oldPuller.Value;
-            _alertsSystem.ClearAlert(pullerUid, pullerComp.PullingAlert);
+            // Shitmed: disabled pull alerts
+            // _alertsSystem.ClearAlert(pullerUid, pullerComp.PullingAlert);
             pullerComp.Pulling = null;
             Dirty(pullerUid, pullerComp);
 
@@ -645,7 +646,8 @@ public sealed class PullingSystem : EntitySystem
         // Messaging
         var message = new PullStartedMessage(pullerUid, pullableUid);
         _modifierSystem.RefreshMovementSpeedModifiers(pullerUid);
-        _alertsSystem.ShowAlert(pullerUid, pullerComp.PullingAlert, 0); // Goobstation
+        // Shitmed: disabled pull alerts
+        // _alertsSystem.ShowAlert(pullerUid, pullerComp.PullingAlert, 0); // Goobstation
 
         RaiseLocalEvent(pullerUid, message);
         RaiseLocalEvent(pullableUid, message);

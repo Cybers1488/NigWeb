@@ -12,6 +12,10 @@ SPDX-License-Identifier: AGPL-3.0-or-later
     HorizontalAlignment="Center">
     <Control>
         <TextureRect
+            TexturePath="/Textures/Interface/Alerts/doll_bg.png"
+            Stretch="KeepAspectCentered"
+            SetSize="64 64"/>
+        <TextureRect
             Name="DollHead"
             Stretch="KeepAspectCentered"
             SetSize="64 64"/>
@@ -53,6 +57,10 @@ SPDX-License-Identifier: AGPL-3.0-or-later
             SetSize="64 64"/>
         <TextureRect
             Name="DollRightFoot"
+            Stretch="KeepAspectCentered"
+            SetSize="64 64"/>
+        <TextureRect
+            TexturePath="/Textures/Interface/Alerts/doll_frame.png"
             Stretch="KeepAspectCentered"
             SetSize="64 64"/>
     </Control>

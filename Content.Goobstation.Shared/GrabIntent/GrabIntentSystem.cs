@@ -84,7 +84,8 @@ public sealed partial class GrabIntentSystem : EntitySystem
         component.GrabEscapeChance = 1f;
         component.EscapeAttemptModifier = 1f;
         _blocker.UpdateCanMove(uid);
-        _alertsSystem.ClearAlert(uid, component.PulledAlert);
+        // Shitmed: disabled pull alerts
+        // _alertsSystem.ClearAlert(uid, component.PulledAlert);
         Dirty(uid, component);
     }
 

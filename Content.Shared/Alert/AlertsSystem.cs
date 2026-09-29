@@ -65,6 +65,10 @@ public abstract class AlertsSystem : EntitySystem
                     ShowAlert(uid, "HungerNormal");
                 if (alertKey.AlertCategory == "Thirst")
                     ShowAlert(uid, "ThirstNormal");
+                if (alertKey.AlertCategory == "BrokenBones")
+                    ShowAlert(uid, "BrokenBonesNormal");
+                if (alertKey.AlertCategory == "Handcuffed")
+                    ShowAlert(uid, "HandcuffedNormal");
 
                 removed = true;
             }
@@ -258,6 +262,10 @@ public abstract class AlertsSystem : EntitySystem
             ShowAlert(entity, "HungerNormal");
         if (category == "Thirst")
             ShowAlert(entity, "ThirstNormal");
+        if (category == "BrokenBones")
+            ShowAlert(entity, "BrokenBonesNormal");
+        if (category == "Handcuffed")
+            ShowAlert(entity, "HandcuffedNormal");
 
         AfterClearAlert((entity, entity.Comp));
 
@@ -288,6 +296,10 @@ public abstract class AlertsSystem : EntitySystem
                 ShowAlert(entity, "HungerNormal");
             if (alert.AlertKey.AlertCategory == "Thirst")
                 ShowAlert(entity, "ThirstNormal");
+            if (alert.AlertKey.AlertCategory == "BrokenBones")
+                ShowAlert(entity, "BrokenBonesNormal");
+            if (alert.AlertKey.AlertCategory == "Handcuffed")
+                ShowAlert(entity, "HandcuffedNormal");
 
             AfterClearAlert((entity, entity.Comp));
 
@@ -343,6 +355,8 @@ public abstract class AlertsSystem : EntitySystem
         ShowAlert(uid, "ToxinsNormal");
         ShowAlert(uid, "HungerNormal");
         ShowAlert(uid, "ThirstNormal");
+        ShowAlert(uid, "BrokenBonesNormal");
+        ShowAlert(uid, "HandcuffedNormal");
         RaiseLocalEvent(uid, new AlertSyncEvent(uid), true);
     }
 

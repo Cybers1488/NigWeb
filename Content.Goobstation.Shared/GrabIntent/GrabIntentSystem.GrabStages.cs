@@ -132,10 +132,11 @@ public sealed partial class GrabIntentSystem
 
         var popupType = GetPopupType(stage);
         ResetGrabEscapeChance(pullable, puller, false);
-        _alertsSystem.ShowAlert(puller.Owner, puller.Comp1.PullingAlert, puller.Comp2.PullingAlertSeverity[stage]);
-        _alertsSystem.ShowAlert(pullable.Owner,
-            pullable.Comp2.PulledAlert,
-            pullable.Comp2.PulledAlertAlertSeverity[stage]);
+        // Shitmed: disabled pull alerts
+        // _alertsSystem.ShowAlert(puller.Owner, puller.Comp1.PullingAlert, puller.Comp2.PullingAlertSeverity[stage]);
+        // _alertsSystem.ShowAlert(pullable.Owner,
+        //     pullable.Comp2.PulledAlert,
+        //     pullable.Comp2.PulledAlertAlertSeverity[stage]);
         _blocker.UpdateCanMove(pullable.Owner);
         _modifierSystem.RefreshMovementSpeedModifiers(puller.Owner);
         GrabStagePopup(puller, pullable, popupType);

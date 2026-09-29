@@ -245,11 +245,13 @@ public abstract partial class SharedBuckleSystem
         {
             strapEnt.Comp.BuckledEntities.Add(buckle);
             Dirty(strapEnt);
-            _alerts.ShowAlert(buckle.Owner, strapEnt.Comp.BuckledAlertType);
+            // Shitmed: disable buckle alert
+            // _alerts.ShowAlert(buckle.Owner, strapEnt.Comp.BuckledAlertType);
         }
         else
         {
-            _alerts.ClearAlertCategory(buckle.Owner, BuckledAlertCategory);
+            // Shitmed: disable buckle alert
+            // _alerts.ClearAlertCategory(buckle.Owner, BuckledAlertCategory);
         }
 
         buckle.Comp.BuckledTo = strap;
