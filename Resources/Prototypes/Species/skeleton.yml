@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: MIT
 
 - type: species
+  roundStart: false
   id: Skeleton
   name: species-name-skeleton
-  roundStart: false
   prototype: MobSkeletonPerson
   sprites: MobSkeletonSprites
   defaultSkinTone: "#fff9e2"

@@ -2,11 +2,9 @@
 - type: soundCollection
   id: BoneGone
   files:
-  - /Audio/_Shitmed/ReBELL/Bone/BoneGone1.ogg
-  - /Audio/_Shitmed/ReBELL/Bone/BoneGone2.ogg
-  - /Audio/_Shitmed/ReBELL/Bone/BoneGone3.ogg
-  - /Audio/_Shitmed/ReBELL/Bone/BoneGone4.ogg
-  - /Audio/_Shitmed/ReBELL/Bone/BoneGone5.ogg
+  - /Audio/_Shitmed/ReBELL/Bone/rotten_break.ogg
+  - /Audio/_Shitmed/ReBELL/Bone/rotten_break2.ogg
+  - /Audio/_Shitmed/ReBELL/Bone/rotten_break3.ogg
 
 # Organs
 - type: soundCollection
@@ -27,7 +25,29 @@
 - type: soundCollection
   id: WoundableDelimbed
   files:
-  - /Audio/_Shitmed/ReBELL/Woundables/WoundableAmputated1.ogg
-  - /Audio/_Shitmed/ReBELL/Woundables/WoundableAmputated2.ogg
-  - /Audio/_Shitmed/ReBELL/Woundables/WoundableAmputated3.ogg
-  - /Audio/_Shitmed/ReBELL/Woundables/WoundableAmputated4.ogg
+  - /Audio/_Shitmed/ReBELL/Bone/chop.ogg
+  - /Audio/_Shitmed/ReBELL/Bone/chop2.ogg
+  - /Audio/_Shitmed/ReBELL/Bone/chop3.ogg
+  - /Audio/_Shitmed/ReBELL/Bone/chop4.ogg
+  - /Audio/_Shitmed/ReBELL/Bone/chop5.ogg
+  - /Audio/_Shitmed/ReBELL/Bone/chop6.ogg
+
+
+- type: soundCollection
+  id: CombatDismemberment
+  files:
+  - /Audio/_Shitmed/ReBELL/Bone/chop.ogg
+  - /Audio/_Shitmed/ReBELL/Bone/chop2.ogg
+  - /Audio/_Shitmed/ReBELL/Bone/chop3.ogg
+  - /Audio/_Shitmed/ReBELL/Bone/chop4.ogg
+  - /Audio/_Shitmed/ReBELL/Bone/chop5.ogg
+  - /Audio/_Shitmed/ReBELL/Bone/chop6.ogg
+
+
+- type: soundCollection
+  id: HeadExplodie
+  files:
+  - /Audio/_Shitmed/ReBELL/Bone/head_explodie_01.ogg
+  - /Audio/_Shitmed/ReBELL/Bone/head_explodie_02.ogg
+  - /Audio/_Shitmed/ReBELL/Bone/head_explodie_03.ogg
+  - /Audio/_Shitmed/ReBELL/Bone/head_explodie_04.ogg

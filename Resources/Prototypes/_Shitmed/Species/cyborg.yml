@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 # DO NOT use this as an actual species, its for borg part appearance to Just Work
 - type: species
+  roundStart: false
   id: Cyborg
   name: species-name-human
-  roundStart: false
   prototype: BorgChassisSelectable
   sprites: CyborgSprites
   defaultSkinTone: "#fff9e2"

@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: species
+  roundStart: false
   id: Reptilian
   name: species-name-reptilian
-  roundStart: true
   prototype: MobReptilian
   sprites: MobReptilianSprites
   defaultSkinTone: "#34a223"

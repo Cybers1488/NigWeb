@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: MIT
 
 - type: species
+  roundStart: false
   id: Dwarf
   name: species-name-dwarf
-  roundStart: true
   prototype: MobDwarf
   sprites: MobHumanSprites
   markingLimits: MobHumanMarkingLimits

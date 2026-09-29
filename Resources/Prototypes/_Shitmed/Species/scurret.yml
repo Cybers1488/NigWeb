@@ -1,7 +1,7 @@
 - type: species
+  roundStart: false
   id: Scurret
   name: species-name-scurret
-  roundStart: false
   prototype: MobScurret
   sprites: MobScurretSprites
   dollPrototype: MobScurretDummy

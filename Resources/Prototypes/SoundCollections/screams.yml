@@ -3,21 +3,18 @@
 - type: soundCollection
   id: MaleScreams
   files:
-    - /Audio/Voice/Human/malescream_1.ogg
-    - /Audio/Voice/Human/malescream_2.ogg
-    - /Audio/Voice/Human/malescream_3.ogg
-    - /Audio/Voice/Human/malescream_4.ogg
-    - /Audio/Voice/Human/malescream_5.ogg
-    - /Audio/Voice/Human/malescream_6.ogg
+    - /Audio/Voice/Human/Screams_Male_1.ogg
+    - /Audio/Voice/Human/Screams_Male_2.ogg
+    - /Audio/Voice/Human/Screams_Male_3.ogg
+    - /Audio/Voice/Human/fear_scream1.ogg
+    - /Audio/Voice/Human/fear_scream2.ogg
 
 - type: soundCollection
   id: FemaleScreams
   files:
-    - /Audio/Voice/Human/femalescream_1.ogg
-    - /Audio/Voice/Human/femalescream_2.ogg
-    - /Audio/Voice/Human/femalescream_3.ogg
-    - /Audio/Voice/Human/femalescream_4.ogg
-    - /Audio/Voice/Human/femalescream_5.ogg
+    - /Audio/Voice/Human/Screams_Woman_1.ogg
+    - /Audio/Voice/Human/Screams_Woman_2.ogg
+    - /Audio/Voice/Human/Screams_Woman_3.ogg
 
 - type: soundCollection
   id: ZombieScreams
@@ -63,3 +60,4 @@
     - /Audio/Machines/robotscream_7.ogg
     - /Audio/Machines/robotscream_8.ogg
     - /Audio/Machines/robotscream_9.ogg
+

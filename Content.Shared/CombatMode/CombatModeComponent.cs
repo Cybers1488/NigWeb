@@ -60,5 +60,12 @@ namespace Content.Shared.CombatMode
         /// </summary>
         [DataField, AutoNetworkedField]
         public bool ToggleMouseRotator = true;
+
+        [DataField]
+        public SoundSpecifier? CombatMusic = new SoundPathSpecifier("/Audio/Music/Combat/bloodlust1.ogg");
+
+        [ViewVariables]
+        public EntityUid? CombatMusicStream;
     }
 }
+

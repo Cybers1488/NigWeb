@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: species
+  roundStart: false
   id: Gingerbread
   name: Gingerbread
-  roundStart: false
   prototype: MobGingerbread
   sprites: MobGingerbreadSprites
   markingLimits: MobHumanMarkingLimits

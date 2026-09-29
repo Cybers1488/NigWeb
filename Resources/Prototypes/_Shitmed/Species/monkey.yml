@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: species
+  roundStart: false
   id: Monkey
   name: species-name-monkey
-  roundStart: false # sad...
   prototype: MobMonkey
   sprites: MobMonkeySprites
   dollPrototype: MobMonkeyDummy

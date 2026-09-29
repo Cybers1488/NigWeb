@@ -1,7 +1,7 @@
 - type: species
+  roundStart: false
   id: Shadow
   name: species-name-shadow
-  roundStart: false
   prototype: MobShadow
   sprites: MobShadowSprites
   markingLimits: MobHumanMarkingLimits

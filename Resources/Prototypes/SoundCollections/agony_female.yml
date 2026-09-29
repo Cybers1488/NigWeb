@@ -1,0 +1,8 @@
+﻿- type: soundCollection
+  id: AgonyFemale
+  files:
+    - /Audio/Voice/Human/woman_pain1.ogg
+    - /Audio/Voice/Human/woman_pain2.ogg
+    - /Audio/Voice/Human/woman_pain3.ogg
+    - /Audio/Voice/Human/woman_pain4.ogg
+    - /Audio/Voice/Human/woman_pain5.ogg

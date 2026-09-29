@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: species
+  roundStart: false
   id: Tajaran
   name: species-name-tajaran
-  roundStart: true
   prototype: MobTajaran
   sprites: MobTajaranSprites
   markingLimits: MobTajaranMarkingLimits

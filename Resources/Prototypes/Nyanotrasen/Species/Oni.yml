@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: species
+  roundStart: false
   id: Oni
   name: species-name-oni
-  roundStart: true
   prototype: MobOni
   dollPrototype: MobOniDummy
   markingLimits: MobOniMarkingLimits

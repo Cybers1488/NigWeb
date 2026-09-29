@@ -47,7 +47,6 @@ namespace Content.Client.Gameplay
             base.Startup();
 
             LoadMainScreen();
-            _configurationManager.OnValueChanged(CCVars.UILayout, ReloadMainScreenValueChange);
 
             // Add the hand-item overlay.
             _overlayManager.AddOverlay(new ShowHandItemOverlay());
@@ -87,14 +86,9 @@ namespace Content.Client.Gameplay
             _eyeManager.MainViewport = UserInterfaceManager.MainViewport;
             _fpsCounter.Dispose();
             _uiManager.ClearWindows();
-            _configurationManager.UnsubValueChanged(CCVars.UILayout, ReloadMainScreenValueChange);
             UnloadMainScreen();
         }
 
-        private void ReloadMainScreenValueChange(string _)
-        {
-            ReloadMainScreen();
-        }
 
         public void ReloadMainScreen()
         {
@@ -115,22 +109,7 @@ namespace Content.Client.Gameplay
 
         private void LoadMainScreen()
         {
-            var screenTypeString = _configurationManager.GetCVar(CCVars.UILayout);
-            if (!Enum.TryParse(screenTypeString, out ScreenType screenType))
-            {
-                screenType = default;
-            }
-
-            switch (screenType)
-            {
-                case ScreenType.Default:
-                    _uiManager.LoadScreen<DefaultGameScreen>();
-                    break;
-                case ScreenType.Separated:
-                    _uiManager.LoadScreen<SeparatedChatGameScreen>();
-                    break;
-            }
-
+            _uiManager.LoadScreen<SeparatedChatGameScreen>();
             _loadController.LoadScreen();
         }
 

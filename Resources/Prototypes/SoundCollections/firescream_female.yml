@@ -1,0 +1,5 @@
+﻿- type: soundCollection
+  id: FireScreamFemale
+  files:
+    - /Audio/Voice/Human/firescream_female1.ogg
+    - /Audio/Voice/Human/firescream_female2.ogg

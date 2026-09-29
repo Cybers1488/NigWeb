@@ -26,6 +26,8 @@
 - type: tile
   id: FloorDesert
   parent: BaseFloorPlanet
+  footstepSounds:
+    collection: FootstepSand
   name: tiles-desert-floor
   sprite: /Textures/Tiles/Planet/Desert/desert.png
   variants: 6
@@ -40,6 +42,8 @@
 - type: tile
   id: FloorLowDesert
   name: tiles-low-desert-floor
+  footstepSounds:
+    collection: FootstepSand
   sprite: /Textures/Tiles/Planet/Desert/low_desert.png
   variants: 6
   placementVariants:

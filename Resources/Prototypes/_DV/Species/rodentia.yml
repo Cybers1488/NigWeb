@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: species
+  roundStart: false
   id: Rodentia
   name: species-name-rodentia
-  roundStart: true
   prototype: MobRodentia
   sprites: MobRodentiaSprites
   defaultSkinTone: "#747474"

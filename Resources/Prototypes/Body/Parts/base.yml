@@ -188,6 +188,8 @@
     tags:
       - Head
   - type: Woundable
+    woundableDelimbedSound:
+      collection: HeadExplodie
     boneEntity: BoneNeck
     integrity: 125 #Decaps should happen after the person is already dead
     integrityCap: 125
@@ -506,3 +508,5 @@
       Severe: 30
       Critical: 18
       Mangled: 0
+
+

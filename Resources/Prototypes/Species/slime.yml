@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: MIT
 
 - type: species
+  roundStart: false
   id: SlimePerson
   name: species-name-slime
-  roundStart: true
   prototype: MobSlimePerson
   sprites: MobSlimeSprites
   defaultSkinTone: "#b8b8b8"

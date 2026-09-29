@@ -1,0 +1,6 @@
+﻿- type: soundCollection
+  id: ExhaustMale
+  files:
+    - /Audio/Voice/Human/maletired1.ogg
+    - /Audio/Voice/Human/maletired2.ogg
+    - /Audio/Voice/Human/maletired3.ogg

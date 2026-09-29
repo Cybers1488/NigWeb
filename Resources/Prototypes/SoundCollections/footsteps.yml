@@ -257,3 +257,15 @@
   - /Audio/Effects/Footsteps/heelsclack3.ogg
   - /Audio/Effects/Footsteps/heelsclack4.ogg
   - /Audio/Effects/Footsteps/heelsclack5.ogg
+- type: soundCollection
+  id: FootstepSand
+  files:
+  - /Audio/Effects/Footsteps/sand_step1.ogg
+  - /Audio/Effects/Footsteps/sand_step2.ogg
+  - /Audio/Effects/Footsteps/sand_step3.ogg
+  - /Audio/Effects/Footsteps/sand_step4.ogg
+  - /Audio/Effects/Footsteps/sand_step5.ogg
+  - /Audio/Effects/Footsteps/sand_step6.ogg
+  - /Audio/Effects/Footsteps/sand_step7.ogg
+  - /Audio/Effects/Footsteps/sand_step8.ogg
+

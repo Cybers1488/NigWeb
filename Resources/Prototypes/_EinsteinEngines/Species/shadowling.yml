@@ -1,7 +1,7 @@
 - type: species
+  roundStart: false
   id: Shadowling
   name: species-name-shadowling
-  roundStart: false
   prototype: MobShadowling
   sprites: MobShadowlingSprites
   markingLimits: MobHumanMarkingLimits

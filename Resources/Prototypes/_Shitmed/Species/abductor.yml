@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: species
+  roundStart: false
   id: Abductor
   name: species-name-abductor
-  roundStart: true # CorvaxGoob-Species : from false
   prototype: MobAbductor
   sprites: MobAbductorSprites
   markingLimits: MobAbductorMarkingLimits # CorvaxGoob-Species : from MobHumanMarkingLimits

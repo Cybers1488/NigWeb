@@ -1,0 +1,7 @@
+﻿- type: soundCollection
+  id: WoundedCough
+  files:
+    - /Audio/Voice/WoundedCough/woundedcough1.ogg
+    - /Audio/Voice/WoundedCough/woundedcough2.ogg
+    - /Audio/Voice/WoundedCough/woundedcough3.ogg
+    - /Audio/Voice/WoundedCough/woundedcough4.ogg

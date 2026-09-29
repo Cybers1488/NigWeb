@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: species
+  roundStart: false
   id: Felinid
   name: species-name-felinid
-  roundStart: false # Goobstation change
   prototype: MobFelinid
   sprites: MobHumanSprites
   markingLimits: MobFelinidMarkingLimits

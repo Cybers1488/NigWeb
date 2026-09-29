@@ -5,6 +5,11 @@
   files:
   - /Audio/Effects/Gasp/gasp_male1.ogg
   - /Audio/Effects/Gasp/gasp_male2.ogg
+  - /Audio/Effects/Gasp/gasp_male3.ogg
+  - /Audio/Effects/Gasp/gasp_male4.ogg
+  - /Audio/Effects/Gasp/gasp_male5.ogg
+  - /Audio/Effects/Gasp/gasp_male6.ogg
+  - /Audio/Effects/Gasp/gasp_male7.ogg
 
 - type: soundCollection
   id: FemaleGasp
@@ -12,3 +17,7 @@
   - /Audio/Effects/Gasp/gasp_female1.ogg
   - /Audio/Effects/Gasp/gasp_female2.ogg
   - /Audio/Effects/Gasp/gasp_female3.ogg
+  - /Audio/Effects/Gasp/gasp_female4.ogg
+  - /Audio/Effects/Gasp/gasp_female5.ogg
+  - /Audio/Effects/Gasp/gasp_female6.ogg
+  - /Audio/Effects/Gasp/gasp_female7.ogg

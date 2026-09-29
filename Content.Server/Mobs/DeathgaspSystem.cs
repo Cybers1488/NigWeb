@@ -1,8 +1,9 @@
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-using Content.Server.Chat.Systems;
+﻿using Content.Server.Chat.Systems;
 using Content.Shared.Mobs;
 using Content.Shared.Speech.Muting;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Player;
+using Robust.Shared.Audio;
 
 namespace Content.Server.Mobs;
 
@@ -10,6 +11,7 @@ namespace Content.Server.Mobs;
 public sealed class DeathgaspSystem: EntitySystem
 {
     [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     public override void Initialize()
     {
@@ -27,6 +29,9 @@ public sealed class DeathgaspSystem: EntitySystem
             return;
 
         Deathgasp(uid, component);
+        
+        // Lifeweb Death Sound
+        _audio.PlayGlobal(new SoundPathSpecifier("/Audio/Effects/death_sound.ogg"), Filter.Entities(uid), false, AudioParams.Default.WithVolume(-2f));
     }
 
     /// <summary>

@@ -37,10 +37,7 @@ public sealed partial class MiscTab : Control
             themeEntries.Add(new OptionDropDownCVar<string>.ValueOption(gear.ID, Loc.GetString(gear.Name)));
         }
 
-        var layoutEntries = new List<OptionDropDownCVar<string>.ValueOption>();
-        foreach (var layout in Enum.GetValues(typeof(ScreenType)))
         {
-            layoutEntries.Add(new OptionDropDownCVar<string>.ValueOption(layout.ToString()!, Loc.GetString($"ui-options-hud-layout-{layout.ToString()!.ToLower()}")));
         }
 
         // Channel can be null in replays so.
@@ -49,7 +46,6 @@ public sealed partial class MiscTab : Control
         ShowOocPatronColor.Visible = _playerManager.LocalSession?.Channel?.UserData.PatronTier is { }; // CorvaxGoob-Coins
 
         Control.AddOptionDropDown(CVars.InterfaceTheme, DropDownHudTheme, themeEntries);
-        Control.AddOptionDropDown(CCVars.UILayout, DropDownHudLayout, layoutEntries);
 
         Control.AddOptionCheckBox(CVars.DiscordEnabled, DiscordRich);
         Control.AddOptionCheckBox(CCVars.ShowOocPatronColor, ShowOocPatronColor);

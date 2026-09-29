@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: MIT
 
 - type: species
+  roundStart: false
   id: Moth
   name: species-name-moth
-  roundStart: true
   prototype: MobMoth
   sprites: MobMothSprites
   defaultSkinTone: "#ffda93"

@@ -1,0 +1,7 @@
+﻿- type: soundCollection
+  id: ExhaustFemale
+  files:
+    - /Audio/Voice/Human/femtired1.ogg
+    - /Audio/Voice/Human/femtired2.ogg
+    - /Audio/Voice/Human/femtired3.ogg
+    - /Audio/Voice/Human/femtired4.ogg

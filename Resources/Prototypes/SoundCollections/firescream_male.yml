@@ -1,0 +1,6 @@
+﻿- type: soundCollection
+  id: FireScreamMale
+  files:
+    - /Audio/Voice/Human/firescream1.ogg
+    - /Audio/Voice/Human/firescream2.ogg
+    - /Audio/Voice/Human/firescream3.ogg

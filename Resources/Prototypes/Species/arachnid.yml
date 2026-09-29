@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: MIT
 
 - type: species
+  roundStart: false
   id: Arachnid
   name: species-name-arachnid
-  roundStart: true
   prototype: MobArachnid
   sprites: MobArachnidSprites
   defaultSkinTone: "#385878"

@@ -1455,6 +1455,8 @@
 - type: tile
   id: FloorAsteroidSandBorderless
   name: tiles-asteroid-sand-borderless
+  footstepSounds:
+    collection: FootstepSand
   sprite: /Textures/Tiles/Asteroid/asteroid.png
   variants: 13
   placementVariants:
@@ -1473,8 +1475,6 @@
     - 0.0116
   baseTurf: Space
   isSubfloor: true
-  footstepSounds:
-    collection: FootstepAsteroid
   heatCapacity: 10000
   weather: true
 
@@ -1500,7 +1500,7 @@
   baseTurf: Space
   isSubfloor: true
   footstepSounds:
-    collection: FootstepAsteroid
+    collection: FootstepSand
   heatCapacity: 10000
   weather: true
 
@@ -1522,6 +1522,8 @@
 - type: tile
   id: FloorAsteroidSandRedBorderless
   name: tiles-asteroid-sand-borderless
+  footstepSounds:
+    collection: FootstepSand
   sprite: /Textures/Tiles/Asteroid/asteroid_red.png
   variants: 13
   placementVariants:
@@ -1540,8 +1542,6 @@
   - 0.0116
   baseTurf: Space
   isSubfloor: true
-  footstepSounds:
-    collection: FootstepAsteroid
   heatCapacity: 10000
   weather: true
 
@@ -1575,6 +1575,8 @@
 - type: tile
   id: FloorAsteroidIronsandBorderless
   name: tiles-asteroid-ironsand-borderless
+  footstepSounds:
+    collection: FootstepSand
   sprite: /Textures/Tiles/Asteroid/ironsand.png
   variants: 15
   placementVariants:
@@ -1595,8 +1597,6 @@
   - 1.0
   baseTurf: Space
   isSubfloor: true
-  footstepSounds:
-    collection: FootstepAsteroid
   heatCapacity: 10000
   weather: true
 
@@ -1622,7 +1622,7 @@
   baseTurf: Space
   isSubfloor: true
   footstepSounds:
-    collection: FootstepAsteroid
+    collection: FootstepSand
   heatCapacity: 10000
   weather: true
 
@@ -1648,7 +1648,7 @@
   baseTurf: Space
   isSubfloor: true
   footstepSounds:
-    collection: FootstepAsteroid
+    collection: FootstepSand
   heatCapacity: 10000
   weather: true
 

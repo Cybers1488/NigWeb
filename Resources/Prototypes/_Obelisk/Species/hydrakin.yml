@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: MPL-2.0
 
 - type: species
+  roundStart: false
   id: Hydrakin
   name: species-name-hydrakin
-  roundStart: true
   prototype: MobHydrakin
   sprites: MobHydrakinSprites
   defaultSkinTone: "#ffffff"

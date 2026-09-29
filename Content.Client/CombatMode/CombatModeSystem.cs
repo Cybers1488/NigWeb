@@ -114,7 +114,7 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
     /// Plays sounds based on activation/deactivation of the CombatMode
     /// </summary>
     /// <param name="uid">uid of entity that'll play the sound</param>
-    private void TryPlayCombatModeSound(EntityUid uid)
+        private void TryPlayCombatModeSound(EntityUid uid)
     {
         if (_combatModeSoundEnabled == false)
             return;
@@ -127,17 +127,30 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
         switch (inCombatMode)
         {
             case true:
-                if (comp.CombatActivationSound == null)
-                    return;
-                _audio.PlayLocal(comp.CombatActivationSound, uid, uid);
+                if (comp.CombatActivationSound != null)
+                    _audio.PlayLocal(comp.CombatActivationSound, uid, uid);
+                
+                if (comp.CombatMusic != null && comp.CombatMusicStream == null)
+                {
+                    comp.CombatMusicStream = _audio.PlayGlobal(comp.CombatMusic, Robust.Shared.Player.Filter.Local(), false, Robust.Shared.Audio.AudioParams.Default.WithLoop(true).WithVolume(-16f))?.Entity;
+                }
                 break;
 
             case false:
-                if (comp.CombatDeactivationSound == null)
-                    return;
-                _audio.PlayLocal(comp.CombatDeactivationSound, uid, uid);
+                if (comp.CombatDeactivationSound != null)
+                    _audio.PlayLocal(comp.CombatDeactivationSound, uid, uid);
+
+                if (comp.CombatMusicStream != null)
+                {
+                    _audio.Stop(comp.CombatMusicStream);
+                    comp.CombatMusicStream = null;
+                }
                 break;
         }
     }
     //CorvaxGoob-CombatMode-Sound-End
 }
+
+
+
+

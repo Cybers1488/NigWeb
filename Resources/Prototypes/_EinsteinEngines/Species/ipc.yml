@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: species
+  roundStart: false
   id: IPC
   name: species-name-ipc
-  roundStart: true
   prototype: MobIPC
   sprites: MobIPCSprites
   markingLimits: MobIPCMarkingLimits
