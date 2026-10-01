@@ -115,6 +115,11 @@ namespace Content.Client.Input
             human.AddFunction(ContentKeyFunctions.TargetLeftFoot);
             human.AddFunction(ContentKeyFunctions.TargetRightLeg);
             human.AddFunction(ContentKeyFunctions.TargetRightFoot);
+            // NigWeb: Arrow key navigation for targeting doll
+            human.AddFunction(ContentKeyFunctions.TargetNavUp);
+            human.AddFunction(ContentKeyFunctions.TargetNavDown);
+            human.AddFunction(ContentKeyFunctions.TargetNavLeft);
+            human.AddFunction(ContentKeyFunctions.TargetNavRight);
             // Shitmed Change End
 
             // actions should be common (for ghosts, mobs, etc)

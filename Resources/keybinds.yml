@@ -675,3 +675,15 @@ binds:
   type: State
   key: Num3
 # CorvaxGoob-changes-end.
+- function: TargetNavUp
+  type: State
+  key: Up
+- function: TargetNavDown
+  type: State
+  key: Down
+- function: TargetNavLeft
+  type: State
+  key: Left
+- function: TargetNavRight
+  type: State
+  key: Right

@@ -11,26 +11,18 @@ SPDX-License-Identifier: AGPL-3.0-or-later
     VerticalExpand="True"
     VerticalAlignment="Bottom"
     Orientation="Horizontal"
-    HorizontalAlignment="Center">
-    <Control HorizontalAlignment="Center">
-        <!-- Needs to default to invisible because if we attach to a non-slots entity this will never get unset -->
-        <controls:SlotButton
-            Name="InventoryButton"
-            Access="Public"
-            Visible="False"
-            VerticalAlignment="Bottom"
-            HorizontalExpand="False"
-            VerticalExpand="False"
-            ButtonTexturePath="Slots/toggle"/>
+    HorizontalAlignment="Left"
+    Margin="10 0 0 10">
+    <Control HorizontalAlignment="Left">
         <inventory:ItemSlotButtonContainer
             Name="InventoryHotbar"
             Access="Public"
-            Visible="False"
+            Visible="True"
             MaxColumns="3"
             SlotGroup="Default"
             ExpandBackwards="True"
             VerticalExpand="True"
-            HorizontalAlignment="Center"
+            HorizontalAlignment="Left"
         />
     </Control>
 </widgets:InventoryGui>

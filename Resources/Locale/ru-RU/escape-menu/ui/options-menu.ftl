@@ -414,3 +414,5 @@ ui-options-function-inspect-server-component-tooltip = Открыть меню V
 ui-options-function-inspect-client-component = Изучить клиентский компонент
 
 ui-options-function-inspect-client-component-tooltip = Открыть меню ViewVariables для сущности под курсором, используя клиентский компонент, заданный командой "quickinspect".
+
+ui-options-hud-theme-nigweb = NigWeb

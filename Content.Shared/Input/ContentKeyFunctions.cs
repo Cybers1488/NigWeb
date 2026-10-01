@@ -85,7 +85,13 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction TargetLeftFoot = "TargetLeftFoot";
         public static readonly BoundKeyFunction TargetRightLeg = "TargetRightLeg";
         public static readonly BoundKeyFunction TargetRightFoot = "TargetRightFoot";
+        // NigWeb: Arrow key navigation for targeting doll
+        public static readonly BoundKeyFunction TargetNavUp = "TargetNavUp";
+        public static readonly BoundKeyFunction TargetNavDown = "TargetNavDown";
+        public static readonly BoundKeyFunction TargetNavLeft = "TargetNavLeft";
+        public static readonly BoundKeyFunction TargetNavRight = "TargetNavRight";
         // Shitmed Change End
+
 
         public static readonly BoundKeyFunction ArcadeUp = "ArcadeUp";
         public static readonly BoundKeyFunction ArcadeDown = "ArcadeDown";

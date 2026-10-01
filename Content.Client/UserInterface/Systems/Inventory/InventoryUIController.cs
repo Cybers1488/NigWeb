@@ -62,7 +62,9 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
             return;
 
         if (UIManager.GetActiveUIWidgetOrNull<InventoryGui>() is { } inventoryGui)
-            RegisterInventoryButton(inventoryGui.InventoryButton);
+        {
+            // InventoryButton has been removed from XAML
+        }
     }
 
     public void OnStateEntered(GameplayState state)
@@ -248,8 +250,7 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
         }
 
         UpdateInventoryHotbar(_playerInventory);
-        var shouldBeVisible = !_inventoryHotbar.Visible;
-        _inventoryHotbar.Visible = shouldBeVisible;
+        _inventoryHotbar.Visible = true;
 
     }
 
@@ -405,6 +406,8 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
         }
 
         UpdateInventoryHotbar(_playerInventory);
+        if (_inventoryHotbar != null)
+            _inventoryHotbar.Visible = true;
     }
 
     private void UnloadSlots()
