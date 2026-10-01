@@ -18,6 +18,12 @@ using Robust.Shared.Player;
 using Content.Shared._Shitmed.Medical.Surgery.Consciousness.Components;
 using Content.Shared._Shitmed.Medical.Surgery.Consciousness.Systems;
 using Content.Shared.Body.Components;
+using Content.Shared.CCVar;
+using Robust.Client.Audio;
+using Robust.Shared;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Configuration;
 
 namespace Content.Client.UserInterface.Systems.DamageOverlays;
 
@@ -26,11 +32,17 @@ public sealed class DamageOverlayUiController : UIController
 {
     [Dependency] private readonly IOverlayManager _overlayManager = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly IAudioManager _audioManager = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
 
+    [UISystemDependency] private readonly AudioSystem _audio = default!;
     [UISystemDependency] private readonly ConsciousnessSystem _consciousness = default!; // Shitmed Change
     [UISystemDependency] private readonly MobThresholdSystem _mobThresholdSystem = default!;
     [UISystemDependency] private readonly StatusEffectsSystem _statusEffects = default!;
     private Overlays.DamageOverlay _overlay = default!;
+
+    private EntityUid? _heartbeatStream;
+    private bool _inCritAudio = false;
 
     public override void Initialize()
     {
@@ -80,6 +92,42 @@ public sealed class DamageOverlayUiController : UIController
         _overlay.CritLevel = 0f;
         _overlay.PainLevel = 0f;
         _overlay.OxygenLevel = 0f;
+        _overlay.State = MobState.Alive;
+        UpdateAudioState();
+    }
+
+    private void UpdateAudioState()
+    {
+        var shouldBeInCritAudio = _overlay.State == MobState.Critical;
+        
+        if (shouldBeInCritAudio && !_inCritAudio)
+        {
+            _inCritAudio = true;
+            
+            // Получаем текущую мастер-громкость игрока из настроек
+            var baseGain = _cfg.GetCVar(CVars.AudioMasterVolume);
+            // Приглушаем игру, но не до нуля (оставляем 40% от нормы),
+            // чтобы сердцебиение всё ещё было хорошо слышно.
+            _audioManager.SetMasterGain(baseGain * 0.40f); 
+            
+            _heartbeatStream = _audio.PlayGlobal(
+                new SoundPathSpecifier("/Audio/NigWeb/heartbeat.ogg"),
+                Filter.Local(),
+                false,
+                AudioParams.Default.WithVolume(40f).WithLoop(true)
+            )?.Entity;
+        }
+        else if (!shouldBeInCritAudio && _inCritAudio)
+        {
+            _inCritAudio = false;
+            _audioManager.SetMasterGain(_cfg.GetCVar(CVars.AudioMasterVolume));
+            
+            if (_heartbeatStream != null)
+            {
+                _audio.Stop(_heartbeatStream);
+                _heartbeatStream = null;
+            }
+        }
     }
 
     private void UpdateOverlays(EntityUid entity,
@@ -209,5 +257,8 @@ public sealed class DamageOverlayUiController : UIController
                     }
             }
         }
+        
+        // Update audio based on the new state
+        UpdateAudioState();
     }
 }

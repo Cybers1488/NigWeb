@@ -295,7 +295,11 @@ namespace Content.Client.ContextMenu.UI
             var element = new EntityMenuElement(entity);
             element.SubMenu = new ContextMenuPopup(_context, element);
             element.SubMenu.OnPopupOpen += () => _verb.OpenVerbMenu(entity, popup: element.SubMenu);
-            element.SubMenu.OnPopupHide += element.SubMenu.MenuBody.RemoveAllChildren;
+            element.SubMenu.OnPopupHide += () => 
+            {
+                if (!element.SubMenu.MenuBody.Disposed)
+                    element.SubMenu.MenuBody.RemoveAllChildren();
+            };
             _context.AddElement(menu, element);
             Elements.TryAdd(entity, element);
         }

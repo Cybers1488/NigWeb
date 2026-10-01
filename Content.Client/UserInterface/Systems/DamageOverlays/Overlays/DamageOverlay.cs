@@ -218,30 +218,23 @@ public sealed class DamageOverlay : Overlay
             handle.DrawRect(viewport, Color.White);
         }
 
+        // NigWeb: simple black blinking square for crit
         level = State != MobState.Dead ? _oldCritLevel : DeadLevel;
 
         if (level > 0f)
         {
-            float outerMaxLevel = 2.0f * distance;
-            float outerMinLevel = 1.0f * distance;
-            float innerMaxLevel = 0.6f * distance;
-            float innerMinLevel = 0.02f * distance;
+            // Calculate a pulse for the black square
+            var pulse = MathF.Max(0f, MathF.Sin(time * 3f)); // Blinks faster
 
-            var outerRadius = outerMaxLevel - level * (outerMaxLevel - outerMinLevel);
-            var innerRadius = innerMaxLevel - level * (innerMaxLevel - innerMinLevel);
+            // In dead state, just stay solid black
+            if (State == MobState.Dead)
+            {
+                pulse = 1f;
+            }
 
-            var pulse = MathF.Max(0f, MathF.Sin(time));
-
-            // If in crit then just fix it; also pulse it very occasionally so they can see more.
-            _critShader.SetParameter("time", pulse);
-            _critShader.SetParameter("color", new Vector3(1f, 1f, 1f));
-            _critShader.SetParameter("darknessAlphaOuter", 1.0f);
-            _critShader.SetParameter("innerCircleRadius", innerRadius);
-            _critShader.SetParameter("innerCircleMaxRadius", innerRadius + 0.005f * distance);
-            _critShader.SetParameter("outerCircleRadius", outerRadius);
-            _critShader.SetParameter("outerCircleMaxRadius", outerRadius + 0.2f * distance);
-            handle.UseShader(_critShader);
-            handle.DrawRect(viewport, Color.White);
+            // Draw a black rectangle over the entire screen with the pulsing alpha
+            handle.UseShader(null);
+            handle.DrawRect(viewport, new Color(0f, 0f, 0f, pulse * level));
         }
 
         handle.UseShader(null);
