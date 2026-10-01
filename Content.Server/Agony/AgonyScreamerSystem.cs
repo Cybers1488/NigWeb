@@ -1,4 +1,4 @@
-﻿using Content.Shared.Body.Part;
+using Content.Shared.Body.Part;
 using Content.Shared.Damage;
 using Content.Shared.Popups;
 using Content.Shared.IdentityManagement;
@@ -84,6 +84,9 @@ public sealed class AgonyScreamerSystem : EntitySystem
 
     private void TryPlayAgonyScream(EntityUid uid, MobStateComponent mobState, bool isFire)
     {
+        if (TerminatingOrDeleted(uid))
+            return;
+
         // Только люди (гуманоиды) могут кричать в агонии, животные не должны.
         if (!TryComp<HumanoidAppearanceComponent>(uid, out var humanoid))
             return;

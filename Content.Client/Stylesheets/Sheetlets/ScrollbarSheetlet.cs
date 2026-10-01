@@ -1,6 +1,8 @@
 using Robust.Client.Graphics;
+using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
+using Robust.Shared.IoC;
 using static Content.Client.Stylesheets.StylesheetHelpers;
 
 namespace Content.Client.Stylesheets.Sheetlets;
@@ -12,38 +14,75 @@ public sealed class ScrollbarSheetlet : Sheetlet<PalettedStylesheet>
 
     public override StyleRule[] GetRules(PalettedStylesheet sheet, object config)
     {
-        // TODO: hardcoded colors!!!
-        var vScrollBarGrabberNormal = new StyleBoxFlat
+        var resCache = IoCManager.Resolve<IResourceCache>();
+
+        // Vertical Grabber
+        var vGrabberTexNormal = resCache.GetResource<TextureResource>("/Textures/Interface/Nano/lfwb_scrollbar_grabber.png").Texture;
+        var vScrollBarGrabberNormal = new StyleBoxTexture
         {
-            BackgroundColor = Color.Gray.WithAlpha(0.35f), ContentMarginLeftOverride = DefaultGrabberSize,
+            Texture = vGrabberTexNormal,
+            Mode = StyleBoxTexture.StretchMode.Stretch,
+            ContentMarginLeftOverride = 14,
             ContentMarginTopOverride = DefaultGrabberSize,
         };
-        var vScrollBarGrabberHover = new StyleBoxFlat
+        vScrollBarGrabberNormal.SetPatchMargin(StyleBox.Margin.Top, 4);
+        vScrollBarGrabberNormal.SetPatchMargin(StyleBox.Margin.Bottom, 4);
+
+        var vScrollBarGrabberHover = new StyleBoxTexture
         {
-            BackgroundColor = new Color(140, 140, 140).WithAlpha(0.35f), ContentMarginLeftOverride = DefaultGrabberSize,
+            Texture = vGrabberTexNormal,
+            Mode = StyleBoxTexture.StretchMode.Stretch,
+            Modulate = new Color(200, 200, 200),
+            ContentMarginLeftOverride = 14,
             ContentMarginTopOverride = DefaultGrabberSize,
         };
+        vScrollBarGrabberHover.SetPatchMargin(StyleBox.Margin.Top, 4);
+        vScrollBarGrabberHover.SetPatchMargin(StyleBox.Margin.Bottom, 4);
 
-        var vScrollBarGrabberGrabbed = new StyleBoxFlat
+        var vScrollBarGrabberGrabbed = new StyleBoxTexture
         {
-            BackgroundColor = new Color(160, 160, 160).WithAlpha(0.35f), ContentMarginLeftOverride = DefaultGrabberSize,
+            Texture = vGrabberTexNormal,
+            Mode = StyleBoxTexture.StretchMode.Stretch,
+            Modulate = new Color(150, 150, 150),
+            ContentMarginLeftOverride = 14,
             ContentMarginTopOverride = DefaultGrabberSize,
         };
+        vScrollBarGrabberGrabbed.SetPatchMargin(StyleBox.Margin.Top, 4);
+        vScrollBarGrabberGrabbed.SetPatchMargin(StyleBox.Margin.Bottom, 4);
 
-        var hScrollBarGrabberNormal = new StyleBoxFlat
+        // Horizontal Grabber
+        var hGrabberTexNormal = resCache.GetResource<TextureResource>("/Textures/Interface/Nano/lfwb_scrollbar_grabber_h.png").Texture;
+        var hScrollBarGrabberNormal = new StyleBoxTexture
         {
-            BackgroundColor = Color.Gray.WithAlpha(0.35f), ContentMarginTopOverride = DefaultGrabberSize,
+            Texture = hGrabberTexNormal,
+            Mode = StyleBoxTexture.StretchMode.Stretch,
+            ContentMarginTopOverride = 14,
+            ContentMarginLeftOverride = DefaultGrabberSize,
         };
+        hScrollBarGrabberNormal.SetPatchMargin(StyleBox.Margin.Left, 4);
+        hScrollBarGrabberNormal.SetPatchMargin(StyleBox.Margin.Right, 4);
 
-        var hScrollBarGrabberHover = new StyleBoxFlat
+        var hScrollBarGrabberHover = new StyleBoxTexture
         {
-            BackgroundColor = new Color(140, 140, 140).WithAlpha(0.35f), ContentMarginTopOverride = DefaultGrabberSize,
+            Texture = hGrabberTexNormal,
+            Mode = StyleBoxTexture.StretchMode.Stretch,
+            Modulate = new Color(200, 200, 200),
+            ContentMarginTopOverride = 14,
+            ContentMarginLeftOverride = DefaultGrabberSize,
         };
+        hScrollBarGrabberHover.SetPatchMargin(StyleBox.Margin.Left, 4);
+        hScrollBarGrabberHover.SetPatchMargin(StyleBox.Margin.Right, 4);
 
-        var hScrollBarGrabberGrabbed = new StyleBoxFlat
+        var hScrollBarGrabberGrabbed = new StyleBoxTexture
         {
-            BackgroundColor = new Color(160, 160, 160).WithAlpha(0.35f), ContentMarginTopOverride = DefaultGrabberSize,
+            Texture = hGrabberTexNormal,
+            Mode = StyleBoxTexture.StretchMode.Stretch,
+            Modulate = new Color(150, 150, 150),
+            ContentMarginTopOverride = 14,
+            ContentMarginLeftOverride = DefaultGrabberSize,
         };
+        hScrollBarGrabberGrabbed.SetPatchMargin(StyleBox.Margin.Left, 4);
+        hScrollBarGrabberGrabbed.SetPatchMargin(StyleBox.Margin.Right, 4);
 
         return
         [

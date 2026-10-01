@@ -79,6 +79,9 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
     // TODO: This can be predicted once https://github.com/space-wizards/RobustToolbox/pull/5849 is merged
     private void OnPuddleSpread(Entity<PuddleComponent> entity, ref SpreadNeighborsEvent args)
     {
+        if (TerminatingOrDeleted(entity))
+            return;
+
         // Overflow is the source of the overflowing liquid. This contains the excess fluid above overflow limit (20u)
         var overflow = GetOverflowSolution(entity.Owner, entity.Comp);
 
@@ -100,6 +103,9 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
 
             foreach (var neighbor in args.NeighborFreeTiles)
             {
+                if (TerminatingOrDeleted(neighbor.Tile.GridUid))
+                    continue;
+
                 var split = overflow.SplitSolution(spillAmount);
                 TrySpillAt(_map.GridTileToLocal(neighbor.Tile.GridUid, neighbor.Grid, neighbor.Tile.GridIndices), split, out _, false);
                 args.Updates--;
@@ -166,7 +172,9 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
                     continue;
 
                 args.Updates--;
-                EnsureComp<ActiveEdgeSpreaderComponent>(neighbor);
+                
+                if (!TerminatingOrDeleted(neighbor))
+                    EnsureComp<ActiveEdgeSpreaderComponent>(neighbor);
 
                 if (args.Updates <= 0)
                     break;

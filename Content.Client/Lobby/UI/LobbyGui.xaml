@@ -81,7 +81,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                 <Control Access="Public" Visible="False" Name="CharacterSetupState" VerticalExpand="True" />
             </BoxContainer>
             <!-- Right Panel -->
-            <PanelContainer Name="RightSide" Access="Public" StyleClasses="BackgroundPanel" HorizontalAlignment="Right" VerticalExpand="True"
+            <PanelContainer Name="RightSide" Access="Public" HorizontalAlignment="Right" VerticalExpand="True"
                             VerticalAlignment="Stretch">
                 <BoxContainer Orientation="Vertical" HorizontalExpand="True">
                     <!-- Top row -->
