@@ -407,16 +407,20 @@ namespace Content.Client.Stylesheets
             lineEdit.SetPatchMargin(StyleBox.Margin.All, 3);
             lineEdit.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
 
-            var chatBg = new StyleBoxFlat
+            var chatPanelTex = resCache.GetTexture("/Textures/Interface/Nano/lfwb_chat_panel.png");
+            var chatBg = new StyleBoxTexture
             {
-                BackgroundColor = ChatBackgroundColor
+                Texture = chatPanelTex,
+                Mode = StyleBoxTexture.StretchMode.Tile,
             };
 
-            var chatSubBg = new StyleBoxFlat
+            var chatSubBg = new StyleBoxTexture
             {
-                BackgroundColor = ChatBackgroundColor,
+                Texture = chatPanelTex,
+                Mode = StyleBoxTexture.StretchMode.Tile,
             };
             chatSubBg.SetContentMarginOverride(StyleBox.Margin.All, 2);
+
 
             var actionSearchBoxTex = resCache.GetTexture("/Textures/Interface/Nano/black_panel_dark_thin_border.png");
             var actionSearchBox = new StyleBoxTexture
