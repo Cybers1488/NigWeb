@@ -48,7 +48,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
         AppendStyleClass="{x:Static style:StyleClass.ButtonSquare}"
         />
     <ui:MenuButton
-        Name="EmotesButton"
+        Name="EmotesButton" Visible="False"
         Access="Internal"
         Icon="{xe:Tex '/Textures/Interface/emotes.svg.192dpi.png'}"
         ToolTip="{Loc 'game-hud-open-emotes-menu-button-tooltip'}"

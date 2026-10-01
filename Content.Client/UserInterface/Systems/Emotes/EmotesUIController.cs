@@ -56,6 +56,8 @@ public sealed class EmotesUIController : UIController, IOnStateChanged<GameplayS
 
     private void ToggleEmotesMenu(bool centered)
     {
+        return; // Goobstation - Disabled radial emotes menu
+
         if (_menu == null)
         {
             // setup window

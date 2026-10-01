@@ -10,7 +10,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
     Name="PartStatusIndicator"
     VerticalAlignment="Center"
     HorizontalAlignment="Center">
-    <Control>
+    <Control Margin="10 -2 -10 2">
         <TextureRect
             TexturePath="/Textures/Interface/Alerts/doll_bg.png"
             Stretch="KeepAspectCentered"

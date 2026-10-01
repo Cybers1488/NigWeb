@@ -4,7 +4,7 @@
     MinSize="96 192"
     HorizontalAlignment="Center"
     VerticalAlignment="Center">
-    <Control MinSize="96 192">
+    <Control MinSize="96 192" Margin="10 -4 -10 4">
         <AnimatedTextureRect
             Name="BackgroundSprite"
             SetSize="96 192"

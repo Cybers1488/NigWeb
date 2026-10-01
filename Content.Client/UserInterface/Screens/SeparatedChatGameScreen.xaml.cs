@@ -41,8 +41,13 @@ public sealed partial class SeparatedChatGameScreen : InGameScreen
         SetAnchorAndMarginPreset(TopLeftContainer, LayoutPreset.TopLeft, margin: 10);
         SetAnchorAndMarginPreset(Ghost, LayoutPreset.BottomWide, margin: 80);
         SetAnchorAndMarginPreset(Hotbar, LayoutPreset.BottomWide, margin: 5);
+
         SetAnchorAndMarginPreset(Alerts, LayoutPreset.TopRight, margin: 10); // Goobstation Change
+        LayoutContainer.SetMarginRight(Alerts, 0);
+        LayoutContainer.SetMarginTop(Alerts, 0);
+
         SetAnchorAndMarginPreset(Targeting, LayoutPreset.BottomRight, margin: 5);
+        LayoutContainer.SetMarginRight(Targeting, 0);
 
         ScreenContainer.OnSplitResizeFinished += () =>
             OnChatResized?.Invoke(new Vector2(ScreenContainer.SplitFraction, 0));

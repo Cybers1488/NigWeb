@@ -72,9 +72,12 @@ public sealed partial class EmotesTabControl : BaseTabControl
     private IconButton CreateEmoteButton(EmotePrototype emote)
     {
         var button = new IconButton(Loc.GetString(emote.Name));
-        button.Icon.Texture = emote.Icon.Frame0();
+        // Remove smiley icons
+        button.Icon.Visible = false;
+        button.Icon.MinSize = System.Numerics.Vector2.Zero;
+        button.Icon.Margin = new Thickness(0);
+        
         button.OnPressed += _ => OnPlayEmote(new ProtoId<EmotePrototype>(emote.ID));
-
         return button;
     }
 

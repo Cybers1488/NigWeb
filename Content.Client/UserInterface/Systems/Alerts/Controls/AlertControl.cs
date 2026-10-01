@@ -61,7 +61,7 @@ namespace Content.Client.UserInterface.Systems.Alerts.Controls
             Alert = alert;
 
             HorizontalAlignment = HAlignment.Left;
-            Margin = new Thickness(0, 0, 0, 0);
+            Margin = new Thickness(10, -2, -10, 2);
             MinSize = new Vector2(64, 64);
             MaxSize = new Vector2(64, 64);
             _severity = severity;

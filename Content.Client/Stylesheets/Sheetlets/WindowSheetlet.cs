@@ -1,4 +1,4 @@
-﻿using Content.Client.Resources;
+using Content.Client.Resources;
 using Content.Client.Stylesheets.Fonts;
 using Content.Client.Stylesheets.Palette;
 using Content.Client.Stylesheets.SheetletConfigs;
@@ -22,32 +22,29 @@ public sealed class WindowSheetlet<T> : Sheetlet<T>
         IWindowConfig windowCfg = sheet;
         IIconConfig iconCfg = sheet;
 
+        var chatPanelTex = ResCache.GetResource<Robust.Client.ResourceManagement.TextureResource>("/Textures/Interface/Nano/lfwb_chat_panel.png").Texture;
+
         var headerStylebox = new StyleBoxTexture
         {
-            Texture = sheet.GetTextureOr(windowCfg.WindowHeaderTexturePath, NanotrasenStylesheet.TextureRoot),
-            PatchMarginBottom = 3,
-            ExpandMarginBottom = 3,
-            ContentMarginBottomOverride = 0,
+            Texture = chatPanelTex,
+            Mode = StyleBoxTexture.StretchMode.Tile,
         };
-        // TODO: This would probably be better palette-based but we can leave it for now.
         var headerAlertStylebox = new StyleBoxTexture
         {
-            Texture = sheet.GetTextureOr(windowCfg.WindowHeaderAlertTexturePath, NanotrasenStylesheet.TextureRoot),
-            PatchMarginBottom = 3,
-            ExpandMarginBottom = 3,
-            ContentMarginBottomOverride = 0,
+            Texture = chatPanelTex,
+            Mode = StyleBoxTexture.StretchMode.Tile,
+            Modulate = Color.FromHex("#FF3333"), // slightly red for alerts
         };
         var backgroundBox = new StyleBoxTexture()
         {
-            Texture = sheet.GetTextureOr(windowCfg.WindowBackgroundPath, NanotrasenStylesheet.TextureRoot),
+            Texture = chatPanelTex,
+            Mode = StyleBoxTexture.StretchMode.Tile,
         };
-        backgroundBox.SetPatchMargin(StyleBox.Margin.Horizontal | StyleBox.Margin.Bottom, 2);
-        backgroundBox.SetExpandMargin(StyleBox.Margin.Horizontal | StyleBox.Margin.Bottom, 2);
         var borderedBackgroundBox = new StyleBoxTexture
         {
-            Texture = sheet.GetTextureOr(windowCfg.WindowBackgroundBorderedPath, NanotrasenStylesheet.TextureRoot),
+            Texture = chatPanelTex,
+            Mode = StyleBoxTexture.StretchMode.Tile,
         };
-        borderedBackgroundBox.SetPatchMargin(StyleBox.Margin.All, 2);
         var closeButtonTex = sheet.GetTextureOr(iconCfg.CrossIconPath, NanotrasenStylesheet.TextureRoot);
 
         var leftPanel = StyleBoxHelpers.OpenLeftStyleBox(sheet);
