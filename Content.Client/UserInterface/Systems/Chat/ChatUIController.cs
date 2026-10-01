@@ -292,18 +292,15 @@ public sealed partial class ChatUIController : UIController
         if (panel is null)
             return;
 
-        Color color;
-        if (panel.PanelOverride is StyleBoxFlat styleBoxFlat)
-            color = styleBoxFlat.BackgroundColor;
-        else if (panel.TryGetStyleProperty<StyleBox>(PanelContainer.StylePropertyPanel, out var style)
-                 && style is StyleBoxFlat propStyleBoxFlat)
-            color = propStyleBoxFlat.BackgroundColor;
-        else
-            color = Color.FromHex("#25252ADD");
-
-        panel.PanelOverride = new StyleBoxFlat
+        // Goobstation - Use rusty chat panel texture instead of flat color
+        var resCache = Robust.Shared.IoC.IoCManager.Resolve<Robust.Client.ResourceManagement.IResourceCache>();
+        var chatTex = resCache.GetResource<Robust.Client.ResourceManagement.TextureResource>("/Textures/Interface/Nano/lfwb_chat_panel.png").Texture;
+        
+        panel.PanelOverride = new StyleBoxTexture
         {
-            BackgroundColor = color.WithAlpha(opacity)
+            Texture = chatTex,
+            Mode = StyleBoxTexture.StretchMode.Tile,
+            Modulate = Color.White.WithAlpha(opacity)
         };
     }
 
