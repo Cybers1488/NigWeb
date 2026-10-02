@@ -1,4 +1,4 @@
-﻿using Content.Client.Stylesheets.SheetletConfigs;
+using Content.Client.Stylesheets.SheetletConfigs;
 using Content.Client.Stylesheets.Stylesheets;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
@@ -17,9 +17,21 @@ public sealed class TabContainerSheetlet<T> : Sheetlet<T> where T: PalettedStyle
         var tabContainerPanel = sheet.GetTextureOr(tabCfg.TabContainerPanelPath, NanotrasenStylesheet.TextureRoot)
             .IntoPatch(StyleBox.Margin.All, 2);
 
-        var tabContainerBoxActive = new StyleBoxFlat(sheet.SecondaryPalette.Element);
+        var tabCustomTex = sheet.GetTextureOr(new Robust.Shared.Utility.ResPath("goob_button.png"), NanotrasenStylesheet.TextureRoot);
+        var tabContainerBoxActive = new StyleBoxTexture
+        {
+            Texture = tabCustomTex,
+            Modulate = Color.White
+        };
+        tabContainerBoxActive.SetPatchMargin(StyleBox.Margin.All, 4);
         tabContainerBoxActive.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
-        var tabContainerBoxInactive = new StyleBoxFlat(sheet.SecondaryPalette.Background);
+
+        var tabContainerBoxInactive = new StyleBoxTexture
+        {
+            Texture = tabCustomTex,
+            Modulate = new Color(150, 150, 150)
+        };
+        tabContainerBoxInactive.SetPatchMargin(StyleBox.Margin.All, 4);
         tabContainerBoxInactive.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
 
         return

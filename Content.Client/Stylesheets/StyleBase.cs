@@ -54,7 +54,7 @@ namespace Content.Client.Stylesheets
             var textureCloseButton = resCache.GetTexture("/Textures/Interface/Nano/cross.svg.png");
 
             // Button styles.
-            var buttonTex = resCache.GetTexture("/Textures/Interface/Nano/button.svg.96dpi.png");
+            var buttonTex = resCache.GetTexture("/Textures/Interface/Nano/button_custom.png");
             BaseButton = new StyleBoxTexture
             {
                 Texture = buttonTex,

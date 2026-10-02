@@ -130,12 +130,12 @@ namespace Content.Client.Stylesheets
         public static readonly Color DangerousRedFore = Color.FromHex("#BB3232");
         public static readonly Color DisabledFore = Color.FromHex("#5A5A5A");
 
-        public static readonly Color ButtonColorDefault = Color.FromHex("#464966");
+        public static readonly Color ButtonColorDefault = Color.White;
         public static readonly Color ButtonColorDefaultRed = Color.FromHex("#D43B3B");
-        public static readonly Color ButtonColorHovered = Color.FromHex("#575b7f");
+        public static readonly Color ButtonColorHovered = new Color(200, 200, 200);
         public static readonly Color ButtonColorHoveredRed = Color.FromHex("#DF6B6B");
-        public static readonly Color ButtonColorPressed = Color.FromHex("#3e6c45");
-        public static readonly Color ButtonColorDisabled = Color.FromHex("#30313c");
+        public static readonly Color ButtonColorPressed = new Color(150, 150, 150);
+        public static readonly Color ButtonColorDisabled = new Color(100, 100, 100);
 
         public static readonly Color ButtonColorCautionDefault = Color.FromHex("#ab3232");
         public static readonly Color ButtonColorCautionHovered = Color.FromHex("#cf2f2f");
@@ -437,9 +437,22 @@ namespace Content.Client.Stylesheets
             };
             tabContainerPanel.SetPatchMargin(StyleBox.Margin.All, 2);
 
-            var tabContainerBoxActive = new StyleBoxFlat { BackgroundColor = new Color(64, 64, 64) };
+            var tabCustomTex = resCache.GetTexture("/Textures/Interface/Nano/button_custom.png");
+            
+            var tabContainerBoxActive = new StyleBoxTexture
+            { 
+                Texture = tabCustomTex,
+                Modulate = Color.White 
+            };
+            tabContainerBoxActive.SetPatchMargin(StyleBox.Margin.All, 10);
             tabContainerBoxActive.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
-            var tabContainerBoxInactive = new StyleBoxFlat { BackgroundColor = new Color(32, 32, 32) };
+
+            var tabContainerBoxInactive = new StyleBoxTexture
+            { 
+                Texture = tabCustomTex,
+                Modulate = new Color(150, 150, 150)
+            };
+            tabContainerBoxInactive.SetPatchMargin(StyleBox.Margin.All, 10);
             tabContainerBoxInactive.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
 
             var progressBarBackground = new StyleBoxFlat
@@ -1741,3 +1754,4 @@ namespace Content.Client.Stylesheets
         }
     }
 }
+
