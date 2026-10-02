@@ -129,27 +129,17 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
             case true:
                 if (comp.CombatActivationSound != null)
                     _audio.PlayLocal(comp.CombatActivationSound, uid, uid);
-                
-                if (comp.CombatMusic != null && comp.CombatMusicStream == null)
-                {
-                    comp.CombatMusicStream = _audio.PlayGlobal(comp.CombatMusic, Robust.Shared.Player.Filter.Local(), false, Robust.Shared.Audio.AudioParams.Default.WithLoop(true).WithVolume(-16f))?.Entity;
-                }
                 break;
 
             case false:
                 if (comp.CombatDeactivationSound != null)
                     _audio.PlayLocal(comp.CombatDeactivationSound, uid, uid);
-
-                if (comp.CombatMusicStream != null)
-                {
-                    _audio.Stop(comp.CombatMusicStream);
-                    comp.CombatMusicStream = null;
-                }
                 break;
         }
     }
     //CorvaxGoob-CombatMode-Sound-End
 }
+
 
 
 
