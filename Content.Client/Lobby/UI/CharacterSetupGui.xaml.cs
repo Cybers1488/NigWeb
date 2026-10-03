@@ -39,11 +39,11 @@ namespace Content.Client.Lobby.UI
             RobustXamlLoader.Load(this);
             IoCManager.InjectDependencies(this);
 
-            var panelTex = _resourceCache.GetTexture("/Textures/Interface/Nano/button.svg.96dpi.png");
+            var panelTex = _resourceCache.GetTexture("/Textures/Interface/Nano/fsj.png");
             var back = new StyleBoxTexture
             {
                 Texture = panelTex,
-                Modulate = new Color(37, 37, 42)
+                Modulate = Color.White
             };
             back.SetPatchMargin(StyleBox.Margin.All, 10);
 

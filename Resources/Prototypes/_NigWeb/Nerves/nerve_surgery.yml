@@ -1,0 +1,37 @@
+﻿- type: entity
+  id: SurgeryRepairNerve
+  name: Сшить нервы
+  description: Сложная микрохирургическая операция по восстановлению поврежденных нервных тканей.
+  components:
+    - type: Surgery
+      steps:
+        - SurgeryStepOpenScalpel
+        - SurgeryStepOpenRetractor
+        - SurgeryStepClampBleeding
+        - SurgeryStepHealNerveTweezers
+        - SurgeryStepHealNerveStitches
+        - SurgeryStepCloseCautery
+    - type: SurgeryPartComponentCondition
+      components:
+        - type: SeveredNerve
+
+- type: entity
+  id: SurgeryStepHealNerveTweezers
+  parent: SurgeryStepBase
+  name: Совместить окончания нерва (Пинцет)
+  components:
+    - type: SurgeryStep
+      tool:
+        - type: Tweezers
+      duration: 5
+
+- type: entity
+  id: SurgeryStepHealNerveStitches
+  parent: SurgeryStepBase
+  name: Сшить нервы (Нить)
+  components:
+    - type: SurgeryStep
+      tool:
+        - type: Stitches
+      duration: 8
+    - type: SurgeryStepHealNerve
