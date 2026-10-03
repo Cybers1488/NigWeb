@@ -67,7 +67,7 @@ public sealed class CombatAmputationLaughSystem : EntitySystem
                     {
                         if (combat.IsInCombatMode)
                         {
-                            _chat.TryEmoteWithChat(last.Attacker, "Laugh", ignoreActionBlocker: true);
+                            _chat.TryEmoteWithChat(last.Attacker, "Laugh", ignoreActionBlocker: true, forceEmote: true);
                             last.Attacker = EntityUid.Invalid;
                         }
                     }

@@ -19,6 +19,8 @@ using Content.Shared.Nutrition;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Popups;
+using Content.Shared.Body.Systems;
+using System.Linq;
 using Robust.Shared.Utility;
 
 namespace Content.Shared._NigWeb.Teeth;
@@ -30,6 +32,7 @@ public sealed class TeethSystem : EntitySystem
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly SharedBodySystem _body = default!;
 
     public override void Initialize()
     {
@@ -115,6 +118,10 @@ public sealed class TeethSystem : EntitySystem
             if (targeting.Target != Content.Shared._Shitmed.Targeting.TargetBodyPart.Head)
                 return;
         }
+        var heads = _body.GetBodyChildrenOfType(uid, BodyPartType.Head).ToList();
+        if (heads.Count == 0)
+            return; // No head, no teeth to drop!
+
         if (_net.IsServer)
         {
             float damage = bluntDamage.Float();
