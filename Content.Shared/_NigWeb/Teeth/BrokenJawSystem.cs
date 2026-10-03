@@ -1,4 +1,5 @@
 using Content.Shared.Damage;
+using Content.Shared.Rejuvenate;
 using Content.Shared.Speech;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Nutrition.Components;
@@ -19,11 +20,11 @@ public sealed class BrokenJawSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<BrokenJawComponent, RejuvenateEvent>(OnRejuvenate);
         
         SubscribeLocalEvent<BrokenJawComponent, AttemptIngestEvent>(OnAttemptIngest, before: new[] { typeof(IngestionSystem) });
         SubscribeLocalEvent<BrokenJawComponent, AccentGetEvent>(OnAccentGet, before: new[] { typeof(TeethSystem) });
     }
-
     private void OnAttemptIngest(EntityUid uid, BrokenJawComponent component, ref AttemptIngestEvent args)
     {
         if (args.Handled)
@@ -41,10 +42,8 @@ public sealed class BrokenJawSystem : EntitySystem
             else
                 _popup.PopupClient("У него сломана челюсть, он не может жевать!", uid, args.User, PopupType.LargeCaution);
         }
-
         args.Handled = true;
     }
-
     private void OnAccentGet(EntityUid uid, BrokenJawComponent component, ref AccentGetEvent args)
     {
         var msg = args.Message;
@@ -62,13 +61,10 @@ public sealed class BrokenJawSystem : EntitySystem
                     sb.Append('М');
                 else
                     sb.Append('м');
-            }
-            else
+            }            else
             {
                 sb.Append(ch);
-            }
-        }
-        
+            }        }        
         var newMsg = sb.ToString();
         
         // Just make it a generic mumble if it's too repetitive
@@ -81,15 +77,15 @@ public sealed class BrokenJawSystem : EntitySystem
                  if (i >= 2 && i % 3 == 2 && newMsg[i] == 'м')
                  {
                      finalSb.Append('-');
-                 }
-                 else
+                 }                 else
                  {
                      finalSb.Append(newMsg[i]);
-                 }
-             }
-             newMsg = finalSb.ToString();
-        }
-        
+                 }             }             newMsg = finalSb.ToString();
+        }        
         args.Message = newMsg;
+    }
+    private void OnRejuvenate(EntityUid uid, BrokenJawComponent component, ref RejuvenateEvent args)
+    {
+        RemComp<BrokenJawComponent>(uid);
     }
 }

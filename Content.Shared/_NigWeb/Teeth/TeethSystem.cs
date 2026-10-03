@@ -5,6 +5,7 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared._Shitmed.Medical.Surgery.Steps;
 using Content.Shared._Shitmed.Medical.Surgery;
 using Content.Shared.Damage;
+using Content.Shared.Rejuvenate;
 using Content.Shared._Shitmed.Medical.Surgery.Traumas;
 using Content.Shared._Shitmed.Medical.Surgery.Traumas.Components;
 using Content.Shared.Body.Part;
@@ -33,6 +34,7 @@ public sealed class TeethSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<TeethComponent, RejuvenateEvent>(OnRejuvenate);
         
         SubscribeLocalEvent<TeethComponent, DamageChangedEvent>(OnDamageChanged);
         SubscribeLocalEvent<TeethComponent, AccentGetEvent>(OnAccentGet);
@@ -49,7 +51,6 @@ public sealed class TeethSystem : EntitySystem
         SubscribeLocalEvent<SurgeryStepTeethImplantComponent, SurgeryStepCompleteCheckEvent>(OnTeethImplantCheck);
         
     }
-
     
     private void OnAttemptIngestTeeth(EntityUid uid, TeethComponent component, ref AttemptIngestEvent args)
     {
@@ -74,7 +75,6 @@ public sealed class TeethSystem : EntitySystem
             args.Handled = true; 
             return;
         }
-
         // Check if they have teeth (if they have less than 10 teeth and less than 2 implants)
         if (component.Implants < 2 && component.CurrentTeeth < 10)
         {
@@ -85,9 +85,7 @@ public sealed class TeethSystem : EntitySystem
             
             args.Handled = true;
             return;
-        }
-    }
-
+        }    }
     private void OnDamageExamine(EntityUid uid, TeethComponent component, ref DamageExamineEvent args)
     {
         var msg = new FormattedMessage();
@@ -96,15 +94,12 @@ public sealed class TeethSystem : EntitySystem
         if (HasComp<BrokenJawComponent>(uid))
         {
             msg.AddMarkup("[color=red]Челюсть: Сломана[/color]");
-        }
-        else
+        }        else
         {
             msg.AddMarkup("[color=green]Челюсть: Цела[/color]");
-        }
-        
+        }        
         args.Message.AddMessage(msg);
     }
-
     private void OnDamageChanged(EntityUid uid, TeethComponent component, DamageChangedEvent args)
     {
         if (args.DamageDelta == null)
@@ -120,7 +115,6 @@ public sealed class TeethSystem : EntitySystem
             if (targeting.Target != Content.Shared._Shitmed.Targeting.TargetBodyPart.Head)
                 return;
         }
-
         if (_net.IsServer)
         {
             float damage = bluntDamage.Float();
@@ -140,12 +134,8 @@ public sealed class TeethSystem : EntitySystem
                     // Throw it out randomly
                     var throwDir = _random.NextAngle().ToVec();
                     _throwing.TryThrow(tooth, throwDir, _random.NextFloat(2f, 4f), uid, 0f);
-                }
-                chance /= 2f; // Decrease chance for consecutive drops
-            }
-        }
-    }
-
+                }                chance /= 2f; // Decrease chance for consecutive drops
+            }        }    }
     private void OnAccentGet(EntityUid uid, TeethComponent component, ref AccentGetEvent args)
     {
         if (component.Implants >= 2)
@@ -156,7 +146,6 @@ public sealed class TeethSystem : EntitySystem
 
         args.Message = Accentuate(args.Message);
     }
-
     private string Accentuate(string message)
     {
         // Replace typical lisp characters
@@ -173,25 +162,21 @@ public sealed class TeethSystem : EntitySystem
         msg = Regex.Replace(msg, "[rR]", "l");
 
         return msg;
-    }
-    private void OnTeethRemoveCheck(EntityUid uid, SurgeryStepTeethRemoveComponent comp, ref SurgeryStepCompleteCheckEvent args)
+    }    private void OnTeethRemoveCheck(EntityUid uid, SurgeryStepTeethRemoveComponent comp, ref SurgeryStepCompleteCheckEvent args)
     {
         if (TryComp<TeethComponent>(args.Body, out var teeth) && teeth.CurrentTeeth > 0)
             args.Cancelled = true; // Not complete, so we can do it
     }
-
     private void OnTeethInsertCheck(EntityUid uid, SurgeryStepTeethInsertComponent comp, ref SurgeryStepCompleteCheckEvent args)
     {
         if (TryComp<TeethComponent>(args.Body, out var teeth) && teeth.CurrentTeeth < teeth.MaxTeeth && teeth.Implants == 0)
             args.Cancelled = true;
     }
-
     private void OnTeethImplantCheck(EntityUid uid, SurgeryStepTeethImplantComponent comp, ref SurgeryStepCompleteCheckEvent args)
     {
         if (TryComp<TeethComponent>(args.Body, out var teeth) && teeth.CurrentTeeth == 0 && teeth.Implants < 2)
             args.Cancelled = true;
     }
-
 
     private void OnTeethRemove(EntityUid uid, SurgeryStepTeethRemoveComponent comp, ref SurgeryStepEvent args)
     {
@@ -204,9 +189,7 @@ public sealed class TeethSystem : EntitySystem
             Dirty(args.Body, teeth);
             var tooth = Spawn(teeth.ToothPrototype, Transform(args.Body).Coordinates);
             _popup.PopupEntity("Действие успешно завершено.", args.User, args.User);
-        }
-    }
-
+        }    }
     private void OnTeethInsert(EntityUid uid, SurgeryStepTeethInsertComponent comp, ref SurgeryStepEvent args)
     {
         if (!TryComp<TeethComponent>(args.Body, out var teeth) || teeth.CurrentTeeth >= teeth.MaxTeeth)
@@ -222,9 +205,7 @@ public sealed class TeethSystem : EntitySystem
             Dirty(args.Body, teeth);
             QueueDel(tool);
             _popup.PopupEntity("Действие успешно завершено.", args.User, args.User);
-        }
-    }
-
+        }    }
     private void OnTeethImplant(EntityUid uid, SurgeryStepTeethImplantComponent comp, ref SurgeryStepEvent args)
     {
         if (!TryComp<TeethComponent>(args.Body, out var teeth) || teeth.CurrentTeeth > 0)
@@ -240,6 +221,11 @@ public sealed class TeethSystem : EntitySystem
             Dirty(args.Body, teeth);
             QueueDel(tool);
             _popup.PopupEntity($"Вы успешно установили зубной имплант ({teeth.Implants}/2).", args.User, args.User);
-        }
+        }    }
+    private void OnRejuvenate(EntityUid uid, TeethComponent component, ref RejuvenateEvent args)
+    {
+        component.CurrentTeeth = component.MaxTeeth;
+        component.Implants = 0;
+        Dirty(uid, component);
     }
 }

@@ -1,15 +1,23 @@
+﻿using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
 using Content.Shared.Damage;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Hands.Components;
 using Content.Shared.Stunnable;
+using Content.Shared.Standing;
+using Content.Shared.Movement.Components;
+using Content.Shared.Alert;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 using Content.Shared._Shitmed.DoAfter;
+using Content.Shared.Rejuvenate;
+using Content.Shared.Body.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Network;
+using System;
 
 namespace Content.Shared._NigWeb.Nerves;
 
@@ -20,6 +28,8 @@ public sealed class NerveSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
+    [Dependency] private readonly StandingStateSystem _standing = default!;
+    [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeed = default!;
     [Dependency] private readonly INetManager _net = default!;
 
@@ -28,7 +38,11 @@ public sealed class NerveSystem : EntitySystem
         base.Initialize();
         
         SubscribeLocalEvent<BodyPartComponent, DamageChangedEvent>(OnDamageChanged);
-        SubscribeLocalEvent<SeveredNerveComponent, GetDoAfterDelayMultiplierEvent>(OnGetDoAfterDelayMultiplier);
+        SubscribeLocalEvent<SeveredNerveComponent, BodyPartRelayedEvent<GetDoAfterDelayMultiplierEvent>>(OnGetDoAfterDelayMultiplier);
+        SubscribeLocalEvent<BodyComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovementSpeed);
+        SubscribeLocalEvent<MobStateComponent, RejuvenateEvent>(OnRejuvenate);
+        SubscribeLocalEvent<MovementSpeedModifierComponent, StandAttemptEvent>(OnStandAttempt);
+        SubscribeLocalEvent<MovementSpeedModifierComponent, StandUpAttemptEvent>(OnStandUpAttempt);
         
         SubscribeLocalEvent<SeveredNerveComponent, ComponentStartup>(OnNerveSevered);
         SubscribeLocalEvent<SeveredNerveComponent, ComponentRemove>(OnNerveHealed);
@@ -36,12 +50,11 @@ public sealed class NerveSystem : EntitySystem
 
     private void OnDamageChanged(Entity<BodyPartComponent> ent, ref DamageChangedEvent args)
     {
-        if (!_net.IsServer) return; // Only process on server to prevent desyncs
+        if (!_net.IsServer) return;
         
         if (args.DamageDelta == null)
             return;
             
-        // No head nerves as requested
         if (ent.Comp.PartType == BodyPartType.Head)
             return;
             
@@ -52,7 +65,6 @@ public sealed class NerveSystem : EntitySystem
         
         if (totalCut > 15 && !HasComp<SeveredNerveComponent>(ent))
         {
-            // 15% chance
             if (_random.Prob(0.15f))
             {
                 AddComp<SeveredNerveComponent>(ent);
@@ -96,12 +108,80 @@ public sealed class NerveSystem : EntitySystem
         }
     }
 
-    private void OnGetDoAfterDelayMultiplier(Entity<SeveredNerveComponent> ent, ref GetDoAfterDelayMultiplierEvent args)
+    private void OnGetDoAfterDelayMultiplier(Entity<SeveredNerveComponent> ent, ref BodyPartRelayedEvent<GetDoAfterDelayMultiplierEvent> args)
     {
         if (TryComp<BodyPartComponent>(ent, out var part) && part.PartType == BodyPartType.Arm)
         {
-            // Actions take 2.5x longer with severed arm nerve
-            args.Multiplier *= 2.5f;
+            args.Args.Multiplier *= 2.5f;
+        }
+    }
+
+    private void OnRefreshMovementSpeed(Entity<BodyComponent> ent, ref RefreshMovementSpeedModifiersEvent args)
+    {
+        var speedMod = 1f;
+        var query = EntityQueryEnumerator<SeveredNerveComponent, BodyPartComponent>();
+        while (query.MoveNext(out var uid, out var nerve, out var part))
+        {
+            if (part.Body != ent.Owner) continue;
+
+            if (part.PartType == BodyPartType.Leg)
+            {
+                speedMod *= 0.5f; // 50% slower per severed leg nerve
+            }
+        }
+        
+        args.ModifySpeed(speedMod, speedMod);
+    }
+
+    
+    private void OnStandAttempt(Entity<MovementSpeedModifierComponent> ent, ref StandAttemptEvent args)
+    {
+        var query = EntityQueryEnumerator<SeveredNerveComponent, BodyPartComponent>();
+        while (query.MoveNext(out var uid, out var nerve, out var part))
+        {
+            if (part.Body == ent.Owner && part.PartType == BodyPartType.Chest)
+            {
+                args.Cancel();
+                if (_net.IsServer && _timing.CurTime > nerve.NextPopupTime)
+                {
+                    nerve.NextPopupTime = _timing.CurTime + TimeSpan.FromSeconds(3);
+                    Dirty(uid, nerve);
+                    _popup.PopupEntity("Вы пытаетесь встать, но ваш спинной мозг поврежден!", ent.Owner, ent.Owner, PopupType.LargeCaution);
+                }
+                return;
+            }
+        }
+    }
+
+    private void OnStandUpAttempt(Entity<MovementSpeedModifierComponent> ent, ref StandUpAttemptEvent args)
+    {
+        var query = EntityQueryEnumerator<SeveredNerveComponent, BodyPartComponent>();
+        while (query.MoveNext(out var uid, out var nerve, out var part))
+        {
+            if (part.Body == ent.Owner && part.PartType == BodyPartType.Chest)
+            {
+                args.Cancelled = true;
+                args.Autostand = false;
+                if (_net.IsServer && _timing.CurTime > nerve.NextPopupTime)
+                {
+                    nerve.NextPopupTime = _timing.CurTime + TimeSpan.FromSeconds(3);
+                    Dirty(uid, nerve);
+                    _popup.PopupEntity("Вы пытаетесь встать, но ваш спинной мозг поврежден!", ent.Owner, ent.Owner, PopupType.LargeCaution);
+                }
+                return;
+            }
+        }
+    }
+
+    private void OnRejuvenate(Entity<MobStateComponent> ent, ref RejuvenateEvent args)
+    {
+        var query = EntityQueryEnumerator<SeveredNerveComponent, BodyPartComponent>();
+        while (query.MoveNext(out var uid, out var nerve, out var part))
+        {
+            if (part.Body == ent.Owner)
+            {
+                RemComp<SeveredNerveComponent>(uid);
+            }
         }
     }
 
@@ -109,7 +189,7 @@ public sealed class NerveSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        if (!_net.IsServer) return; // Only process drops and trips on server!
+        if (!_net.IsServer) return;
 
         var curTime = _timing.CurTime;
 
@@ -127,13 +207,27 @@ public sealed class NerveSystem : EntitySystem
                 
                 if (TryComp<HandsComponent>(bodyUid, out var hands))
                 {
-                    if (hands.ActiveHandId != null)
+                    foreach (var (handId, hand) in hands.Hands)
                     {
-                        var held = _hands.GetActiveHand(bodyUid);
-                        if (held != null)
+                        bool matches = false;
+                        if (part.Symmetry == BodyPartSymmetry.Left && hand.Location == HandLocation.Left)
+                            matches = true;
+                        else if (part.Symmetry == BodyPartSymmetry.Right && hand.Location == HandLocation.Right)
+                            matches = true;
+                        else if (part.Symmetry == BodyPartSymmetry.None)
+                            matches = true;
+
+                        if (matches)
                         {
-                            _hands.TryDrop(bodyUid);
-                            _popup.PopupEntity("Ваша рука непроизвольно разжимается!", bodyUid, bodyUid, PopupType.SmallCaution);
+                            var heldItem = _hands.GetHeldItem(bodyUid, handId);
+                            if (heldItem != null)
+                            {
+                                if (_hands.TryDrop(bodyUid, handId))
+                                {
+                                    var msg = part.Symmetry == BodyPartSymmetry.Left ? "Ваша левая рука непроизвольно разжимается!" : "Ваша правая рука непроизвольно разжимается!";
+                                    _popup.PopupEntity(msg, bodyUid, bodyUid, PopupType.SmallCaution);
+                                }
+                            }
                         }
                     }
                 }
@@ -147,6 +241,15 @@ public sealed class NerveSystem : EntitySystem
                 {
                     _stun.TryKnockdown(bodyUid, TimeSpan.FromSeconds(2), true);
                     _popup.PopupEntity("Ваша нога вас не слушается, и вы падаете!", bodyUid, bodyUid, PopupType.MediumCaution);
+                }
+            }
+
+            if (part.PartType == BodyPartType.Chest)
+            {
+                // Continuous knockdown for spine damage
+                if (!_standing.IsDown(bodyUid))
+                {
+                    _stun.TryCrawling(bodyUid, refresh: true, autoStand: false, drop: false, force: true);
                 }
             }
         }

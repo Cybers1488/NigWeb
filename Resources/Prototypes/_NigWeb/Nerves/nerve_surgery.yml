@@ -1,37 +1,58 @@
-﻿- type: entity
+- type: entity
   id: SurgeryRepairNerve
-  name: Сшить нервы
-  description: Сложная микрохирургическая операция по восстановлению поврежденных нервных тканей.
+  name: Восстановить нерв
+  description: Микрохирургическая операция по восстановлению разорванных нервных тканей.
   components:
     - type: Surgery
       steps:
-        - SurgeryStepOpenScalpel
-        - SurgeryStepOpenRetractor
-        - SurgeryStepClampBleeding
-        - SurgeryStepHealNerveTweezers
-        - SurgeryStepHealNerveStitches
-        - SurgeryStepCloseCautery
-    - type: SurgeryPartComponentCondition
-      components:
-        - type: SeveredNerve
+        - SurgeryStepHealNerveScalpel
+        - SurgeryStepHealNerveHemostat
+        - SurgeryStepHealNerveCautery
+    - type: SurgerySeveredNerveCondition
 
 - type: entity
-  id: SurgeryStepHealNerveTweezers
+  id: SurgeryStepHealNerveScalpel
   parent: SurgeryStepBase
-  name: Совместить окончания нерва (Пинцет)
+  name: Зачистить поврежденные ткани нерва
   components:
     - type: SurgeryStep
       tool:
-        - type: Tweezers
+        - type: Scalpel
+      add:
+        - type: NerveEdgesCleaned
+      duration: 4
+    - type: Sprite
+      sprite: _Shitmed/Objects/Specific/Medical/Surgery/scalpel.rsi
+      state: scalpel
+
+- type: entity
+  id: SurgeryStepHealNerveHemostat
+  parent: SurgeryStepBase
+  name: Совместить окончания нерва
+  components:
+    - type: SurgeryStep
+      tool:
+        - type: Hemostat
+      add:
+        - type: NerveEndsJoined
       duration: 5
+    - type: Sprite
+      sprite: _Shitmed/Objects/Specific/Medical/Surgery/hemostat.rsi
+      state: hemostat
 
 - type: entity
-  id: SurgeryStepHealNerveStitches
+  id: SurgeryStepHealNerveCautery
   parent: SurgeryStepBase
-  name: Сшить нервы (Нить)
+  name: Спаять нервные окончания
   components:
     - type: SurgeryStep
       tool:
-        - type: Stitches
-      duration: 8
-    - type: SurgeryStepHealNerve
+        - type: Cautery
+      remove:
+        - type: NerveEdgesCleaned
+        - type: NerveEndsJoined
+        - type: SeveredNerve
+      duration: 6
+    - type: Sprite
+      sprite: _Shitmed/Objects/Specific/Medical/Surgery/cautery.rsi
+      state: cautery

@@ -37,6 +37,10 @@ public sealed class CombatAmputationLaughSystem : EntitySystem
     {
         if (args.Origin != null && args.Origin != uid)
         {
+            // Only update if it actually dealt damage
+            if (args.DamageDelta == null || args.DamageDelta.GetTotal() <= 0)
+                return;
+
             EntityUid targetToTag = uid;
             
             // If the entity hit is a body part, tag the root body instead!
@@ -48,48 +52,27 @@ public sealed class CombatAmputationLaughSystem : EntitySystem
             var last = EnsureComp<LastAttackerComponent>(targetToTag);
             last.Attacker = args.Origin.Value;
             last.LastDamageTime = _timing.CurTime;
-            Log.Debug($"[CombatAmputationLaughSystem] Logged LastAttacker for Entity {targetToTag} (hit {uid}): {args.Origin.Value} at {last.LastDamageTime}");
         }
     }
 
     private void OnBeforeAmputation(EntityUid uid, Content.Shared.Body.Components.BodyComponent component, ref BeforeAmputationDamageEvent args)
     {
-        Log.Debug($"[CombatAmputationLaughSystem] OnBeforeAmputation triggered on Entity {uid}");
-        
         if (TryComp<LastAttackerComponent>(uid, out var last))
         {
-            Log.Debug($"[CombatAmputationLaughSystem] Found LastAttackerComponent for {uid}. Attacker is {last.Attacker}, time difference: {(_timing.CurTime - last.LastDamageTime).TotalSeconds}s");
-            
             if (last.Attacker != uid)
             {
                 if ((_timing.CurTime - last.LastDamageTime).TotalSeconds < 1.0)
                 {
                     if (TryComp<CombatModeComponent>(last.Attacker, out var combat))
                     {
-                        Log.Debug($"[CombatAmputationLaughSystem] Attacker {last.Attacker} combat mode: {combat.IsInCombatMode}");
                         if (combat.IsInCombatMode)
                         {
-                            Log.Info($"[CombatAmputationLaughSystem] Attacker {last.Attacker} chopped a limb of {uid} and will now laugh!");
                             _chat.TryEmoteWithChat(last.Attacker, "Laugh", ignoreActionBlocker: true);
                             last.Attacker = EntityUid.Invalid;
                         }
                     }
-                    else
-                    {
-                        Log.Error($"[CombatAmputationLaughSystem] Failed to find CombatModeComponent for attacker {last.Attacker}");
-                    }
-                }
-                else
-                {
-                    Log.Debug($"[CombatAmputationLaughSystem] Damage too old. Difference is {(_timing.CurTime - last.LastDamageTime).TotalSeconds}s");
                 }
             }
         }
-        else
-        {
-            Log.Error($"[CombatAmputationLaughSystem] Failed to find LastAttackerComponent for {uid} during amputation");
-        }
     }
 }
-
-
