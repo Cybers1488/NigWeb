@@ -247,8 +247,11 @@ public abstract partial class SharedGunSystem
                 var existingEnt = ent.Comp.Entities[^1];
                 ent.Comp.Entities.RemoveAt(ent.Comp.Entities.Count - 1);
                 DirtyField(ent.AsNullable(), nameof(BallisticAmmoProviderComponent.Entities));
-                Containers.Remove(existingEnt, ent.Comp.Container);
-                ammoEntity = existingEnt;
+                if (Exists(existingEnt) && !Deleted(existingEnt))
+                {
+                    Containers.Remove(existingEnt, ent.Comp.Container);
+                    ammoEntity = existingEnt;
+                }
             }
             else if (ent.Comp.UnspawnedCount > 0)
             {
@@ -445,8 +448,11 @@ public abstract partial class SharedGunSystem
 
         foreach (var ent in entity.Comp.Entities)
         {
-            Containers.Remove(ent, entity.Comp.Container);
-            QueueDel(ent);
+            if (Exists(ent) && !Deleted(ent))
+            {
+                Containers.Remove(ent, entity.Comp.Container);
+                QueueDel(ent);
+            }
         }
 
         entity.Comp.Entities.Clear();

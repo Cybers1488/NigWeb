@@ -1,0 +1,33 @@
+- type: entity
+  id: ItemTooth
+  name: выбитый зуб
+  description: Маленький, когда-то белый человеческий зуб. С корнем. Фу.
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Teeth/teeth.rsi
+    scale: 0.5, 0.5
+    layers:
+    - state: tooth1
+      map: ["base"]
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.1
+        mass: 0.05
+        collisionLayer: Item
+        collisionMask: Impassable
+  - type: Item
+    size: Tiny
+  - type: RandomSprite
+    available:
+    - base:
+        tooth1: ""
+        tooth2: ""
+        tooth3: ""
+        tooth4: ""
+  - type: ToothItem

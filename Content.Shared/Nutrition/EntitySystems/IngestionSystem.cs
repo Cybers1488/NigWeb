@@ -1,4 +1,4 @@
-﻿using Content.Goobstation.Maths.FixedPoint;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Organ;
@@ -245,6 +245,9 @@ public sealed partial class IngestionSystem : EntitySystem
 
     private void OnTryIngest(Entity<BodyComponent> entity, ref AttemptIngestEvent args)
     {
+        if (args.Handled)
+            return;
+
         var food = args.Ingested;
         var forceFed = args.User != entity.Owner;
 

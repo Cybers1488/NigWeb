@@ -19,8 +19,11 @@ public sealed partial class GunSystem
             ent.Comp.Entities.RemoveAt(ent.Comp.Entities.Count - 1);
             DirtyField(ent.AsNullable(), nameof(BallisticAmmoProviderComponent.Entities));
 
-            Containers.Remove(existing, ent.Comp.Container);
-            EnsureShootable(existing);
+            if (Exists(existing) && !Deleted(existing))
+            {
+                Containers.Remove(existing, ent.Comp.Container);
+                EnsureShootable(existing);
+            }
         }
         else if (ent.Comp.UnspawnedCount > 0)
         {

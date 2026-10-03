@@ -34,14 +34,27 @@ public partial class TraumaSystem
 
     private void OnBoneSeverityChanged(Entity<BoneComponent> bone, ref BoneSeverityChangedEvent args)
     {
-        if (bone.Comp.BoneWoundable == null
-            || args.NewSeverity < args.OldSeverity)
+        if (bone.Comp.BoneWoundable == null)
             return;
-
+            
         var bodyComp = Comp<BodyPartComponent>(bone.Comp.BoneWoundable.Value);
 
         if (!bodyComp.Body.HasValue)
             return;
+            
+        // NigWeb: Heal jaw if skull is healed
+        if (args.NewSeverity < args.OldSeverity)
+        {
+            if (args.NewSeverity < BoneSeverity.Broken && bodyComp.PartType == BodyPartType.Head)
+            {
+                if (HasComp<Content.Shared._NigWeb.Teeth.BrokenJawComponent>(bodyComp.Body.Value))
+                {
+                    RemComp<Content.Shared._NigWeb.Teeth.BrokenJawComponent>(bodyComp.Body.Value);
+                    _popup.PopupEntity("Ваша челюсть восстановлена.", bodyComp.Body.Value, bodyComp.Body.Value, PopupType.Small);
+                }
+            }
+            return; // Original return for healing
+        }
 
         var part = bodyComp.ParentSlot is null
             ? bodyComp.PartType.ToString().ToLower()
@@ -60,6 +73,16 @@ public partial class TraumaSystem
         };
 
         _audio.PlayPvs(bone.Comp.BoneBreakSound, bodyComp.Body.Value, AudioParams.Default.WithVolume(volumeFloat));
+
+        // NigWeb: Break jaw if skull breaks
+        if (args.NewSeverity == BoneSeverity.Broken && bodyComp.PartType == BodyPartType.Head)
+        {
+            if (!HasComp<Content.Shared._NigWeb.Teeth.BrokenJawComponent>(bodyComp.Body.Value))
+            {
+                AddComp<Content.Shared._NigWeb.Teeth.BrokenJawComponent>(bodyComp.Body.Value);
+                _popup.PopupEntity("Вам ломает челюсть!", bodyComp.Body.Value, bodyComp.Body.Value, PopupType.LargeCaution);
+            }
+        }
     }
 
     private void OnBoneIntegrityChanged(Entity<BoneComponent> bone, ref BoneIntegrityChangedEvent args)

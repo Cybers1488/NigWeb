@@ -241,6 +241,9 @@ public sealed class SurgeryBui : BoundUserInterface
         _isBody = _entities.HasComponent<BodyComponent>(_part);
         _window.Surgeries.DisposeAllChildren();
 
+        
+
+
         var surgeries = new List<(Entity<SurgeryComponent> Ent, EntProtoId Id, string Name)>();
         foreach (var surgeryId in surgeryIds)
         {
@@ -251,6 +254,13 @@ public sealed class SurgeryBui : BoundUserInterface
             }
 
             var name = _entities.GetComponent<MetaDataComponent>(surgery).EntityName;
+            
+            // NigWeb: Dynamic teeth count in surgery name
+            if (surgeryId.Id == "SurgeryMouth" && _entities.TryGetComponent(Owner, out Content.Shared._NigWeb.Teeth.TeethComponent? teethComp))
+            {
+                name = teethComp.Implants > 0 ? "Рот (Имплантирован)" : $"Рот (Осталось зубов: {teethComp.CurrentTeeth})";
+            }
+
             surgeries.Add(((surgery, surgeryComp), surgeryId, name));
         }
 
@@ -294,18 +304,30 @@ public sealed class SurgeryBui : BoundUserInterface
                 continue;
 
             var status = StepStatus.Incomplete;
-            if (next == null)
-                status = StepStatus.Complete;
-            else if (next.Value.Step < 0 && i > -next.Value.Step - 1)
-                status = StepStatus.Complete;
-            else if (next.Value.Step < 0 && i <= -next.Value.Step - 1)
-                status = StepStatus.Next;
-            else if (next.Value.Surgery.Owner != _surgery.Value.Ent)
-                status = StepStatus.Incomplete;
-            else if (next.Value.Step == i)
-                status = StepStatus.Next;
-            else if (i < next.Value.Step)
-                status = StepStatus.Complete;
+            var surgeryComponent = _entities.GetComponent<SurgeryComponent>(_surgery.Value.Ent);
+            
+            if (!surgeryComponent.RequireSequential)
+            {
+                if (_system.IsStepComplete(Owner, _part.Value, surgeryComponent.Steps[i], _surgery.Value.Ent))
+                    status = StepStatus.Complete;
+                else
+                    status = StepStatus.Next;
+            }
+            else
+            {
+                if (next == null)
+                    status = StepStatus.Complete;
+                else if (next.Value.Step < 0 && i > -next.Value.Step - 1)
+                    status = StepStatus.Complete;
+                else if (next.Value.Step < 0 && i <= -next.Value.Step - 1)
+                    status = StepStatus.Next;
+                else if (next.Value.Surgery.Owner != _surgery.Value.Ent)
+                    status = StepStatus.Incomplete;
+                else if (next.Value.Step == i)
+                    status = StepStatus.Next;
+                else if (i < next.Value.Step)
+                    status = StepStatus.Complete;
+            }
 
             stepButton.Button.Disabled = status != StepStatus.Next;
 

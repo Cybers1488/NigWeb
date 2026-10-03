@@ -1,0 +1,438 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "bone-gel",
+            "directions": 1
+        },
+        {
+            "name": "disinfectant",
+            "directions": 1
+        },
+        {
+            "name": "saw",
+            "directions": 1
+        },
+        {
+            "name": "saw_old",
+            "directions": 1
+        },
+        {
+            "name": "scalpel",
+            "directions": 1
+        },
+        {
+            "name": "retractor",
+            "directions": 1
+        },
+        {
+            "name": "hemostat",
+            "directions": 1
+        },
+        {
+            "name": "cautery",
+            "directions": 1
+        },
+        {
+            "name": "drill",
+            "directions": 1
+        },
+        {
+            "name": "autoclave",
+            "directions": 1
+        },
+        {
+            "name": "saw2",
+            "directions": 1
+        },
+        {
+            "name": "saw3",
+            "directions": 1
+        },
+        {
+            "name": "innards",
+            "directions": 1
+        },
+        {
+            "name": "roro core",
+            "directions": 1
+        },
+        {
+            "name": "bone setter",
+            "directions": 1
+        },
+        {
+            "name": "heart-off",
+            "directions": 1
+        },
+        {
+            "name": "heart-on",
+            "directions": 1
+        },
+        {
+            "name": "appendix",
+            "directions": 1
+        },
+        {
+            "name": "stomach",
+            "directions": 1
+        },
+        {
+            "name": "nail",
+            "directions": 1
+        },
+        {
+            "name": "eye",
+            "directions": 1
+        },
+        {
+            "name": "guts",
+            "directions": 1
+        },
+        {
+            "name": "appendixinflamed",
+            "directions": 1
+        },
+        {
+            "name": "stabslash",
+            "directions": 1
+        },
+        {
+            "name": "fixovein_old",
+            "directions": 1
+        },
+        {
+            "name": "fixovein",
+            "directions": 1
+        },
+        {
+            "name": "scalpel_laser1_off",
+            "directions": 1
+        },
+        {
+            "name": "scalpel_laser1_on",
+            "directions": 1
+        },
+        {
+            "name": "dissected1_s",
+            "directions": 4
+        },
+        {
+            "name": "dissected2_s",
+            "directions": 4
+        },
+        {
+            "name": "dissected3_s",
+            "directions": 4
+        },
+        {
+            "name": "dissected4_s",
+            "directions": 4
+        },
+        {
+            "name": "dissected3.5_s",
+            "directions": 4
+        },
+        {
+            "name": "dissected5_s",
+            "directions": 4
+        },
+        {
+            "name": "dissected6_s",
+            "directions": 4,
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.6,
+                    0.1,
+                    0.1,
+                    0.2,
+                    0.1,
+                    2.5
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.6,
+                    0.1,
+                    0.1,
+                    0.2,
+                    0.1,
+                    2.5
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.6,
+                    0.1,
+                    0.1,
+                    0.2,
+                    0.1,
+                    2.5
+                ],
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.6,
+                    0.1,
+                    0.1,
+                    0.2,
+                    0.1,
+                    2.5
+                ]
+            ]
+        },
+        {
+            "name": "scalpel_laser2_off",
+            "directions": 1
+        },
+        {
+            "name": "scalpel_laser2_on",
+            "directions": 1
+        },
+        {
+            "name": "scalpel_laser3_off",
+            "directions": 1
+        },
+        {
+            "name": "scalpel_laser3_on",
+            "directions": 1
+        },
+        {
+            "name": "scalpel_manager_off",
+            "directions": 1
+        },
+        {
+            "name": "scalpel_manager_on",
+            "directions": 1
+        },
+        {
+            "name": "lungs",
+            "directions": 1
+        },
+        {
+            "name": "r_kidney",
+            "directions": 1
+        },
+        {
+            "name": "l_kidney",
+            "directions": 1
+        },
+        {
+            "name": "kidneys",
+            "directions": 1
+        },
+        {
+            "name": "eyes",
+            "directions": 1
+        },
+        {
+            "name": "liver",
+            "directions": 1
+        },
+        {
+            "name": "bioprinter",
+            "directions": 1
+        },
+        {
+            "name": "heart-prosthetic",
+            "directions": 1
+        },
+        {
+            "name": "brain-prosthetic",
+            "directions": 1,
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "lungs-prosthetic",
+            "directions": 1
+        },
+        {
+            "name": "kidneys-prosthetic",
+            "directions": 1
+        },
+        {
+            "name": "eyes-prosthetic",
+            "directions": 1
+        },
+        {
+            "name": "liver-prosthetic",
+            "directions": 1
+        },
+        {
+            "name": "brain1",
+            "directions": 1
+        },
+        {
+            "name": "brain2",
+            "directions": 1
+        },
+        {
+            "name": "brain-alien",
+            "directions": 1
+        },
+        {
+            "name": "brain-old",
+            "directions": 1
+        },
+        {
+            "name": "penis",
+            "directions": 1
+        },
+        {
+            "name": "teeth1",
+            "directions": 1
+        },
+        {
+            "name": "teeth2",
+            "directions": 1
+        },
+        {
+            "name": "table1",
+            "directions": 1
+        },
+        {
+            "name": "table2-idle",
+            "directions": 1
+        },
+        {
+            "name": "speculum",
+            "directions": 1
+        },
+        {
+            "name": "table2-active",
+            "directions": 1,
+            "delays": [
+                [
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "torturechair",
+            "directions": 1
+        },
+        {
+            "name": "tooth1",
+            "directions": 1
+        },
+        {
+            "name": "tooth2",
+            "directions": 1
+        },
+        {
+            "name": "tooth3",
+            "directions": 1
+        },
+        {
+            "name": "tooth4",
+            "directions": 1
+        },
+        {
+            "name": "teeth3",
+            "directions": 1
+        },
+        {
+            "name": "jaw",
+            "directions": 1
+        },
+        {
+            "name": "needle",
+            "directions": 1
+        },
+        {
+            "name": "utility",
+            "directions": 1
+        },
+        {
+            "name": "drawer",
+            "directions": 1
+        },
+        {
+            "name": "nanoblood",
+            "directions": 1
+        },
+        {
+            "name": "cartridge",
+            "directions": 1,
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "gold_teeth1",
+            "directions": 1
+        },
+        {
+            "name": "gold_teeth2",
+            "directions": 1
+        },
+        {
+            "name": "furniture1",
+            "directions": 1
+        },
+        {
+            "name": "furniture2",
+            "directions": 1
+        },
+        {
+            "name": "furniture3",
+            "directions": 1
+        },
+        {
+            "name": "furniture4",
+            "directions": 1
+        },
+        {
+            "name": "furniture5",
+            "directions": 1
+        },
+        {
+            "name": "furniture6",
+            "directions": 1
+        },
+        {
+            "name": "defib",
+            "directions": 1,
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "wooden_implant",
+            "directions": 1
+        },
+        {
+            "name": "steel_implant",
+            "directions": 1
+        }
+    ]
+}

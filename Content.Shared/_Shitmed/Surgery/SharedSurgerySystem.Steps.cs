@@ -1004,6 +1004,9 @@ public abstract partial class SharedSurgerySystem
 
     private bool PreviousStepsComplete(EntityUid body, EntityUid part, Entity<SurgeryComponent> surgery, EntProtoId step, EntityUid user)
     {
+        if (!surgery.Comp.RequireSequential)
+            return true;
+
         var ev = new SurgeryIgnorePreviousStepsEvent();
         RaiseLocalEvent(user, ev);
         if (ev.Handled)
@@ -1080,7 +1083,14 @@ public abstract partial class SharedSurgerySystem
         return CanPerformStep(user, body, part, step, tool, doPopup, out popup, out _, out _);
     }
 
-    private bool IsStepComplete(EntityUid body, EntityUid part, EntProtoId step, EntityUid surgery)
+    public bool IsStepComplete(EntityUid body, EntityUid part, EntityUid stepEnt, EntityUid surgery)
+    {
+        var ev = new SurgeryStepCompleteCheckEvent(body, part, surgery);
+        RaiseLocalEvent(stepEnt, ref ev);
+        return !ev.Cancelled;
+    }
+
+    public bool IsStepComplete(EntityUid body, EntityUid part, EntProtoId step, EntityUid surgery)
     {
         if (GetSingleton(step) is not { } stepEnt)
             return false;

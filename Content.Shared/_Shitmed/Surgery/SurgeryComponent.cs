@@ -17,4 +17,7 @@ public sealed partial class SurgeryComponent : Component
 
     [DataField(required: true), AutoNetworkedField]
     public List<EntProtoId> Steps = new();
+
+    [DataField, AutoNetworkedField]
+    public bool RequireSequential = true;
 }

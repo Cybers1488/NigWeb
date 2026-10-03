@@ -1,0 +1,68 @@
+﻿- type: entity
+  id: SurgeryMouth
+  parent: SurgeryBase
+  name: "Рот"
+  components:
+  - type: Surgery
+    requireSequential: false
+    steps:
+    - SurgeryStepTeethRemove
+    - SurgeryStepTeethInsert
+    - SurgeryStepTeethImplant
+  - type: SurgeryPartCondition
+    parts: [ Head ]
+
+- type: entity
+  id: SurgeryStepTeethRemove
+  parent: SurgeryStepBase
+  name: "Удалить зуб"
+  components:
+  - type: SurgeryStep
+    tool:
+    - type: Retractor
+    duration: 3
+  - type: SurgeryStepTeethRemove
+  
+- type: entity
+  id: SurgeryStepTeethInsert
+  parent: SurgeryStepBase
+  name: "Вставить зуб"
+  components:
+  - type: SurgeryStep
+    tool:
+    - type: ToothItem
+    duration: 2
+  - type: SurgeryStepTeethInsert
+
+- type: entity
+  id: SurgeryStepTeethImplant
+  parent: SurgeryStepBase
+  name: "Установить имплант"
+  components:
+  - type: SurgeryStep
+    tool:
+    - type: ToothImplant
+    duration: 5
+  - type: SurgeryStepTeethImplant
+
+- type: entity
+  id: WoodenToothImplant
+  parent: BaseItem
+  name: "Деревянный зубной имплант"
+  description: "Кусок дерева, выточенный под форму челюсти."
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Teeth/teeth.rsi
+    state: wooden_implant
+  - type: ToothImplant
+
+- type: entity
+  id: SteelToothImplant
+  parent: BaseItem
+  name: "Стальной зубной имплант"
+  description: "Прочный металлический протез для зубов."
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Teeth/teeth.rsi
+    state: steel_implant
+  - type: ToothImplant
