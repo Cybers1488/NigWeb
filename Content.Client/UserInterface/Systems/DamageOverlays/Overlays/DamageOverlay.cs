@@ -146,26 +146,27 @@ public sealed class DamageOverlay : Overlay
         {
             var pulseRate = 3f;
             var adjustedTime = time * pulseRate;
-            float outerMaxLevel = 2.0f * distance;
-            float outerMinLevel = 0.8f * distance;
-            float innerMaxLevel = 0.6f * distance;
-            float innerMinLevel = 0.2f * distance;
+            var sin = MathF.Max(0f, MathF.Sin(adjustedTime));
+            var pulse = sin * sin; // Punchy heartbeat / pain spasm flash
 
-            var outerRadius = outerMaxLevel - _oldPainLevel * (outerMaxLevel - outerMinLevel);
-            var innerRadius = innerMaxLevel - _oldPainLevel * (innerMaxLevel - innerMinLevel);
+            // Lifeweb / BYOND style from mob_screen1_full2.png:
+            // Color transitions from bright red (206, 0, 0) at low damage
+            // to dark black-red (35, 0, 0) at high damage (near-crit agony)
+            var r = MathHelper.Lerp(206f, 35f, _oldPainLevel) / 255f;
 
-            var pulse = MathF.Max(0f, MathF.Sin(adjustedTime));
+            // Base persistent haze on severe pain (like frame [0,0] A=42 R=32)
+            var baseAlpha = 0.15f * (_oldPainLevel * _oldPainLevel);
 
-            _bruteShader.SetParameter("time", pulse);
-            _bruteShader.SetParameter("color", new Vector3(1f, 0f, 0f));
-            _bruteShader.SetParameter("darknessAlphaOuter", 0.8f * _oldPainLevel); // Scale alpha with pain level
+            // Peak flash alpha scales with pain level (up to 0.75 on near-crit)
+            var flashAlpha = MathHelper.Lerp(0.35f, 0.65f, _oldPainLevel) * _oldPainLevel * pulse;
 
-            _bruteShader.SetParameter("outerCircleRadius", outerRadius);
-            _bruteShader.SetParameter("outerCircleMaxRadius", outerRadius + 0.2f * distance);
-            _bruteShader.SetParameter("innerCircleRadius", innerRadius);
-            _bruteShader.SetParameter("innerCircleMaxRadius", innerRadius + 0.02f * distance);
-            handle.UseShader(_bruteShader);
-            handle.DrawRect(viewport, Color.White);
+            var currentAlpha = Math.Clamp(baseAlpha + flashAlpha, 0f, 0.80f);
+
+            if (currentAlpha > 0.005f)
+            {
+                handle.UseShader(null);
+                handle.DrawRect(viewport, new Color(r, 0f, 0f, currentAlpha));
+            }
         }
         else
         {

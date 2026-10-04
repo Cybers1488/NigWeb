@@ -1,4 +1,4 @@
-﻿using Content.Shared.Body.Components;
+using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
 using Content.Shared.Damage;
 using Content.Shared.Movement.Systems;
@@ -13,11 +13,16 @@ using Content.Shared.Popups;
 using Content.Shared._Shitmed.DoAfter;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Body.Systems;
+using Content.Shared.Weapons.Ranged.Components;
+using Content.Shared.Weapons.Ranged.Systems;
+using Content.Shared.Wieldable.Components;
+using Content.Shared.Item;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Network;
 using System;
+using System.Linq;
 
 namespace Content.Shared._NigWeb.Nerves;
 
@@ -32,10 +37,12 @@ public sealed class NerveSystem : EntitySystem
     [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeed = default!;
     [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private readonly SharedBodySystem _body = default!;
 
     public override void Initialize()
     {
         base.Initialize();
+        Log.Info("[NerveSystem] Initializing NerveSystem...");
         
         SubscribeLocalEvent<BodyPartComponent, DamageChangedEvent>(OnDamageChanged);
         SubscribeLocalEvent<SeveredNerveComponent, BodyPartRelayedEvent<GetDoAfterDelayMultiplierEvent>>(OnGetDoAfterDelayMultiplier);
@@ -46,6 +53,8 @@ public sealed class NerveSystem : EntitySystem
         
         SubscribeLocalEvent<SeveredNerveComponent, ComponentStartup>(OnNerveSevered);
         SubscribeLocalEvent<SeveredNerveComponent, ComponentRemove>(OnNerveHealed);
+
+        SubscribeLocalEvent<GunComponent, GunShotEvent>(OnGunShot);
     }
 
     private void OnDamageChanged(Entity<BodyPartComponent> ent, ref DamageChangedEvent args)
@@ -68,6 +77,7 @@ public sealed class NerveSystem : EntitySystem
             if (_random.Prob(0.15f))
             {
                 AddComp<SeveredNerveComponent>(ent);
+                Log.Info($"[NerveSystem] Nerve severed on body part {ent.Owner} ({ent.Comp.PartType})");
                 
                 if (ent.Comp.Body.HasValue)
                 {
@@ -88,6 +98,7 @@ public sealed class NerveSystem : EntitySystem
 
     private void OnNerveSevered(Entity<SeveredNerveComponent> ent, ref ComponentStartup args)
     {
+        Log.Debug($"[NerveSystem] Processing OnNerveSevered for {ent.Owner}");
         if (_net.IsServer)
         {
             ent.Comp.NextDropTime = _timing.CurTime + TimeSpan.FromSeconds(_random.NextFloat(10, 30));
@@ -102,6 +113,7 @@ public sealed class NerveSystem : EntitySystem
 
     private void OnNerveHealed(Entity<SeveredNerveComponent> ent, ref ComponentRemove args)
     {
+        Log.Debug($"[NerveSystem] Processing OnNerveHealed for {ent.Owner}");
         if (TryComp<BodyPartComponent>(ent, out var part) && part.Body.HasValue)
         {
             _movementSpeed.RefreshMovementSpeedModifiers(part.Body.Value);
@@ -133,54 +145,162 @@ public sealed class NerveSystem : EntitySystem
         args.ModifySpeed(speedMod, speedMod);
     }
 
-    
-    private void OnStandAttempt(Entity<MovementSpeedModifierComponent> ent, ref StandAttemptEvent args)
+    private bool IsLowerBodyParalyzed(EntityUid bodyUid, out string reason, out SeveredNerveComponent? alertNerve, out EntityUid alertUid)
     {
+        reason = string.Empty;
+        alertNerve = null;
+        alertUid = EntityUid.Invalid;
+
+        int severedLegs = 0;
+        SeveredNerveComponent? legNerveComp = null;
+        EntityUid legNerveUid = EntityUid.Invalid;
+
         var query = EntityQueryEnumerator<SeveredNerveComponent, BodyPartComponent>();
         while (query.MoveNext(out var uid, out var nerve, out var part))
         {
-            if (part.Body == ent.Owner && part.PartType == BodyPartType.Chest)
+            if (part.Body != bodyUid)
+                continue;
+
+            if (part.PartType == BodyPartType.Chest)
             {
-                args.Cancel();
-                if (_net.IsServer && _timing.CurTime > nerve.NextPopupTime)
-                {
-                    nerve.NextPopupTime = _timing.CurTime + TimeSpan.FromSeconds(3);
-                    Dirty(uid, nerve);
-                    _popup.PopupEntity("Вы пытаетесь встать, но ваш спинной мозг поврежден!", ent.Owner, ent.Owner, PopupType.LargeCaution);
-                }
-                return;
+                reason = "Вы пытаетесь встать, но ваш спинной мозг поврежден!";
+                alertNerve = nerve;
+                alertUid = uid;
+                return true;
+            }
+
+            if (part.PartType == BodyPartType.Leg)
+            {
+                severedLegs++;
+                legNerveComp = nerve;
+                legNerveUid = uid;
+            }
+        }
+
+        // Count how many total legs this body currently has
+        int totalLegs = 0;
+        foreach (var _ in _body.GetBodyChildrenOfType(bodyUid, BodyPartType.Leg))
+        {
+            totalLegs++;
+        }
+
+        // If both legs have severed nerves, or all remaining legs have severed nerves (e.g. 1 leg remaining and severed)
+        if (severedLegs >= 2 || (totalLegs > 0 && severedLegs >= totalLegs))
+        {
+            reason = "Вы пытаетесь встать, но ваши ноги парализованы из-за повреждения нервов!";
+            alertNerve = legNerveComp;
+            alertUid = legNerveUid;
+            return true;
+        }
+
+        return false;
+    }
+
+    private void OnStandAttempt(Entity<MovementSpeedModifierComponent> ent, ref StandAttemptEvent args)
+    {
+        if (IsLowerBodyParalyzed(ent.Owner, out var reason, out var nerve, out var uid))
+        {
+            args.Cancel();
+            if (_net.IsServer && nerve != null && _timing.CurTime > nerve.NextPopupTime)
+            {
+                nerve.NextPopupTime = _timing.CurTime + TimeSpan.FromSeconds(3);
+                Dirty(uid, nerve);
+                _popup.PopupEntity(reason, ent.Owner, ent.Owner, PopupType.LargeCaution);
             }
         }
     }
 
     private void OnStandUpAttempt(Entity<MovementSpeedModifierComponent> ent, ref StandUpAttemptEvent args)
     {
-        var query = EntityQueryEnumerator<SeveredNerveComponent, BodyPartComponent>();
-        while (query.MoveNext(out var uid, out var nerve, out var part))
+        if (IsLowerBodyParalyzed(ent.Owner, out var reason, out var nerve, out var uid))
         {
-            if (part.Body == ent.Owner && part.PartType == BodyPartType.Chest)
+            args.Cancelled = true;
+            args.Autostand = false;
+            if (_net.IsServer && nerve != null && _timing.CurTime > nerve.NextPopupTime)
             {
-                args.Cancelled = true;
-                args.Autostand = false;
-                if (_net.IsServer && _timing.CurTime > nerve.NextPopupTime)
-                {
-                    nerve.NextPopupTime = _timing.CurTime + TimeSpan.FromSeconds(3);
-                    Dirty(uid, nerve);
-                    _popup.PopupEntity("Вы пытаетесь встать, но ваш спинной мозг поврежден!", ent.Owner, ent.Owner, PopupType.LargeCaution);
-                }
-                return;
+                nerve.NextPopupTime = _timing.CurTime + TimeSpan.FromSeconds(3);
+                Dirty(uid, nerve);
+                _popup.PopupEntity(reason, ent.Owner, ent.Owner, PopupType.LargeCaution);
             }
         }
     }
 
     private void OnRejuvenate(Entity<MobStateComponent> ent, ref RejuvenateEvent args)
     {
+        Log.Info($"[NerveSystem] Healing severed nerves on {ent.Owner} due to Rejuvenate");
         var query = EntityQueryEnumerator<SeveredNerveComponent, BodyPartComponent>();
         while (query.MoveNext(out var uid, out var nerve, out var part))
         {
             if (part.Body == ent.Owner)
             {
                 RemComp<SeveredNerveComponent>(uid);
+            }
+        }
+    }
+
+    private void OnGunShot(Entity<GunComponent> ent, ref GunShotEvent args)
+    {
+        if (!_net.IsServer)
+            return;
+
+        var user = args.User;
+        if (!user.IsValid() || EntityManager.IsQueuedForDeletion(user))
+            return;
+
+        Log.Debug($"[NerveSystem] Processing GunShot for gun {ent.Owner}, user {user}");
+
+        bool isHeavy = HasComp<GunRequiresWieldComponent>(ent.Owner)
+                    || HasComp<WieldableComponent>(ent.Owner)
+                    || (TryComp<ItemComponent>(ent.Owner, out var item) && (item.Size == "Large" || item.Size == "Huge" || item.Size == "Ginormous"));
+
+        if (!isHeavy)
+            return;
+
+        if (!TryComp<HandsComponent>(user, out var hands))
+            return;
+
+        if (!_hands.IsHolding(user, ent.Owner, out var handName))
+            return;
+
+        var isWielded = TryComp<WieldableComponent>(ent.Owner, out var wieldable) && wieldable.Wielded;
+        var holdingHand = hands.Hands.GetValueOrDefault(handName);
+
+        bool dropGun = false;
+
+        var query = EntityQueryEnumerator<SeveredNerveComponent, BodyPartComponent>();
+        while (query.MoveNext(out var uid, out var nerve, out var part))
+        {
+            if (part.Body != user || part.PartType != BodyPartType.Arm)
+                continue;
+
+            // If the heavy weapon is wielded with two hands, any damaged arm can't withstand the recoil
+            if (isWielded)
+            {
+                dropGun = true;
+                break;
+            }
+
+            // If held in one hand, check if that specific arm's nerve is severed
+            if (holdingHand != null)
+            {
+                if (part.Symmetry == BodyPartSymmetry.Left && holdingHand.Location == HandLocation.Left)
+                    dropGun = true;
+                else if (part.Symmetry == BodyPartSymmetry.Right && holdingHand.Location == HandLocation.Right)
+                    dropGun = true;
+                else if (part.Symmetry == BodyPartSymmetry.None)
+                    dropGun = true;
+
+                if (dropGun)
+                    break;
+            }
+        }
+
+        if (dropGun)
+        {
+            Log.Info($"[NerveSystem] Heavy weapon recoil knocked gun {ent.Owner} out of user {user}'s hands due to severed arm nerve");
+            if (_hands.TryDrop(user, ent.Owner))
+            {
+                _popup.PopupEntity("Из-за поврежденных нервов в руке отдача выбивает оружие из ваших рук!", user, user, PopupType.LargeCaution);
             }
         }
     }
@@ -233,14 +353,26 @@ public sealed class NerveSystem : EntitySystem
                 }
             }
 
-            if (part.PartType == BodyPartType.Leg && curTime >= nerve.NextTripTime)
+            if (part.PartType == BodyPartType.Leg)
             {
-                nerve.NextTripTime = curTime + TimeSpan.FromSeconds(_random.NextFloat(10, 30));
-                
-                if (TryComp<PhysicsComponent>(bodyUid, out var phys) && phys.LinearVelocity.Length() > 0.5f)
+                if (curTime >= nerve.NextTripTime)
                 {
-                    _stun.TryKnockdown(bodyUid, TimeSpan.FromSeconds(2), true);
-                    _popup.PopupEntity("Ваша нога вас не слушается, и вы падаете!", bodyUid, bodyUid, PopupType.MediumCaution);
+                    nerve.NextTripTime = curTime + TimeSpan.FromSeconds(_random.NextFloat(10, 30));
+                    
+                    if (TryComp<PhysicsComponent>(bodyUid, out var phys) && phys.LinearVelocity.Length() > 0.5f)
+                    {
+                        _stun.TryKnockdown(bodyUid, TimeSpan.FromSeconds(2), true);
+                        _popup.PopupEntity("Ваша нога вас не слушается, и вы падаете!", bodyUid, bodyUid, PopupType.MediumCaution);
+                    }
+                }
+
+                // If lower body is paralyzed (e.g. both legs damaged), force crawling
+                if (IsLowerBodyParalyzed(bodyUid, out _, out _, out _))
+                {
+                    if (!_standing.IsDown(bodyUid))
+                    {
+                        _stun.TryCrawling(bodyUid, refresh: true, autoStand: false, drop: false, force: true);
+                    }
                 }
             }
 
