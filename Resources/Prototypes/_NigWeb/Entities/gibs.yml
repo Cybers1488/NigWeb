@@ -1,0 +1,69 @@
+- type: entity
+  id: NigWebMeatGib
+  parent: FoodMeatBase
+  name: "ошмёток плоти"
+  description: "Отвратительный кусок чьего-то мяса."
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibmid1
+  - type: RandomSprite
+    available:
+    - enum.DamageStateVisualLayers.Base:
+        gibmid1: ""
+        gibmid2: ""
+        gibmid3: ""
+        gibup1: ""
+        gibdown1: ""
+        gib1: ""
+        gib2: ""
+
+- type: entity
+  id: NigWebMeatGibHead
+  parent: NigWebMeatGib
+  name: "отрубленная голова"
+  description: "Чья-то голова. Выглядит не очень."
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibhead_1_0
+  - type: RandomSprite
+    available:
+    - enum.DamageStateVisualLayers.Base:
+        gibhead_1_0: ""
+        gibhead_2_0: ""
+        gibhead_3_0: ""
+
+- type: entity
+  id: NigWebMeatGibArm
+  parent: NigWebMeatGib
+  name: "оторванная рука"
+  description: "Чья-то рука. Фу."
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibarm_0_0
+  - type: RandomSprite
+    available:
+    - enum.DamageStateVisualLayers.Base:
+        gibarm_0_0: ""
+        gibarm_1_0: ""
+        gibarm_2_0: ""
+        gibarm_3_0: ""
+
+- type: entity
+  id: NigWebMeatGibLeg
+  parent: NigWebMeatGib
+  name: "оторванная нога"
+  description: "Чья-то нога."
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibleg_0_0
+  - type: RandomSprite
+    available:
+    - enum.DamageStateVisualLayers.Base:
+        gibleg_0_0: ""
+        gibleg_1_0: ""
+        gibleg_2_0: ""
+        gibleg_3_0: ""

@@ -54,7 +54,90 @@
           Quantity: 10
 
 - type: entity
-  parent: PuddleTemporary
+  id: PuddleBloodBase
+  abstract: true
+  description: A puddle of liquid.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Clickable
+  - type: Slippery
+    staminaDamage: 0
+    frictionStatusTime: 0
+  - type: Transform
+    anchored: true
+    noRot: false
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      slipFixture:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        mask:
+        - ItemMask
+        layer:
+        - SlipLayer
+        hard: false
+  - type: SolutionContainerManager
+    solutions:
+      puddle:
+        maxVol: 1000
+  - type: Puddle
+  - type: MixableSolution
+    solution: puddle
+  - type: Appearance
+  - type: ActiveEdgeSpreader
+  - type: EdgeSpreader
+    id: Puddle
+  - type: StepTrigger
+    triggerGroups:
+      types:
+      - SlipTile
+  - type: Edible
+    edible: Drink
+    delay: 3
+    transferAmount: 1
+    solution: puddle
+    utensil: Spoon
+  - type: ExaminableSolution
+    solution: puddle
+    locVolume: examinable-solution-on-examine-volume-puddle
+  - type: DrawableSolution
+    solution: puddle
+  - type: IgnoresFingerprints
+  - type: Tag
+    tags:
+    - DNASolutionScannable
+  - type: Sprite
+    layers:
+    - sprite: _NigWeb/Decals/lifeweb_blood.rsi
+      state: mfloor1
+      map: ["base"]
+    drawdepth: Puddles
+    color: "#FFFFFF80"
+  - type: RandomSprite
+    available:
+    - base:
+        mfloor1: ""
+        mfloor2: ""
+        mfloor3: ""
+        mfloor4: ""
+        mfloor5: ""
+        mfloor6: ""
+        mfloor7: ""
+        mfloor8: ""
+        mfloor9: ""
+        mfloor10: ""
+        mfloor11: ""
+        mfloor12: ""
+        mgibbl1: ""
+        mgibbl2: ""
+        mgibbl3: ""
+
+- type: entity
+  parent: PuddleBloodBase
   id: PuddleBloodSmall
   suffix: Blood (5u)
   components:
@@ -67,7 +150,7 @@
           Quantity: 5
 
 - type: entity
-  parent: PuddleTemporary
+  parent: PuddleBloodBase
   id: PuddleBlood
   suffix: Blood (30u)
   components:
@@ -221,3 +304,11 @@
   - type: Tag
     tags:
     - DNASolutionScannable
+- type: entity
+  parent: PuddleBloodBase
+  id: PuddleBloodDynamic
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      puddle:
+        maxVol: 1000

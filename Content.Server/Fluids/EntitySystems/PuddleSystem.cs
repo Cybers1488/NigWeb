@@ -589,7 +589,9 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
         }
 
         var coords = _map.GridTileToLocal(gridId, mapGrid, tileRef.GridIndices);
-        puddleUid = Spawn("Puddle", coords);
+        var primary = solution.GetPrimaryReagentId()?.Prototype;
+        var puddleId = (primary != null && primary.Contains("Blood")) ? "PuddleBloodDynamic" : "Puddle";
+        puddleUid = Spawn(puddleId, coords);
         EnsureComp<PuddleComponent>(puddleUid);
         if (TryAddSolution(puddleUid, solution.SplitSolution(solution.Volume), sound)) // goobstation
         {

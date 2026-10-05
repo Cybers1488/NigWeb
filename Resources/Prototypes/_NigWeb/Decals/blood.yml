@@ -1,0 +1,921 @@
+
+- type: decal
+  id: BloodGib_gib1
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib1
+
+- type: decal
+  id: BloodGib_gib1_flesh
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib1_flesh
+
+- type: decal
+  id: BloodGib_gib2
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib2
+
+- type: decal
+  id: BloodGib_gib2_flesh
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib2_flesh
+
+- type: decal
+  id: BloodGib_gib3_0_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib3_0_0
+
+- type: decal
+  id: BloodGib_gib3_1_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib3_1_0
+
+- type: decal
+  id: BloodGib_gib3_2_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib3_2_0
+
+- type: decal
+  id: BloodGib_gib3_3_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib3_3_0
+
+- type: decal
+  id: BloodGib_gib3_flesh_0_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib3_flesh_0_0
+
+- type: decal
+  id: BloodGib_gib3_flesh_1_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib3_flesh_1_0
+
+- type: decal
+  id: BloodGib_gib3_flesh_2_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib3_flesh_2_0
+
+- type: decal
+  id: BloodGib_gib3_flesh_3_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib3_flesh_3_0
+
+- type: decal
+  id: BloodGib_gib5_0_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib5_0_0
+
+- type: decal
+  id: BloodGib_gib5_1_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib5_1_0
+
+- type: decal
+  id: BloodGib_gib5_2_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib5_2_0
+
+- type: decal
+  id: BloodGib_gib5_3_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib5_3_0
+
+- type: decal
+  id: BloodGib_gib5_flesh_0_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib5_flesh_0_0
+
+- type: decal
+  id: BloodGib_gib5_flesh_1_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib5_flesh_1_0
+
+- type: decal
+  id: BloodGib_gib5_flesh_2_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib5_flesh_2_0
+
+- type: decal
+  id: BloodGib_gib5_flesh_3_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib5_flesh_3_0
+
+- type: decal
+  id: BloodGib_gib6_0_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib6_0_0
+
+- type: decal
+  id: BloodGib_gib6_1_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib6_1_0
+
+- type: decal
+  id: BloodGib_gib6_2_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib6_2_0
+
+- type: decal
+  id: BloodGib_gib6_3_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib6_3_0
+
+- type: decal
+  id: BloodGib_gib6_flesh_0_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib6_flesh_0_0
+
+- type: decal
+  id: BloodGib_gib6_flesh_1_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib6_flesh_1_0
+
+- type: decal
+  id: BloodGib_gib6_flesh_2_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib6_flesh_2_0
+
+- type: decal
+  id: BloodGib_gib6_flesh_3_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gib6_flesh_3_0
+
+- type: decal
+  id: BloodGib_gibarm_0_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibarm_0_0
+
+- type: decal
+  id: BloodGib_gibarm_1_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibarm_1_0
+
+- type: decal
+  id: BloodGib_gibarm_2_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibarm_2_0
+
+- type: decal
+  id: BloodGib_gibarm_3_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibarm_3_0
+
+- type: decal
+  id: BloodGib_gibarm_flesh_0_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibarm_flesh_0_0
+
+- type: decal
+  id: BloodGib_gibarm_flesh_1_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibarm_flesh_1_0
+
+- type: decal
+  id: BloodGib_gibarm_flesh_2_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibarm_flesh_2_0
+
+- type: decal
+  id: BloodGib_gibarm_flesh_3_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibarm_flesh_3_0
+
+- type: decal
+  id: BloodGib_gibbear1
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibbear1
+
+- type: decal
+  id: BloodGib_gibbear2
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibbear2
+
+- type: decal
+  id: BloodGib_gibbear3
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibbear3
+
+- type: decal
+  id: BloodGib_gibbear4
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibbear4
+
+- type: decal
+  id: BloodGib_gibbear5
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibbear5
+
+- type: decal
+  id: BloodGib_gibbearcore
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibbearcore
+
+- type: decal
+  id: BloodGib_gibbearhead_0_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibbearhead_0_0
+
+- type: decal
+  id: BloodGib_gibbearhead_1_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibbearhead_1_0
+
+- type: decal
+  id: BloodGib_gibbearhead_2_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibbearhead_2_0
+
+- type: decal
+  id: BloodGib_gibbearhead_3_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibbearhead_3_0
+
+- type: decal
+  id: BloodGib_gibdown1
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibdown1
+
+- type: decal
+  id: BloodGib_gibdown1_flesh
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibdown1_flesh
+
+- type: decal
+  id: BloodGib_gibhead_0_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibhead_0_0
+
+- type: decal
+  id: BloodGib_gibhead_1_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibhead_1_0
+
+- type: decal
+  id: BloodGib_gibhead_2_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibhead_2_0
+
+- type: decal
+  id: BloodGib_gibhead_3_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibhead_3_0
+
+- type: decal
+  id: BloodGib_gibleg_0_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibleg_0_0
+
+- type: decal
+  id: BloodGib_gibleg_1_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibleg_1_0
+
+- type: decal
+  id: BloodGib_gibleg_2_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibleg_2_0
+
+- type: decal
+  id: BloodGib_gibleg_3_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibleg_3_0
+
+- type: decal
+  id: BloodGib_gibleg_flesh_0_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibleg_flesh_0_0
+
+- type: decal
+  id: BloodGib_gibleg_flesh_1_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibleg_flesh_1_0
+
+- type: decal
+  id: BloodGib_gibleg_flesh_2_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibleg_flesh_2_0
+
+- type: decal
+  id: BloodGib_gibleg_flesh_3_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibleg_flesh_3_0
+
+- type: decal
+  id: BloodGib_gibmid1
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibmid1
+
+- type: decal
+  id: BloodGib_gibmid2
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibmid2
+
+- type: decal
+  id: BloodGib_gibmid2_flesh
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibmid2_flesh
+
+- type: decal
+  id: BloodGib_gibmid3
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibmid3
+
+- type: decal
+  id: BloodGib_gibmid3_flesh
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibmid3_flesh
+
+- type: decal
+  id: BloodGib_gibtorso_0_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibtorso_0_0
+
+- type: decal
+  id: BloodGib_gibtorso_1_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibtorso_1_0
+
+- type: decal
+  id: BloodGib_gibtorso_2_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibtorso_2_0
+
+- type: decal
+  id: BloodGib_gibtorso_3_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibtorso_3_0
+
+- type: decal
+  id: BloodGib_gibtorso_flesh_0_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibtorso_flesh_0_0
+
+- type: decal
+  id: BloodGib_gibtorso_flesh_1_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibtorso_flesh_1_0
+
+- type: decal
+  id: BloodGib_gibtorso_flesh_2_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibtorso_flesh_2_0
+
+- type: decal
+  id: BloodGib_gibtorso_flesh_3_0
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibtorso_flesh_3_0
+
+- type: decal
+  id: BloodGib_gibup1
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibup1
+
+- type: decal
+  id: BloodGib_gibup1_flesh
+  tags: ["blood", "gib"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: gibup1_flesh
+
+- type: decal
+  id: BloodSplatter_mfloor1
+  tags: ["blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: mfloor1
+
+- type: decal
+  id: BloodSplatter_mfloor10
+  tags: ["blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: mfloor10
+
+- type: decal
+  id: BloodSplatter_mfloor11
+  tags: ["blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: mfloor11
+
+- type: decal
+  id: BloodSplatter_mfloor12
+  tags: ["blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: mfloor12
+
+- type: decal
+  id: BloodSplatter_mfloor2
+  tags: ["blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: mfloor2
+
+- type: decal
+  id: BloodSplatter_mfloor3
+  tags: ["blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: mfloor3
+
+- type: decal
+  id: BloodSplatter_mfloor4
+  tags: ["blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: mfloor4
+
+- type: decal
+  id: BloodSplatter_mfloor5
+  tags: ["blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: mfloor5
+
+- type: decal
+  id: BloodSplatter_mfloor6
+  tags: ["blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: mfloor6
+
+- type: decal
+  id: BloodSplatter_mfloor7
+  tags: ["blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: mfloor7
+
+- type: decal
+  id: BloodSplatter_mfloor8
+  tags: ["blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: mfloor8
+
+- type: decal
+  id: BloodSplatter_mfloor9
+  tags: ["blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: mfloor9
+
+- type: decal
+  id: BloodSplatter_mgibbl1
+  tags: ["blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: mgibbl1
+
+- type: decal
+  id: BloodSplatter_mgibbl2
+  tags: ["blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: mgibbl2
+
+- type: decal
+  id: BloodSplatter_mgibbl3
+  tags: ["blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: mgibbl3
+
+- type: decal
+  id: BloodSplatter_mgibbl4
+  tags: ["blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: mgibbl4
+
+- type: decal
+  id: BloodSplatter_mgibbl5
+  tags: ["blood"]
+  defaultCleanable: true
+  defaultCustomColor: true
+  defaultSnap: false
+  sprite:
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    state: mgibbl5
+
