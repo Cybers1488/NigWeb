@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: AGPL-3.0-or-later
+﻿// SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
 using Content.Shared.Access.Components;
@@ -64,7 +64,8 @@ public abstract partial class SharedDoorSystem : EntitySystem
     /// </summary>
     private readonly HashSet<Entity<DoorComponent>> _activeDoors = new();
 
-    private readonly HashSet<Entity<PhysicsComponent>> _doorIntersecting = new();
+    private readonly HashSet<EntityUid> _doorIntersecting = new();
+    private EntityQuery<PhysicsComponent> _physicsQuery;
 
     public override void Initialize()
     {
@@ -87,6 +88,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
         SubscribeLocalEvent<DoorComponent, WeldableChangedEvent>(OnWeldChanged);
         SubscribeLocalEvent<DoorComponent, GetPryTimeModifierEvent>(OnPryTimeModifier);
         SubscribeLocalEvent<DoorComponent, GotEmaggedEvent>(OnEmagged);
+        _physicsQuery = GetEntityQuery<PhysicsComponent>();
     }
 
     protected virtual void OnComponentInit(Entity<DoorComponent> ent, ref ComponentInit args)
@@ -575,38 +577,41 @@ public abstract partial class SharedDoorSystem : EntitySystem
         if (!TryComp<MapGridComponent>(xform.GridUid, out var mapGridComp))
             yield break;
         var tileRef = _mapSystem.GetTileRef(xform.GridUid.Value, mapGridComp, xform.Coordinates);
+        var aabb = _entityLookup.GetWorldAABB(uid);
 
         _doorIntersecting.Clear();
-        _entityLookup.GetLocalEntitiesIntersecting(xform.GridUid.Value, tileRef.GridIndices, _doorIntersecting, gridComp: mapGridComp, flags: (LookupFlags.All & ~LookupFlags.Sensors));
+        _entityLookup.GetEntitiesIntersecting(xform.GridUid.Value, aabb, _doorIntersecting, flags: (LookupFlags.All & ~LookupFlags.Sensors));
 
         // TODO SLOTH fix electro's code.
         // ReSharper disable once InconsistentNaming
 
-        foreach (var otherPhysics in _doorIntersecting)
+                foreach (var other in _doorIntersecting)
         {
-            if (otherPhysics.Comp == physics)
+            if (!_physicsQuery.TryComp(other, out var otherPhysics))
                 continue;
 
-            if (!otherPhysics.Comp.CanCollide)
+            if (otherPhysics == physics)
                 continue;
 
-            //TODO: Make only shutters ignore these objects upon colliding instead of all airlocks
-            // Excludes Glasslayer for windows, GlassAirlockLayer for windoors, TableLayer for tables
-            if (otherPhysics.Comp.CollisionLayer == (int) CollisionGroup.GlassLayer || otherPhysics.Comp.CollisionLayer == (int) CollisionGroup.GlassAirlockLayer || otherPhysics.Comp.CollisionLayer == (int) CollisionGroup.TableLayer)
+            if (!otherPhysics.CanCollide)
                 continue;
 
-            // Ignore low-passable entities.
-            if ((otherPhysics.Comp.CollisionMask & (int)CollisionGroup.LowImpassable) == 0)
+            if (otherPhysics.CollisionLayer == (int)CollisionGroup.GlassLayer ||
+                otherPhysics.CollisionLayer == (int)CollisionGroup.GlassAirlockLayer ||
+                otherPhysics.CollisionLayer == (int)CollisionGroup.TableLayer)
                 continue;
 
-            //For when doors need to close over conveyor belts
-            if (otherPhysics.Comp.CollisionLayer == (int) CollisionGroup.ConveyorMask)
+            if ((otherPhysics.CollisionMask & (int)CollisionGroup.LowImpassable) == 0)
                 continue;
 
-            if ((physics.CollisionMask & otherPhysics.Comp.CollisionLayer) == 0 && (otherPhysics.Comp.CollisionMask & physics.CollisionLayer) == 0)
+            if (otherPhysics.CollisionLayer == (int)CollisionGroup.ConveyorMask)
                 continue;
 
-            yield return otherPhysics.Owner;
+            if ((physics.CollisionMask & otherPhysics.CollisionLayer) == 0 &&
+                (otherPhysics.CollisionMask & physics.CollisionLayer) == 0)
+                continue;
+
+            yield return other;
         }
     }
 
@@ -837,3 +842,6 @@ public abstract partial class SharedDoorSystem : EntitySystem
     }
     #endregion
 }
+
+
+
