@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "license": "None",
+  "copyright": "",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    { "name": "ob0_0", "directions": 1 },
+    { "name": "ob0_1", "directions": 1 },
+    { "name": "ob25_0", "directions": 1 },
+    { "name": "ob25_1", "directions": 1 },
+    { "name": "ob50_0", "directions": 1 },
+    { "name": "ob50_1", "directions": 1 },
+    { "name": "ob75_0", "directions": 1 },
+    { "name": "ob75_1", "directions": 1 },
+    { "name": "ob100_0", "directions": 1 },
+    { "name": "ob100_1", "directions": 1 },
+    { "name": "battery_station", "directions": 1 },
+    { "name": "battery_station_overlay", "directions": 1 }
+  ]
+}

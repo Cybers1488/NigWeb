@@ -1,0 +1,18 @@
+﻿<DefaultWindow xmlns="https://spacestation14.io"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               Title="Панель управления Алтарём"
+               MinSize="300 200">
+    <BoxContainer Orientation="Vertical" Margin="10">
+        <Label Name="StatusLabel" Text="Статус: ОЖИДАНИЕ" FontColorOverride="Red" Margin="0,0,0,10" />
+        
+        <BoxContainer Orientation="Horizontal">
+            <Label Text="Выработка: " />
+            <Label Name="PowerLabel" Text="0 Вт" FontColorOverride="Cyan" />
+        </BoxContainer>
+        
+        <BoxContainer Orientation="Horizontal" Margin="0,10,0,0">
+            <Label Text="Заряд главной батареи: " />
+            <Label Name="ChargeLabel" Text="0 / 0" FontColorOverride="Yellow" />
+        </BoxContainer>
+    </BoxContainer>
+</DefaultWindow>

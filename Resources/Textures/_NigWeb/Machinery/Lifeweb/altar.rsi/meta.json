@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "OpenSourceWeb",
+  "size": {
+    "x": 160,
+    "y": 128
+  },
+  "states": [
+    {
+      "name": "altar",
+      "dirs": 1,
+      "delays": [
+        [
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "stuck",
+      "dirs": 1,
+      "delays": [
+        [
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "stuck_only",
+      "dirs": 1,
+      "delays": [
+        [
+          1.0
+        ]
+      ]
+    }
+  ]
+}

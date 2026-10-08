@@ -1,0 +1,247 @@
+﻿- type: entity
+  id: NigWebLifewebAltar
+  name: Алтарь
+  description: Древний алтарь, пропитанный кровью.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Clickable
+  - type: Sprite
+    sprite: _NigWeb/Machinery/Lifeweb/altar.rsi
+    state: altar
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      center:
+        shape:
+          !type:PhysShapeAabb
+            bounds: "-1.45,-0.5,1.45,0.95"
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+      left_angel:
+        shape:
+          !type:PhysShapeAabb
+            bounds: "-2.15,-0.5,-1.15,0.45"
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+      right_angel:
+        shape:
+          !type:PhysShapeAabb
+            bounds: "1.15,-0.5,2.15,0.45"
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: InteractionOutline
+  - type: Strap
+    position: None
+    buckleOffset: "0.0625, -0.5"
+  - type: LifewebAltar
+    powerPerSecond: 10000
+    drainDamage: 10
+  - type: AmbientSound
+    enabled: true
+    volume: -8
+    range: 5
+    sound:
+      path: /Audio/_NigWeb/Lifeweb/loop_altar.ogg
+
+- type: entity
+  id: NigWebLifewebStuckOverlay
+  name: Оверлей алтаря
+  noSpawn: true
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Machinery/Lifeweb/altar.rsi
+    state: stuck_only
+    drawdepth: Overdoors
+  - type: Transform
+    anchored: false
+
+- type: entity
+  id: NigWebLifewebControl
+  name: Консоль управления алтарем
+  description: Позволяет управлять энергией.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Clickable
+  - type: Sprite
+    sprite: _NigWeb/Machinery/Lifeweb/control.rsi
+    state: on
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+            bounds: "-0.45,-0.45,0.45,0.45"
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: InteractionOutline
+  - type: LifewebControl
+  - type: UserInterface
+    interfaces:
+      enum.LifewebControlUiKey.Key:
+        type: LifewebControlBoundUserInterface
+  - type: ActivatableUI
+    key: enum.LifewebControlUiKey.Key
+    inHandsOnly: false
+
+- type: entity
+  id: NigWebStationBattery
+  name: Батарея станции
+  description: Локальный распределитель. Получает энергию от главных батарей и запитывает аппаратуру вокруг.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Clickable
+  - type: Appearance
+  - type: LifewebStationBattery
+  - type: Sprite
+    sprite: _NigWeb/Machinery/Lifeweb/battery_new.rsi
+    layers:
+    - state: battery_station
+    - state: battery_station_overlay
+      map: [ "enum.LifewebStationBatteryVisuals.State" ]
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+            bounds: "-0.45,-0.45,0.45,0.45"
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: InteractionOutline
+  - type: Battery
+    netsync: false
+    maxCharge: 50000
+    startingCharge: 0
+  - type: NodeContainer
+    nodes:
+      output:
+        !type:CableDeviceNode
+        nodeGroupID: Apc
+  - type: Apc
+    voltage: Apc
+  - type: PowerNetworkBattery
+    maxSupply: 50000
+    maxChargeRate: 50000
+  - type: ExtensionCableProvider
+    transferRange: 30
+  - type: PowerProvider
+    voltage: Apc
+  - type: PointLight
+    radius: 2.0
+    energy: 2.0
+    color: "#ff3333"
+
+- type: entity
+  id: NigWebLifewebPillar
+  name: Пилон
+  description: Загадочный артефакт, пульсирующий энергией.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Clickable
+  - type: Sprite
+    sprite: _NigWeb/Machinery/Lifeweb/pillar.rsi
+    state: on
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+            bounds: "-0.45,-0.45,0.45,0.45"
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: InteractionOutline
+  - type: PointLight
+    radius: 2.0
+    energy: 2.0
+    color: "#8f2222"
+
+- type: entity
+  id: NigWebLifewebBattery
+  name: Главная батарея алтаря
+  description: Аккумулирует жизненную энергию.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Clickable
+  - type: Sprite
+    sprite: _NigWeb/Machinery/Lifeweb/battery.rsi
+    state: charging
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+            bounds: "-0.45,-0.45,0.45,0.45"
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: InteractionOutline
+  - type: LifewebBattery
+  - type: ExaminableBattery
+  - type: Battery
+    netsync: false
+    maxCharge: 100000
+    startingCharge: 0
+  - type: PowerNetworkBattery
+    maxSupply: 50000
+    maxChargeRate: 50000
+    supplyRampTolerance: 10000
+    supplyRampRate: 50000
+  - type: PointLight
+    radius: 3.0
+    energy: 2.0
+    color: "#ff3333"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
