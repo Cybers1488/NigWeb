@@ -1,0 +1,35 @@
+﻿- type: entity
+  id: NigWebChurchDoorDouble
+  parent: BaseMaterialDoor
+  name: церковные врата
+  description: Массивные деревянные врата, ведущие в святилище.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Doors/church_door_2x1.rsi
+    snapCardinals: false
+    offset: 0.5,0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,1.45,0.45"
+        density: 100
+        mask:
+        - FullTileMask
+        layer:
+        - GlassAirlockLayer
+  - type: Transform
+    noRot: false
+  - type: NigWebMultiTileAirtight
+    extraTiles:
+    - 1,0
+  - type: Door
+    bumpOpen: false
+    clickOpen: true
+    openSound:
+      path: /Audio/_NigWeb/Doors/wood_open.ogg
+    closeSound:
+      path: /Audio/_NigWeb/Doors/wood_close.ogg
+    openingAnimationTime: 3.2
+    closingAnimationTime: 3.2
