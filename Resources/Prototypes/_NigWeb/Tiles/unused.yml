@@ -1,0 +1,14 @@
+- type: tile
+  id: NigWebFloorUnused
+  parent: BaseStationTile
+  name: странный пол
+  description: Очень странный, жутковатый пол. Кажется, он не поддается никаким инструментам.
+  sprite: /Textures/_NigWeb/Tiles/unused.png
+  variants: 3
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  deconstructTools: []
+  footstepSounds:
+    collection: NigWebFootstepTile

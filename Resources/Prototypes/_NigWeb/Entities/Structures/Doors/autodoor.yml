@@ -1,0 +1,25 @@
+- type: entity
+  parent: BaseMaterialDoor
+  id: NigWebDoorAuto
+  name: автоматическая дверь
+  description: Тяжелая автоматическая дверь из старых чертежей.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Doors/autodoor.rsi
+  - type: Door
+    openSound:
+      path: /Audio/_NigWeb/Doors/lava_open.ogg
+    closeSound:
+      path: /Audio/_NigWeb/Doors/lava_close.ogg
+    openingAnimationTime: 1.0
+    closingAnimationTime: 1.0
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]

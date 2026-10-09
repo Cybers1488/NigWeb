@@ -1,0 +1,57 @@
+{
+    "states":  [
+                   {
+                       "name":  "stonewall_0"
+                   },
+                   {
+                       "name":  "stonewall_1"
+                   },
+                   {
+                       "name":  "stonewall_2"
+                   },
+                   {
+                       "name":  "stonewall_3"
+                   },
+                   {
+                       "name":  "stonewall_4"
+                   },
+                   {
+                       "name":  "stonewall_5"
+                   },
+                   {
+                       "name":  "stonewall_6"
+                   },
+                   {
+                       "name":  "stonewall_7"
+                   },
+                   {
+                       "name":  "stonewall_8"
+                   },
+                   {
+                       "name":  "stonewall_9"
+                   },
+                   {
+                       "name":  "stonewall_10"
+                   },
+                   {
+                       "name":  "stonewall_11"
+                   },
+                   {
+                       "name":  "stonewall_12"
+                   },
+                   {
+                       "name":  "stonewall_13"
+                   },
+                   {
+                       "name":  "stonewall_14"
+                   },
+                   {
+                       "name":  "stonewall_15"
+                   }
+               ],
+    "version":  1,
+    "size":  {
+                 "y":  32,
+                 "x":  32
+             }
+}

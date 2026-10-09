@@ -1,0 +1,22 @@
+- type: tile
+  id: NigWebFloorUnusedRow0
+  parent: BaseStationTile
+  name: неизвестный пол
+  description: Загадочный пол из старых архивов. Идеально подходит для странных мест.
+  sprite: /Textures/_NigWeb/Tiles/unused_row0.png
+  variants: 11
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  deconstructTools: []
+  footstepSounds:
+    collection: NigWebFootstepTile

@@ -1,0 +1,9 @@
+- type: tile
+  id: FloorDarkStone
+  parent: BaseStationTile
+  name: тёмный каменный пол
+  sprite: /Textures/_NigWeb/Tiles/darkstonefloor.png
+  variants: 13
+  footstepSounds:
+    collection: FootstepAsteroid
+  tileRipResistance: 400

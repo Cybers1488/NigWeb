@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "metalic0"
+    },
+    {
+      "name": "metalic1"
+    },
+    {
+      "name": "metalic2"
+    },
+    {
+      "name": "metalic3"
+    },
+    {
+      "name": "metalic4"
+    },
+    {
+      "name": "metalic5"
+    },
+    {
+      "name": "metalic6"
+    },
+    {
+      "name": "metalic7"
+    },
+    {
+      "name": "metalic8"
+    },
+    {
+      "name": "metalic9"
+    },
+    {
+      "name": "metalic10"
+    },
+    {
+      "name": "metalic11"
+    },
+    {
+      "name": "metalic12"
+    },
+    {
+      "name": "metalic13"
+    },
+    {
+      "name": "metalic14"
+    },
+    {
+      "name": "metalic15"
+    },
+    {
+      "name": "full"
+    }
+  ]
+}

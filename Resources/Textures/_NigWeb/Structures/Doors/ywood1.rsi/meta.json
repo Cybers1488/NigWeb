@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from OpenSourceWeb",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "closed",
+      "dirs": 1,
+      "delays": [
+        [
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "open",
+      "dirs": 1,
+      "delays": [
+        [
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "opening",
+      "dirs": 1,
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "closing",
+      "dirs": 1,
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    }
+  ]
+}

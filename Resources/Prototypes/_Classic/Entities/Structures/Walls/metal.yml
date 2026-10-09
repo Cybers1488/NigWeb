@@ -1,0 +1,33 @@
+- type: entity
+  parent: BaseWall
+  id: NigWebClassicWallMetal
+  name: простая металлическая стена
+  description: Обычная гладкая металлическая стена.
+  components:
+  - type: Sprite
+    sprite: _Classic/Structures/Walls/metal.rsi
+    state: full
+  - type: Icon
+    sprite: _Classic/Structures/Walls/metal.rsi
+    state: full
+  - type: IconSmooth
+    mode: CardinalFlags
+    key: walls
+    base: metal
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8

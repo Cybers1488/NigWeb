@@ -1,0 +1,12 @@
+- type: tile
+  id: NigWebFloorNfloorz2_6
+  parent: BaseStationTile
+  name: темный узорчатый пол (кусок)
+  description: Одиночный кусок старого темного пола.
+  sprite: /Textures/_NigWeb/Tiles/floors_nfloorz2_6.png
+  variants: 1
+  placementVariants:
+  - 1.0
+  deconstructTools: []
+  footstepSounds:
+    collection: NigWebFootstepSpooky

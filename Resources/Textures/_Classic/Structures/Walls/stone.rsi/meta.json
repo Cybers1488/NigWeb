@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "stone0"
+    },
+    {
+      "name": "stone1"
+    },
+    {
+      "name": "stone2"
+    },
+    {
+      "name": "stone3"
+    },
+    {
+      "name": "stone4"
+    },
+    {
+      "name": "stone5"
+    },
+    {
+      "name": "stone6"
+    },
+    {
+      "name": "stone7"
+    },
+    {
+      "name": "stone8"
+    },
+    {
+      "name": "stone9"
+    },
+    {
+      "name": "stone10"
+    },
+    {
+      "name": "stone11"
+    },
+    {
+      "name": "stone12"
+    },
+    {
+      "name": "stone13"
+    },
+    {
+      "name": "stone14"
+    },
+    {
+      "name": "stone15"
+    },
+    {
+      "name": "full"
+    }
+  ]
+}

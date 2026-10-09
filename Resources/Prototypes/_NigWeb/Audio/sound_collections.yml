@@ -1,0 +1,5 @@
+﻿- type: soundCollection
+  id: NigWebDoubleDoorOpen
+  files:
+  - /Audio/Machines/_NigWeb/double_open1.ogg
+  - /Audio/Machines/_NigWeb/double_open2.ogg

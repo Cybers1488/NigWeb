@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "leviathan0"
+    },
+    {
+      "name": "leviathan1"
+    },
+    {
+      "name": "leviathan2"
+    },
+    {
+      "name": "leviathan3"
+    },
+    {
+      "name": "leviathan4"
+    },
+    {
+      "name": "leviathan5"
+    },
+    {
+      "name": "leviathan6"
+    },
+    {
+      "name": "leviathan7"
+    },
+    {
+      "name": "leviathan8"
+    },
+    {
+      "name": "leviathan9"
+    },
+    {
+      "name": "leviathan10"
+    },
+    {
+      "name": "leviathan11"
+    },
+    {
+      "name": "leviathan12"
+    },
+    {
+      "name": "leviathan13"
+    },
+    {
+      "name": "leviathan14"
+    },
+    {
+      "name": "leviathan15"
+    },
+    {
+      "name": "full"
+    }
+  ]
+}

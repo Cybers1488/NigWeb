@@ -1,0 +1,35 @@
+- type: entity
+  parent: WallSolid
+  id: NigWebWoodWall
+  name: деревянная стена
+  description: Стена, сколоченная из грубых, потемневших от времени досок. Выглядит довольно хлипкой, но вполне способна защитить от ветра и чужих глаз.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Walls/woodwall.rsi
+    state: rwall0
+    drawdepth: Walls
+  - type: Icon
+    sprite: _NigWeb/Structures/Walls/woodwall.rsi
+    state: icon
+  - type: IconSmooth
+    key: walls
+    base: rwall
+    mode: CardinalFlags
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/wood_destroy1.ogg
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/wood_destroy1.ogg

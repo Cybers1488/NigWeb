@@ -1,13 +1,15 @@
-﻿- type: entity
+- type: entity
   id: NigWebChurchDoorDouble
-  parent: BaseMaterialDoor
-  name: церковные врата
-  description: Массивные деревянные врата, ведущие в святилище.
+  parent: Airlock
+  name: церковная дверь
+  description: Массивная двустворчатая дверь, украшенная резьбой.
   components:
   - type: Sprite
     sprite: _NigWeb/Structures/Doors/church_door_2x1.rsi
     snapCardinals: false
     offset: 0.5,0
+  - type: Occluder
+    boundingBox: "-0.45,-0.45,1.45,0.45"
   - type: Fixtures
     fixtures:
       fix1:
@@ -24,12 +26,25 @@
   - type: NigWebMultiTileAirtight
     extraTiles:
     - 1,0
+  - type: Airlock
+    autoCloseDelay: 4
   - type: Door
     bumpOpen: false
     clickOpen: true
     openSound:
-      path: /Audio/_NigWeb/Doors/wood_open.ogg
+      path: /Audio/Machines/_NigWeb/door_open2.ogg
     closeSound:
-      path: /Audio/_NigWeb/Doors/wood_close.ogg
-    openingAnimationTime: 3.2
-    closingAnimationTime: 3.2
+      path: /Audio/Machines/_NigWeb/door_close2.ogg
+    denySound:
+      path: /Audio/Machines/airlock_deny.ogg
+    openTimeOne: 0.6
+    openTimeTwo: 0.2
+    closeTimeOne: 0.6
+    closeTimeTwo: 0.2
+    openingAnimationTime: 0.8
+    closingAnimationTime: 0.8
+  - type: DoorBolt
+    boltUpSound:
+      path: /Audio/Machines/_NigWeb/airlock_boltswitch.ogg
+    boltDownSound:
+      path: /Audio/Machines/_NigWeb/airlock_boltswitch.ogg

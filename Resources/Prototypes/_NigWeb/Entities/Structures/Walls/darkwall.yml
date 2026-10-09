@@ -1,0 +1,35 @@
+- type: entity
+  parent: BaseWall
+  id: NigWebWallDark
+  name: темная стена
+  description: Обычная, но довольно мрачная стена.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Walls/darkwall.rsi
+    state: rwall0
+    drawdepth: Walls
+  - type: Icon
+    sprite: _NigWeb/Structures/Walls/darkwall.rsi
+    state: icon
+  - type: IconSmooth
+    key: walls
+    base: rwall
+    mode: CardinalFlags
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam

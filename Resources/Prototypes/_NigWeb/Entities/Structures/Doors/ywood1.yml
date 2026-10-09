@@ -1,0 +1,28 @@
+- type: entity
+  parent: BaseMaterialDoor
+  id: NigWebDoorWood1
+  name: деревянная дверь
+  description: Дверь, которая выглядит так, словно пережила несколько эпох.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Doors/ywood1.rsi
+  - type: Door
+    openSound:
+      path: /Audio/_NigWeb/Doors/wood_open.ogg
+    closeSound:
+      path: /Audio/_NigWeb/Doors/wood_close.ogg
+    openingAnimationTime: 0.5
+    closingAnimationTime: 0.5
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodSplat

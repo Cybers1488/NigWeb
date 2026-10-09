@@ -21,14 +21,19 @@ public sealed partial class NigWebMultiTileAirtightSystem : EntitySystem
     [Dependency] private AirtightSystem _airtight = default!;
     [Dependency] private TransformSystem _transform = default!;
 
-    [Dependency] private EntityQuery<AirtightComponent> _airtightQuery = default!;
-    [Dependency] private EntityQuery<DoorComponent> _doorQuery = default!;
-    [Dependency] private EntityQuery<MapGridComponent> _gridQuery = default!;
-    [Dependency] private EntityQuery<TransformComponent> _xformQuery = default!;
+    private EntityQuery<AirtightComponent> _airtightQuery;
+    private EntityQuery<DoorComponent> _doorQuery;
+    private EntityQuery<MapGridComponent> _gridQuery;
+    private EntityQuery<TransformComponent> _xformQuery;
 
-    public override void Initialize()
+        public override void Initialize()
     {
         base.Initialize();
+
+        _airtightQuery = GetEntityQuery<AirtightComponent>();
+        _doorQuery = GetEntityQuery<DoorComponent>();
+        _gridQuery = GetEntityQuery<MapGridComponent>();
+        _xformQuery = GetEntityQuery<TransformComponent>();
 
         SubscribeLocalEvent<NigWebMultiTileAirtightComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<NigWebMultiTileAirtightComponent, ComponentShutdown>(OnShutdown);
@@ -166,4 +171,5 @@ public sealed partial class NigWebMultiTileAirtightSystem : EntitySystem
         return new EntityCoordinates(gridUid, pos);
     }
 }
+
 

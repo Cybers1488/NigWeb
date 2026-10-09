@@ -1,0 +1,15 @@
+- type: tile
+  id: NigWebFloorOldNfloorzMix
+  parent: BaseStationTile
+  name: старый темный пол
+  description: Старый пол, переживший не одно поколение.
+  sprite: /Textures/_NigWeb/Tiles/floorsold_nfloorz_mix.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  deconstructTools: []
+  footstepSounds:
+    collection: NigWebFootstepSpooky

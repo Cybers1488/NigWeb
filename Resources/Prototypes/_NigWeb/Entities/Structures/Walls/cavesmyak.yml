@@ -1,0 +1,27 @@
+- type: entity
+  parent: BaseWall
+  id: WallCaveSmyak
+  name: пещерная стена
+  description: Древняя, влажная каменная порода.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Walls/cavesmyak.rsi
+    state: cave_15
+  - type: Icon
+    sprite: _NigWeb/Structures/Walls/cavesmyak.rsi
+    state: cave_15
+  - type: IconSmooth
+    mode: CardinalFlags
+    key: walls
+    base: cave_
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: Pickaxe

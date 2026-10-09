@@ -1,0 +1,13 @@
+- type: tile
+  id: NigWebFloorUnusedRow5
+  parent: BaseStationTile
+  name: необычный пол
+  description: Еще один кусок старого архива с неизвестным узором.
+  sprite: /Textures/_NigWeb/Tiles/unused_row5.png
+  variants: 2
+  placementVariants:
+  - 1.0
+  - 1.0
+  deconstructTools: []
+  footstepSounds:
+    collection: NigWebFootstepTile

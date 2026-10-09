@@ -1,0 +1,420 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Lifeweb",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "lass_door_closed",
+      "directions": 1,
+      "delays": [
+        [
+          0.05
+        ]
+      ]
+    },
+    {
+      "name": "lass_door_closing",
+      "directions": 1,
+      "delays": [
+        [
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "lass_door_closing_red",
+      "directions": 1,
+      "delays": [
+        [
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "lass_door_deny",
+      "directions": 1,
+      "delays": [
+        [
+          0.05,
+          0.05,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "lass_door_locked",
+      "directions": 1,
+      "delays": [
+        [
+          0.05
+        ]
+      ]
+    },
+    {
+      "name": "lass_door_opening",
+      "directions": 1,
+      "delays": [
+        [
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "lass_door_open",
+      "directions": 1,
+      "delays": [
+        [
+          0.05
+        ]
+      ]
+    },
+    {
+      "name": "lass_door_spark",
+      "directions": 1,
+      "delays": [
+        [
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "lass_o_door_closing",
+      "directions": 1,
+      "delays": [
+        [
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "lass_o_door_closing_red",
+      "directions": 1,
+      "delays": [
+        [
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "lass_o_door_opening",
+      "directions": 1,
+      "delays": [
+        [
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "lass_panel_open",
+      "directions": 1,
+      "delays": [
+        [
+          0.05
+        ]
+      ]
+    },
+    {
+      "name": "lass_welded",
+      "directions": 1,
+      "delays": [
+        [
+          0.05
+        ]
+      ]
+    },
+    {
+      "name": "default",
+      "directions": 1,
+      "delays": [
+        [
+          0.05
+        ]
+      ]
+    },
+    {
+      "name": "closed",
+      "directions": 1,
+      "delays": [
+        [
+          0.05
+        ]
+      ]
+    },
+    {
+      "name": "closing",
+      "directions": 1,
+      "delays": [
+        [
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "deny",
+      "directions": 1,
+      "delays": [
+        [
+          0.05,
+          0.05,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "locked",
+      "directions": 1,
+      "delays": [
+        [
+          0.05
+        ]
+      ]
+    },
+    {
+      "name": "opening",
+      "directions": 1,
+      "delays": [
+        [
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "open",
+      "directions": 1,
+      "delays": [
+        [
+          0.05
+        ]
+      ]
+    },
+    {
+      "name": "spark",
+      "directions": 1,
+      "delays": [
+        [
+          0.05,
+          0.05,
+          0.05,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "ForceDoor_Closed",
+      "directions": 1,
+      "delays": [
+        [
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "ForceDoor_Open",
+      "directions": 1,
+      "delays": [
+        [
+          0.05
+        ]
+      ]
+    },
+    {
+      "name": "panel_open",
+      "directions": 1,
+      "delays": [
+        [
+          0.05
+        ]
+      ]
+    },
+    {
+      "name": "welded",
+      "directions": 1,
+      "delays": [
+        [
+          0.05
+        ]
+      ]
+    },
+    {
+      "name": "unlit",
+      "directions": 1,
+      "delays": [
+        [
+          0.05
+        ]
+      ]
+    },
+    {
+      "name": "bolted",
+      "directions": 1,
+      "delays": [
+        [
+          0.05
+        ]
+      ]
+    },
+    {
+      "name": "sparks",
+      "directions": 1,
+      "delays": [
+        [
+          0.05
+        ]
+      ]
+    },
+    {
+      "name": "closed_unlit",
+      "directions": 1,
+      "delays": [
+        [
+          0.05
+        ]
+      ]
+    },
+    {
+      "name": "open_unlit",
+      "directions": 1,
+      "delays": [
+        [
+          0.05
+        ]
+      ]
+    },
+    {
+      "name": "deny_unlit",
+      "directions": 1,
+      "delays": [
+        [
+          0.05
+        ]
+      ]
+    },
+    {
+      "name": "bolted_unlit",
+      "directions": 1,
+      "delays": [
+        [
+          0.05
+        ]
+      ]
+    },
+    {
+      "name": "emergency_unlit",
+      "directions": 1,
+      "delays": [
+        [
+          0.05
+        ]
+      ]
+    },
+    {
+      "name": "opening_unlit",
+      "directions": 1,
+      "delays": [
+        [
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "closing_unlit",
+      "directions": 1,
+      "delays": [
+        [
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.05,
+          0.1
+        ]
+      ]
+    }
+  ]
+}

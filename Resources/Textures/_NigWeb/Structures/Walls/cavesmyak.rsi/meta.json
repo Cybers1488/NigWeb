@@ -1,0 +1,57 @@
+{
+    "states":  [
+                   {
+                       "name":  "cave_0"
+                   },
+                   {
+                       "name":  "cave_1"
+                   },
+                   {
+                       "name":  "cave_2"
+                   },
+                   {
+                       "name":  "cave_3"
+                   },
+                   {
+                       "name":  "cave_4"
+                   },
+                   {
+                       "name":  "cave_5"
+                   },
+                   {
+                       "name":  "cave_6"
+                   },
+                   {
+                       "name":  "cave_7"
+                   },
+                   {
+                       "name":  "cave_8"
+                   },
+                   {
+                       "name":  "cave_9"
+                   },
+                   {
+                       "name":  "cave_10"
+                   },
+                   {
+                       "name":  "cave_11"
+                   },
+                   {
+                       "name":  "cave_12"
+                   },
+                   {
+                       "name":  "cave_13"
+                   },
+                   {
+                       "name":  "cave_14"
+                   },
+                   {
+                       "name":  "cave_15"
+                   }
+               ],
+    "version":  1,
+    "size":  {
+                 "y":  32,
+                 "x":  32
+             }
+}

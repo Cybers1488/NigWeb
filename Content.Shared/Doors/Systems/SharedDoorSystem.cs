@@ -19,6 +19,7 @@ using Content.Shared.Tag;
 using Content.Shared.Tools.Systems;
 using Robust.Shared.Audio;
 using Robust.Shared.Physics.Components;
+using Robust.Shared.Physics;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Timing;
@@ -576,11 +577,20 @@ public abstract partial class SharedDoorSystem : EntitySystem
         // GetCollidingEntities that returns Entity<PhysicsComponent>
         if (!TryComp<MapGridComponent>(xform.GridUid, out var mapGridComp))
             yield break;
-        var tileRef = _mapSystem.GetTileRef(xform.GridUid.Value, mapGridComp, xform.Coordinates);
-        var aabb = _entityLookup.GetWorldAABB(uid);
 
         _doorIntersecting.Clear();
-        _entityLookup.GetEntitiesIntersecting(xform.GridUid.Value, aabb, _doorIntersecting, flags: (LookupFlags.All & ~LookupFlags.Sensors));
+
+        if (!TryComp<FixturesComponent>(uid, out var fixtures))
+            yield break;
+
+        var hardShape = System.Linq.Enumerable.FirstOrDefault(fixtures.Fixtures.Values, f => f.Hard)?.Shape;
+        if (hardShape == null)
+            yield break;
+
+        var localPhysicsTransform = new Robust.Shared.Physics.Transform(xform.LocalPosition, xform.LocalRotation);
+        var bounds = hardShape.ComputeAABB(localPhysicsTransform, 0).Enlarged(-0.05f);
+
+        _entityLookup.GetLocalEntitiesIntersecting(xform.GridUid.Value, bounds, _doorIntersecting, flags: (LookupFlags.All & ~LookupFlags.Sensors));
 
         // TODO SLOTH fix electro's code.
         // ReSharper disable once InconsistentNaming
@@ -842,6 +852,10 @@ public abstract partial class SharedDoorSystem : EntitySystem
     }
     #endregion
 }
+
+
+
+
 
 
 

@@ -1,0 +1,15 @@
+- type: tile
+  id: NigWebFloorUnusedRow1Part
+  parent: BaseStationTile
+  name: странный пол из первого ряда
+  description: Пол, собранный из обрывков первого ряда забытого тайлсета.
+  sprite: /Textures/_NigWeb/Tiles/unused_row1_part.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  deconstructTools: []
+  footstepSounds:
+    collection: NigWebFootstepTile

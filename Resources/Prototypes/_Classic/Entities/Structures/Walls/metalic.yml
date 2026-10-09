@@ -1,0 +1,50 @@
+- type: entity
+  parent: BaseWall
+  id: NigWebClassicWallMetalic
+  name: металлическая стена
+  description: Обычная металлическая стена.
+  components:
+  - type: Sprite
+    sprite: _Classic/Structures/Walls/metalic.rsi
+    layers:
+    - state: full
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: Icon
+    sprite: _Classic/Structures/Walls/metalic.rsi
+    state: full
+  - type: RandomSprite
+    available:
+    - enum.DamageStateVisualLayers.Base:
+        metalic0: ""
+        metalic1: ""
+        metalic2: ""
+        metalic3: ""
+        metalic4: ""
+        metalic5: ""
+        metalic6: ""
+        metalic7: ""
+        metalic8: ""
+        metalic9: ""
+        metalic10: ""
+        metalic11: ""
+        metalic12: ""
+        metalic13: ""
+        metalic14: ""
+        metalic15: ""
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel:
+            min: 1
+            max: 2
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8

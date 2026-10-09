@@ -1,0 +1,27 @@
+- type: entity
+  parent: BaseWall
+  id: NigWebWallStone
+  name: каменная стена
+  description: Крепкая стена из тёсаного камня.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Walls/stonewall.rsi
+    state: stonewall_15
+  - type: Icon
+    sprite: _NigWeb/Structures/Walls/stonewall.rsi
+    state: stonewall_15
+  - type: IconSmooth
+    mode: CardinalFlags
+    key: walls
+    base: stonewall_
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: Pickaxe

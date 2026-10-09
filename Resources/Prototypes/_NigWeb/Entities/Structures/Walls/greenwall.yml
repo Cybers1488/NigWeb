@@ -1,0 +1,17 @@
+- type: entity
+  parent: WallSolid
+  id: NigWebWallGreen
+  name: зеленая стена
+  description: Массивная каменная кладка, густо поросшая сырым мхом. От нее веет холодом и сыростью подземелий.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Walls/greenwall.rsi
+    state: rwall0
+    drawdepth: Walls
+  - type: Icon
+    sprite: _NigWeb/Structures/Walls/greenwall.rsi
+    state: icon
+  - type: IconSmooth
+    key: walls
+    base: rwall
+    mode: CardinalFlags

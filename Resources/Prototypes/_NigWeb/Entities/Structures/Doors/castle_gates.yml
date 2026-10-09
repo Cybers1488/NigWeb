@@ -1,0 +1,125 @@
+- type: entity
+  id: NigWebDoorcomAirlock
+  parent: Airlock
+  name: командный шлюз
+  description: Высокозащищенный командный шлюз.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Doors/doorcom.rsi
+  - type: Door
+    openSound:
+      path: /Audio/Machines/_NigWeb/airlock_open_sec.ogg
+    closeSound:
+      path: /Audio/Machines/_NigWeb/airlock_close_lw.ogg
+    denySound:
+      path: /Audio/Machines/airlock_deny.ogg
+    openTimeOne: 0.4
+    openTimeTwo: 0.1
+    closeTimeOne: 0.4
+    closeTimeTwo: 0.1
+    openingAnimationTime: 0.5
+    closingAnimationTime: 0.5
+  - type: DoorBolt
+    boltUpSound:
+      path: /Audio/Machines/_NigWeb/airlock_boltswitch.ogg
+    boltDownSound:
+      path: /Audio/Machines/_NigWeb/airlock_boltswitch.ogg
+
+- type: entity
+  id: NigWebMedGlassAirlock
+  parent: AirlockGlass
+  name: медицинский шлюз
+  description: Стеклянный шлюз медицинского отсека.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Doors/doormedglass.rsi
+  - type: Door
+    openSound:
+      path: /Audio/Machines/_NigWeb/airlock_open_sec.ogg
+    closeSound:
+      path: /Audio/Machines/_NigWeb/airlock_close_lw.ogg
+    denySound:
+      path: /Audio/Machines/airlock_deny.ogg
+    openTimeOne: 0.4
+    openTimeTwo: 0.05
+    closeTimeOne: 0.4
+    closeTimeTwo: 0.05
+    openingAnimationTime: 0.45
+    closingAnimationTime: 0.45
+  - type: DoorBolt
+    boltUpSound:
+      path: /Audio/Machines/_NigWeb/airlock_boltswitch.ogg
+    boltDownSound:
+      path: /Audio/Machines/_NigWeb/airlock_boltswitch.ogg
+
+- type: entity
+  id: NigWebKeepAirlock
+  parent: NigWebChurchDoorDouble
+  name: массивные врата замка
+  description: Очень тяжелые двустворчатые врата.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Doors/door2x1keep.rsi
+
+- type: entity
+  id: NigWebCastleGate3x1
+  parent: Airlock
+  name: врата цитадели
+  description: Огромные железные врата замка (3 тайла).
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Doors/tgate_3x1.rsi
+    snapCardinals: false
+    offset: 1.0,0
+  - type: Occluder
+    boundingBox: "-0.45,-0.45,2.45,0.45"
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,2.45,0.45"
+        density: 100
+        mask:
+        - FullTileMask
+        layer:
+        - GlassAirlockLayer
+  - type: Transform
+    noRot: false
+  - type: NigWebMultiTileAirtight
+    extraTiles:
+    - 1,0
+    - 2,0
+  - type: Airlock
+    autoCloseDelay: 4
+  - type: Door
+    bumpOpen: false
+    clickOpen: true
+    openSound:
+      path: /Audio/Machines/_NigWeb/gateopen.ogg
+    closeSound:
+      path: /Audio/Machines/_NigWeb/gateclose.ogg
+    denySound:
+      path: /Audio/Machines/airlock_deny.ogg
+    openTimeOne: 0.6
+    openTimeTwo: 0.2
+    closeTimeOne: 0.6
+    closeTimeTwo: 0.2
+    openingAnimationTime: 0.8
+    closingAnimationTime: 0.8
+  - type: DoorBolt
+    boltUpSound:
+      path: /Audio/Machines/_NigWeb/airlock_boltswitch.ogg
+    boltDownSound:
+      path: /Audio/Machines/_NigWeb/airlock_boltswitch.ogg
+
+- type: entity
+  id: NigWebMerchantGate3x1
+  parent: NigWebCastleGate3x1
+  name: торговые врата
+  description: Деревянные врата для торговцев (3 тайла).
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Doors/sgate_3x1.rsi
+    snapCardinals: false
+    offset: 1.0,0

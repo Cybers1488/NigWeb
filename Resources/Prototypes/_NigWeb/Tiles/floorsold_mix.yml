@@ -1,0 +1,15 @@
+- type: tile
+  id: NigWebFloorOldTroomMix
+  parent: BaseStationTile
+  name: старый деревянный пол
+  description: Сборный деревянный пол из очень старых архивов.
+  sprite: /Textures/_NigWeb/Tiles/floorsold_mix.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  deconstructTools: []
+  footstepSounds:
+    collection: NigWebFootstepWood

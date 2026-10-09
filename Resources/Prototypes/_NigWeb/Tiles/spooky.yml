@@ -1,0 +1,20 @@
+- type: tile
+  id: NigWebFloorSpooky
+  parent: BaseStationTile
+  name: жуткий пол
+  description: Очень мрачный и зловещий пол. Если присмотреться, можно увидеть странные узоры.
+  sprite: /Textures/_NigWeb/Tiles/spooky.png
+  variants: 9
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  deconstructTools: []
+  footstepSounds:
+    collection: NigWebFootstepSpooky

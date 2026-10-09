@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "metal0"
+    },
+    {
+      "name": "metal1"
+    },
+    {
+      "name": "metal2"
+    },
+    {
+      "name": "metal3"
+    },
+    {
+      "name": "metal4"
+    },
+    {
+      "name": "metal5"
+    },
+    {
+      "name": "metal6"
+    },
+    {
+      "name": "metal7"
+    },
+    {
+      "name": "metal8"
+    },
+    {
+      "name": "metal9"
+    },
+    {
+      "name": "metal10"
+    },
+    {
+      "name": "metal11"
+    },
+    {
+      "name": "metal12"
+    },
+    {
+      "name": "metal13"
+    },
+    {
+      "name": "metal14"
+    },
+    {
+      "name": "metal15"
+    },
+    {
+      "name": "full"
+    }
+  ]
+}

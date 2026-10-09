@@ -1,0 +1,35 @@
+- type: soundCollection
+  id: NigWebFootstepTile
+  files:
+  - /Audio/_NigWeb/Footsteps/step_baremetal1.ogg
+  - /Audio/_NigWeb/Footsteps/step_baremetal2.ogg
+  - /Audio/_NigWeb/Footsteps/step_baremetal3.ogg
+  - /Audio/_NigWeb/Footsteps/step_baremetal4.ogg
+
+- type: soundCollection
+  id: NigWebFootstepWood
+  files:
+  - /Audio/_NigWeb/Footsteps/wood_step1.ogg
+  - /Audio/_NigWeb/Footsteps/wood_step2.ogg
+  - /Audio/_NigWeb/Footsteps/wood_step3.ogg
+  - /Audio/_NigWeb/Footsteps/wood_step4.ogg
+  - /Audio/_NigWeb/Footsteps/wood_step5.ogg
+  - /Audio/_NigWeb/Footsteps/wood_step6.ogg
+  - /Audio/_NigWeb/Footsteps/wood_step7.ogg
+  - /Audio/_NigWeb/Footsteps/wood_step8.ogg
+
+- type: soundCollection
+  id: NigWebFootstepSpooky
+  files:
+  - /Audio/_NigWeb/Footsteps/step1.ogg
+  - /Audio/_NigWeb/Footsteps/step2.ogg
+  - /Audio/_NigWeb/Footsteps/step3.ogg
+  - /Audio/_NigWeb/Footsteps/step4.ogg
+
+- type: soundCollection
+  id: NigWebFootstepStone
+  files:
+  - /Audio/_NigWeb/Footsteps/tile1.ogg
+  - /Audio/_NigWeb/Footsteps/tile2.ogg
+  - /Audio/_NigWeb/Footsteps/tile3.ogg
+  - /Audio/_NigWeb/Footsteps/tile4.ogg

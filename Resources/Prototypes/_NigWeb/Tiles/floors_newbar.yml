@@ -1,0 +1,19 @@
+- type: tile
+  id: NigWebFloorNewbar
+  parent: BaseStationTile
+  name: новый пол бара
+  description: Очень стильный пол. Идеально подойдет для бара.
+  sprite: /Textures/_NigWeb/Tiles/floors_newbar.png
+  variants: 8
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  deconstructTools: []
+  footstepSounds:
+    collection: NigWebFootstepWood

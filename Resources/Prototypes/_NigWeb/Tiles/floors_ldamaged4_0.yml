@@ -1,0 +1,12 @@
+- type: tile
+  id: NigWebFloorLdamaged4
+  parent: BaseStationTile
+  name: поврежденный пол
+  description: Старый, изношенный кусок пола, который чудом сохранился.
+  sprite: /Textures/_NigWeb/Tiles/floors_ldamaged4_0.png
+  variants: 1
+  placementVariants:
+  - 1.0
+  deconstructTools: []
+  footstepSounds:
+    collection: NigWebFootstepTile

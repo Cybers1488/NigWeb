@@ -1,0 +1,80 @@
+- type: entity
+  id: NigWebHatchAirlock
+  parent: Airlock
+  name: герметичный люк
+  description: Тяжелая бронированная дверь.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Doors/doorhatchele.rsi
+  - type: Door
+    openSound:
+      path: /Audio/Machines/_NigWeb/airlock_open_sec.ogg
+    closeSound:
+      path: /Audio/Machines/_NigWeb/airlock_close_lw.ogg
+    denySound:
+      path: /Audio/Machines/airlock_deny.ogg
+    openTimeOne: 0.4
+    openTimeTwo: 0.2
+    closeTimeOne: 0.4
+    closeTimeTwo: 0.2
+    openingAnimationTime: 0.45
+    closingAnimationTime: 0.45
+  - type: DoorBolt
+    boltUpSound:
+      path: /Audio/Machines/_NigWeb/airlock_boltswitch.ogg
+    boltDownSound:
+      path: /Audio/Machines/_NigWeb/airlock_boltswitch.ogg
+
+- type: entity
+  id: NigWebDoorsecAirlock
+  parent: AirlockGlass
+  name: шлюз
+  description: Массивная бронированная дверь замка.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Doors/doorsec.rsi
+  - type: Door
+    openSound:
+      path: /Audio/Machines/_NigWeb/airlock_open_sec.ogg
+    closeSound:
+      path: /Audio/Machines/_NigWeb/airlock_close_lw.ogg
+    denySound:
+      path: /Audio/Machines/airlock_deny.ogg
+    openTimeOne: 0.5
+    openTimeTwo: 0.15
+    closeTimeOne: 0.5
+    closeTimeTwo: 0.15
+    openingAnimationTime: 0.65
+    closingAnimationTime: 0.65
+  - type: DoorBolt
+    boltUpSound:
+      path: /Audio/Machines/_NigWeb/airlock_boltswitch.ogg
+    boltDownSound:
+      path: /Audio/Machines/_NigWeb/airlock_boltswitch.ogg
+
+- type: entity
+  id: NigWebMaintAirlock
+  parent: AirlockMaint
+  name: технический люк
+  description: Техническая дверь.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Doors/maintdoor.rsi
+  - type: Door
+    openSound:
+      path: /Audio/Machines/_NigWeb/airlock_open_sec.ogg
+    closeSound:
+      path: /Audio/Machines/_NigWeb/airlock_close_lw.ogg
+    denySound:
+      path: /Audio/Machines/airlock_deny.ogg
+    openTimeOne: 0.35
+    openTimeTwo: 0.15
+    closeTimeOne: 0.35
+    closeTimeTwo: 0.15
+    openingAnimationTime: 0.5
+    closingAnimationTime: 0.5
+  - type: DoorBolt
+    boltUpSound:
+      path: /Audio/Machines/_NigWeb/airlock_boltswitch.ogg
+    boltDownSound:
+      path: /Audio/Machines/_NigWeb/airlock_boltswitch.ogg

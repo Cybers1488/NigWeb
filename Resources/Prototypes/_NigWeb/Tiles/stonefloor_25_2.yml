@@ -1,0 +1,12 @@
+- type: tile
+  id: NigWebFloorStone25
+  parent: BaseStationTile
+  name: каменный пол (кусок)
+  description: Осколок старого каменного пола.
+  sprite: /Textures/_NigWeb/Tiles/stonefloor_25_2.png
+  variants: 1
+  placementVariants:
+  - 1.0
+  deconstructTools: []
+  footstepSounds:
+    collection: NigWebFootstepStone

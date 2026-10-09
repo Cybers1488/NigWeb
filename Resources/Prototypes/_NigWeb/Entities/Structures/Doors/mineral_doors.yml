@@ -1,0 +1,43 @@
+- type: entity
+  id: NigWebMineralDoorX
+  parent: Airlock
+  name: металлическая дверь
+  description: Массивная металлическая дверь.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Doors/mineral_door.rsi
+  - type: Door
+    openSound:
+      path: /Audio/Machines/_NigWeb/maint_open.ogg
+    closeSound:
+      path: /Audio/Machines/_NigWeb/maint_close.ogg
+    denySound:
+      path: /Audio/Machines/airlock_deny.ogg
+    openTimeOne: 0.4
+    openTimeTwo: 0.1
+    closeTimeOne: 0.4
+    closeTimeTwo: 0.1
+    openingAnimationTime: 0.5
+    closingAnimationTime: 0.5
+
+- type: entity
+  id: NigWebMineralDoorY
+  parent: AirlockGlass
+  name: металлическая дверь (пробитая с дырками)
+  description: Металлическая дверь со следами повреждений (вертикальная).
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Doors/mineral_ydoor.rsi
+  - type: Door
+    openSound:
+      path: /Audio/Machines/_NigWeb/maint_open.ogg
+    closeSound:
+      path: /Audio/Machines/_NigWeb/maint_close.ogg
+    denySound:
+      path: /Audio/Machines/airlock_deny.ogg
+    openTimeOne: 0.4
+    openTimeTwo: 0.1
+    closeTimeOne: 0.4
+    closeTimeTwo: 0.1
+    openingAnimationTime: 0.5
+    closingAnimationTime: 0.5
