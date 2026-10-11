@@ -1,0 +1,40 @@
+- type: entity
+  id: NigWebWallPlanetRock
+  parent: BaseWall
+  name: "каменная порода"
+  suffix: NigWeb
+  description: Огромная скала.
+  components:
+    - type: SoundOnGather
+      sound:
+        collection: NigWebPickaxeHit
+    - type: Gatherable
+      toolWhitelist:
+        tags: []
+    - type: Damageable
+      damageContainer: StructuralInorganic
+      damageModifierSet: Rock
+    - type: Icon
+      sprite: _NigWeb/Structures/Walls/cave2.rsi
+      state: cave_0
+    - type: Sprite
+      sprite: _NigWeb/Structures/Walls/cave2.rsi
+      layers:
+        - state: cave_0
+    - type: IconSmooth
+      key: walls
+      base: cave_
+      mode: CardinalFlags
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 200
+          behaviors:
+            - !type:DoActsBehavior
+              acts: ["Destruction"]
+            - !type:PlaySoundBehavior
+              sound:
+                path: /Audio/Effects/_NigWeb/meteorimpact.ogg
+                params:
+                  volume: -2

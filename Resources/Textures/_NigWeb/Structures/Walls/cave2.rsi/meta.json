@@ -1,0 +1,91 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Lifeweb",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "cave_0",
+            "dirs": 1,
+            "frames": 1
+        },
+        {
+            "name": "cave_1",
+            "dirs": 1,
+            "frames": 1
+        },
+        {
+            "name": "cave_2",
+            "dirs": 1,
+            "frames": 1
+        },
+        {
+            "name": "cave_3",
+            "dirs": 1,
+            "frames": 1
+        },
+        {
+            "name": "cave_4",
+            "dirs": 1,
+            "frames": 1
+        },
+        {
+            "name": "cave_5",
+            "dirs": 1,
+            "frames": 1
+        },
+        {
+            "name": "cave_6",
+            "dirs": 1,
+            "frames": 1
+        },
+        {
+            "name": "cave_7",
+            "dirs": 1,
+            "frames": 1
+        },
+        {
+            "name": "cave_8",
+            "dirs": 1,
+            "frames": 1
+        },
+        {
+            "name": "cave_9",
+            "dirs": 1,
+            "frames": 1
+        },
+        {
+            "name": "cave_10",
+            "dirs": 1,
+            "frames": 1
+        },
+        {
+            "name": "cave_11",
+            "dirs": 1,
+            "frames": 1
+        },
+        {
+            "name": "cave_12",
+            "dirs": 1,
+            "frames": 1
+        },
+        {
+            "name": "cave_13",
+            "dirs": 1,
+            "frames": 1
+        },
+        {
+            "name": "cave_14",
+            "dirs": 1,
+            "frames": 1
+        },
+        {
+            "name": "cave_15",
+            "dirs": 1,
+            "frames": 1
+        }
+    ]
+}

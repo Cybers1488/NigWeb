@@ -1,0 +1,11 @@
+- type: tile
+  id: NigWebFloorPlanetRock
+  name: грязь
+  sprite: /Textures/_NigWeb/Tiles/planet_mud.png
+  baseTurf: Space
+  isSubfloor: true
+  footstepSounds:
+    collection: NigWebFootstepMud
+  heatCapacity: 10000
+  weather: true
+  friction: 1.5

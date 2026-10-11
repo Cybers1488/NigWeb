@@ -1,0 +1,27 @@
+﻿
+- type: biomeTemplate
+  id: NigWebPlanet
+  layers:
+    - !type:BiomeEntityLayer
+      threshold: -0.20
+      noise:
+        seed: 0
+        frequency: 0.04
+        noiseType: Cellular
+        fractalType: FBm
+        octaves: 5
+        lacunarity: 2
+        cellularDistanceFunction: Euclidean
+        cellularReturnType: Distance2
+      allowedTiles:
+        - NigWebFloorPlanetRock
+      entities:
+        - NigWebWallPlanetRock
+
+    - !type:BiomeDummyLayer
+      id: Loot
+
+    - !type:BiomeTileLayer
+      threshold: -1
+      tile: NigWebFloorPlanetRock
+

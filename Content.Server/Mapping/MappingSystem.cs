@@ -75,16 +75,25 @@ public sealed class MappingSystem : EntitySystem
             }
 
             _currentlyAutosaving[uid] = (CalculateNextTime(), name);
-            var saveDir = Path.Combine(_cfg.GetCVar(CCVars.AutosaveDirectory), name).Replace(Path.DirectorySeparatorChar, '/');
-            _resMan.UserData.CreateDir(new ResPath(saveDir).ToRootedPath());
+            try
+            {
+                var dirClean = _cfg.GetCVar(CCVars.AutosaveDirectory).Replace('\\', '/');
+                var nameClean = name.Replace('\\', '/');
+                var saveDir = new ResPath(dirClean) / nameClean;
+                _resMan.UserData.CreateDir(saveDir.ToRootedPath());
 
-            var path = new ResPath(Path.Combine(saveDir, $"{DateTime.Now:yyyy-M-dd_HH.mm.ss}-AUTO.yml"));
-            Log.Info($"Autosaving map {name} ({uid}) to {path}. Next save in {ReadableTimeLeft(uid)} seconds.");
+                var path = saveDir / $"{DateTime.Now:yyyy-M-dd_HH.mm.ss}-AUTO.yml";
+                Log.Info($"[MappingSystem] Autosaving map {name} ({uid}) to {path}. Next save in {ReadableTimeLeft(uid)} seconds.");
 
-            if (HasComp<MapComponent>(uid))
-                _loader.TrySaveMap(uid, path);
-            else
-                _loader.TrySaveGrid(uid, path);
+                if (HasComp<MapComponent>(uid))
+                    _loader.TrySaveMap(uid, path);
+                else
+                    _loader.TrySaveGrid(uid, path);
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"[MappingSystem] Failed to autosave map {name} ({uid}): {ex}");
+            }
         }
     }
 

@@ -1,5 +1,17 @@
-﻿- type: soundCollection
-  id: NigWebDoubleDoorOpen
+- type: soundCollection
+  id: NigWebFootstepMud
   files:
-  - /Audio/Machines/_NigWeb/double_open1.ogg
-  - /Audio/Machines/_NigWeb/double_open2.ogg
+    - /Audio/_NigWeb/Footsteps/mud_01.ogg
+    - /Audio/_NigWeb/Footsteps/mud_02.ogg
+    - /Audio/_NigWeb/Footsteps/mud_03.ogg
+    - /Audio/_NigWeb/Footsteps/mud_04.ogg
+    - /Audio/_NigWeb/Footsteps/mud_05.ogg
+
+- type: soundCollection
+  id: NigWebPickaxeHit
+  files:
+    - /Audio/Effects/_NigWeb/npc_human_pickaxe_01.ogg
+    - /Audio/Effects/_NigWeb/npc_human_pickaxe_02.ogg
+    - /Audio/Effects/_NigWeb/npc_human_pickaxe_03.ogg
+    - /Audio/Effects/_NigWeb/npc_human_pickaxe_05.ogg
+
