@@ -1,0 +1,261 @@
+# SPDX-License-Identifier: MIT
+
+- type: decal
+  id: SunOfEternalNight
+  tags: ["blood", "lifeweb", "cult", "sun"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night.rsi
+    state: sun
+
+- type: decal
+  id: SunOfEternalNight_0_0
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_0_0
+
+- type: decal
+  id: SunOfEternalNight_1_0
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_1_0
+
+- type: decal
+  id: SunOfEternalNight_2_0
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_2_0
+
+- type: decal
+  id: SunOfEternalNight_3_0
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_3_0
+
+- type: decal
+  id: SunOfEternalNight_4_0
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_4_0
+
+- type: decal
+  id: SunOfEternalNight_0_1
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_0_1
+
+- type: decal
+  id: SunOfEternalNight_1_1
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_1_1
+
+- type: decal
+  id: SunOfEternalNight_2_1
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_2_1
+
+- type: decal
+  id: SunOfEternalNight_3_1
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_3_1
+
+- type: decal
+  id: SunOfEternalNight_4_1
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_4_1
+
+- type: decal
+  id: SunOfEternalNight_0_2
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_0_2
+
+- type: decal
+  id: SunOfEternalNight_1_2
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_1_2
+
+- type: decal
+  id: SunOfEternalNight_2_2
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_2_2
+
+- type: decal
+  id: SunOfEternalNight_3_2
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_3_2
+
+- type: decal
+  id: SunOfEternalNight_4_2
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_4_2
+
+- type: decal
+  id: SunOfEternalNight_0_3
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_0_3
+
+- type: decal
+  id: SunOfEternalNight_1_3
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_1_3
+
+- type: decal
+  id: SunOfEternalNight_2_3
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_2_3
+
+- type: decal
+  id: SunOfEternalNight_3_3
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_3_3
+
+- type: decal
+  id: SunOfEternalNight_4_3
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_4_3
+
+- type: decal
+  id: SunOfEternalNight_0_4
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_0_4
+
+- type: decal
+  id: SunOfEternalNight_1_4
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_1_4
+
+- type: decal
+  id: SunOfEternalNight_2_4
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_2_4
+
+- type: decal
+  id: SunOfEternalNight_3_4
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_3_4
+
+- type: decal
+  id: SunOfEternalNight_4_4
+  tags: ["blood", "lifeweb", "cult", "sun", "sun_tile"]
+  defaultCleanable: false
+  defaultCustomColor: false
+  defaultSnap: true
+  sprite:
+    sprite: _NigWeb/Decals/sun_of_eternal_night_tiles.rsi
+    state: sun_4_4

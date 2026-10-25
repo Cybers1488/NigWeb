@@ -1,0 +1,301 @@
+# SPDX-License-Identifier: MIT
+
+# Tags
+- type: Tag
+  id: Gladius
+
+- type: Tag
+  id: MagazineMagnum66
+
+# Combat Gladius
+- type: entity
+  name: Гладиус Карнифичина Экзекутор
+  parent: [ BaseSword, BaseSecurityContraband ]
+  id: WeaponGladius
+  description: Двуручный боевой гладиус Ордена Усеченной Плоти с широким листовидным клинком. Создан для сокрушительного двуручного хвата, вспарывающего кости и плоть грешников во имя Матери Бойни.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Melee/gladius.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - Gladius
+    - Sidearm
+  - type: MeleeWeapon
+    attackRate: 1.2
+    damage:
+      types:
+        Slash: 16
+        Piercing: 12
+      woundSeverityMultipliers:
+        Slash: 2.0
+        Piercing: 2.0
+    soundHit:
+      collection: NigWebSwordHit
+  - type: Wieldable
+  - type: MeleeRequiresWield
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 10
+        Piercing: 8
+  - type: UseDelay
+    delay: 0.5
+  - type: Item
+    size: Large
+    shape:
+    - 0,0,0,2
+  - type: Execution
+    doAfterDuration: 3.5
+    decapitation: true
+
+# Gladius Sheath
+- type: entity
+  parent: [ ClothingBeltBase, BaseSecurityContraband ]
+  id: GladiusSheath
+  name: Тека Гладии Карнифичис
+  description: Сакральные ножны из тисненой сыромятной кожи и черненой бронзы для надежного ношения клинка на поясе или спине.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Melee/gladius_sheath.rsi
+    layers:
+    - state: sheath-empty
+      map: ["sheath-layer"]
+  - type: Clothing
+    sprite: _NigWeb/Objects/Weapons/Melee/gladius_sheath.rsi
+    quickEquip: false
+    equipSound:
+      collection: NigWebSwordSheath
+    unequipSound:
+      collection: NigWebSwordUnsheath
+    slots:
+    - Belt
+    - Back
+  - type: Item
+    size: Normal
+  - type: ItemSlots
+    slots:
+      item:
+        name: Gladius
+        insertVerbText: sheath-insert-verb
+        ejectVerbText: sheath-eject-verb
+        insertSound:
+          collection: NigWebSwordSheath
+        ejectSound:
+          collection: NigWebSwordUnsheath
+        whitelist:
+          tags:
+          - Gladius
+  - type: ItemMapper
+    mapLayers:
+      sheath-full:
+        whitelist:
+          tags:
+          - Gladius
+  - type: Appearance
+
+# Magnum 66 Pistol
+- type: entity
+  name: Magnum 66
+  parent: [ BaseWeaponPistol, BaseSecurityContraband ]
+  id: WeaponPistolMagnum66
+  description: A devastating high-caliber semi-automatic service pistol favored by Alguacils. Feeds from .357 Magnum magazines.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Guns/magnum66.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _NigWeb/Objects/Weapons/Guns/magnum66.rsi
+    quickEquip: false
+    equipSound:
+      path: /Audio/_NigWeb/Weapons/Guns/Reload/magnum_safety.ogg
+    unequipSound:
+      path: /Audio/_NigWeb/Weapons/Guns/Reload/magnum_safety.ogg
+    slots:
+    - suitStorage
+    - Belt
+  - type: Gun
+    minAngle: 1.5
+    maxAngle: 7
+    angleIncrease: 2.5
+    angleDecay: 3.5
+    fireRate: 2.5
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Guns/Gunshots/magnum66.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: MagazineMagnum66
+        insertSound: /Audio/_NigWeb/Weapons/Guns/Reload/magnum_reload.ogg
+        ejectSound: /Audio/_NigWeb/Weapons/Guns/Reload/magnum_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineMagnum66
+            - MagazineMagnum
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeMagnum
+
+# Magazine .357 (Magnum 66)
+- type: entity
+  parent: [ BaseMagazineMagnum, BaseSecurityContraband ]
+  id: MagazineMagnum66
+  name: pistol magazine (.357 Magnum)
+  description: An 8-round single-stack steel magazine for the Magnum 66 pistol.
+  components:
+  - type: Tag
+    tags:
+      - MagazineMagnum66
+      - MagazineMagnum
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+        - CartridgeMagnum
+    proto: CartridgeMagnum
+    capacity: 8
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Guns/magazine_357.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+
+- type: entity
+  parent: MagazineMagnum66
+  id: MagazineMagnum66Empty
+  name: pistol magazine (.357 Magnum empty)
+  suffix: Empty
+  components:
+  - type: BallisticAmmoProvider
+    proto: null
+
+# Ammo Box .357
+- type: entity
+  parent: BaseMagazineBoxMagnum
+  id: MagazineBoxMagnum357
+  name: ammunition box (.357 Magnum)
+  description: A rugged heavy cardboard box packed with 14 rounds of hard-hitting .357 Magnum cartridges.
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeMagnum
+    capacity: 14
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Guns/ammo_box_357.rsi
+    layers:
+    - state: base
+
+# Wax Candle
+- type: entity
+  parent: Candle
+  id: AlguacilCandle
+  name: Цереус Экпиационис
+  description: Толстая сакральная свеча из очищенного топленого жира, возжигаемая во время литургий и искупления грехов плоти.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Specific/candles.rsi
+    layers:
+    - state: candle
+  - type: FireVisuals
+    sprite: _NigWeb/Objects/Specific/candles.rsi
+    normalState: flame
+
+# Pre-lit Wax Candle
+- type: entity
+  parent: CandleInfinite
+  id: AlguacilCandleLit
+  name: Цереус Экпиационис (возженный)
+  suffix: Lit
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Specific/candles.rsi
+    layers:
+    - state: candle
+    - state: flame
+      shader: unshaded
+  - type: PointLight
+    color: "#e39c40"
+    radius: 3.0
+    energy: 3.5
+
+# Lifeweb Pump-Action Shotgun
+- type: entity
+  name: shotgun
+  parent: [BaseWeaponShotgun, BaseGunWieldable, BaseSecurityContraband]
+  id: WeaponShotgunLifeweb
+  description: A rugged, heavy pump-action combat shotgun favored by fortress guards for sweeps and close-quarters defense.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Guns/shotgun.rsi
+    layers:
+    - state: base
+      map: [ "enum.GunVisualLayers.Base" ]
+  - type: Clothing
+    sprite: _NigWeb/Objects/Weapons/Guns/shotgun.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: Gun
+    fireRate: 1.2
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Guns/Gunshots/shotgun.ogg
+  - type: GunRequiresWield
+  - type: BallisticAmmoProvider
+    autoCycle: false
+    capacity: 6
+    proto: ShellShotgunLifeweb
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Guns/Reload/shotgun_pump.ogg
+    soundInsert:
+      path: /Audio/_NigWeb/Weapons/Guns/Reload/shotgun_insert.ogg
+
+# Lifeweb 12 Gauge Shotgun Shell
+- type: entity
+  parent: [ BaseShellShotgun, BaseSecurityContraband ]
+  id: ShellShotgunLifeweb
+  name: shotgun shell (12 Gauge)
+  description: A heavy 12 gauge lead slug cartridge with a brass rim.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Guns/shell_12g.rsi
+    layers:
+      - state: base
+        map: [ "enum.AmmoVisualLayers.Base" ]
+  - type: CartridgeAmmo
+    proto: PelletShotgunSlug
+  - type: SpentAmmoVisuals
+    state: "base"
+
+# Lifeweb 12 Gauge Ammo Box
+- type: entity
+  parent: AmmoProviderShotgunShell
+  id: BoxShotgunLifeweb
+  name: ammunition box (12 Gauge)
+  description: A rugged cardboard box containing 8 heavy 12 gauge shotgun shells.
+  components:
+  - type: BallisticAmmoProvider
+    proto: ShellShotgunLifeweb
+    capacity: 8
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Guns/ammo_box_12g.rsi
+    layers:
+    - state: base
+

@@ -323,3 +323,15 @@ Resources/Locale/ru-RU/_Goobstation/join-queue/queue-screen.ftl
 
 config.json
 .github/workflows/update-prs.yaml
+
+# Temporary workspace scripts and scratch files
+scratch/
+check_bed.py
+check_bed2.py
+error.glsl
+extract_previews.py
+find_defs.py
+inspect_items.py
+inspect_states.py
+search_dmis.py
+test_sine.ogg

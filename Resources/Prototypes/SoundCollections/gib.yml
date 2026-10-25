@@ -10,5 +10,10 @@
 - type: soundCollection
   id: blood
   files:
-  - /Audio/Effects/Fluids/blood1.ogg
-  - /Audio/Effects/Fluids/blood2.ogg
+  - /Audio/_NigWeb/Blood/blood_splat.ogg
+  - /Audio/_NigWeb/Blood/smash1.ogg
+  - /Audio/_NigWeb/Blood/smash2.ogg
+  - /Audio/_NigWeb/Blood/smash3.ogg
+  - /Audio/_NigWeb/Blood/fallsmash.ogg
+  - /Audio/_NigWeb/Blood/squelch1.ogg
+  - /Audio/_NigWeb/Blood/splat.ogg

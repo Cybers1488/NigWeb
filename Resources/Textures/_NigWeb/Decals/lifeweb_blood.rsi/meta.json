@@ -1,1 +1,480 @@
-{"version": 1, "size": {"x": 32, "y": 32}, "states": [{"name": "gib1"},{"name": "gib1_flesh"},{"name": "gib2"},{"name": "gib2_flesh"},{"name": "gib3_0_0"},{"name": "gib3_1_0"},{"name": "gib3_2_0"},{"name": "gib3_3_0"},{"name": "gib3_flesh_0_0"},{"name": "gib3_flesh_1_0"},{"name": "gib3_flesh_2_0"},{"name": "gib3_flesh_3_0"},{"name": "gib5_0_0"},{"name": "gib5_1_0"},{"name": "gib5_2_0"},{"name": "gib5_3_0"},{"name": "gib5_flesh_0_0"},{"name": "gib5_flesh_1_0"},{"name": "gib5_flesh_2_0"},{"name": "gib5_flesh_3_0"},{"name": "gib6_0_0"},{"name": "gib6_1_0"},{"name": "gib6_2_0"},{"name": "gib6_3_0"},{"name": "gib6_flesh_0_0"},{"name": "gib6_flesh_1_0"},{"name": "gib6_flesh_2_0"},{"name": "gib6_flesh_3_0"},{"name": "gibarm_0_0"},{"name": "gibarm_1_0"},{"name": "gibarm_2_0"},{"name": "gibarm_3_0"},{"name": "gibarm_flesh_0_0"},{"name": "gibarm_flesh_1_0"},{"name": "gibarm_flesh_2_0"},{"name": "gibarm_flesh_3_0"},{"name": "gibbear1"},{"name": "gibbear2"},{"name": "gibbear3"},{"name": "gibbear4"},{"name": "gibbear5"},{"name": "gibbearcore"},{"name": "gibbearhead_0_0"},{"name": "gibbearhead_1_0"},{"name": "gibbearhead_2_0"},{"name": "gibbearhead_3_0"},{"name": "gibdown1"},{"name": "gibdown1_flesh"},{"name": "gibhead_0_0"},{"name": "gibhead_1_0"},{"name": "gibhead_2_0"},{"name": "gibhead_3_0"},{"name": "gibleg_0_0"},{"name": "gibleg_1_0"},{"name": "gibleg_2_0"},{"name": "gibleg_3_0"},{"name": "gibleg_flesh_0_0"},{"name": "gibleg_flesh_1_0"},{"name": "gibleg_flesh_2_0"},{"name": "gibleg_flesh_3_0"},{"name": "gibmid1"},{"name": "gibmid2"},{"name": "gibmid2_flesh"},{"name": "gibmid3"},{"name": "gibmid3_flesh"},{"name": "gibtorso_0_0"},{"name": "gibtorso_1_0"},{"name": "gibtorso_2_0"},{"name": "gibtorso_3_0"},{"name": "gibtorso_flesh_0_0"},{"name": "gibtorso_flesh_1_0"},{"name": "gibtorso_flesh_2_0"},{"name": "gibtorso_flesh_3_0"},{"name": "gibup1"},{"name": "gibup1_flesh"},{"name": "mfloor1"},{"name": "mfloor10"},{"name": "mfloor11"},{"name": "mfloor12"},{"name": "mfloor2"},{"name": "mfloor3"},{"name": "mfloor4"},{"name": "mfloor5"},{"name": "mfloor6"},{"name": "mfloor7"},{"name": "mfloor8"},{"name": "mfloor9"},{"name": "mgibbl1"},{"name": "mgibbl2"},{"name": "mgibbl3"},{"name": "mgibbl4"},{"name": "mgibbl5"}]}
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "gib1"
+    },
+    {
+      "name": "gib1_flesh"
+    },
+    {
+      "name": "gib2"
+    },
+    {
+      "name": "gib2_flesh"
+    },
+    {
+      "name": "gib3_0_0"
+    },
+    {
+      "name": "gib3_1_0"
+    },
+    {
+      "name": "gib3_2_0"
+    },
+    {
+      "name": "gib3_3_0"
+    },
+    {
+      "name": "gib3_flesh_0_0"
+    },
+    {
+      "name": "gib3_flesh_1_0"
+    },
+    {
+      "name": "gib3_flesh_2_0"
+    },
+    {
+      "name": "gib3_flesh_3_0"
+    },
+    {
+      "name": "gib5_0_0"
+    },
+    {
+      "name": "gib5_1_0"
+    },
+    {
+      "name": "gib5_2_0"
+    },
+    {
+      "name": "gib5_3_0"
+    },
+    {
+      "name": "gib5_flesh_0_0"
+    },
+    {
+      "name": "gib5_flesh_1_0"
+    },
+    {
+      "name": "gib5_flesh_2_0"
+    },
+    {
+      "name": "gib5_flesh_3_0"
+    },
+    {
+      "name": "gib6_0_0"
+    },
+    {
+      "name": "gib6_1_0"
+    },
+    {
+      "name": "gib6_2_0"
+    },
+    {
+      "name": "gib6_3_0"
+    },
+    {
+      "name": "gib6_flesh_0_0"
+    },
+    {
+      "name": "gib6_flesh_1_0"
+    },
+    {
+      "name": "gib6_flesh_2_0"
+    },
+    {
+      "name": "gib6_flesh_3_0"
+    },
+    {
+      "name": "gibarm_0_0"
+    },
+    {
+      "name": "gibarm_1_0"
+    },
+    {
+      "name": "gibarm_2_0"
+    },
+    {
+      "name": "gibarm_3_0"
+    },
+    {
+      "name": "gibarm_flesh_0_0"
+    },
+    {
+      "name": "gibarm_flesh_1_0"
+    },
+    {
+      "name": "gibarm_flesh_2_0"
+    },
+    {
+      "name": "gibarm_flesh_3_0"
+    },
+    {
+      "name": "gibbear1"
+    },
+    {
+      "name": "gibbear2"
+    },
+    {
+      "name": "gibbear3"
+    },
+    {
+      "name": "gibbear4"
+    },
+    {
+      "name": "gibbear5"
+    },
+    {
+      "name": "gibbearcore"
+    },
+    {
+      "name": "gibbearhead_0_0"
+    },
+    {
+      "name": "gibbearhead_1_0"
+    },
+    {
+      "name": "gibbearhead_2_0"
+    },
+    {
+      "name": "gibbearhead_3_0"
+    },
+    {
+      "name": "gibdown1"
+    },
+    {
+      "name": "gibdown1_flesh"
+    },
+    {
+      "name": "gibhead_0_0"
+    },
+    {
+      "name": "gibhead_1_0"
+    },
+    {
+      "name": "gibhead_2_0"
+    },
+    {
+      "name": "gibhead_3_0"
+    },
+    {
+      "name": "gibleg_0_0"
+    },
+    {
+      "name": "gibleg_1_0"
+    },
+    {
+      "name": "gibleg_2_0"
+    },
+    {
+      "name": "gibleg_3_0"
+    },
+    {
+      "name": "gibleg_flesh_0_0"
+    },
+    {
+      "name": "gibleg_flesh_1_0"
+    },
+    {
+      "name": "gibleg_flesh_2_0"
+    },
+    {
+      "name": "gibleg_flesh_3_0"
+    },
+    {
+      "name": "gibmid1"
+    },
+    {
+      "name": "gibmid2"
+    },
+    {
+      "name": "gibmid2_flesh"
+    },
+    {
+      "name": "gibmid3"
+    },
+    {
+      "name": "gibmid3_flesh"
+    },
+    {
+      "name": "gibtorso_0_0"
+    },
+    {
+      "name": "gibtorso_1_0"
+    },
+    {
+      "name": "gibtorso_2_0"
+    },
+    {
+      "name": "gibtorso_3_0"
+    },
+    {
+      "name": "gibtorso_flesh_0_0"
+    },
+    {
+      "name": "gibtorso_flesh_1_0"
+    },
+    {
+      "name": "gibtorso_flesh_2_0"
+    },
+    {
+      "name": "gibtorso_flesh_3_0"
+    },
+    {
+      "name": "gibup1"
+    },
+    {
+      "name": "gibup1_flesh"
+    },
+    {
+      "name": "mfloor1"
+    },
+    {
+      "name": "mfloor10"
+    },
+    {
+      "name": "mfloor11"
+    },
+    {
+      "name": "mfloor12"
+    },
+    {
+      "name": "mfloor2"
+    },
+    {
+      "name": "mfloor3"
+    },
+    {
+      "name": "mfloor4"
+    },
+    {
+      "name": "mfloor5"
+    },
+    {
+      "name": "mfloor6"
+    },
+    {
+      "name": "mfloor7"
+    },
+    {
+      "name": "mfloor8"
+    },
+    {
+      "name": "mfloor9"
+    },
+    {
+      "name": "mgibbl1"
+    },
+    {
+      "name": "mgibbl2"
+    },
+    {
+      "name": "mgibbl3"
+    },
+    {
+      "name": "mgibbl4"
+    },
+    {
+      "name": "mgibbl5"
+    },
+    {
+      "name": "dir_splatter_1_0_0"
+    },
+    {
+      "name": "dir_splatter_1_1_0"
+    },
+    {
+      "name": "dir_splatter_1_2_0"
+    },
+    {
+      "name": "dir_splatter_1_3_0"
+    },
+    {
+      "name": "dir_splatter_1_4_0"
+    },
+    {
+      "name": "dir_splatter_1_5_0"
+    },
+    {
+      "name": "dir_splatter_1_6_0"
+    },
+    {
+      "name": "dir_splatter_1_7_0"
+    },
+    {
+      "name": "dir_splatter_2_0_0"
+    },
+    {
+      "name": "dir_splatter_2_1_0"
+    },
+    {
+      "name": "dir_splatter_2_2_0"
+    },
+    {
+      "name": "dir_splatter_2_3_0"
+    },
+    {
+      "name": "dir_splatter_2_4_0"
+    },
+    {
+      "name": "dir_splatter_2_5_0"
+    },
+    {
+      "name": "dir_splatter_2_6_0"
+    },
+    {
+      "name": "dir_splatter_2_7_0"
+    },
+    {
+      "name": "splatter1_0_0"
+    },
+    {
+      "name": "splatter1_1_0"
+    },
+    {
+      "name": "splatter1_2_0"
+    },
+    {
+      "name": "splatter1_3_0"
+    },
+    {
+      "name": "splatter1_4_0"
+    },
+    {
+      "name": "splatter1_5_0"
+    },
+    {
+      "name": "splatter1_6_0"
+    },
+    {
+      "name": "splatter1_7_0"
+    },
+    {
+      "name": "splatter2_0_0"
+    },
+    {
+      "name": "splatter2_1_0"
+    },
+    {
+      "name": "splatter2_2_0"
+    },
+    {
+      "name": "splatter2_3_0"
+    },
+    {
+      "name": "splatter2_4_0"
+    },
+    {
+      "name": "splatter2_5_0"
+    },
+    {
+      "name": "splatter2_6_0"
+    },
+    {
+      "name": "splatter2_7_0"
+    },
+    {
+      "name": "splatter3_0_0"
+    },
+    {
+      "name": "splatter3_1_0"
+    },
+    {
+      "name": "splatter3_2_0"
+    },
+    {
+      "name": "splatter3_3_0"
+    },
+    {
+      "name": "splatter4_0_0"
+    },
+    {
+      "name": "splatter4_1_0"
+    },
+    {
+      "name": "splatter4_2_0"
+    },
+    {
+      "name": "splatter4_3_0"
+    },
+    {
+      "name": "splatter5_0_0"
+    },
+    {
+      "name": "splatter5_1_0"
+    },
+    {
+      "name": "splatter5_2_0"
+    },
+    {
+      "name": "splatter5_3_0"
+    },
+    {
+      "name": "splatter6_0_0"
+    },
+    {
+      "name": "splatter6_1_0"
+    },
+    {
+      "name": "splatter6_2_0"
+    },
+    {
+      "name": "splatter6_3_0"
+    },
+    {
+      "name": "splatter6_4_0"
+    },
+    {
+      "name": "splatter6_5_0"
+    },
+    {
+      "name": "splatter6_6_0"
+    },
+    {
+      "name": "splatter6_7_0"
+    },
+    {
+      "name": "squirt_0_0"
+    },
+    {
+      "name": "squirt_1_0"
+    },
+    {
+      "name": "squirt_2_0"
+    },
+    {
+      "name": "squirt_3_0"
+    },
+    {
+      "name": "squirt_4_0"
+    },
+    {
+      "name": "squirt_5_0"
+    },
+    {
+      "name": "squirt_6_0"
+    },
+    {
+      "name": "squirt_7_0"
+    },
+    {
+      "name": "rav-wallsmall"
+    },
+    {
+      "name": "rav-wallmedium"
+    },
+    {
+      "name": "wallsmall"
+    },
+    {
+      "name": "wallmedium"
+    },
+    {
+      "name": "walllarge"
+    }
+  ]
+}

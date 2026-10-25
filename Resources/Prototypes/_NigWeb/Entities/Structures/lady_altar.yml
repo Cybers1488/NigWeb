@@ -1,0 +1,48 @@
+# SPDX-License-Identifier: MIT
+
+- type: entity
+  id: LadyChaliceAltar
+  name: "Mater Carnificinae (Матерь Кровавой Бойни)"
+  description: "Колоссальное фарфоровое изваяние Матери Бойни. Каждая капля мученической сукровицы и каждая отсеченная длань сдирают с нее саван, приближая Кровавое Вознесение."
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.5,-1.0,1.5,1.0"
+        density: 1000
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Sprite
+    sprite: _NigWeb/Structures/lady_altar.rsi
+    layers:
+    - state: stage1
+      map: ["lady_layer"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.LadyAltarVisuals.Stage:
+        lady_layer:
+          1: { state: stage1 }
+          2: { state: stage2 }
+          3: { state: stage3 }
+          4: { state: stage4 }
+          5: { state: stage5 }
+  - type: LadyAltar
+  - type: InteractionOutline
+  - type: AmbientSound
+    enabled: true
+    volume: -13
+    range: 12
+    sound:
+      path: /Audio/_NigWeb/Lady/lady_sorrow_choir.ogg

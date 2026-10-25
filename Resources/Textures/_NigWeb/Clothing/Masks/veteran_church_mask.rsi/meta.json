@@ -1,0 +1,29 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Lifeweb / OpenSourceWeb port",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "icon"
+        },
+        {
+            "name": "icon-combat"
+        },
+        {
+            "name": "equipped-MASK",
+            "directions": 4
+        },
+        {
+            "name": "combat-equipped-MASK",
+            "directions": 4
+        },
+        {
+            "name": "equipped-MASK-combat",
+            "directions": 4
+        }
+    ]
+}

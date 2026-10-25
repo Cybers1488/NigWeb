@@ -1,0 +1,70 @@
+- type: entity
+  name: Mater Carnificinae (Матерь Бойни)
+  id: MobLadyOfSorrow
+  parent:
+  - BaseMob
+  - MobDamageable
+  - MobCombat
+  description: Колоссальное воплощение священного мученичества и кровавой бойни. Её печальный взор обращен в вечность, а вокруг порхают златоликие херувимы.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Mobs/Bosses/lady_of_sorrow.rsi
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+  - type: Appearance
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+      Dead:
+        Base: dead
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 1.5
+        density: 1500
+        mask:
+        - LargeMobMask
+        layer:
+        - LargeMobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      3500: Dead
+  - type: Damageable
+    damageContainer: Biological
+  - type: Tag
+    tags:
+    - CannotSuicide
+  - type: AmbientSound
+    enabled: true
+    volume: -14
+    range: 12
+    sound:
+      path: /Audio/_NigWeb/Lady/lady_sorrow_choir.ogg
+  - type: PointLight
+    radius: 6.0
+    energy: 1.5
+    color: "#e8d8b0"
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.2
+    baseSprintSpeed: 1.8
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Effects/holy.ogg
+    damage:
+      types:
+        Blunt: 30
+        Structural: 150
+
+- type: entity
+  name: Святилище Матери Бойни
+  id: StructureLadyOfSorrow
+  parent: LadyChaliceAltar

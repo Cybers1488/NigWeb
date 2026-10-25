@@ -1,0 +1,10 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: shader
+  id: GrimAtmosphere
+  kind: source
+  path: "/Textures/_NigWeb/Shaders/grim_atmosphere.swsl"
+  params:
+    hasLightTexture: false
+    intensity: 1.0
+    Zoom: 1.0

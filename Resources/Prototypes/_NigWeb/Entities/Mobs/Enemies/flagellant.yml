@@ -1,0 +1,86 @@
+- type: entity
+  name: Флагеллянт
+  id: MobFlagellant
+  parent:
+  - SimpleSpaceMobBase
+  - MobCombat
+  description: Фанатичный кающийся мученик в окровавленном капюшоне. Он хлещет себя и всех вокруг колючими бичами, не зная пощады ни к врагам, ни к собственной плоти.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Mobs/Enemies/flagellant.rsi
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base", "movement" ]
+      state: idle
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: walk
+    noMovementLayers:
+      movement:
+        state: idle
+  - type: Appearance
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: idle
+      Dead:
+        Base: dead
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.40
+        density: 120
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      85: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      45: 0.7
+  - type: Stamina
+    baseCritThreshold: 100
+  - type: Damageable
+    damageContainer: Biological
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 4.0
+  - type: MobAttackAnimation
+    attackStates:
+    - attack
+    - hard_attack
+    animationLength: 1.0
+    layerKey: movement
+  - type: MeleeWeapon
+    altDisarm: false
+    animation: WeaponArcClaw
+    soundHit:
+      path: /Audio/_NigWeb/Enemies/Flagellant/flagellant_hit.ogg
+    soundSwing:
+      collection: NigWebFlagellantAttack
+    damage:
+      types:
+        Slash: 14
+        Piercing: 6
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: NigWebFootstepFlagellant
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - DoorBumpOpener

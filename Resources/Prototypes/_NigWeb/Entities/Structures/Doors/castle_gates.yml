@@ -123,3 +123,16 @@
     sprite: _NigWeb/Structures/Doors/sgate_3x1.rsi
     snapCardinals: false
     offset: 1.0,0
+
+- type: entity
+  id: NigWebGateDoor
+  parent: NigWebCastleGate3x1
+  name: кованые врата цитадели
+  description: Огромные бронированные ворота цитадели.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Doors/gate_3x1.rsi
+    snapCardinals: false
+    offset: 1.0,0
+
+

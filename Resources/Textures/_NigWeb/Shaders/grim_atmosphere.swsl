@@ -1,0 +1,53 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Ultra-violent Grimdark post-processing shader for NigWeb.
+// Completely smooth & soft light-to-dark transitions with zero banding or jagged contours.
+// Dynamic incandescent warm light radiance, visceral arterial crimson blood, and deep grim darkness.
+
+uniform sampler2D SCREEN_TEXTURE;
+uniform sampler2D LIGHT_TEXTURE;
+uniform bool hasLightTexture;
+uniform highp float intensity;
+uniform highp float Zoom;
+
+void fragment() {
+    highp vec2 uv = UV;
+    highp vec4 baseCol = zTextureSpec(SCREEN_TEXTURE, uv);
+
+    // Continuous, smooth filmic contrast: deepens ambient gloom into realistic grim darkness without banding
+    highp vec3 color = pow(baseCol.rgb, vec3(mix(1.0, 1.25, intensity)));
+
+    // Blood & gore isolation: detects rich arterial crimson (high red, low green/blue)
+    highp float maxGB = max(color.g, color.b);
+    highp float redDominance = color.r - maxGB;
+    highp float bloodFactor = clamp((redDominance - 0.04) * 3.5, 0.0, 1.0) * intensity;
+
+    // Decayed grim world (desaturate bright colors down into stone, rust, and dirty iron)
+    highp float luma = zGrayscale(color);
+    highp vec3 desatWorld = mix(vec3(luma), color, mix(1.0, 0.65, intensity));
+    highp vec3 grimWorld = desatWorld * vec3(1.02, 0.98, 0.95);
+
+    // Deep, thick arterial crimson for blood, wounds, and gore
+    highp vec3 arterialBlood = vec3(
+        pow(color.r, 0.85) * 1.25,
+        color.g * 0.35,
+        color.b * 0.35
+    );
+
+    highp vec3 finalColor = mix(grimWorld, arterialBlood, bloodFactor);
+
+    // Atmospheric Polish: Incandescent warm glow for candles, fires, torches, and lanterns
+    if (hasLightTexture) {
+        highp vec4 lightSample = zTextureSpec(LIGHT_TEXTURE, uv);
+        highp float lightLuma = zGrayscale(lightSample.rgb);
+        // Detect warm color spectrum (high red/green, lower blue) in illuminated areas
+        highp float warmthFactor = clamp(lightSample.r - lightSample.b, 0.0, 1.0) * clamp(lightLuma * 1.6, 0.0, 1.0);
+        highp vec3 warmToned = finalColor * vec3(1.06, 1.02, 0.94);
+        finalColor = mix(finalColor, warmToned, warmthFactor * intensity * 0.45);
+    }
+
+    // Filmic micro-dither: eliminates 8-bit quantization banding in smooth dark gradients
+    highp float dither = fract(sin(dot(uv * 1024.0, vec2(12.9898, 78.233))) * 43758.5453);
+    finalColor += (dither - 0.5) * (1.2 / 255.0) * intensity;
+
+    COLOR = vec4(clamp(finalColor, 0.0, 1.0), baseCol.a);
+}

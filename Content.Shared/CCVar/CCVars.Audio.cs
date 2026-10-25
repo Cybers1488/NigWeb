@@ -68,4 +68,16 @@ public sealed partial class CCVars
     [CVarControl(AdminFlags.VarEdit)]
     public static readonly CVarDef<string> LobbyMusicCollection =
         CVarDef.Create("audio.lobby_music_collection", "LobbyMusic", CVar.REPLICATED | CVar.SERVER);
+
+    /// <summary>
+    /// Enables realistic physical environmental acoustics and EAX hardware reverb for world sounds.
+    /// </summary>
+    public static readonly CVarDef<bool> EnvironmentalReverb =
+        CVarDef.Create("audio.environmental_reverb", true, CVar.ARCHIVE | CVar.CLIENTONLY);
+
+    /// <summary>
+    /// Gain multiplier for environmental reverb reflections.
+    /// </summary>
+    public static readonly CVarDef<float> EnvironmentalReverbGain =
+        CVarDef.Create("audio.environmental_reverb_gain", 0.85f, CVar.ARCHIVE | CVar.CLIENTONLY);
 }

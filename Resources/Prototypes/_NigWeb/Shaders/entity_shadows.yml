@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: shader
+  id: ContactShadow
+  kind: source
+  path: "/Textures/_NigWeb/Shaders/contact_shadow.swsl"
+
+- type: shader
+  id: DirectionalShadow
+  kind: source
+  path: "/Textures/_NigWeb/Shaders/directional_shadow.swsl"

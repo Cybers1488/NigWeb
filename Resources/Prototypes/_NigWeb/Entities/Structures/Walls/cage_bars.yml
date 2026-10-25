@@ -1,0 +1,74 @@
+- type: entity
+  id: NigWebCageBars
+  parent: BaseStructure
+  name: решётка клетки
+  description: Массивные железные прутья темницы. Через них видно всё, что происходит внутри.
+  components:
+  - type: Sprite
+    drawdepth: Walls
+    sprite: _NigWeb/Structures/Walls/cage_bars.rsi
+    state: bars
+  - type: Icon
+    sprite: _NigWeb/Structures/Walls/cage_bars.rsi
+    state: bars
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        layer:
+        - GlassLayer
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: FlimsyMetallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: ["Breakage"]
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        path: /Audio/Weapons/grille_hit.ogg
+  - type: NigWebCageBars
+    brokenPrototype: NigWebCageBarsBroken
+
+- type: entity
+  id: NigWebCageBarsBroken
+  parent: BaseStructure
+  name: сломанная решётка клетки
+  description: Покорёженные и выломанные прутья темницы. Через пролом легко пролезть.
+  components:
+  - type: Sprite
+    drawdepth: Walls
+    sprite: _NigWeb/Structures/Walls/cage_bars.rsi
+    state: bars_broken
+  - type: Icon
+    sprite: _NigWeb/Structures/Walls/cage_bars.rsi
+    state: bars_broken
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: FlimsyMetallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: ["Destruction"]

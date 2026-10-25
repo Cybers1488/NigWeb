@@ -1,0 +1,480 @@
+# SPDX-License-Identifier: MIT
+
+# Wooden Bed
+- type: entity
+  id: BedCerberon
+  parent: Bed
+  name: wooden bed
+  description: A sturdy wooden bed with a coarse wool blanket and feather pillow.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Furniture/cerberon_bed.rsi
+    state: bed
+    noRot: true
+
+# Fortress Fireplace
+- type: entity
+  id: FortressFireplace
+  parent: BaseStructure
+  name: fortress fireplace
+  description: A massive stone fireplace with a crackling warm hearth.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decorations/fireplace.rsi
+    layers:
+      - state: fireplace
+      - state: fireplace_fire
+        shader: unshaded
+  - type: AmbientSound
+    volume: -3
+    range: 6
+    sound:
+      path: /Audio/_NigWeb/Ambience/fireplace_loop.ogg
+  - type: PointLight
+    radius: 4.5
+    energy: 3.5
+    color: "#FF7700"
+  - type: AlwaysHot
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 300
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+
+# Wall Mirror
+- type: entity
+  id: FortressMirror
+  parent: BaseWallmountGlass
+  name: wall mirror
+  description: An antique ornate wall-mounted mirror.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Wallmounts/mirror.rsi
+    state: mirror
+  - type: MagicMirror
+    changeHairSound: null
+    addSlotTime: 0
+    removeSlotTime: 0
+    selectSlotTime: 0
+    changeSlotTime: 0
+  - type: ActivatableUI
+    key: enum.MagicMirrorUiKey.Key
+    singleUser: true
+  - type: UserInterface
+    interfaces:
+      enum.MagicMirrorUiKey.Key:
+        type: MagicMirrorBoundUserInterface
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+
+# Fortress Carpet
+- type: entity
+  id: FortressCarpet
+  parent: BaseStructure
+  name: fortress carpet
+  description: A rich, heavy red carpet with fortress trim.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Furniture/carpets.rsi
+    state: carpet
+    drawdepth: FloorTiles
+  - type: Icon
+    sprite: _NigWeb/Structures/Furniture/carpets.rsi
+    state: carpet
+  - type: Tag
+    tags:
+    - Carpet
+  - type: Physics
+    canCollide: false
+  - type: Fixtures
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 10
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+
+- type: entity
+  id: FortressCarpetPart
+  parent: BaseStructure
+  name: fortress carpet edge
+  description: Edge border of a fortress carpet.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Furniture/carpets.rsi
+    state: carpet_part
+    drawdepth: FloorTiles
+  - type: Icon
+    sprite: _NigWeb/Structures/Furniture/carpets.rsi
+    state: carpet_part
+  - type: Tag
+    tags:
+    - Carpet
+  - type: Physics
+    canCollide: false
+  - type: Fixtures
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 10
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+
+# Alguacil Desk
+- type: entity
+  id: AlguacilDesk
+  parent: BaseStructure
+  name: alguacil desk
+  description: A heavy, austere oak desk used for writing warrants and reviewing interrogation reports.
+  components:
+  - type: Animateable
+  - type: PlaceableSurface
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 55
+        mask:
+          - TableMask
+        layer:
+          - TableLayer
+          - BulletImpassable
+  - type: SpriteFade
+  - type: Sprite
+    sprite: _NigWeb/Structures/Furniture/censor_desk.rsi
+    state: table
+  - type: Icon
+    sprite: _NigWeb/Structures/Furniture/censor_desk.rsi
+    state: table
+  - type: Climbable
+  - type: Bonkable
+    bonkDamage:
+      types:
+        Blunt: 4
+  - type: Clickable
+  - type: Tag
+    tags:
+      - Table
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+
+# Alguacil Desk End / Edge
+- type: entity
+  id: AlguacilDeskEnd
+  parent: AlguacilDesk
+  name: alguacil desk edge
+  description: The end piece of a heavy oak alguacil desk, allowing desks to be extended seamlessly across tiles.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Furniture/censor_desk.rsi
+    state: table_end
+  - type: Icon
+    sprite: _NigWeb/Structures/Furniture/censor_desk.rsi
+    state: table_end_icon
+
+# Fortress Leather Armchair
+- type: entity
+  id: FortressLeatherChair
+  parent: ChairBase
+  name: armchair
+  description: A comfortable deep leather armchair with carved dark wooden armrests.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Furniture/leather_chair.rsi
+    state: chair
+  - type: Icon
+    sprite: _NigWeb/Structures/Furniture/leather_chair.rsi
+    state: icon
+
+# Pendulum Grandfather Clock
+- type: entity
+  id: FortressPendulumClock
+  parent: BaseStructure
+  name: pendulum clock
+  description: An antique grandfather clock with a steady rhythmic pendulum swing.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Furniture/pendulum_clock.rsi
+    state: clock
+  - type: AmbientSound
+    volume: -2
+    range: 5
+    sound:
+      path: /Audio/_NigWeb/Ambience/clock_ticking.ogg
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.3,-0.45,0.3,0.45"
+        density: 80
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+
+# Wall Portrait (Painting)
+- type: entity
+  id: FortressPortrait
+  parent: BaseWallmount
+  name: ornate portrait
+  description: A formal portrait framed in heavy gilded oak, depicting a stern nobleman of the fortress.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Wallmounts/portrait.rsi
+    state: portrait
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+# Wall Torch (Permanent)
+- type: entity
+  id: FortressTorchWall
+  parent: BaseWallmount
+  name: wall torch
+  description: An iron wall-mounted torch bracket with a steadily burning torch.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Wallmounts/torchwall.rsi
+    layers:
+    - state: torch_on
+      shader: unshaded
+  - type: PointLight
+    radius: 4.5
+    energy: 3.2
+    color: "#FF8822"
+  - type: AlwaysHot
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+# Forensic Terminal
+- type: entity
+  id: AlguacilForensicTerminal
+  parent: BaseComputerAiAccess
+  name: forensic terminal
+  description: A specialized custody station terminal for logging fingerprints, ballistic reports, and criminal records.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Machines/forensic_terminal.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: base
+    - map: ["computerLayerScreen"]
+      state: screen
+      shader: unshaded
+  - type: GenericVisualizer
+    visuals:
+      enum.ComputerVisuals.Powered:
+        computerLayerScreen:
+          True: { visible: true, shader: unshaded }
+          False: { visible: false }
+  - type: CriminalRecordsConsole
+  - type: UserInterface
+    interfaces:
+      enum.CriminalRecordsConsoleKey.Key:
+        type: CriminalRecordsConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: ActivatableUI
+    key: enum.CriminalRecordsConsoleKey.Key
+  - type: EmitSoundOnUIOpen
+    sound:
+      collection: NigWebConsoleOpen
+      params:
+        volume: -2
+        variation: 0.05
+  - type: PointLight
+    radius: 1.5
+    energy: 3.5
+    color: "#28a745"
+
+# Secret Drawer / Weapon Drawer
+- type: entity
+  id: AlguacilChestDrawer
+  parent: BaseStructureDynamic
+  name: secret weapon drawer
+  description: A discreet wooden chest drawer reinforced with dark iron brackets, containing a concealed weapon compartment.
+  components:
+  - type: Transform
+    noRot: true
+  - type: Sprite
+    sprite: _NigWeb/Structures/Storage/secret_drawer.rsi
+    layers:
+    - state: closed
+      map: ["closeLayer"]
+    - state: open
+      map: ["openLayer"]
+      visible: false
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.SharedBagOpenVisuals.BagState:
+        closeLayer:
+          Open: { visible: false }
+          Closed: { visible: true }
+        openLayer:
+          Open: { visible: true }
+          Closed: { visible: false }
+  - type: Storage
+    grid:
+    - 0,0,9,3
+    maxItemSize: Huge
+    storageOpenSound:
+      path: /Audio/_NigWeb/Structures/drawer_open.ogg
+    storageCloseSound:
+      path: /Audio/_NigWeb/Structures/drawer_close.ogg
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Tag
+    tags:
+    - Wooden
+  - type: Anchorable
+  - type: Damageable
+    damageModifierSet: Wood
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+
+# Alguacil / Cerberon Security Locker
+- type: entity
+  id: AlguacilLocker
+  parent: ClosetBase
+  name: cerberon security locker
+  description: A reinforced iron security locker bearing the emblem of Cerberon, used to store arms and armor.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Storage/alguacil_locker.rsi
+    noRot: true
+    layers:
+    - state: closed
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: closed
+      visible: false
+      map: ["enum.StorageVisualLayers.Door"]
+  - type: EntityStorage
+    openSound:
+      path: /Audio/_NigWeb/Structures/iron_locker_open.ogg
+    closeSound:
+      path: /Audio/_NigWeb/Structures/iron_locker_close.ogg
+  - type: EntityStorageVisuals
+    stateBaseClosed: closed
+    stateBaseOpen: open
+    stateDoorOpen: open
+    stateDoorClosed: closed
+
+# Alguacil Antique Wardrobe / Cabinet
+- type: entity
+  id: AlguacilWardrobe
+  parent: ClosetBase
+  name: censor wardrobe
+  description: A grand antique wooden wardrobe with double doors, holding high-ranking custody vestments.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Storage/censor_wardrobe.rsi
+    noRot: true
+    layers:
+    - state: closed
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: closed
+      visible: false
+      map: ["enum.StorageVisualLayers.Door"]
+  - type: EntityStorage
+    openSound:
+      path: /Audio/_NigWeb/Structures/wardrobe_open.ogg
+    closeSound:
+      path: /Audio/_NigWeb/Structures/wardrobe_close.ogg
+  - type: EntityStorageVisuals
+    stateBaseClosed: closed
+    stateBaseOpen: open
+    stateDoorOpen: open
+    stateDoorClosed: closed
+  - type: Damageable
+    damageModifierSet: Wood
+

@@ -1,0 +1,9 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: shader
+  id: BloodyItem
+  kind: source
+  path: "/Textures/_NigWeb/Shaders/bloody_item.swsl"
+  params:
+    blood_level: 0.0
+    blood_seed: 0.0

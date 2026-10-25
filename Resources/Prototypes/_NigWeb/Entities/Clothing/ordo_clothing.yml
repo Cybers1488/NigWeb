@@ -1,0 +1,617 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# ====================================================
+# ОДЕЖДА И БРОНЯ ОРДЕНА УСЕЧЕННОЙ ПЛОТИ (ORDO CARNIS TRUNCATAE)
+# ====================================================
+
+# ----------------------------------------------------
+# 1. КЕНОБИАРХ (CENOBIARCA - ВЕРХОВНЫЙ ИНКВИЗИТОР)
+# ----------------------------------------------------
+
+# Шлем колесницы (Lifeweb chariot / minotaur helm)
+- type: entity
+  parent: ClothingHeadHelmetArmoredBase
+  id: ClothingHeadHelmetNigWebChariot
+  name: Галеа Аурига Карнифичис
+  description: Кованый глухой шлем с узкой стальной решеткой визора. Хранит взор возницы Ордена от греховного мира и пламени бойни.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Head/chariot_helmet.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Head/chariot_helmet.rsi
+  - type: Armor
+    coverage:
+    - Head
+    traumaDeductions:
+      Dismemberment: 0.35
+      OrganDamage: 0.35
+      BoneDamage: 0.35
+      VeinsDamage: 0.15
+      NerveDamage: 0.15
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.4
+        Piercing: 0.45
+        Heat: 0.65
+
+# Противогаз ветерана церкви (Lifeweb vchurch0 / vchurch1)
+- type: entity
+  parent: ClothingMaskGas
+  id: ClothingMaskGasNigWebVeteran
+  name: Ларва-Визориум Мортификаторис
+  description: Бронированная ритуальная маска-респиратор с окулярами из закаленного стекла и фильтрами от трупного смрада.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Masks/veteran_church_mask.rsi
+    layers:
+    - state: icon
+      map: [ "enum.ToggleableVisuals.Layer" ]
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Masks/veteran_church_mask.rsi
+  - type: CombatModeClothingToggle
+    normalPrefix: null
+    combatPrefix: combat
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: { state: icon-combat }
+          False: { state: icon }
+  - type: Armor
+    coverage:
+    - Head
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.7
+        Piercing: 0.75
+        Heat: 0.7
+
+# Шляпа кенобиарха (Lifeweb inquisihat)
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatNigWebInquisitor
+  name: Галерус Инквизиторис Кенобиархи
+  description: Тяжелая широкополая шляпа верховного кенобиарха из плотного черного сукна с кованой пряжкой Ордена.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Head/inquisitor_hat.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Head/inquisitor_hat.rsi
+  - type: Armor
+    coverage:
+    - Head
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.75
+        Piercing: 0.8
+        Heat: 0.8
+
+# Мантия верховного инквизитора (Lifeweb churchcoatALT2)
+- type: entity
+  parent: ClothingOuterArmorBase
+  id: ClothingOuterCoatNigWebInquisitor
+  name: Каппа Кенобиархи Мортификаторум
+  description: Длинный глухой церемониальный плащ верховного кенобиарха, отороченный тяжелой бронзовой цепью и гербами Ордена.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/OuterClothing/inquisitor_coat_alt2.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/OuterClothing/inquisitor_coat_alt2.rsi
+  - type: Armor
+    coverage:
+    - Chest
+    - Groin
+    - Arm
+    - Leg
+    traumaDeductions:
+      Dismemberment: 0.35
+      OrganDamage: 0.35
+      BoneDamage: 0.3
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.45
+        Piercing: 0.5
+        Heat: 0.6
+  - type: StaminaResistance
+    damageCoefficient: 0.65
+
+# Древний золотой крест (Lifeweb oldcross)
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckNigWebOldCross
+  name: Крукс Пекторалис Долороза
+  description: Массивный наперсный крест из потемневшего серебра, хранящий внутри частицу мощей первомученика.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Neck/inquisitor_cross.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Neck/inquisitor_cross.rsi
+    quickEquip: true
+    slots:
+    - neck
+  - type: Item
+    size: Small
+    sprite: _NigWeb/Clothing/Neck/inquisitor_cross.rsi
+  - type: Armor
+    coverage:
+    - Chest
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.9
+        Piercing: 0.9
+
+# Ряса церкви (Lifeweb chaplain / chapblack_s)
+- type: entity
+  parent: UnsensoredClothingUniformBase
+  id: ClothingUniformNigWebChurch
+  name: Хабитус Экклезиастикус Карнифичис
+  description: Строгое монашеское облачение из плотной саржи, расшитое литургическими стигматами ордена.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Uniforms/church_uniform.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Uniforms/church_uniform.rsi
+
+# Инквизиторские сапоги (Lifeweb inshoes)
+- type: entity
+  parent: ClothingShoesMilitaryBase
+  id: ClothingShoesNigWebInquisitor
+  name: Калиги Инквизиторис Экзекраторис
+  description: Высокие сапоги из жесткой дубленой кожи с подбитыми железными гвоздями подошвами.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Shoes/inquisitor_shoes.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Shoes/inquisitor_shoes.rsi
+  - type: ClothingSlowOnDamageModifier
+    modifier: 0.6
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: NigWebFootstepInquisitorBoots
+      params:
+        volume: -2
+        variation: 0.08
+
+# ----------------------------------------------------
+# 2. ИАТРОСОФИСТ (IATROSOPHISTA - ВРАЧ-ЭСКУЛАП)
+# ----------------------------------------------------
+
+# Шляпа эскулапа (Lifeweb healerhat)
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatNigWebIatrosophista
+  name: Биретум Иатрософисти Анатомици
+  description: Четырехугольный бархатный биретум ученого лекаря, постигшего таинства расчленения и врачевания плоти.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Head/iatrosophista_hat.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Head/iatrosophista_hat.rsi
+
+# Ритуальный балахон эскулапа (Lifeweb esculap)
+- type: entity
+  parent: ClothingOuterBase
+  id: ClothingOuterCoatNigWebIatrosophista
+  name: Скапуляре Иатрософисти Экзекутор
+  description: Тяжелый клеенчатый скапулярий лекаря-анатома, защищающий от брызг черной желчи и артериальной крови.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/OuterClothing/iatrosophista_robes.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/OuterClothing/iatrosophista_robes.rsi
+  - type: Armor
+    coverage:
+    - Chest
+    - Groin
+    - Arm
+    - Leg
+    modifiers:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.75
+        Piercing: 0.85
+        Caustic: 0.4
+        Heat: 0.8
+
+# Туника практикуса (Lifeweb practicus / practicus_s)
+- type: entity
+  parent: UnsensoredClothingUniformBase
+  id: ClothingUniformNigWebPracticus
+  name: Вестиментум Практици Карнифичис
+  description: Практичное облачение монастырского хирурга со множеством креплений для зажимов, пил и ланцетов.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Uniforms/practicus_uniform.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Uniforms/practicus_uniform.rsi
+
+# Сапоги практикуса (Lifeweb leatherboots)
+- type: entity
+  parent: ClothingShoesBase
+  id: ClothingShoesNigWebIatrosophista
+  name: Кальцеи Иатрософисти Анатомици
+  description: Высокие сапоги из вываренной кожи, устойчивые к едким медицинским растворам и сукровице.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Shoes/iatrosophista_boots.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Shoes/iatrosophista_boots.rsi
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: NigWebFootstepLeatherBoots
+      params:
+        volume: -4
+        variation: 0.08
+
+# ----------------------------------------------------
+# 3. СЛУЖИТЕЛЬ ЧАШИ КАЗНИ (CALYCIFER - ТАНАТИ-ПОСЛУШНИК)
+# ----------------------------------------------------
+
+# Капюшон служителя чаши (Lifeweb culthood / chaplain_hood)
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHoodNigWebCalycifer
+  name: Капуциум Калицифери Сангвинис
+  description: Остроконечный монашеский капюшон смирения, укрывающий чело служителя Священной Чаши.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Head/calycifer_hood.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Head/calycifer_hood.rsi
+
+# Ритуальное одеяние танати (Lifeweb thanatiblack)
+- type: entity
+  parent: ClothingOuterBase
+  id: ClothingOuterRobesNigWebThanati
+  name: Тога Танатофори Сакрификалис
+  description: Траурная роба с алыми подолами, пропитанная ароматами мирры и запекшейся жертвенной крови.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/OuterClothing/thanati_robes.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/OuterClothing/thanati_robes.rsi
+  - type: Armor
+    coverage:
+    - Chest
+    - Groin
+    - Arm
+    - Leg
+    modifiers:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.8
+        Piercing: 0.85
+        Heat: 0.75
+
+# Власяница консита (Lifeweb consyte / consyte_s)
+- type: entity
+  parent: UnsensoredClothingUniformBase
+  id: ClothingUniformNigWebCalycifer
+  name: Туника Калицифери Долороза
+  description: Льняная простая туника послушника, несущего сосуд искупления сквозь юдоли скорби.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Uniforms/calycifer_uniform.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Uniforms/calycifer_uniform.rsi
+
+# Башмаки послушника (Lifeweb leatherboots)
+- type: entity
+  parent: ClothingShoesBase
+  id: ClothingShoesNigWebCalycifer
+  name: Кальцеи Калицифери Сакрати
+  description: Мягкие кожаные кальцеи для бесшумной поступи во время богослужений и жертвоприношений.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Shoes/calycifer_boots.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Shoes/calycifer_boots.rsi
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: NigWebFootstepLeatherBoots
+      params:
+        volume: -4
+        variation: 0.08
+
+# ----------------------------------------------------
+# 4. ПАРАБАЛАН (PARABALANI - ТЯЖЕЛЫЙ ШТУРМОВИК)
+# ----------------------------------------------------
+
+# Шлем парабалана (Lifeweb censor)
+- type: entity
+  parent: ClothingHeadHelmetArmoredBase
+  id: ClothingHeadHelmetNigWebParabalani
+  name: шлем парабалана
+  description: Массивный глухой стальной шлем с крестообразным забралом. Ограничивает обзор, но защищает от любых ударов судьбы.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Head/parabalani_helmet.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Head/parabalani_helmet.rsi
+  - type: Armor
+    coverage:
+    - Head
+    traumaDeductions:
+      Dismemberment: 0.35
+      OrganDamage: 0.35
+      BoneDamage: 0.35
+      VeinsDamage: 0.15
+      NerveDamage: 0.15
+    modifiers:
+      coefficients:
+        Blunt: 0.55
+        Slash: 0.45
+        Piercing: 0.45
+        Heat: 0.65
+
+# Панцирь парабалана (Lifeweb marduk)
+- type: entity
+  parent: ClothingOuterArmorBase
+  id: ClothingOuterArmorNigWebParabalani
+  name: панцирь парабалана
+  description: Тяжелейший латный доспех Мардука, выкованный для прорыва вражеских рядов во имя Матери Бойни.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/OuterClothing/parabalani_armor.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/OuterClothing/parabalani_armor.rsi
+  - type: Armor
+    coverage:
+    - Chest
+    - Groin
+    traumaDeductions:
+      Dismemberment: 0.4
+      OrganDamage: 0.4
+      BoneDamage: 0.4
+      VeinsDamage: 0.15
+      NerveDamage: 0.15
+    modifiers:
+      coefficients:
+        Blunt: 0.45
+        Slash: 0.35
+        Piercing: 0.4
+        Heat: 0.6
+  - type: ExplosionResistance
+    damageCoefficient: 0.75
+  - type: StaminaResistance
+    damageCoefficient: 0.5
+
+# Поддоспешник ординатора (Lifeweb ordinator / ordinator_s)
+- type: entity
+  parent: UnsensoredClothingUniformBase
+  id: ClothingUniformNigWebParabalani
+  name: Субармалис Ординаторис Мортификатор
+  description: Стеганый поддоспешник из просмоленной многослойной ткани, поглощающий дробящие удары под тяжелыми латами.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Uniforms/parabalani_uniform.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Uniforms/parabalani_uniform.rsi
+
+# Кованые сапоги парабалана (Lifeweb ironboots)
+- type: entity
+  parent: ClothingShoesMilitaryBase
+  id: ClothingShoesNigWebParabalaniIron
+  name: кованые сапоги парабалана
+  description: Тяжелые стальные сапоги. Каждый шаг звучит как поступь самой смерти.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Shoes/parabalani_ironboots.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Shoes/parabalani_ironboots.rsi
+  - type: ClothingSlowOnDamageModifier
+    modifier: 0.4
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: NigWebFootstepIronBoots
+      params:
+        volume: 0
+        variation: 0.08
+
+# Одеяние Танати парабалана (Lifeweb thanatiblack с откидным капюшоном)
+- type: entity
+  parent: ClothingOuterStorageToggleableBase
+  id: ClothingOuterRobesNigWebParabalaniThanati
+  name: Кукулла Танатофори Парабалани
+  description: Тяжелая черная монашеская кукулла с глубоким капюшоном. Скрывает силуэт штурмовика Ордена, готового нести мученическую смерть.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/OuterClothing/parabalani_thanatiblack.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/OuterClothing/parabalani_thanatiblack.rsi
+  - type: ToggleableClothing
+    clothingPrototypes:
+      head: ClothingHeadHoodNigWebParabalaniThanati
+  - type: Armor
+    coverage:
+    - Chest
+    - Groin
+    - Arm
+    - Leg
+    traumaDeductions:
+      Dismemberment: 0.35
+      OrganDamage: 0.35
+      BoneDamage: 0.35
+      VeinsDamage: 0.15
+      NerveDamage: 0.15
+    modifiers:
+      coefficients:
+        Blunt: 0.55
+        Slash: 0.45
+        Piercing: 0.50
+        Heat: 0.65
+  - type: StaminaResistance
+    damageCoefficient: 0.6
+
+# Капюшон одеяния Танати (Lifeweb thanatiblack_hood)
+- type: entity
+  parent: ClothingHeadHatHoodWinterBase
+  id: ClothingHeadHoodNigWebParabalaniThanati
+  name: капюшон Танати
+  description: Глубокий глухой капюшон из черной материи, скрывающий лицо и защищающий от осколков.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Head/parabalani_hood.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Head/parabalani_hood.rsi
+  - type: Armor
+    coverage:
+    - Head
+    traumaDeductions:
+      Dismemberment: 0.30
+      OrganDamage: 0.30
+      BoneDamage: 0.30
+    modifiers:
+      coefficients:
+        Blunt: 0.60
+        Slash: 0.50
+        Piercing: 0.55
+        Heat: 0.65
+
+# Церковный противогаз парабалана (Lifeweb church0 / church1 с боевым режимом)
+- type: entity
+  parent: ClothingMaskGas
+  id: ClothingMaskGasNigWebChurch
+  name: Ларва Пургаторис Экклезиастици
+  description: Металлическая глухая маска с респираторной решеткой и защитными линзами для очищения склепов кадилом и клинком.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Masks/church_mask.rsi
+    layers:
+    - state: icon
+      map: [ "enum.ToggleableVisuals.Layer" ]
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Masks/church_mask.rsi
+  - type: CombatModeClothingToggle
+    normalPrefix: null
+    combatPrefix: combat
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: { state: icon-combat }
+          False: { state: icon }
+  - type: Armor
+    coverage:
+    - Head
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.65
+        Piercing: 0.70
+        Heat: 0.65
+
+# Сапоги бастарда (Lifeweb bastard)
+- type: entity
+  parent: ClothingShoesMilitaryBase
+  id: ClothingShoesNigWebBastard
+  name: Калиги Феррата Парабалани
+  description: Окованные железом штурмовые калиги с массивными защитными накладками на голень и носок.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Shoes/bastard_boots.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Shoes/bastard_boots.rsi
+  - type: ClothingSlowOnDamageModifier
+    modifier: 0.35
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: NigWebFootstepIronBoots
+      params:
+        volume: -1
+        variation: 0.08
+
+# Форма душегуба (Lifeweb soulbreaker / soulbreaker_s)
+- type: entity
+  parent: UnsensoredClothingUniformBase
+  id: ClothingUniformNigWebSoulbreaker
+  name: форма душегуба
+  description: Черная боевая униформа с коваными застежками и плотными галифе, созданная для вылазок и тяжелых боев.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Uniforms/soulbreaker_uniform.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Uniforms/soulbreaker_uniform.rsi
+
+# Крест святого Антония (Lifeweb ccross)
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckNigWebCCross
+  name: Энколпион Санкти Патрони
+  description: Сакральный нагрудный энколпион с ликом Святого Покровителя, благословляющий на безжалостную священную сечу.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Neck/ccross_amulet.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Neck/ccross_amulet.rsi
+    quickEquip: true
+    slots:
+    - neck
+  - type: Item
+    size: Small
+    sprite: _NigWeb/Clothing/Neck/ccross_amulet.rsi
+  - type: Armor
+    coverage:
+    - Chest
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.90
+        Piercing: 0.90
+
+# Оковы покаяния (Lifeweb shackles)
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckNigWebShackles
+  name: оковы покаяния
+  description: Ржавые железные колодки и цепи, добровольно носимые на шее в знак вечного искупления грехов плоти.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Neck/shackles_amulet.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Neck/shackles_amulet.rsi
+    quickEquip: true
+    slots:
+    - neck
+  - type: Item
+    size: Small
+    sprite: _NigWeb/Clothing/Neck/shackles_amulet.rsi
+  - type: Armor
+    coverage:
+    - Chest
+    modifiers:
+      coefficients:
+        Blunt: 0.90
+        Slash: 0.85
+        Piercing: 0.85

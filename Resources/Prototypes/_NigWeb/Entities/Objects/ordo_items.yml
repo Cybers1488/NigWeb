@@ -1,0 +1,43 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Calix Carnificinae (Чаша Мясницкой Казни)
+- type: entity
+  parent: DrinkBase
+  id: NigWebChalice
+  name: Каликс Карнифичина Сангвинолентус
+  description: Древняя чеканная чаша из серебра для сбора священной сукровицы и проведения литургий вознесения во славу Матери Бойни.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Specific/Ordo/chalice.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: _NigWeb/Objects/Specific/Ordo/chalice.rsi
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 100
+  - type: PhysicalComposition
+    materialComposition:
+      Silver: 200
+
+# Жертвенный кинжал Танати (Lifeweb pdagger / dagger)
+- type: entity
+  parent: BaseKnife
+  id: WeaponMeleeNigWebSacrificialDagger
+  name: Пугио Сакрификалис Экзекутор
+  description: Острый ритуальный пугио с глубоким кровостоком и гравированными анафемами Ордена Усеченной Плоти.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/sacrificial_dagger.rsi
+    state: icon
+  - type: Item
+    size: Small
+    sprite: _NigWeb/Objects/Weapons/sacrificial_dagger.rsi
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 14
+        Slash: 8
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg

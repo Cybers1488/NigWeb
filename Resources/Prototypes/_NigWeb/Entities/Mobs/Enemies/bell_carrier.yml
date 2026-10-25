@@ -1,0 +1,80 @@
+- type: entity
+  name: Носильщик Колокола
+  id: MobBellCarrier
+  parent: SimpleSpaceMobBase
+  description: Сгорбленный кающийся грешник, несущий на спине расколотый окровавленный церковный колокол. Он фанатично сокрушает им любого на своем пути.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Mobs/Enemies/bell_carrier.rsi
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: idle
+  - type: SpriteMovement
+    movementLayers:
+      enum.DamageStateVisualLayers.Base:
+        state: walk
+    noMovementLayers:
+      enum.DamageStateVisualLayers.Base:
+        state: idle
+  - type: Appearance
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: idle
+      Dead:
+        Base: dead
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.60
+        density: 350
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      240: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      120: 0.7
+  - type: Stamina
+    baseCritThreshold: 200
+  - type: Damageable
+    damageContainer: Biological
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.2
+    baseSprintSpeed: 3.6
+  - type: MeleeWeapon
+    altDisarm: false
+    animation: WeaponArcSmash
+    missAnimation: WeaponArcSmash
+    wideAnimation: WeaponArcSmash
+    soundHit:
+      path: /Audio/Effects/church_bell1.ogg
+    soundNoDamage:
+      path: /Audio/Effects/clang.ogg
+    damage:
+      types:
+        Blunt: 26
+        Structural: 70
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepBells
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - DoorBumpOpener

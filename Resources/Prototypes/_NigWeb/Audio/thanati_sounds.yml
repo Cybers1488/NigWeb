@@ -1,0 +1,32 @@
+- type: soundCollection
+  id: CultistChantSounds
+  files:
+  - /Audio/_NigWeb/Voice/Thanati/ordo_chant_1.ogg
+  - /Audio/_NigWeb/Voice/Thanati/ordo_chant_2.ogg
+  - /Audio/_NigWeb/Voice/Thanati/ordo_chant_3.ogg
+  - /Audio/_NigWeb/Voice/Thanati/ordo_chant_4.ogg
+  - /Audio/_NigWeb/Voice/Thanati/ordo_chant_5.ogg
+
+- type: soundCollection
+  id: CultistLaughSounds
+  files:
+  - /Audio/_NigWeb/Voice/Thanati/cultiste_rire_1.ogg
+  - /Audio/_NigWeb/Voice/Thanati/cultiste_rire_2.ogg
+  - /Audio/_NigWeb/Voice/Thanati/cultiste_rire_3.ogg
+  - /Audio/_NigWeb/Voice/Thanati/cultiste_rire_4.ogg
+  - /Audio/_NigWeb/Voice/Thanati/cultiste_rire_5.ogg
+  - /Audio/_NigWeb/Voice/Thanati/cultiste_rire_6.ogg
+
+- type: soundCollection
+  id: CultistDeathSounds
+  files:
+  - /Audio/_NigWeb/Voice/Thanati/thanatideath1.ogg
+  - /Audio/_NigWeb/Voice/Thanati/thanatideath2.ogg
+  - /Audio/_NigWeb/Voice/Thanati/thanatideath3.ogg
+
+- type: soundCollection
+  id: CultistPainSounds
+  files:
+  - /Audio/_NigWeb/Voice/Thanati/thpain1.ogg
+  - /Audio/_NigWeb/Voice/Thanati/thpain2.ogg
+  - /Audio/_NigWeb/Voice/Thanati/thpain3.ogg

@@ -1,0 +1,55 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+uniform highp float blood_level;
+uniform highp float blood_seed;
+uniform highp vec3 blood_color;
+
+highp float hash_coords(highp vec2 p, highp float seed) {
+    return fract(sin(dot(p, vec2(12.9898, 78.233)) + seed) * 43758.5453);
+}
+
+void fragment() {
+    highp vec4 base = zTexture(UV);
+    if (base.a <= 0.05) {
+        COLOR = base;
+        return;
+    }
+
+    if (blood_level <= 0.02) {
+        COLOR = base;
+        return;
+    }
+
+    highp vec2 ps = TEXTURE_PIXEL_SIZE;
+    if (ps.x <= 0.0 || ps.y <= 0.0) {
+        ps = vec2(0.03125, 0.03125);
+    }
+    highp vec2 p = floor(UV / ps);
+
+    highp float r1 = hash_coords(p, blood_seed);
+
+    // CLOTHING BLOOD (Sparse organic droplets):
+    highp vec2 clusterCell = floor(p / 4.0);
+    highp float clusterRand = hash_coords(clusterCell, blood_seed * 1.618);
+
+    bool isBlood = false;
+    if (clusterRand < (blood_level * 0.18)) {
+        if (r1 < (0.15 + blood_level * 0.18)) {
+            isBlood = true;
+        }
+    } else if (r1 < (blood_level * 0.02)) {
+        isBlood = true;
+    }
+
+    if (isBlood) {
+        highp vec3 col = blood_color;
+        if (length(col) <= 0.01) {
+            col = vec3(0.4706, 0.0, 0.0);
+        }
+
+        highp vec3 finalBlood = col * mix(0.88, 1.12, r1);
+        COLOR = vec4(finalBlood, base.a);
+    } else {
+        COLOR = base;
+    }
+}

@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: NigWebLifewebAltar
   name: Алтарь
   description: Древний алтарь, пропитанный кровью.
@@ -102,36 +102,25 @@
     inHandsOnly: false
 
 - type: entity
+  parent: BaseWallmount
   id: NigWebStationBattery
   name: Батарея станции
-  description: Локальный распределитель. Получает энергию от главных батарей и запитывает аппаратуру вокруг.
+  description: Локальный распределитель на стену (ЛКП). Получает энергию от главных батарей и снабжает электричеством в радиусе 20 тайлов.
   placement:
     mode: SnapgridCenter
+    snap:
+    - Wallmount
   components:
-  - type: Clickable
   - type: Appearance
   - type: LifewebStationBattery
+    supplyRange: 20
   - type: Sprite
+    drawdepth: WallMountedItems
     sprite: _NigWeb/Machinery/Lifeweb/battery_new.rsi
     layers:
     - state: battery_station
     - state: battery_station_overlay
       map: [ "enum.LifewebStationBatteryVisuals.State" ]
-  - type: Transform
-    anchored: true
-  - type: Physics
-    bodyType: Static
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-            bounds: "-0.45,-0.45,0.45,0.45"
-        mask:
-        - MachineMask
-        layer:
-        - MachineLayer
-  - type: InteractionOutline
   - type: Battery
     netsync: false
     maxCharge: 50000
@@ -146,14 +135,16 @@
   - type: PowerNetworkBattery
     maxSupply: 50000
     maxChargeRate: 50000
+    supplyRampTolerance: 10000
+    supplyRampRate: 10000
   - type: ExtensionCableProvider
-    transferRange: 30
+    transferRange: 20
   - type: PowerProvider
     voltage: Apc
   - type: PointLight
-    radius: 2.0
-    energy: 2.0
-    color: "#ff3333"
+    radius: 1.5
+    energy: 1.5
+    color: "#44ccff"
 
 - type: entity
   id: NigWebLifewebPillar

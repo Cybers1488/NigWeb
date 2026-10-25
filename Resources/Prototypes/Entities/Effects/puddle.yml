@@ -85,6 +85,8 @@
       puddle:
         maxVol: 1000
   - type: Puddle
+    spillSound:
+      collection: NigWebBloodSplatter
   - type: MixableSolution
     solution: puddle
   - type: Appearance
@@ -278,6 +280,8 @@
       puddle:
         maxVol: 1000
   - type: Puddle
+    spillSound:
+      collection: NigWebBloodSplatter
   - type: MixableSolution
     solution: puddle
   - type: Appearance

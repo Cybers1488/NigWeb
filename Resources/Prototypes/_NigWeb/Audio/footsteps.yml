@@ -33,3 +33,28 @@
   - /Audio/_NigWeb/Footsteps/tile2.ogg
   - /Audio/_NigWeb/Footsteps/tile3.ogg
   - /Audio/_NigWeb/Footsteps/tile4.ogg
+
+
+- type: soundCollection
+  id: NigWebFootstepIronBoots
+  files:
+  - /Audio/_NigWeb/Footsteps/ironboots1.ogg
+  - /Audio/_NigWeb/Footsteps/ironboots2.ogg
+  - /Audio/_NigWeb/Footsteps/ironboots3.ogg
+  - /Audio/_NigWeb/Footsteps/ironboots4.ogg
+
+- type: soundCollection
+  id: NigWebFootstepInquisitorBoots
+  files:
+  - /Audio/_NigWeb/Footsteps/inquisitorboots1.ogg
+  - /Audio/_NigWeb/Footsteps/inquisitorboots2.ogg
+  - /Audio/_NigWeb/Footsteps/inquisitorboots3.ogg
+  - /Audio/_NigWeb/Footsteps/inquisitorboots4.ogg
+
+- type: soundCollection
+  id: NigWebFootstepLeatherBoots
+  files:
+  - /Audio/_NigWeb/Footsteps/cr_step1.ogg
+  - /Audio/_NigWeb/Footsteps/cr_step2.ogg
+  - /Audio/_NigWeb/Footsteps/cr_step3.ogg
+  - /Audio/_NigWeb/Footsteps/cr_step4.ogg

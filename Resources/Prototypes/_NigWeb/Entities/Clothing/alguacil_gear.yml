@@ -1,0 +1,176 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# ====================================================
+# УНИКАЛЬНАЯ ЭКИПИРОВКА АЛЬГВАСИЛА (Цензор / Мардук)
+# ====================================================
+
+# Шлем Альгвасила (Lifeweb Censor Helmet - sechelmvet)
+- type: entity
+  parent: ClothingHeadHelmetArmoredBase
+  id: ClothingHeadHelmetNigWebAlguacil
+  name: шлем альгвасила
+  description: Тяжёлый украшенный шлем со сплошным забралом, внушающий трепет подчинённым и грешникам.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Head/alguacil_helmet.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Head/alguacil_helmet.rsi
+  - type: Armor
+    coverage:
+    - Head
+    traumaDeductions:
+      Dismemberment: 0.3
+      OrganDamage: 0.3
+      BoneDamage: 0.3
+      VeinsDamage: 0.1
+      NerveDamage: 0.1
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.5
+        Piercing: 0.5
+        Heat: 0.7
+
+# Изысканные доспехи Альгвасила (Lifeweb Censor Armor - marduk / censor)
+- type: entity
+  parent: ClothingOuterArmorBase
+  id: ClothingOuterArmorNigWebAlguacil
+  name: изысканные доспехи
+  description: Тяжёлые латные доспехи с геральдическим табардом цветов Кустодии.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/OuterClothing/alguacil_armor.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/OuterClothing/alguacil_armor.rsi
+  - type: Armor
+    coverage:
+    - Chest
+    - Groin
+    traumaDeductions:
+      Dismemberment: 0.35
+      OrganDamage: 0.35
+      BoneDamage: 0.35
+      VeinsDamage: 0.1
+      NerveDamage: 0.1
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.4
+        Piercing: 0.45
+        Heat: 0.65
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
+  - type: StaminaResistance
+    damageCoefficient: 0.6
+
+# Луч «Спарк» (Lifeweb Sparq Beam Taser)
+- type: entity
+  parent: [BaseWeaponBatterySmall, BaseSecurityContraband]
+  id: WeaponGunNigWebSparq
+  name: луч «Спарк»
+  description: Псевдо-тазер, созданный для причинения боли. Очень сильной боли.
+  components:
+  - type: Tag
+    tags:
+    - Taser
+    - Sidearm
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Belt/sparq_taser.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Belt/sparq_taser.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: Gun
+    fireRate: 0.5
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/taser.ogg
+    projectileSpeed: 25
+  - type: BatteryAmmoProvider
+    proto: BulletTaser
+    fireCost: 200
+  - type: PacifismAllowedGun
+  - type: GunExecutionBlacklist
+
+# ====================================================
+# ОБЩЕЕ СНАРЯЖЕНИЕ КУСТОДИИ И КРЕПОСТИ (Вторичные вещи)
+# ====================================================
+
+# Форма воина (Lifeweb warrior uniform - clothing/under/rank/security)
+- type: entity
+  parent: UnsensoredClothingUniformBase
+  id: ClothingUniformNigWebWarrior
+  name: форма воина
+  description: Прочная военная форма из плотной ткани, надеваемая под латные доспехи.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Uniforms/alguacil_uniform.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Uniforms/alguacil_uniform.rsi
+
+# Ботфорты (Lifeweb jackboots - clothing/shoes/lw/jackboots)
+- type: entity
+  parent: ClothingShoesMilitaryBase
+  id: ClothingShoesNigWebJackboots
+  name: ботфорты
+  description: Высокие сапоги из грубой прочной кожи. Стандартная обувь гарнизона.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Shoes/alguacil_boots.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Shoes/alguacil_boots.rsi
+  - type: ClothingSlowOnDamageModifier
+    modifier: 0.5
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: NigWebFootstepJackboots
+      params:
+        volume: -3
+        variation: 0.08
+
+# Стальные рукавицы (Lifeweb steel gauntlets)
+- type: entity
+  parent: ClothingHandsGlovesCombat
+  id: ClothingHandsGlovesNigWebSteel
+  name: Хиротеки Ферреа Карнифичис
+  description: Тяжелые кованые латные рукавицы Ордена Усеченной Плоти. Защищают пальцы и кисти при сокрушительных рубящих ударах.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Gloves/steel_gauntlets.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Gloves/steel_gauntlets.rsi
+  - type: Item
+    sprite: _NigWeb/Clothing/Gloves/steel_gauntlets.rsi
+    inhandVisuals:
+      left:
+      - state: inhand-left
+      right:
+      - state: inhand-right
+  - type: Armor
+    coverage:
+    - Arm
+    modifiers:
+      coefficients:
+        Blunt: 0.75
+        Slash: 0.65
+        Piercing: 0.70
+        Heat: 0.80
+
+# Кожаная сумка (Lifeweb leather satchel)
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: ClothingBackpackSatchelNigWeb
+  name: Пера Кориацея Карнифичис
+  description: Вместительная походная сума из дубленой воловьей кожи, скрепленная железными клепками для переноски священных реликвий и снаряжения.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Clothing/Back/alguacil_satchel.rsi
+    state: icon
+  - type: Clothing
+    sprite: _NigWeb/Clothing/Back/alguacil_satchel.rsi

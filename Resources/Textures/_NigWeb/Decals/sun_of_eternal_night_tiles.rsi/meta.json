@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "OpenSourceWeb / Lifeweb",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "sun_0_0"
+    },
+    {
+      "name": "sun_1_0"
+    },
+    {
+      "name": "sun_2_0"
+    },
+    {
+      "name": "sun_3_0"
+    },
+    {
+      "name": "sun_4_0"
+    },
+    {
+      "name": "sun_0_1"
+    },
+    {
+      "name": "sun_1_1"
+    },
+    {
+      "name": "sun_2_1"
+    },
+    {
+      "name": "sun_3_1"
+    },
+    {
+      "name": "sun_4_1"
+    },
+    {
+      "name": "sun_0_2"
+    },
+    {
+      "name": "sun_1_2"
+    },
+    {
+      "name": "sun_2_2"
+    },
+    {
+      "name": "sun_3_2"
+    },
+    {
+      "name": "sun_4_2"
+    },
+    {
+      "name": "sun_0_3"
+    },
+    {
+      "name": "sun_1_3"
+    },
+    {
+      "name": "sun_2_3"
+    },
+    {
+      "name": "sun_3_3"
+    },
+    {
+      "name": "sun_4_3"
+    },
+    {
+      "name": "sun_0_4"
+    },
+    {
+      "name": "sun_1_4"
+    },
+    {
+      "name": "sun_2_4"
+    },
+    {
+      "name": "sun_3_4"
+    },
+    {
+      "name": "sun_4_4"
+    }
+  ]
+}

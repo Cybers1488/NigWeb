@@ -465,7 +465,7 @@ namespace Content.Client.Lobby.UI
 
             #endregion Jobs
 
-            TabContainer.SetTabTitle(2, Loc.GetString("humanoid-profile-editor-antags-tab"));
+            TabContainer.SetTabTitle(AntagTab, Loc.GetString("humanoid-profile-editor-antags-tab"));
 
             RefreshTraits();
 
@@ -757,6 +757,16 @@ namespace Content.Client.Lobby.UI
         public void RefreshAntags()
         {
             AntagList.RemoveAllChildren();
+
+            var antags = _prototypeManager.EnumeratePrototypes<AntagPrototype>()
+                .Where(a => a.SetPreference && a.ID.StartsWith("NigWeb"))
+                .OrderBy(a => Loc.GetString(a.Name))
+                .ToList();
+
+            TabContainer.SetTabVisible(AntagTab, antags.Count > 0);
+            if (antags.Count == 0)
+                return;
+
             var items = new[]
             {
                 ("humanoid-profile-editor-antag-preference-yes-button", 0),
@@ -765,10 +775,8 @@ namespace Content.Client.Lobby.UI
 
             AntagList.AddChild(new Label { Text = Loc.GetString("humanoid-profile-editor-antag-roll-before-jobs") }); // Goobstation
 
-            foreach (var antag in _prototypeManager.EnumeratePrototypes<AntagPrototype>().OrderBy(a => Loc.GetString(a.Name)))
+            foreach (var antag in antags)
             {
-                if (!antag.SetPreference)
-                    continue;
 
                 var antagContainer = new BoxContainer()
                 {
@@ -1012,6 +1020,13 @@ namespace Content.Client.Lobby.UI
             {
                 var departmentName = Loc.GetString(department.Name);
 
+                var jobs = department.Roles.Select(jobId => _prototypeManager.Index(jobId))
+                    .Where(job => job.SetPreference && (job.ID == "Passenger" || job.ID.StartsWith("NigWeb")))
+                    .ToArray();
+
+                if (jobs.Length == 0)
+                    continue;
+
                 if (!_jobCategories.TryGetValue(department.ID, out var category))
                 {
                     category = new BoxContainer
@@ -1052,10 +1067,6 @@ namespace Content.Client.Lobby.UI
                     JobList.AddChild(category);
                 }
 
-                var jobs = department.Roles.Select(jobId => _prototypeManager.Index(jobId))
-                    .Where(job => job.SetPreference)
-                    .ToArray();
-
                 Array.Sort(jobs, JobUIComparer.Instance);
 
                 foreach (var job in jobs)
@@ -1071,13 +1082,16 @@ namespace Content.Client.Lobby.UI
                     };
                     selector.OnOpenGuidebook += OnOpenGuidebook;
 
-                    var icon = new TextureRect
+                    TextureRect? icon = null;
+                    if (!job.ID.StartsWith("NigWeb") && _prototypeManager.TryIndex(job.Icon, out var jobIcon) && jobIcon.Icon != null)
                     {
-                        TextureScale = new Vector2(2, 2),
-                        VerticalAlignment = VAlignment.Center
-                    };
-                    var jobIcon = _prototypeManager.Index(job.Icon);
-                    icon.Texture = _sprite.Frame0(jobIcon.Icon);
+                        icon = new TextureRect
+                        {
+                            TextureScale = new Vector2(2, 2),
+                            VerticalAlignment = VAlignment.Center
+                        };
+                        icon.Texture = _sprite.Frame0(jobIcon.Icon);
+                    }
                     selector.Setup(items, job.LocalizedName, 200, job.LocalizedDescription, icon, job.Guides);
 
                     if (!_requirements.IsAllowed(job, (HumanoidCharacterProfile?) _preferencesManager.Preferences?.SelectedCharacter, out var reason))

@@ -1,0 +1,30 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: emote
+  id: PrayLady
+  name: chat-emote-name-pray-lady
+  category: Vocal
+  icon:
+    sprite: _NigWeb/Objects/Specific/Lady/lady_scripture.rsi
+    state: icon
+  whitelist:
+    components:
+    - Vocal
+  chatMessages:
+  - chat-emote-msg-pray-lady-1
+  - chat-emote-msg-pray-lady-2
+  - chat-emote-msg-pray-lady-3
+  chatTriggers:
+  - взывает к матери бойни
+  - молится матери бойни
+  - верует в матерь
+  - молится матери
+  - mater carnificinae
+  - верует в леди
+  - верует
+  - молится леди
+  - призыв к леди
+  - praylady
+  - pray lady
+  - ordo
+  - ceno

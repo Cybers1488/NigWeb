@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-4.0",
+  "copyright": "Blasphemous 2 (The Game Kitchen)",
+  "size": {
+    "x": 96,
+    "y": 96
+  },
+  "states": [
+    {
+      "name": "empty"
+    },
+    {
+      "name": "quarter"
+    },
+    {
+      "name": "half"
+    },
+    {
+      "name": "full"
+    },
+    {
+      "name": "broken"
+    }
+  ]
+}

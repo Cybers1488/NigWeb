@@ -1,0 +1,121 @@
+- type: entity
+  id: BaseWallBlood
+  abstract: true
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: WallBlood
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    drawdepth: WallMountedItems
+    sprite: _NigWeb/Decals/lifeweb_blood.rsi
+    color: "#820000"
+
+- type: entity
+  parent: BaseWallBlood
+  id: NigWebWallBloodSmall
+  name: кровавые брызги
+  description: Кровавые брызги на стене.
+  components:
+  - type: Sprite
+    layers:
+    - map: ["base"]
+      state: mfloor1
+  - type: RandomSprite
+    available:
+    - base:
+        mfloor1: ""
+        mfloor2: ""
+        mfloor3: ""
+        mfloor4: ""
+        mfloor5: ""
+        mfloor6: ""
+        mfloor7: ""
+        mfloor8: ""
+        mfloor9: ""
+        mfloor10: ""
+        mfloor11: ""
+        mfloor12: ""
+
+- type: entity
+  parent: BaseWallBlood
+  id: NigWebWallBloodMedium
+  name: кровавые брызги
+  description: Кровавые брызги на стене.
+  components:
+  - type: Sprite
+    layers:
+    - map: ["base"]
+      state: dir_splatter_1_0_0
+  - type: RandomSprite
+    available:
+    - base:
+        dir_splatter_1_0_0: ""
+        dir_splatter_1_1_0: ""
+        dir_splatter_1_2_0: ""
+        dir_splatter_1_3_0: ""
+        dir_splatter_1_4_0: ""
+        dir_splatter_1_5_0: ""
+        dir_splatter_1_6_0: ""
+        dir_splatter_1_7_0: ""
+        dir_splatter_2_0_0: ""
+        dir_splatter_2_1_0: ""
+        dir_splatter_2_2_0: ""
+        dir_splatter_2_3_0: ""
+        dir_splatter_2_4_0: ""
+        dir_splatter_2_5_0: ""
+        dir_splatter_2_6_0: ""
+        dir_splatter_2_7_0: ""
+
+- type: entity
+  parent: BaseWallBlood
+  id: NigWebWallBloodLarge
+  name: кровавые брызги
+  description: Кровавые брызги на стене.
+  components:
+  - type: Sprite
+    layers:
+    - map: ["base"]
+      state: splatter1_0_0
+  - type: RandomSprite
+    available:
+    - base:
+        splatter1_0_0: ""
+        splatter1_1_0: ""
+        splatter1_2_0: ""
+        splatter1_3_0: ""
+        splatter1_4_0: ""
+        splatter1_5_0: ""
+        splatter1_6_0: ""
+        splatter1_7_0: ""
+        splatter2_0_0: ""
+        splatter2_1_0: ""
+        splatter2_2_0: ""
+        splatter2_3_0: ""
+        splatter2_4_0: ""
+        splatter2_5_0: ""
+        splatter2_6_0: ""
+        splatter2_7_0: ""
+        splatter3_0_0: ""
+        splatter3_1_0: ""
+        splatter3_2_0: ""
+        splatter3_3_0: ""
+        splatter4_0_0: ""
+        splatter4_1_0: ""
+        splatter4_2_0: ""
+        splatter4_3_0: ""
+        splatter5_0_0: ""
+        splatter5_1_0: ""
+        splatter5_2_0: ""
+        splatter5_3_0: ""
+        splatter6_0_0: ""
+        splatter6_1_0: ""
+        splatter6_2_0: ""
+        splatter6_3_0: ""
+        splatter6_4_0: ""
+        splatter6_5_0: ""
+        splatter6_6_0: ""
+        splatter6_7_0: ""

@@ -1,0 +1,20 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Soft, physically plausible contact drop shadow for characters, creatures, and objects.
+
+light_mode unshaded;
+
+void fragment() {
+    // Map UV from [0, 1] to [-1, 1]
+    highp vec2 p = (UV - 0.5) * 2.0;
+    highp float d2 = dot(p, p);
+
+    if (d2 >= 1.0) {
+        discard;
+    }
+
+    // High-order smooth Gaussian-like curve with zero derivative at boundaries
+    highp float falloff = 1.0 - d2;
+    highp float alpha = falloff * falloff;
+
+    COLOR = vec4(0.0, 0.0, 0.0, alpha);
+}

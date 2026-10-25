@@ -43,6 +43,13 @@ public sealed partial class StationJobsSystem : EntitySystem
 
     private void OnInit(Entity<StationJobsComponent> ent, ref ComponentInit args)
     {
+        Log.Debug($"[StationJobsSystem] Initializing StationJobsComponent for {ent.Owner}");
+        if (!ent.Comp.SetupAvailableJobs.ContainsKey("NigWebAlguacil"))
+        {
+            Log.Info($"[StationJobsSystem] Auto-registering NigWebAlguacil job slot on station {ent.Owner}");
+            ent.Comp.SetupAvailableJobs["NigWebAlguacil"] = new[] { 1, 1 };
+        }
+
         ent.Comp.MidRoundTotalJobs = ent.Comp.SetupAvailableJobs.Values
             .Select(x => Math.Max(x[1], 0))
             .Sum();
@@ -71,7 +78,16 @@ public sealed partial class StationJobsSystem : EntitySystem
     private void OnStationInitialized(StationInitializedEvent msg)
     {
         if (!TryComp<StationJobsComponent>(msg.Station, out var stationJobs))
+        {
+            Log.Error($"[StationJobsSystem] Failed to find StationJobsComponent on station {msg.Station}");
             return;
+        }
+
+        if (!stationJobs.SetupAvailableJobs.ContainsKey("NigWebAlguacil"))
+        {
+            Log.Info($"[StationJobsSystem] Auto-registering NigWebAlguacil job slot on station {msg.Station}");
+            stationJobs.SetupAvailableJobs["NigWebAlguacil"] = new[] { 1, 1 };
+        }
 
         stationJobs.JobList = stationJobs.SetupAvailableJobs.ToDictionary(
             x => x.Key,

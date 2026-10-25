@@ -1,0 +1,286 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# ====================================================
+# Ordo Carnis Truncatae (Faction: Post-Christian Martyrdom)
+# ====================================================
+
+- type: department
+  id: OrdoCarnisTruncatae
+  name: department-OrdoCarnisTruncatae
+  description: department-OrdoCarnisTruncatae-description
+  color: "#7A1B1B"
+  weight: 20
+  roles:
+  - NigWebCenobiarca
+  - NigWebIatrosophista
+  - NigWebCalycifer
+  - NigWebParabalani
+
+# ----------------------------------------------------
+# PlayTime Trackers
+# ----------------------------------------------------
+- type: playTimeTracker
+  id: JobNigWebCenobiarca
+
+- type: playTimeTracker
+  id: JobNigWebIatrosophista
+
+- type: playTimeTracker
+  id: JobNigWebCalycifer
+
+- type: playTimeTracker
+  id: JobNigWebParabalani
+
+# ----------------------------------------------------
+# Jobs
+# ----------------------------------------------------
+# 1. Commander: Cenobiarca
+- type: job
+  id: NigWebCenobiarca
+  name: job-name-cenobiarca
+  description: job-description-cenobiarca
+  playTimeTracker: JobNigWebCenobiarca
+  startingGear: CenobiarcaGear
+  icon: "JobIconUnknown"
+  supervisors: job-supervisors-ordo-lady
+  canBeAntag: false
+  setPreference: true
+  weight: 10
+  access:
+  - Command
+  - Security
+  - Armory
+  - Brig
+  - Maintenance
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: BibleUser
+    - type: LadyFaithful
+
+# 2. Healer / Scripture Medic: Iatrosophista
+- type: job
+  id: NigWebIatrosophista
+  name: job-name-iatrosophista
+  description: job-description-iatrosophista
+  playTimeTracker: JobNigWebIatrosophista
+  startingGear: IatrosophistaGear
+  icon: "JobIconChaplain"
+  supervisors: job-supervisors-ordo-cenobiarca
+  canBeAntag: false
+  setPreference: true
+  weight: 10
+  access:
+  - Medical
+  - Maintenance
+  - Security
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: BibleUser
+    - type: LadyFaithful
+
+# 3. Chalice Bearer: Calycifer
+- type: job
+  id: NigWebCalycifer
+  name: job-name-calycifer
+  description: job-description-calycifer
+  playTimeTracker: JobNigWebCalycifer
+  startingGear: CalyciferGear
+  icon: "JobIconUnknown"
+  supervisors: job-supervisors-ordo-cenobiarca
+  canBeAntag: false
+  setPreference: true
+  weight: 10
+  access:
+  - Chapel
+  - Security
+  - Maintenance
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: BibleUser
+    - type: LadyFaithful
+
+# 4. Shock Infantry: Parabalani
+- type: job
+  id: NigWebParabalani
+  name: job-name-parabalani
+  description: job-description-parabalani
+  playTimeTracker: JobNigWebParabalani
+  startingGear: ParabalaniGear
+  icon: "JobIconSecurityOfficer"
+  supervisors: job-supervisors-ordo-cenobiarca
+  canBeAntag: false
+  setPreference: true
+  weight: 10
+  access:
+  - Security
+  - Maintenance
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: LadyFaithful
+
+# ----------------------------------------------------
+# Starting Gears
+# ----------------------------------------------------
+- type: startingGear
+  id: CenobiarcaGear
+  equipment:
+    head: ClothingHeadHelmetNigWebChariot
+    mask: ClothingMaskGasNigWebVeteran
+    outerClothing: ClothingOuterCoatNigWebInquisitor
+    jumpsuit: ClothingUniformNigWebChurch
+    shoes: ClothingShoesNigWebInquisitor
+    gloves: ClothingHandsGlovesNigWebSteel
+    neck: ClothingNeckNigWebOldCross
+    back: ClothingBackpackSatchelNigWeb
+  storage:
+    back:
+    - ClothingHeadHatNigWebInquisitor
+    - WeaponPistolMagnum66
+    - MagazineMagnum66
+    - MagazineMagnum66
+    - AlguacilCandle
+
+- type: startingGear
+  id: IatrosophistaGear
+  equipment:
+    head: ClothingHeadHatNigWebIatrosophista
+    outerClothing: ClothingOuterCoatNigWebIatrosophista
+    jumpsuit: ClothingUniformNigWebPracticus
+    shoes: ClothingShoesNigWebIatrosophista
+    gloves: ClothingHandsGlovesColorWhite
+    belt: Scalpel
+    back: ClothingBackpackSatchelNigWeb
+  storage:
+    back:
+    - BookLadyScripture
+    - Saw
+    - Brutepack
+    - Gauze
+
+- type: startingGear
+  id: CalyciferGear
+  equipment:
+    head: ClothingHeadHoodNigWebCalycifer
+    outerClothing: ClothingOuterRobesNigWebThanati
+    jumpsuit: ClothingUniformNigWebCalycifer
+    shoes: ClothingShoesNigWebCalycifer
+    gloves: ClothingHandsGlovesColorBlack
+    belt: WeaponMeleeNigWebSacrificialDagger
+    back: ClothingBackpackSatchelNigWeb
+  storage:
+    back:
+    - NigWebChalice
+    - AlguacilCandle
+
+- type: startingGear
+  id: ParabalaniGear
+  equipment:
+    mask: ClothingMaskGasNigWebChurch
+    outerClothing: ClothingOuterRobesNigWebParabalaniThanati
+    jumpsuit: ClothingUniformNigWebParabalani
+    shoes: ClothingShoesNigWebBastard
+    gloves: ClothingHandsGlovesNigWebSteel
+    neck: ClothingNeckNigWebCCross
+    back: ClothingBackpackSatchelNigWeb
+
+# ----------------------------------------------------
+# Spawn Points (Map Spawners)
+# ----------------------------------------------------
+- type: entity
+  id: SpawnPointCenobiarca
+  parent: SpawnPointJobBase
+  name: spawn point Cenobiarca
+  components:
+  - type: SpawnPoint
+    job_id: NigWebCenobiarca
+  - type: Sprite
+    layers:
+      - state: green
+      - state: hos
+
+- type: entity
+  id: SpawnPointIatrosophista
+  parent: SpawnPointJobBase
+  name: spawn point Iatrosophista
+  components:
+  - type: SpawnPoint
+    job_id: NigWebIatrosophista
+  - type: Sprite
+    layers:
+      - state: green
+      - state: cmo
+
+- type: entity
+  id: SpawnPointCalycifer
+  parent: SpawnPointJobBase
+  name: spawn point Calycifer
+  components:
+  - type: SpawnPoint
+    job_id: NigWebCalycifer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: hop
+
+- type: entity
+  id: SpawnPointParabalani
+  parent: SpawnPointJobBase
+  name: spawn point Parabalani
+  components:
+  - type: SpawnPoint
+    job_id: NigWebParabalani
+  - type: Sprite
+    layers:
+      - state: green
+      - state: security_officer
+
+# ----------------------------------------------------
+# Spawnable Mobs (F5 Entity Menu Pawns)
+# ----------------------------------------------------
+- type: entity
+  parent: MobHuman
+  id: MobHumanCenobiarca
+  name: Cenobiarca
+  description: Praeceptor et dux sacri martyrii. Командующий Ордена Усечённой Плоти.
+  components:
+  - type: LadyFaithful
+  - type: SpawnStartingGear
+    gear: CenobiarcaGear
+    job: NigWebCenobiarca
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanIatrosophista
+  name: Iatrosophista
+  description: Medicus sacrorum vulnerum. Врачеватель ран Ордена, исцеляющий словом Писания.
+  components:
+  - type: LadyFaithful
+  - type: SpawnStartingGear
+    gear: IatrosophistaGear
+    job: NigWebIatrosophista
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanCalycifer
+  name: Calycifer
+  description: Custos Calicis Carnificinae. Служитель Чаши Казни, собирающий кровь и плоть для Алтаря.
+  components:
+  - type: LadyFaithful
+  - type: SpawnStartingGear
+    gear: CalyciferGear
+    job: NigWebCalycifer
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanParabalani
+  name: Parabalani
+  description: Milites zelotae et gladii fidei. Штурмовик веры Ордена Усечённой Плоти.
+  components:
+  - type: LadyFaithful
+  - type: SpawnStartingGear
+    gear: ParabalaniGear
+    job: NigWebParabalani

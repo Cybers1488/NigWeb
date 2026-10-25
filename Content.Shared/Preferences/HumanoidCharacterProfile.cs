@@ -689,7 +689,10 @@ namespace Content.Shared.Preferences
             };
 
             var priorities = new Dictionary<ProtoId<JobPrototype>, JobPriority>(JobPriorities
-                .Where(p => prototypeManager.TryIndex<JobPrototype>(p.Key, out var job) && job.SetPreference && p.Value switch
+                .Where(p => prototypeManager.TryIndex<JobPrototype>(p.Key, out var job)
+                    && job.SetPreference
+                    && (job.ID == "Passenger" || job.ID.StartsWith("NigWeb"))
+                    && p.Value switch
                 {
                     JobPriority.Never => false, // Drop never since that's assumed default.
                     JobPriority.Low => true,
@@ -697,6 +700,11 @@ namespace Content.Shared.Preferences
                     JobPriority.High => true,
                     _ => false
                 }));
+
+            if (priorities.Count == 0 && prototypeManager.HasIndex<JobPrototype>(SharedGameTicker.FallbackOverflowJob))
+            {
+                priorities.Add(SharedGameTicker.FallbackOverflowJob, JobPriority.High);
+            }
 
             var hasHighPrio = false;
             foreach (var (key, value) in priorities)
@@ -710,7 +718,9 @@ namespace Content.Shared.Preferences
             }
 
             var antags = AntagPreferences
-                .Where(id => prototypeManager.TryIndex(id, out var antag) && antag.SetPreference)
+                .Where(id => prototypeManager.TryIndex(id, out var antag)
+                    && antag.SetPreference
+                    && antag.ID.StartsWith("NigWeb"))
                 .ToList();
 
             var traits = TraitPreferences

@@ -631,7 +631,11 @@ namespace Content.Server.GameTicking
 
             // This ordering mechanism isn't great (no ordering of minds) but functions
             var listOfPlayerInfoFinal = listOfPlayerInfo.OrderBy(pi => pi.PlayerOOCName).ToArray();
-            var sound = RoundEndSoundCollection == null ? null : _audio.ResolveSound(new SoundCollectionSpecifier(RoundEndSoundCollection));
+            var sound = string.IsNullOrEmpty(RoundEndSoundCollection)
+                ? null
+                : (_prototypeManager.TryIndex<SoundCollectionPrototype>(RoundEndSoundCollection, out var collectionProto) && collectionProto.PickFiles.Count > 0
+                    ? _audio.ResolveSound(new SoundCollectionSpecifier(RoundEndSoundCollection))
+                    : null);
 
             var roundEndMessageEvent = new RoundEndMessageEvent(
                 gamemodeTitle,

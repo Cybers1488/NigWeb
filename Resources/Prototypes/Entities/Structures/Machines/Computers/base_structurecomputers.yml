@@ -61,11 +61,10 @@
     castShadows: false
   - type: EmitSoundOnUIOpen
     sound:
-      collection: Keyboard
+      collection: NigWebConsoleOpen
       params:
         volume: -1
-        variation: 0.10
-        pitch: 1.10  # low pitch keyboard sounds feel kinda weird
+        variation: 0.05
     blacklist:
       tags:
       - NoConsoleSound

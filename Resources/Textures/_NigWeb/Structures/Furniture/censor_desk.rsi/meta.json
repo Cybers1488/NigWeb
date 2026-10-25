@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Lifeweb / NigWeb",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "table"
+    },
+    {
+      "name": "table_end_icon"
+    },
+    {
+      "name": "table_end",
+      "directions": 4
+    }
+  ]
+}

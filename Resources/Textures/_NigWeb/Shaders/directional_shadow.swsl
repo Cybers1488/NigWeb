@@ -1,0 +1,32 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Physically-inspired directional cast shadow with penumbra widening and longitudinal falloff.
+
+light_mode unshaded;
+
+void fragment() {
+    highp vec2 uv = UV;
+
+    if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) {
+        discard;
+    }
+
+    // Penumbra widening as shadow projects further from entity (UV.y from 0.0 at feet to 1.0 at tip)
+    highp float widthTaper = mix(0.70, 1.35, uv.y);
+    highp float xDist = abs((uv.x - 0.5) * 2.0) / widthTaper;
+
+    if (xDist >= 1.0) {
+        discard;
+    }
+
+    // Smooth lateral falloff across the shadow width
+    highp float lateralFalloff = 1.0 - xDist * xDist;
+    highp float lateralAlpha = lateralFalloff * lateralFalloff;
+
+    // Longitudinal falloff along the shadow length (from feet to tip)
+    highp float lengthFalloff = 1.0 - uv.y;
+    highp float lengthAlpha = lengthFalloff * lengthFalloff;
+
+    highp float alpha = lateralAlpha * lengthAlpha;
+
+    COLOR = vec4(0.0, 0.0, 0.0, alpha);
+}

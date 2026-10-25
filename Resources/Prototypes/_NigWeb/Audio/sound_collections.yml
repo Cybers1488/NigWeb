@@ -15,3 +15,139 @@
     - /Audio/Effects/_NigWeb/npc_human_pickaxe_03.ogg
     - /Audio/Effects/_NigWeb/npc_human_pickaxe_05.ogg
 
+- type: soundCollection
+  id: NigWebBloodSplatter
+  files:
+    - /Audio/_NigWeb/Blood/blood_splat.ogg
+    - /Audio/_NigWeb/Blood/smash1.ogg
+    - /Audio/_NigWeb/Blood/smash2.ogg
+    - /Audio/_NigWeb/Blood/smash3.ogg
+    - /Audio/_NigWeb/Blood/fallsmash.ogg
+    - /Audio/_NigWeb/Blood/squelch1.ogg
+    - /Audio/_NigWeb/Blood/splat.ogg
+    - /Audio/_NigWeb/Blood/blast1.ogg
+    - /Audio/_NigWeb/Blood/blast2.ogg
+    - /Audio/_NigWeb/Blood/blood1.ogg
+    - /Audio/_NigWeb/Blood/blood2.ogg
+    - /Audio/_NigWeb/Blood/blood3.ogg
+    - /Audio/_NigWeb/Blood/blood4.ogg
+    - /Audio/_NigWeb/Blood/blood5.ogg
+    - /Audio/_NigWeb/Blood/blood6.ogg
+
+- type: soundCollection
+  id: NigWebFlagellantAttack
+  files:
+    - /Audio/_NigWeb/Enemies/Flagellant/flagellant_attack.ogg
+    - /Audio/_NigWeb/Enemies/Flagellant/flagellant_attack1.ogg
+    - /Audio/_NigWeb/Enemies/Flagellant/flagellant_attack2.ogg
+
+- type: soundCollection
+  id: NigWebDismember
+  files:
+    - /Audio/_NigWeb/Blood/severed.ogg
+    - /Audio/_NigWeb/Blood/gore.ogg
+    - /Audio/_NigWeb/Blood/flesh_drop.ogg
+
+- type: soundCollection
+  id: NigWebDecapitate
+  files:
+    - /Audio/_NigWeb/Blood/chop.ogg
+    - /Audio/_NigWeb/Blood/chop2.ogg
+    - /Audio/_NigWeb/Blood/chop3.ogg
+    - /Audio/_NigWeb/Blood/chop4.ogg
+    - /Audio/_NigWeb/Blood/chop5.ogg
+    - /Audio/_NigWeb/Blood/chop6.ogg
+
+- type: soundCollection
+  id: NigWebSwordUnsheath
+  files:
+    - /Audio/_NigWeb/Weapons/sword_unsheath1.ogg
+    - /Audio/_NigWeb/Weapons/sword_unsheath2.ogg
+    - /Audio/_NigWeb/Weapons/sword_unsheath3.ogg
+
+- type: soundCollection
+  id: NigWebSwordSheath
+  files:
+    - /Audio/_NigWeb/Weapons/sword_sheath1.ogg
+    - /Audio/_NigWeb/Weapons/sword_sheath2.ogg
+
+- type: soundCollection
+  id: NigWebSwordHit
+  files:
+    - /Audio/_NigWeb/Weapons/sword_hit1.ogg
+    - /Audio/_NigWeb/Weapons/sword_hit2.ogg
+    - /Audio/_NigWeb/Weapons/blade_slash.ogg
+
+- type: soundCollection
+  id: NigWebVisceralFleshHit
+  files:
+    - /Audio/_NigWeb/Blood/chop.ogg
+    - /Audio/_NigWeb/Blood/chop2.ogg
+    - /Audio/_NigWeb/Blood/chop3.ogg
+    - /Audio/_NigWeb/Blood/chop4.ogg
+    - /Audio/_NigWeb/Blood/chop5.ogg
+    - /Audio/_NigWeb/Blood/chop6.ogg
+    - /Audio/_NigWeb/Blood/oga_ripping_meat.ogg
+    - /Audio/_NigWeb/Blood/oga_squishsplat_impact.ogg
+    - /Audio/_NigWeb/Blood/severed.ogg
+    - /Audio/_NigWeb/Blood/gore.ogg
+
+- type: soundCollection
+  id: NigWebVisceralArmorClang
+  files:
+    - /Audio/_NigWeb/Weapons/metal_clang.ogg
+    - /Audio/Weapons/block_metal1.ogg
+
+- type: soundCollection
+  id: NigWebVisceralBluntSmash
+  files:
+    - /Audio/_NigWeb/Blood/smash1.ogg
+    - /Audio/_NigWeb/Blood/smash2.ogg
+    - /Audio/_NigWeb/Blood/smash3.ogg
+    - /Audio/_NigWeb/Blood/fallsmash.ogg
+    - /Audio/_NigWeb/Blood/blast1.ogg
+
+- type: soundCollection
+  id: NigWebBloodSquish
+  files:
+    - /Audio/_NigWeb/Blood/oga_squish1.ogg
+    - /Audio/_NigWeb/Blood/oga_squish2.ogg
+    - /Audio/_NigWeb/Blood/oga_squish3.ogg
+    - /Audio/_NigWeb/Blood/squelch1.ogg
+    - /Audio/_NigWeb/Blood/splat.ogg
+    - /Audio/_NigWeb/Blood/blood_splat.ogg
+
+- type: soundCollection
+  id: NigWebFootstepJackboots
+  files:
+    - /Audio/_NigWeb/Footsteps/jackboots1.ogg
+    - /Audio/_NigWeb/Footsteps/jackboots2.ogg
+    - /Audio/_NigWeb/Footsteps/jackboots3.ogg
+    - /Audio/_NigWeb/Footsteps/jackboots4.ogg
+
+- type: soundCollection
+  id: NigWebConsoleOpen
+  files:
+    - /Audio/_NigWeb/Machines/Console/console_input1.ogg
+    - /Audio/_NigWeb/Machines/Console/console_input2.ogg
+    - /Audio/_NigWeb/Machines/Console/console_input3.ogg
+    - /Audio/_NigWeb/Machines/Console/console_interact1.ogg
+    - /Audio/_NigWeb/Machines/Console/console_interact2.ogg
+    - /Audio/_NigWeb/Machines/Console/console_interact3.ogg
+    - /Audio/_NigWeb/Machines/Console/console_interact4.ogg
+    - /Audio/_NigWeb/Machines/Console/console_interact5.ogg
+    - /Audio/_NigWeb/Machines/Console/console_interact6.ogg
+    - /Audio/_NigWeb/Machines/Console/console_interact7.ogg
+    - /Audio/_NigWeb/Machines/Console/console_success.ogg
+
+- type: soundCollection
+  id: NigWebFootstepFlagellant
+  files:
+    - /Audio/_NigWeb/Enemies/Flagellant/flagellant_step1.ogg
+    - /Audio/_NigWeb/Enemies/Flagellant/flagellant_step2.ogg
+    - /Audio/_NigWeb/Enemies/Flagellant/flagellant_step3.ogg
+    - /Audio/_NigWeb/Enemies/Flagellant/flagellant_step4.ogg
+
+
+
+

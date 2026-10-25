@@ -47,7 +47,7 @@ public sealed partial class CCVars
     ///     The preset for the game to fall back to if the selected preset could not be used, and fallback is enabled.
     /// </summary>
     public static readonly CVarDef<string>
-        GameLobbyFallbackPreset = CVarDef.Create("game.fallbackpreset", "Traitor,Extended", CVar.ARCHIVE);
+        GameLobbyFallbackPreset = CVarDef.Create("game.fallbackpreset", "Extended", CVar.ARCHIVE);
 
     /// <summary>
     ///     Controls if people can win the game in Suspicion or Deathmatch.
@@ -368,7 +368,7 @@ public sealed partial class CCVars
     ///     The id of the sound collection to randomly choose a sound from and play when the round ends.
     /// </summary>
     public static readonly CVarDef<string> RoundEndSoundCollection =
-        CVarDef.Create("game.round_end_sound_collection", "RoundEnd", CVar.SERVERONLY);
+        CVarDef.Create("game.round_end_sound_collection", string.Empty, CVar.SERVERONLY);
 
     /// <summary>
     ///     Whether or not to add every player as a global override to PVS at round end.

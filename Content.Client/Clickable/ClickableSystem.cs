@@ -6,6 +6,7 @@ using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Utility;
 using Robust.Shared.Graphics;
+using Robust.Shared.Graphics.RSI;
 
 namespace Content.Client.Clickable;
 
@@ -134,6 +135,8 @@ public sealed class ClickableSystem : EntitySystem
             if (sprite.EnableDirectionOverride)
                 dir = sprite.DirectionOverride.Convert(rsiState.RsiDirections);
             dir = dir.OffsetRsiDir(layer.DirOffset);
+            if (rsiState.RsiDirections == RsiDirectionType.Dir1)
+                dir = RsiDirection.South;
 
             if (_clickMapManager.IsOccluding(layer.ActualRsi!, layer.State, dir, layer.AnimationFrame, layerImagePos))
                 return true;

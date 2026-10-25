@@ -1,0 +1,21 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Blood hit effect — spawned client-side on melee hit against an entity with blood.
+# The client system animates scale, drift, and fadeout over lifeweb_blood.rsi states.
+- type: entity
+  id: EffectBloodHit
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0.70
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    layers:
+    - shader: unshaded
+      state: squirt_0_0
+      sprite: _NigWeb/Decals/lifeweb_blood.rsi
+  - type: EffectVisuals
+  - type: Tag
+    tags:
+    - HideContextMenu

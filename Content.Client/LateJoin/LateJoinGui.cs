@@ -184,6 +184,9 @@ namespace Content.Client.LateJoin
                         if (!stationAvailable.ContainsKey(jobId))
                             continue;
 
+                        if (jobId != "Passenger" && !jobId.Id.StartsWith("NigWeb"))
+                            continue;
+
                         jobsAvailable.Add(_prototypeManager.Index<JobPrototype>(jobId));
                     }
 
@@ -245,15 +248,18 @@ namespace Content.Client.LateJoin
                             HorizontalExpand = true
                         };
 
-                        var icon = new TextureRect
+                        if (!prototype.ID.StartsWith("NigWeb"))
                         {
-                            TextureScale = new Vector2(2, 2),
-                            VerticalAlignment = VAlignment.Center
-                        };
+                            var icon = new TextureRect
+                            {
+                                TextureScale = new Vector2(2, 2),
+                                VerticalAlignment = VAlignment.Center
+                            };
 
-                        var jobIcon = _prototypeManager.Index(prototype.Icon);
-                        icon.Texture = _sprites.Frame0(jobIcon.Icon);
-                        jobSelector.AddChild(icon);
+                            var jobIcon = _prototypeManager.Index(prototype.Icon);
+                            icon.Texture = _sprites.Frame0(jobIcon.Icon);
+                            jobSelector.AddChild(icon);
+                        }
 
                         jobSelector.AddChild(jobLabel);
                         jobButton.AddChild(jobSelector);
