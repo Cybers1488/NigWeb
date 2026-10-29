@@ -1,0 +1,68 @@
+# SPDX-License-Identifier: MIT
+
+# Authentic Blasphemous 2 Audio for EN109 (Spirit Spawner) and EN116 (Flying Flower / Spirit)
+
+- type: soundCollection
+  id: NigWebSpiritSpawnerDeath
+  files:
+    - /Audio/_NigWeb/Enemies/SpiritSpawner/en_109_death.ogg
+
+- type: soundCollection
+  id: NigWebSpiritSpawnerStun
+  files:
+    - /Audio/_NigWeb/Enemies/SpiritSpawner/en_109_stun_001.ogg
+    - /Audio/_NigWeb/Enemies/SpiritSpawner/en_109_stun_002.ogg
+
+- type: soundCollection
+  id: NigWebSpiritSpawnerAttack
+  files:
+    - /Audio/_NigWeb/Enemies/SpiritSpawner/en_109_attack.ogg
+
+- type: soundCollection
+  id: NigWebSpiritSpawnerCast
+  files:
+    - /Audio/_NigWeb/Enemies/SpiritSpawner/en_109_cast.ogg
+
+- type: soundCollection
+  id: NigWebSpiritSpawnerAnticipation
+  files:
+    - /Audio/_NigWeb/Enemies/SpiritSpawner/en_109_anticipation.ogg
+
+- type: soundCollection
+  id: NigWebSpiritSpawnerRecover
+  files:
+    - /Audio/_NigWeb/Enemies/SpiritSpawner/en_109_recover.ogg
+
+- type: soundCollection
+  id: NigWebSpiritSpawnerTurn
+  files:
+    - /Audio/_NigWeb/Enemies/SpiritSpawner/en_109_turn_around.ogg
+
+- type: soundCollection
+  id: NigWebSpiritWindAppear
+  files:
+    - /Audio/_NigWeb/Enemies/SpiritSpawner/pr_109_appear_001.ogg
+    - /Audio/_NigWeb/Enemies/SpiritSpawner/pr_109_appear_002.ogg
+    - /Audio/_NigWeb/Enemies/SpiritSpawner/pr_109_appear_003.ogg
+
+- type: soundCollection
+  id: NigWebSpiritWindVanish
+  files:
+    - /Audio/_NigWeb/Enemies/SpiritSpawner/pr_109_vanish_001.ogg
+    - /Audio/_NigWeb/Enemies/SpiritSpawner/pr_109_vanish_002.ogg
+    - /Audio/_NigWeb/Enemies/SpiritSpawner/pr_109_vanish_003.ogg
+
+- type: soundCollection
+  id: NigWebFlyingFlowerAnticipation
+  files:
+    - /Audio/_NigWeb/Enemies/SpiritSpawner/en_116_anticipation.ogg
+
+- type: soundCollection
+  id: NigWebFlyingFlowerExplosion
+  files:
+    - /Audio/_NigWeb/Enemies/SpiritSpawner/en_116_explosion.ogg
+
+- type: soundCollection
+  id: NigWebFlyingFlowerDeath
+  files:
+    - /Audio/_NigWeb/Enemies/SpiritSpawner/en_116_death.ogg

@@ -221,7 +221,7 @@
 - type: entity
   parent: CandleInfinite
   id: AlguacilCandleLit
-  name: Цереус Экпиационис (возженный)
+  name: Цереус Экпиационис
   suffix: Lit
   components:
   - type: Sprite

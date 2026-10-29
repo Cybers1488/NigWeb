@@ -14,6 +14,8 @@ using Content.Shared.Fluids;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Maps;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Rotation;
@@ -49,6 +51,7 @@ public sealed class BloodSplatterSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly ILogManager _logManager = default!;
     [Dependency] private readonly BloodyItemSystem _bloodyItems = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
 
     private ISawmill _sawmill = default!;
 
@@ -66,34 +69,57 @@ public sealed class BloodSplatterSystem : EntitySystem
 
     private string GetDirSplatterDecal(Direction dir)
     {
-        int set = _random.Prob(0.5f) ? 1 : 2;
-        int dirIdx = dir switch
+        // 50% chance to use pure directional arterial squirt (has all 8 directions including cardinal)
+        if (_random.Prob(0.5f))
+            return GetSquirtDecal(dir);
+
+        bool useSet1 = _random.Prob(0.5f);
+        if (useSet1)
         {
-            Direction.South => 0,
-            Direction.North => 1,
-            Direction.East => 2,
-            Direction.West => 3,
-            Direction.SouthEast => 4,
-            Direction.SouthWest => 5,
-            Direction.NorthEast => 6,
-            Direction.NorthWest => 7,
-            _ => 0
-        };
-        return $"BloodDirSplatter{set}_{dirIdx}_0";
+            int dirIdx = dir switch
+            {
+                Direction.North => _random.Prob(0.5f) ? 3 : 1, // NW or NE
+                Direction.South => _random.Prob(0.5f) ? 0 : 2, // SW or SE
+                Direction.West => _random.Prob(0.5f) ? 3 : 0,  // NW or SW
+                Direction.East => _random.Prob(0.5f) ? 1 : 2,  // NE or SE
+                Direction.NorthWest => 3,
+                Direction.NorthEast => 1,
+                Direction.SouthWest => 0,
+                Direction.SouthEast => 2,
+                _ => 3
+            };
+            return $"BloodDirSplatter1_{dirIdx}_0";
+        }
+        else
+        {
+            int dirIdx = dir switch
+            {
+                Direction.North => _random.Prob(0.5f) ? 1 : 2, // NW or NE
+                Direction.South => _random.Prob(0.5f) ? 3 : 0, // SW or SE
+                Direction.West => _random.Prob(0.5f) ? 1 : 3,  // NW or SW
+                Direction.East => _random.Prob(0.5f) ? 2 : 0,  // NE or SE
+                Direction.NorthWest => 1,
+                Direction.NorthEast => 2,
+                Direction.SouthWest => 3,
+                Direction.SouthEast => 0,
+                _ => 1
+            };
+            return $"BloodDirSplatter2_{dirIdx}_0";
+        }
     }
 
     private string GetSquirtDecal(Direction dir)
     {
         int dirIdx = dir switch
         {
-            Direction.South => 0,
-            Direction.North => 1,
-            Direction.East => 2,
-            Direction.West => 3,
-            Direction.SouthEast => 4,
-            Direction.SouthWest => 5,
-            Direction.NorthEast => 6,
-            Direction.NorthWest => 7,
+            Direction.North => 0,
+            Direction.South => 1,
+            Direction.West => 2,
+            Direction.East => 3,
+            Direction.NorthWest => 4,
+            Direction.NorthEast => 5,
+            Direction.SouthWest => 6,
+            Direction.SouthEast => 7,
             _ => 0
         };
         return $"BloodSquirt_{dirIdx}_0";
@@ -196,7 +222,10 @@ public sealed class BloodSplatterSystem : EntitySystem
 
     /// <summary>
     /// Calculates the dynamic world offset and spray vector for a stump, automatically
-    /// factoring in the mob's current facing angle, standing state, and laying-down rotation.
+    /// <summary>
+    /// Calculates precise anatomical stump coordinates and arterial spray vector in world space,
+    /// matching the player's visual perspective whether the entity is standing upright or downed.
+    /// Humanoid sprites utilize 'noRot: true', meaning the visual body does not rotate with internal Transform facing.
     /// </summary>
     private void GetStumpGeometry(
         EntityUid uid,
@@ -206,71 +235,129 @@ public sealed class BloodSplatterSystem : EntitySystem
         out Angle worldSprayAngle,
         out Vector2 worldSprayDir)
     {
-        Vector2 localPos;
-        Vector2 localDir;
+        var isDown = (TryComp<StandingStateComponent>(uid, out var standing) && !standing.Standing)
+                     || (TryComp<MobStateComponent>(uid, out var mobState) && mobState.CurrentState != MobState.Alive);
 
-        if (spurt.HasCustomGeometry)
+        if (!isDown && TryComp<AppearanceComponent>(uid, out var appearance))
         {
-            localPos = spurt.CustomLocalOffset;
-            localDir = spurt.CustomLocalDir;
+            if (_appearance.TryGetData<RotationState>(uid, RotationVisuals.RotationState, out var rotState, appearance))
+            {
+                isDown = rotState == RotationState.Horizontal;
+            }
         }
-        else
+
+        // Severed head / neck arterial fountain from a victim on the floor is always downed geometry
+        if (spurt.PartType == BodyPartType.Head)
+            isDown = true;
+
+        if (spurt.HasCustomGeometry && spurt.PartType == BodyPartType.Other)
         {
+            worldStumpOffset = spurt.CustomLocalOffset;
+            worldSprayDir = spurt.CustomLocalDir.LengthSquared() > 0.001f ? spurt.CustomLocalDir.Normalized() : Vector2.UnitY;
+            worldSprayAngle = worldSprayDir.ToWorldAngle();
+            return;
+        }
+
+        if (isDown)
+        {
+            // When downed / dead, humanoid sprite rotates 90° CCW in world space:
+            // Head is on the LEFT (-X), feet are on the RIGHT (+X).
+            // Left Arm is rotated to the TOP (+Y), Right Arm is rotated to the BOTTOM (-Y).
             switch (spurt.PartType)
             {
                 case BodyPartType.Head:
-                    localPos = new Vector2(0f, 0.42f);
-                    localDir = new Vector2(0f, 1.0f);
+                    worldStumpOffset = new Vector2(-0.38f, 0.02f);
+                    worldSprayDir = -Vector2.UnitX; // Straight LEFT (-1, 0) directly out of neck stump
                     break;
+
                 case BodyPartType.Arm:
                 case BodyPartType.Hand:
                     if (spurt.Symmetry == BodyPartSymmetry.Left)
                     {
-                        localPos = new Vector2(0.28f, 0.20f);
-                        localDir = new Vector2(1.0f, 0.15f);
+                        // Downed humanoid sprite rotates 90° CCW: Left arm is at the TOP (+Y / North)
+                        worldStumpOffset = new Vector2(-0.12f, 0.28f);
+                        worldSprayDir = Vector2.UnitY; // Straight UP (0, 1) directly out of arm stump
                     }
                     else
                     {
-                        localPos = new Vector2(-0.28f, 0.20f);
-                        localDir = new Vector2(-1.0f, 0.15f);
+                        // Downed humanoid sprite rotates 90° CCW: Right arm is at the BOTTOM (-Y / South)
+                        worldStumpOffset = new Vector2(-0.12f, -0.28f);
+                        worldSprayDir = -Vector2.UnitY; // Straight DOWN (0, -1) directly out of arm stump
                     }
                     break;
+
                 case BodyPartType.Leg:
                 case BodyPartType.Foot:
                     if (spurt.Symmetry == BodyPartSymmetry.Left)
                     {
-                        localPos = new Vector2(0.16f, -0.28f);
-                        localDir = new Vector2(0.35f, -1.0f);
+                        worldStumpOffset = new Vector2(0.35f, 0.12f);
+                        worldSprayDir = new Vector2(1.0f, 0.10f).Normalized(); // Out to the RIGHT (+X)
                     }
                     else
                     {
-                        localPos = new Vector2(-0.16f, -0.28f);
-                        localDir = new Vector2(-0.35f, -1.0f);
+                        worldStumpOffset = new Vector2(0.35f, -0.12f);
+                        worldSprayDir = new Vector2(1.0f, -0.10f).Normalized(); // Out to the RIGHT (+X)
                     }
                     break;
+
                 case BodyPartType.Chest:
                 case BodyPartType.Groin:
                 case BodyPartType.Other:
                 default:
-                    localPos = Vector2.Zero;
-                    localDir = new Vector2(0f, 1.0f);
+                    worldStumpOffset = Vector2.Zero;
+                    worldSprayDir = -Vector2.UnitX;
+                    break;
+            }
+        }
+        else
+        {
+            // Standing mob: head is UP (+Y), feet are DOWN (-Y).
+            // Screen Left is -X, Screen Right is +X.
+            switch (spurt.PartType)
+            {
+                case BodyPartType.Head:
+                    worldStumpOffset = new Vector2(0f, 0.40f);
+                    worldSprayDir = Vector2.UnitY; // Straight UP (0, 1) directly out of neck stump
+                    break;
+
+                case BodyPartType.Arm:
+                case BodyPartType.Hand:
+                    if (spurt.Symmetry == BodyPartSymmetry.Left)
+                    {
+                        worldStumpOffset = new Vector2(-0.30f, 0.18f);
+                        worldSprayDir = new Vector2(-1.0f, 0.10f).Normalized(); // Straight LEFT (-X)
+                    }
+                    else
+                    {
+                        worldStumpOffset = new Vector2(0.30f, 0.18f);
+                        worldSprayDir = new Vector2(1.0f, 0.10f).Normalized(); // Straight RIGHT (+X)
+                    }
+                    break;
+
+                case BodyPartType.Leg:
+                case BodyPartType.Foot:
+                    if (spurt.Symmetry == BodyPartSymmetry.Left)
+                    {
+                        worldStumpOffset = new Vector2(-0.16f, -0.32f);
+                        worldSprayDir = new Vector2(-0.35f, -1.0f).Normalized(); // DOWN-LEFT (-X, -Y)
+                    }
+                    else
+                    {
+                        worldStumpOffset = new Vector2(0.16f, -0.32f);
+                        worldSprayDir = new Vector2(0.35f, -1.0f).Normalized(); // DOWN-RIGHT (+X, -Y)
+                    }
+                    break;
+
+                case BodyPartType.Chest:
+                case BodyPartType.Groin:
+                case BodyPartType.Other:
+                default:
+                    worldStumpOffset = Vector2.Zero;
+                    worldSprayDir = Vector2.UnitY;
                     break;
             }
         }
 
-        localDir = localDir.LengthSquared() > 0.001f ? Vector2.Normalize(localDir) : Vector2.UnitY;
-
-        var facing = xform.LocalRotation;
-        var isDown = TryComp<StandingStateComponent>(uid, out var standing) && !standing.Standing;
-        var horizontalRot = Angle.FromDegrees(90);
-        if (TryComp<RotationVisualsComponent>(uid, out var rotVis))
-        {
-            horizontalRot = rotVis.HorizontalRotation;
-        }
-
-        var totalRot = isDown ? facing + horizontalRot : facing;
-        worldStumpOffset = totalRot.RotateVec(localPos);
-        worldSprayDir = totalRot.RotateVec(localDir).Normalized();
         worldSprayAngle = worldSprayDir.ToWorldAngle();
     }
 
@@ -313,7 +400,7 @@ public sealed class BloodSplatterSystem : EntitySystem
 
             float pressure = (float)spurt.SpurtsRemaining / Math.Max(1, spurt.TotalSpurts);
 
-            var jitterAngle = sprayAngle + Angle.FromDegrees(_random.NextFloat(-18f, 18f));
+            var jitterAngle = sprayAngle + Angle.FromDegrees(_random.NextFloat(-8f, 8f));
             var sprayVec = jitterAngle.ToWorldVec();
 
             SpawnArterialBleed(uid, blood, stumpCoords, jitterAngle, sprayVec, spurt.IsFountain, pressure);
@@ -326,9 +413,9 @@ public sealed class BloodSplatterSystem : EntitySystem
 
             if (spurt.IsFountain)
             {
-                // Multi-stream arterial fountain erupting from severed neck
-                var jetLeft = Angle.FromDegrees(jitterAngle.Degrees - 24f).ToWorldVec();
-                var jetRight = Angle.FromDegrees(jitterAngle.Degrees + 24f).ToWorldVec();
+                // Multi-stream arterial fountain erupting from severed neck with wide organic spray
+                var jetLeft = Angle.FromDegrees(jitterAngle.Degrees - 25f).ToWorldVec();
+                var jetRight = Angle.FromDegrees(jitterAngle.Degrees + 25f).ToWorldVec();
                 hits.Add(new(netStumpCoords, jetLeft));
                 hits.Add(new(netStumpCoords, jetRight));
 
@@ -428,23 +515,23 @@ public sealed class BloodSplatterSystem : EntitySystem
 
             if (slash > 20f && _random.Prob(0.5f))
             {
-                var spurt = EnsureComp<ArterialBleedSpurtComponent>(uid);
-                spurt.SpurtsRemaining = Math.Max(spurt.SpurtsRemaining, 4);
-                spurt.TotalSpurts = 4;
-                spurt.Interval = 0.22f;
-                spurt.Timer = 0.05f;
-                spurt.IsFountain = false;
-                spurt.HasCustomGeometry = true;
-
-                var facing = Transform(uid).LocalRotation;
-                var isDown = TryComp<StandingStateComponent>(uid, out var standing) && !standing.Standing;
-                var horizontalRot = Angle.FromDegrees(90);
-                if (TryComp<RotationVisualsComponent>(uid, out var rotVis))
-                    horizontalRot = rotVis.HorizontalRotation;
-
-                var totalRot = isDown ? facing + horizontalRot : facing;
-                spurt.CustomLocalDir = (-totalRot).RotateVec(strikeVec).Normalized();
-                spurt.CustomLocalOffset = spurt.CustomLocalDir * 0.18f;
+                if (TryComp<ArterialBleedSpurtComponent>(uid, out var activeSpurt) && activeSpurt.PartType != BodyPartType.Other)
+                {
+                    // Do not override severed limb / neck stumps with generic cut spurt!
+                }
+                else
+                {
+                    var spurt = EnsureComp<ArterialBleedSpurtComponent>(uid);
+                    spurt.PartType = BodyPartType.Other;
+                    spurt.SpurtsRemaining = Math.Max(spurt.SpurtsRemaining, 4);
+                    spurt.TotalSpurts = 4;
+                    spurt.Interval = 0.22f;
+                    spurt.Timer = 0.05f;
+                    spurt.IsFountain = false;
+                    spurt.HasCustomGeometry = true;
+                    spurt.CustomLocalDir = strikeVec;
+                    spurt.CustomLocalOffset = strikeVec * 0.18f;
+                }
             }
         }
 
@@ -477,16 +564,10 @@ public sealed class BloodSplatterSystem : EntitySystem
             return;
 
         var xform = Transform(uid);
-        GetStumpGeometry(uid, partComp.PartType, partComp.Symmetry, xform, out var stumpOffset, out var sprayAngle, out var sprayDir);
-        var stumpCoords = xform.Coordinates.Offset(stumpOffset);
 
         if (partComp.PartType == BodyPartType.Head)
         {
             // Decapitation!
-            _sawmill.Info($"[BloodSplatterSystem] Decapitation on {uid}! Stump at {stumpCoords}, dir={sprayDir}");
-
-            SpawnDecapitationSplatter(uid, comp, stumpCoords, sprayAngle, sprayDir);
-
             // 5 SECONDS ARTERIAL FOUNTAIN (25 spurts * 0.20s = 5.0 seconds)
             var spurt = EnsureComp<ArterialBleedSpurtComponent>(uid);
             spurt.PartType = BodyPartType.Head;
@@ -497,12 +578,16 @@ public sealed class BloodSplatterSystem : EntitySystem
             spurt.Interval = 0.20f;
             spurt.Timer = 0.05f;
             spurt.IsFountain = true;
+
+            GetStumpGeometry(uid, spurt, xform, out var stumpOffset, out var sprayAngle, out var sprayDir);
+            var stumpCoords = xform.Coordinates.Offset(stumpOffset);
+
+            _sawmill.Info($"[BloodSplatterSystem] Decapitation on {uid}! Stump at {stumpCoords}, dir={sprayDir}");
+
+            SpawnDecapitationSplatter(uid, comp, stumpCoords, sprayAngle, sprayDir);
         }
         else if (partComp.PartType == BodyPartType.Arm || partComp.PartType == BodyPartType.Hand)
         {
-            _sawmill.Debug($"[BloodSplatterSystem] Arm/Hand severed on {uid} (sym={partComp.Symmetry}). Stump at {stumpCoords}, dir={sprayDir}");
-            SpawnLimbSplatter(uid, comp, stumpCoords, sprayAngle, sprayDir, _armGibDecals);
-
             // 1.2 SECONDS ARTERIAL SPURT (6 spurts * 0.20s = 1.2 seconds)
             var spurt = EnsureComp<ArterialBleedSpurtComponent>(uid);
             spurt.PartType = partComp.PartType;
@@ -513,12 +598,15 @@ public sealed class BloodSplatterSystem : EntitySystem
             spurt.Interval = 0.20f;
             spurt.Timer = 0.05f;
             spurt.IsFountain = false;
+
+            GetStumpGeometry(uid, spurt, xform, out var stumpOffset, out var sprayAngle, out var sprayDir);
+            var stumpCoords = xform.Coordinates.Offset(stumpOffset);
+
+            _sawmill.Debug($"[BloodSplatterSystem] Arm/Hand severed on {uid} (sym={partComp.Symmetry}). Stump at {stumpCoords}, dir={sprayDir}");
+            SpawnLimbSplatter(uid, comp, stumpCoords, sprayAngle, sprayDir, _armGibDecals);
         }
         else if (partComp.PartType == BodyPartType.Leg || partComp.PartType == BodyPartType.Foot)
         {
-            _sawmill.Debug($"[BloodSplatterSystem] Leg/Foot severed on {uid} (sym={partComp.Symmetry}). Stump at {stumpCoords}, dir={sprayDir}");
-            SpawnLimbSplatter(uid, comp, stumpCoords, sprayAngle, sprayDir, _legGibDecals);
-
             // 1.2 SECONDS ARTERIAL SPURT (6 spurts * 0.20s = 1.2 seconds)
             var spurt = EnsureComp<ArterialBleedSpurtComponent>(uid);
             spurt.PartType = partComp.PartType;
@@ -529,9 +617,17 @@ public sealed class BloodSplatterSystem : EntitySystem
             spurt.Interval = 0.20f;
             spurt.Timer = 0.05f;
             spurt.IsFountain = false;
+
+            GetStumpGeometry(uid, spurt, xform, out var stumpOffset, out var sprayAngle, out var sprayDir);
+            var stumpCoords = xform.Coordinates.Offset(stumpOffset);
+
+            _sawmill.Debug($"[BloodSplatterSystem] Leg/Foot severed on {uid} (sym={partComp.Symmetry}). Stump at {stumpCoords}, dir={sprayDir}");
+            SpawnLimbSplatter(uid, comp, stumpCoords, sprayAngle, sprayDir, _legGibDecals);
         }
         else
         {
+            GetStumpGeometry(uid, partComp.PartType, partComp.Symmetry, xform, out var stumpOffset, out var sprayAngle, out var sprayDir);
+            var stumpCoords = xform.Coordinates.Offset(stumpOffset);
             SpawnLimbSplatter(uid, comp, stumpCoords, sprayAngle, sprayDir, _torsoGibDecals);
         }
     }
@@ -779,15 +875,13 @@ public sealed class BloodSplatterSystem : EntitySystem
             SafeAddDecal(uid, stumpCoords, dropOffset, _mfloorDecals[_random.Next(_mfloorDecals.Length)], bloodColor, Angle.FromDegrees(_random.Next(0, 360)));
         }
 
-        // 6. Broadcast instant massive blood hit VFX particles from the stump
+        // 6. Broadcast instant massive blood hit VFX particles from the stump (wide, non-conical fan)
         var netStumpCoords = GetNetCoordinates(stumpCoords);
         var hits = new List<BloodHitData>
         {
             new(netStumpCoords, sprayDir),
-            new(netStumpCoords, Angle.FromDegrees(sprayAngle.Degrees - 22f).ToWorldVec()),
-            new(netStumpCoords, Angle.FromDegrees(sprayAngle.Degrees + 22f).ToWorldVec()),
-            new(netStumpCoords, Angle.FromDegrees(sprayAngle.Degrees - 40f).ToWorldVec()),
-            new(netStumpCoords, Angle.FromDegrees(sprayAngle.Degrees + 40f).ToWorldVec()),
+            new(netStumpCoords, Angle.FromDegrees(sprayAngle.Degrees - 30f).ToWorldVec()),
+            new(netStumpCoords, Angle.FromDegrees(sprayAngle.Degrees + 30f).ToWorldVec()),
         };
         RaiseNetworkEvent(new MeleeBloodHitEffectEvent(hits), Filter.Pvs(uid));
 
@@ -866,13 +960,13 @@ public sealed class BloodSplatterSystem : EntitySystem
             SafeAddDecal(uid, stumpCoords, dropOffset, _mfloorDecals[_random.Next(_mfloorDecals.Length)], bloodColor, Angle.FromDegrees(_random.Next(0, 360)));
         }
 
-        // Broadcast initial spray VFX particles from stump
+        // Broadcast initial spray VFX particles from stump (wide chaotic fan)
         var netStumpCoords = GetNetCoordinates(stumpCoords);
         var hits = new List<BloodHitData>
         {
             new(netStumpCoords, sprayDir),
-            new(netStumpCoords, Angle.FromDegrees(sprayAngle.Degrees - 20f).ToWorldVec()),
-            new(netStumpCoords, Angle.FromDegrees(sprayAngle.Degrees + 20f).ToWorldVec()),
+            new(netStumpCoords, Angle.FromDegrees(sprayAngle.Degrees - 38f).ToWorldVec()),
+            new(netStumpCoords, Angle.FromDegrees(sprayAngle.Degrees + 38f).ToWorldVec()),
         };
         RaiseNetworkEvent(new MeleeBloodHitEffectEvent(hits), Filter.Pvs(uid));
 

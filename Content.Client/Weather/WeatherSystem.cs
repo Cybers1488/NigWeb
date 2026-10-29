@@ -137,9 +137,16 @@ public sealed partial class WeatherSystem : SharedWeatherSystem // Goob edit - m
             return false;
         // End DeltaV Additions
 
-        // TODO: Fades (properly)
-        weather.Stream = _audio.Stop(weather.Stream);
-        weather.Stream = _audio.PlayGlobal(weatherProto.Sound, Filter.Local(), true)?.Entity;
+        // Prevent restarting the audio stream if it's already playing smoothly
+        if (state == WeatherState.Ending)
+        {
+            return true;
+        }
+
+        if (weather.Stream == null && weatherProto.Sound != null)
+        {
+            weather.Stream = _audio.PlayGlobal(weatherProto.Sound, Filter.Local(), true)?.Entity;
+        }
         return true;
     }
 

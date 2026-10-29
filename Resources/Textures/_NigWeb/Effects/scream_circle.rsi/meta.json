@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "license": "Copyright The Game Kitchen (Blasphemous 2)",
+  "copyright": "Extracted from Blasphemous 2 (Enemy EN18 Standing Scream Area)",
+  "size": {
+    "x": 256,
+    "y": 256
+  },
+  "states": [
+    {
+      "name": "circle",
+      "delays": [
+        [
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08,
+          0.08
+        ]
+      ]
+    }
+  ]
+}

@@ -147,7 +147,10 @@
     - /Audio/_NigWeb/Enemies/Flagellant/flagellant_step2.ogg
     - /Audio/_NigWeb/Enemies/Flagellant/flagellant_step3.ogg
     - /Audio/_NigWeb/Enemies/Flagellant/flagellant_step4.ogg
-
-
-
-
+- type: soundCollection
+  id: SummonerRetributionSounds
+  files:
+    - /Audio/_NigWeb/Summoner/retribution_1.ogg
+    - /Audio/_NigWeb/Summoner/retribution_2.ogg
+    - /Audio/_NigWeb/Summoner/retribution_3.ogg
+    - /Audio/_NigWeb/Summoner/retribution_4.ogg

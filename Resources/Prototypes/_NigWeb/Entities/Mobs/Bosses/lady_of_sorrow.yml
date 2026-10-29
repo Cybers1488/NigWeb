@@ -1,5 +1,5 @@
 - type: entity
-  name: Mater Carnificinae (Матерь Бойни)
+  name: Матерь Бойни
   id: MobLadyOfSorrow
   parent:
   - BaseMob

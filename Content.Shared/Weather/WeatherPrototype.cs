@@ -26,6 +26,18 @@ public sealed partial class WeatherPrototype : IPrototype
     public SoundSpecifier? Sound;
 
     /// <summary>
+    /// Fade-in duration when the weather starts. Defaults to 15 seconds.
+    /// </summary>
+    [DataField("startupTime")]
+    public TimeSpan StartupTime = TimeSpan.FromSeconds(15);
+
+    /// <summary>
+    /// Fade-out duration when the weather ends. Defaults to 15 seconds.
+    /// </summary>
+    [DataField("shutdownTime")]
+    public TimeSpan ShutdownTime = TimeSpan.FromSeconds(15);
+
+    /// <summary>
     /// DeltaV: Damage you can take from being in this weather.
     /// Only applies when weather has fully set in.
     /// </summary>

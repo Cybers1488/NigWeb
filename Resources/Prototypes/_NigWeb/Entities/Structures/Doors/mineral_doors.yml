@@ -4,6 +4,10 @@
   name: металлическая дверь
   description: Массивная металлическая дверь.
   components:
+  - type: ApcPowerReceiver
+    needsPower: false
+  - type: Airlock
+    powered: true
   - type: Sprite
     sprite: _NigWeb/Structures/Doors/mineral_door.rsi
   - type: Door
@@ -23,9 +27,13 @@
 - type: entity
   id: NigWebMineralDoorY
   parent: AirlockGlass
-  name: металлическая дверь (пробитая с дырками)
-  description: Металлическая дверь со следами повреждений (вертикальная).
+  name: пробитая металлическая дверь
+  description: Вертикальная металлическая дверь со следами сильных повреждений.
   components:
+  - type: ApcPowerReceiver
+    needsPower: false
+  - type: Airlock
+    powered: true
   - type: Sprite
     sprite: _NigWeb/Structures/Doors/mineral_ydoor.rsi
   - type: Door

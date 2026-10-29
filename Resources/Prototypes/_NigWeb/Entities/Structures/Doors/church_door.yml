@@ -4,6 +4,8 @@
   name: церковная дверь
   description: Массивная двустворчатая дверь, украшенная резьбой.
   components:
+  - type: ApcPowerReceiver
+    needsPower: false
   - type: Sprite
     sprite: _NigWeb/Structures/Doors/church_door_2x1.rsi
     snapCardinals: false
@@ -27,6 +29,7 @@
     extraTiles:
     - 1,0
   - type: Airlock
+    powered: true
     autoCloseDelay: 4
   - type: Door
     bumpOpen: false

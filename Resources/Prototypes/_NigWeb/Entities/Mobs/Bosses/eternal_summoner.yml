@@ -1,0 +1,115 @@
+# SPDX-License-Identifier: MIT
+
+- type: entity
+  id: AltarEternalNightSummoner
+  name: Святилище Вечной Ночи
+  description: Древний многоликий монумент из темного камня и кованого золота в центре Чёрного Солнца. Из шести ниш по бокам глядят лики мучеников, непрестанно проливающие кровавые слезы, а на вершине восседает таинственный идол, сменяющий лики под погребальный звон колоколов.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Clickable
+    bounds:
+      all: "-2.3,-2.95,2.3,2.85"
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix_pedestal:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-2.3,-3.0,2.25,-1.0"
+        density: 2000
+        mask:
+        - MobMask
+        - Impassable
+        - MidImpassable
+        layer:
+        - Impassable
+        - MidImpassable
+        - HighImpassable
+        - LowImpassable
+        hard: true
+      fix_altar:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-2.1,-1.0,2.0,1.0"
+        density: 2000
+        mask:
+        - MobMask
+        - Impassable
+        - MidImpassable
+        layer:
+        - Impassable
+        - MidImpassable
+        - HighImpassable
+        - LowImpassable
+        hard: true
+      fix_idol:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.9,1.0,1.75,2.0"
+        density: 2000
+        mask:
+        - MobMask
+        - Impassable
+        - MidImpassable
+        layer:
+        - Impassable
+        - MidImpassable
+        - HighImpassable
+        - LowImpassable
+        hard: true
+      fix_heads:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.25,2.0,1.2,3.0"
+        density: 2000
+        mask:
+        - MobMask
+        - Impassable
+        - MidImpassable
+        layer:
+        - Impassable
+        - MidImpassable
+        - HighImpassable
+        - LowImpassable
+        hard: true
+  - type: Sprite
+    sprite: _NigWeb/Mobs/Bosses/eternal_summoner.rsi
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - state: body_idle
+    - state: elder_idle
+  - type: Appearance
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: EternalSummoner
+    deathsRequiredForMask: 10
+    deathsRequiredForSkull: 30
+    transitionDuration: 1.89
+    stage3Weather: NigWebCorruptBloodStorm
+    soundStage2Transition:
+      path: /Audio/_NigWeb/Summoner/stage2_transition.ogg
+    soundStage3Transition:
+      path: /Audio/_NigWeb/Summoner/stage3_transition.ogg
+    soundRetribution:
+      collection: SummonerRetributionSounds
+  - type: AmbientSound
+    enabled: true
+    volume: -9
+    range: 16
+    sound:
+      path: /Audio/_NigWeb/Summoner/sinodo_ambient.ogg
+  - type: PointLight
+    radius: 7.5
+    energy: 1.8
+    color: "#ffbb55"
+
+- type: entity
+  id: MobEternalNightSummoner
+  name: Призыватель Вечной Ночи
+  parent: AltarEternalNightSummoner

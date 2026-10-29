@@ -15,8 +15,12 @@ using Content.Shared.Interaction;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
+using Content.Shared.Weather;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
+using Robust.Shared.Timing;
 
 namespace Content.Server._NigWeb.Altar;
 
@@ -30,6 +34,8 @@ public sealed class LadyAltarSystem : EntitySystem
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
     [Dependency] private readonly BloodSplatterSystem _bloodSplatter = default!;
+    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     public override void Initialize()
     {
@@ -53,7 +59,7 @@ public sealed class LadyAltarSystem : EntitySystem
     {
         Log.Debug($"[LadyAltarSystem] Examining Lady Altar {ToPrettyString(uid)} by {ToPrettyString(args.Examiner)}");
 
-        args.PushMarkup("[bold]Mater Carnificinae (Матерь Кровавой Бойни)[/bold]");
+        args.PushMarkup("[bold]Mater Carnificinae — Матерь Кровавой Бойни[/bold]");
         args.PushMarkup("Колоссальное изваяние из священного фарфора. Она внемлет мольбам и жаждет евхаристии мученической сукровицы, отсеченных дланей и искромсанной плоти.");
 
         string stageDesc = component.CurrentStage switch
@@ -69,7 +75,7 @@ public sealed class LadyAltarSystem : EntitySystem
         args.PushMarkup($"[color=crimson]{stageDesc}[/color]");
 
         var percent = ((component.CurrentProgress / component.MaxProgress).Float() * 100f);
-        args.PushMarkup($"Стадия жертвы: [bold]{component.CurrentStage}/5[/bold] (Кровь: {component.CurrentProgress} / {component.MaxProgress} — {percent:F0}%)");
+        args.PushMarkup($"Стадия жертвы: [bold]{component.CurrentStage}/5[/bold], кровь: {component.CurrentProgress} / {component.MaxProgress} — {percent:F0}%");
     }
 
     private void OnInteractUsing(EntityUid uid, LadyAltarComponent component, InteractUsingEvent args)
@@ -212,7 +218,7 @@ public sealed class LadyAltarSystem : EntitySystem
 
     public void AddProgress(EntityUid uid, LadyAltarComponent comp, FixedPoint2 points, EntityUid? user)
     {
-        Log.Info($"[LadyAltarSystem] Adding {points} progress to Lady Altar {ToPrettyString(uid)} (current: {comp.CurrentProgress}/{comp.MaxProgress})");
+        Log.Info($"[LadyAltarSystem] Adding {points} progress to Lady Altar {ToPrettyString(uid)}, current: {comp.CurrentProgress}/{comp.MaxProgress}");
 
         comp.CurrentProgress = FixedPoint2.Clamp(comp.CurrentProgress + points, FixedPoint2.Zero, comp.MaxProgress);
 
@@ -248,12 +254,37 @@ public sealed class LadyAltarSystem : EntitySystem
         }
     }
 
+    public void TriggerAscensionWorldwide(EntityUid? altarUid = null)
+    {
+        Log.Info("[LadyAltarSystem] Triggering Lady Ascension worldwide! Reality collapsed into Black, White, and Crimson Red.");
+        var curTime = _timing.CurTime;
+
+        foreach (var mapId in _mapManager.GetAllMapIds())
+        {
+            var mapUid = _mapManager.GetMapEntityId(mapId);
+            if (!mapUid.IsValid())
+                continue;
+
+            // Enable LadyAscensionMapComponent for screen shader — preserves stage 3 weather untouched
+            var mapComp = EnsureComp<LadyAscensionMapComponent>(mapUid);
+            mapComp.StartTime = curTime;
+            mapComp.Active = true;
+            Dirty(mapUid, mapComp);
+
+            Log.Debug($"[LadyAltarSystem] Enabled LadyAscensionMapComponent on map {mapUid}");
+        }
+
+        NetEntity netAltar = altarUid.HasValue ? GetNetEntity(altarUid.Value) : NetEntity.Invalid;
+        RaiseNetworkEvent(new LadyAscendedEvent(netAltar));
+    }
+
     private void OnStageAdvanced(EntityUid uid, LadyAltarComponent comp, int stage)
     {
         Log.Info($"[LadyAltarSystem] Stage advanced to {stage} on {ToPrettyString(uid)}!");
 
         if (stage == 5)
         {
+            TriggerAscensionWorldwide(uid);
             _audio.PlayPvs(comp.AscensionSound, uid, AudioParams.Default.WithVolume(4f));
             _popup.PopupEntity("МАТЕРЬ КРОВАВОЙ БОЙНИ ПОЛНОСТЬЮ СОДРАЛА СВОЙ САВАН! ЗОЛОТОЙ ВЕНЕЦ МУЧЕНИЦЫ ВОССИЯЛ НАД ПУСТОШЬЮ!", uid, PopupType.LargeCaution);
         }

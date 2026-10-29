@@ -1,0 +1,118 @@
+- type: entity
+  name: Погребённый монах
+  id: MobBuriedMonk
+  parent:
+  - SimpleSpaceMobBase
+  - MobCombat
+  description: Осквернённый кающийся затворник. Медленно приближаясь к чужакам, он замирает в жутком предвкушении и сотрясает пространство оглушающим криком, сбивающим жертву с ног.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Mobs/Enemies/buried_monk.rsi
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: idle
+  - type: Clickable
+    bounds:
+      all: "-0.60,-0.40,0.60,2.35"
+  - type: StatusIcon
+    bounds: -0.6,-2.4,0.6,2.4
+  - type: InteractionOutline
+  - type: Appearance
+  - type: PointLight
+    enabled: false
+    radius: 5.0
+    energy: 3.2
+    color: "#4fc3f7"
+    castShadows: false
+  - type: BuriedMonk
+    state: Idle
+    walkSpeed: 1.3
+    sprintSpeed: 1.3
+    attackRange: 2.6
+    attackCooldown: 3.5
+    anticipationDuration: 0.80
+    screamDuration: 0.99
+    recoveryDuration: 0.72
+    screamRadius: 3.5
+    screamKnockback: 7.0
+    deathDuration: 1.80
+  - type: InputMover
+  - type: MobMover
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 150
+        mask:
+        - MobMask
+        layer:
+        - LargeMobLayer
+      body:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.55,-0.30,0.55,2.25"
+        density: 100
+        mask:
+        - MobMask
+        - MobLayer
+        - Impassable
+        - MidImpassable
+        layer:
+        - LargeMobLayer
+        - MidImpassable
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      95: Dead
+  - type: Stamina
+    baseCritThreshold: 120
+  - type: Damageable
+    damageContainer: Biological
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.3
+    baseSprintSpeed: 1.3
+  - type: MeleeWeapon
+    altDisarm: false
+    animation: WeaponArcClaw
+    soundHit:
+      collection: NigWebBloodSplatter
+    soundSwing:
+      collection: NigWebBuriedMonkAttack
+    damage:
+      types:
+        Slash: 16
+        Piercing: 8
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: NigWebBuriedMonkFootstep
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - DoorBumpOpener
+
+- type: entity
+  name: Спавнер Погребённого монаха
+  id: SpawnMobBuriedMonk
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Mobs/Enemies/buried_monk.rsi
+    state: icon
+  - type: ConditionalSpawner
+    prototypes:
+    - MobBuriedMonk

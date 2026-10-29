@@ -7,3 +7,4 @@
   footstepSounds:
     collection: FootstepAsteroid
   tileRipResistance: 400
+  weather: true

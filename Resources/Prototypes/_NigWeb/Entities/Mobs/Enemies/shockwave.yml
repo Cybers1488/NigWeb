@@ -1,0 +1,102 @@
+- type: entity
+  name: Генератор ударной волны
+  id: MobShockwave
+  parent:
+  - SimpleSpaceMobBase
+  - MobCombat
+  description: Древний парящий механизм, охраняющий священные залы. Накапливает колоссальный заряд энергии и высвобождает его в виде сокрушительной ударной волны, сбивающей врагов с ног.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Mobs/Enemies/shockwave.rsi
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: idle
+  - type: Clickable
+    bounds:
+      all: "-1.15,-1.00,1.15,1.45"
+  - type: StatusIcon
+    bounds: -0.9,-1.45,0.9,1.45
+  - type: InteractionOutline
+  - type: Appearance
+  - type: PointLight
+    enabled: false
+    radius: 5.5
+    energy: 3.5
+    color: "#ff4d4d"
+    castShadows: false
+  - type: Shockwave
+    state: Idle
+    attackRange: 5.0
+    attackCooldown: 3.5
+    anticipationDuration: 0.80
+    attackDuration: 0.64
+    recoveryDuration: 0.80
+    shockwaveRadius: 4.0
+    shockwaveKnockback: 8.5
+    damageBlunt: 18.0
+    damageShock: 12.0
+    deathDuration: 0.90
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.6
+        density: 300
+        mask:
+        - MobMask
+        layer:
+        - LargeMobLayer
+      body:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.60,-1.00,0.60,1.40"
+        density: 150
+        mask:
+        - MobMask
+        layer:
+        - LargeMobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      80: Dead
+  - type: Stamina
+    baseCritThreshold: 200
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 0
+    baseSprintSpeed: 0
+  - type: MeleeWeapon
+    altDisarm: false
+    animation: WeaponArcClaw
+    soundHit:
+      collection: MetalThud
+    soundSwing:
+      collection: NigWebShockwaveAttack
+    damage:
+      types:
+        Blunt: 18
+        Shock: 12
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: Tag
+    tags:
+    - CannotSuicide
+
+- type: entity
+  name: Спавнер Генератора ударной волны
+  id: SpawnMobShockwave
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Mobs/Enemies/shockwave.rsi
+    state: icon
+  - type: ConditionalSpawner
+    prototypes:
+    - MobShockwave

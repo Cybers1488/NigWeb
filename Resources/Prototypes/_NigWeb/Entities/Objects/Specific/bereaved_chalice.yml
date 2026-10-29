@@ -1,0 +1,35 @@
+# SPDX-License-Identifier: MIT
+
+- type: entity
+  name: Слезная Потира
+  id: ItemBereavedChalice
+  parent: DrinkBase
+  description: Тяжелая литая потира из тусклого золота, предназначенная для сбора горячего серафического воска из груди Вскормителя. Застывая на ранах, воск намертво скрепляет рассеченную плоть и останавливает кровотечение.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Specific/bereaved_chalice.rsi
+    layers:
+    - map: ["enum.SolutionContainerLayers.Fill"]
+      state: empty
+  - type: Icon
+    sprite: _NigWeb/Objects/Specific/bereaved_chalice.rsi
+    state: icon
+  - type: Item
+    sprite: _NigWeb/Objects/Specific/bereaved_chalice.rsi
+    size: Small
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 60
+  - type: FitsInDispenser
+    solution: drink
+  - type: SolutionTransfer
+    canChangeTransferAmount: true
+    maxTransferAmount: 30
+  - type: SolutionContainerVisuals
+    maxFillLevels: 0
+    fillBaseName: full
+    emptySpriteName: empty
+    changeColor: false
+  - type: StaticPrice
+    price: 150

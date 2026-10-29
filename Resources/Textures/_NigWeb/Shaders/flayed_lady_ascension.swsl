@@ -1,0 +1,38 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Flayed Lady of Sorrow Ascension post-processing shader.
+// Strips all colors from reality leaving strictly Black, White, and Crimson Red.
+// Zero green, zero blue, zero intermediate hues.
+// Zero gray, zero pink, zero white-red mixtures.
+
+uniform sampler2D SCREEN_TEXTURE;
+uniform highp float intensity;
+
+void fragment() {
+    highp vec2 uv = UV;
+    highp vec4 baseCol = zTextureSpec(SCREEN_TEXTURE, uv);
+    highp vec3 color = baseCol.rgb;
+
+    // Strict arterial blood detection
+    // Pure red dominance with low green and blue
+    // Excludes skin, flesh, and ambient stone floors
+    highp float maxGB = max(color.g, color.b);
+    highp float redExcess = color.r - maxGB;
+
+    bool isRed = (redExcess > 0.04) && (color.r > 0.07) && (color.g < color.r * 0.45) && (color.b < color.r * 0.45);
+
+    // Strict 3-tone posterization: Pure Crimson Red, Pure Stark White, Pure Ink Black
+    highp float luma = zGrayscale(color);
+    highp vec3 targetColor;
+
+    if (isRed) {
+        targetColor = vec3(1.0, 0.0, 0.0);
+    } else if (luma > 0.12) {
+        targetColor = vec3(1.0, 1.0, 1.0);
+    } else {
+        targetColor = vec3(0.0, 0.0, 0.0);
+    }
+
+    highp vec3 finalColor = (intensity >= 0.99) ? targetColor : mix(color, targetColor, clamp(intensity, 0.0, 1.0));
+
+    COLOR = vec4(finalColor, baseCol.a);
+}

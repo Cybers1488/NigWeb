@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "size": {
+    "x": 16,
+    "y": 16
+  },
+  "states": [
+    {
+      "name": "pixel_1"
+    },
+    {
+      "name": "pixel_2"
+    },
+    {
+      "name": "pixel_3"
+    },
+    {
+      "name": "streak_1"
+    },
+    {
+      "name": "splat_floor"
+    }
+  ]
+}

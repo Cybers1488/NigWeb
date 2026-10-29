@@ -28,10 +28,10 @@ public sealed class ProjectileSystem : SharedProjectileSystem
 
         var ent = Spawn(ev.Prototype, coords);
 
-        if (TryComp<SpriteComponent>(ent, out var sprite))
+        if (TryComp<SpriteComponent>(ent, out var sprite) &&
+            _sprite.LayerMapTryGet((ent, sprite), EffectLayers.Unshaded, out var layer, false))
         {
-            sprite[EffectLayers.Unshaded].AutoAnimated = false;
-            _sprite.LayerMapTryGet((ent, sprite), EffectLayers.Unshaded, out var layer, false);
+            sprite[layer].AutoAnimated = false;
             var state = _sprite.LayerGetRsiState((ent, sprite), layer);
             var lifetime = 0.5f;
 

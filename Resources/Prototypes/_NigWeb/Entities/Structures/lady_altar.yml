@@ -2,7 +2,7 @@
 
 - type: entity
   id: LadyChaliceAltar
-  name: "Mater Carnificinae (Матерь Кровавой Бойни)"
+  name: "Матерь Кровавой Бойни"
   description: "Колоссальное фарфоровое изваяние Матери Бойни. Каждая капля мученической сукровицы и каждая отсеченная длань сдирают с нее саван, приближая Кровавое Вознесение."
   placement:
     mode: SnapgridCenter

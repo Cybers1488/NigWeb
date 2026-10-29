@@ -1,0 +1,36 @@
+# SPDX-License-Identifier: MIT
+
+- type: soundCollection
+  id: NigWebLightbeamAnticipation
+  files:
+    - /Audio/_NigWeb/Enemies/Lightbeam/en112_anticipation.ogg
+
+- type: soundCollection
+  id: NigWebLightbeamBeam
+  files:
+    - /Audio/_NigWeb/Enemies/Lightbeam/en112_beam.ogg
+
+- type: soundCollection
+  id: NigWebLightbeamRecover
+  files:
+    - /Audio/_NigWeb/Enemies/Lightbeam/en112_recover.ogg
+
+- type: soundCollection
+  id: NigWebLightbeamDeath
+  files:
+    - /Audio/_NigWeb/Enemies/Lightbeam/en112_death.ogg
+
+- type: soundCollection
+  id: NigWebLightbeamIdle
+  files:
+    - /Audio/_NigWeb/Enemies/Lightbeam/en112_idle.ogg
+
+- type: soundCollection
+  id: NigWebLightbeamTurn
+  files:
+    - /Audio/_NigWeb/Enemies/Lightbeam/en112_turn_around_away_snow.ogg
+
+- type: soundCollection
+  id: NigWebLightbeamWakeup
+  files:
+    - /Audio/_NigWeb/Enemies/Lightbeam/en112_wakeup.ogg

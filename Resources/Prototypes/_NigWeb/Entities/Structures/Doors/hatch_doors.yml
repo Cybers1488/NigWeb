@@ -4,6 +4,10 @@
   name: герметичный люк
   description: Тяжелая бронированная дверь.
   components:
+  - type: ApcPowerReceiver
+    needsPower: false
+  - type: Airlock
+    powered: true
   - type: Sprite
     sprite: _NigWeb/Structures/Doors/doorhatchele.rsi
   - type: Door
@@ -31,6 +35,10 @@
   name: шлюз
   description: Массивная бронированная дверь замка.
   components:
+  - type: ApcPowerReceiver
+    needsPower: false
+  - type: Airlock
+    powered: true
   - type: Sprite
     sprite: _NigWeb/Structures/Doors/doorsec.rsi
   - type: Door
@@ -58,6 +66,10 @@
   name: технический люк
   description: Техническая дверь.
   components:
+  - type: ApcPowerReceiver
+    needsPower: false
+  - type: Airlock
+    powered: true
   - type: Sprite
     sprite: _NigWeb/Structures/Doors/maintdoor.rsi
   - type: Door

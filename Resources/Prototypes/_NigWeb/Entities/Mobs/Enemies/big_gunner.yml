@@ -1,0 +1,138 @@
+- type: entity
+  id: EffectCannonballImpact
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0.70
+  - type: Sprite
+    drawdepth: Effects
+    layers:
+    - shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+      sprite: _NigWeb/Effects/cannonball_impact.rsi
+      state: impact
+  - type: EffectVisuals
+  - type: Tag
+    tags:
+      - HideContextMenu
+
+- type: entity
+  id: CannonballBigGunner
+  name: чугунное осадное ядро
+  description: Раскаленное чугунное ядро, выпущенное из ручной мортиры Тяжелого канонира.
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Guns/Projectiles/cannonball.rsi
+    noRot: false
+    layers:
+    - state: in-flight
+      shader: unshaded
+  - type: Projectile
+    impactEffect: EffectCannonballImpact
+    soundHit:
+      collection: NigWebBigGunnerProjectileImpact
+    damage:
+      types:
+        Blunt: 25
+        Structural: 35
+  - type: StunOnCollide
+    stunAmount: 0
+    knockdownAmount: 1.5
+    slowdownAmount: 2.0
+    walkSpeedModifier: 0.3
+    sprintSpeedModifier: 0.3
+    drop: false
+
+- type: entity
+  name: Тяжёлый канонир
+  id: MobBigGunner
+  parent:
+  - SimpleSpaceMobBase
+  - MobCombat
+  description: Огромный артиллерист в монашеском капюшоне, вооруженный колоссальной осадной мортирой. На расстоянии осыпает врагов разрывными чугунными ядрами, а вблизи сокрушает их ударом многопудовой пушки о землю.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Mobs/Enemies/big_gunner.rsi
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: idle
+  - type: Clickable
+    bounds:
+      all: "-1.25,-0.50,1.25,2.20"
+  - type: StatusIcon
+    bounds: -1.0,-2.2,1.0,2.2
+  - type: InteractionOutline
+  - type: Appearance
+  - type: BigGunner
+    state: Idle
+    walkSpeed: 0
+    sprintSpeed: 0
+    meleeRange: 2.5
+    rangedRange: 13.0
+    minRangedRange: 2.2
+    meleeCooldown: 3.0
+    rangedCooldown: 3.5
+    meleeRadius: 2.6
+    meleeKnockback: 9.0
+    meleeDamage: 30.0
+    cannonballSpeed: 18.0
+    deathDuration: 2.0
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 0
+    baseSprintSpeed: 0
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.50
+        density: 500
+        mask:
+        - MobMask
+        layer:
+        - LargeMobLayer
+      body:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.10,-0.40,1.10,2.10"
+        density: 200
+        mask:
+        - MobMask
+        - MobLayer
+        - Impassable
+        - MidImpassable
+        layer:
+        - LargeMobLayer
+        - MidImpassable
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      160: Dead
+  - type: Stamina
+    baseCritThreshold: 250
+  - type: Damageable
+    damageContainer: Biological
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: Tag
+    tags:
+    - CannotSuicide
+
+- type: entity
+  name: Спавнер Тяжёлого канонира
+  id: SpawnMobBigGunner
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Mobs/Enemies/big_gunner.rsi
+    state: icon
+  - type: ConditionalSpawner
+    prototypes:
+    - MobBigGunner

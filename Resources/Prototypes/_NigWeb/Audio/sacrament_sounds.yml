@@ -1,0 +1,48 @@
+# SPDX-License-Identifier: MIT
+
+- type: soundCollection
+  id: NigWebPalmSlice
+  files:
+  - /Audio/_NigWeb/Sacrament/palm_slice.ogg
+  - /Audio/_NigWeb/Sacrament/palm_flesh.ogg
+
+- type: soundCollection
+  id: NigWebWaxSizzle
+  files:
+  - /Audio/_NigWeb/Sacrament/wax_sizzle.ogg
+
+- type: soundCollection
+  id: NigWebWaxDrip
+  files:
+  - /Audio/_NigWeb/Sacrament/wax_drip1.ogg
+  - /Audio/_NigWeb/Sacrament/wax_drip2.ogg
+  - /Audio/_NigWeb/Sacrament/wax_plop.ogg
+
+- type: soundCollection
+  id: NigWebFatherSigh
+  files:
+  - /Audio/_NigWeb/Sacrament/father_sigh.ogg
+
+- type: soundCollection
+  id: NigWebTorchLight
+  files:
+  - /Audio/_NigWeb/Sacrament/torch_ignite.ogg
+
+- type: soundCollection
+  id: NigWebTorchSnuff
+  files:
+  - /Audio/_NigWeb/Sacrament/torch_extinguish.ogg
+
+- type: soundCollection
+  id: NigWebPatriarchVoice
+  files:
+  - /Audio/_NigWeb/Sacrament/patriarch_voice1.ogg
+  - /Audio/_NigWeb/Sacrament/patriarch_voice2.ogg
+  - /Audio/_NigWeb/Sacrament/patriarch_voice3.ogg
+  - /Audio/_NigWeb/Sacrament/patriarch_voice4.ogg
+
+- type: soundCollection
+  id: NigWebBloodTearsWipe
+  files:
+  - /Audio/_NigWeb/Sacrament/blood_tears_wipe.ogg
+

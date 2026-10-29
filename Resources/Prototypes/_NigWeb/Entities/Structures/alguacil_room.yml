@@ -288,24 +288,24 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
 
-# Wall Torch (Permanent)
+# Wall Torch
 - type: entity
   id: FortressTorchWall
   parent: BaseWallmount
-  name: wall torch
-  description: An iron wall-mounted torch bracket with a steadily burning torch.
-  placement:
-    mode: SnapgridCenter
+  name: настенный факел
+  description: Кованый железный настенный факел, освещающий стены ярким теплым огнем.
   components:
   - type: Sprite
     sprite: _NigWeb/Structures/Wallmounts/torchwall.rsi
+    drawdepth: WallMountedItems
     layers:
     - state: torch_on
       shader: unshaded
   - type: PointLight
-    radius: 4.5
-    energy: 3.2
+    radius: 6.0
+    energy: 2.8
     color: "#FF8822"
+    softness: 1.0
   - type: AlwaysHot
   - type: Damageable
     damageModifierSet: Metallic

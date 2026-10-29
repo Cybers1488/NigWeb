@@ -1,0 +1,155 @@
+# SPDX-License-Identifier: MIT
+
+# Holy Beam Segment for EN112 Divine Light Emitter
+- type: entity
+  id: HolyBeamSegment
+  name: священный луч кары
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Mobs/Enemies/holy_beam.rsi
+    drawdepth: Effects
+    layers:
+    - state: beam
+      shader: unshaded
+  - type: PointLight
+    enabled: true
+    color: "#FFF59D"
+    radius: 2.5
+    softness: 1.0
+    autoRot: true
+    castShadows: false
+  - type: Physics
+    canCollide: false
+  - type: Beam
+  - type: TimedDespawn
+    lifetime: 0.25
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+# Telegraph targeting guide ray before laser unleashes
+- type: entity
+  id: HolyBeamTelegraph
+  name: луч наведения
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Mobs/Enemies/holy_beam.rsi
+    drawdepth: Effects
+    layers:
+    - state: telegraph
+      shader: unshaded
+  - type: PointLight
+    enabled: true
+    color: "#FFE082"
+    radius: 1.5
+    softness: 1.0
+    autoRot: true
+    castShadows: false
+  - type: Physics
+    canCollide: false
+  - type: Beam
+  - type: TimedDespawn
+    lifetime: 0.25
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+# EN112 Lightbeam - Световой излучатель (Blasphemous 2)
+- type: entity
+  name: Световой излучатель
+  id: MobLightbeam
+  parent:
+  - SimpleSpaceMobBase
+  - MobCombat
+  description: Древний левитирующий реликварий-излучатель. Накапливает святую благодать и испепеляет грешников непрерывным направленным лучом небесного огня, отслеживающим перемещение цели.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Mobs/Enemies/lightbeam.rsi
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: idle
+  - type: Clickable
+    bounds:
+      all: "-0.70,0.00,0.70,2.15"
+  - type: StatusIcon
+    bounds: -0.7,-2.15,0.7,2.15
+  - type: InteractionOutline
+  - type: Appearance
+  - type: PointLight
+    enabled: false
+    color: "#FFF59D"
+    radius: 4.0
+    energy: 1.0
+    softness: 1.0
+    castShadows: true
+  - type: Lightbeam
+    range: 12.0
+    chargeDuration: 0.84
+    firingDuration: 1.60
+    recoveryDuration: 0.60
+    attackCooldown: 3.5
+    trackingSpeed: 2.8
+    damageHeat: 6.0
+    damageShock: 4.0
+    knockback: 6.0
+    tickInterval: 0.15
+    deathDuration: 0.80
+    attackLightColor: "#FFF59D"
+    attackLightRadius: 6.0
+    attackLightEnergy: 3.5
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 0
+    baseSprintSpeed: 0
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 350
+        mask:
+        - MobMask
+        layer:
+        - LargeMobLayer
+      body:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,0.00,0.45,2.15"
+        density: 100
+        mask:
+        - MobMask
+        layer:
+        - LargeMobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      110: Dead
+  - type: Stamina
+    baseCritThreshold: 180
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: Tag
+    tags:
+    - CannotSuicide
+
+# Spawner
+- type: entity
+  name: Спавнер Светового излучателя
+  id: SpawnMobLightbeam
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Mobs/Enemies/lightbeam.rsi
+    state: icon
+  - type: ConditionalSpawner
+    prototypes:
+    - MobLightbeam

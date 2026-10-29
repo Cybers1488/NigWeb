@@ -1,6 +1,6 @@
 # Отделы
 department-OrdoCarnisTruncatae = Ordo Carnis Truncatae
-department-OrdoCarnisTruncatae-description = Cultus doloris et martyrii sacri. Священный культ мученичества и совлечения плоти во славу Матери Кровавой Бойни (Mater Carnificinae).
+department-OrdoCarnisTruncatae-description = Cultus doloris et martyrii sacri. Священный культ мученичества и совлечения плоти во славу Матери Кровавой Бойни.
 
 # Профессии
 job-name-cenobiarca = Cenobiarca

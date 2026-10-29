@@ -1,0 +1,37 @@
+- type: soundCollection
+  id: NigWebShockwaveAnticipation
+  files:
+    - /Audio/_NigWeb/Enemies/Shockwave/anticipation.ogg
+
+- type: soundCollection
+  id: NigWebShockwaveSpin
+  files:
+    - /Audio/_NigWeb/Enemies/Shockwave/spin_001.ogg
+    - /Audio/_NigWeb/Enemies/Shockwave/spin_002.ogg
+
+- type: soundCollection
+  id: NigWebShockwaveSlowSpin
+  files:
+    - /Audio/_NigWeb/Enemies/Shockwave/slow_spin_001.ogg
+
+- type: soundCollection
+  id: NigWebShockwaveAttack
+  files:
+    - /Audio/_NigWeb/Enemies/Shockwave/attack_001.ogg
+    - /Audio/_NigWeb/Enemies/Shockwave/attack_002.ogg
+    - /Audio/_NigWeb/Enemies/Shockwave/attack_003.ogg
+
+- type: soundCollection
+  id: NigWebShockwaveRecover
+  files:
+    - /Audio/_NigWeb/Enemies/Shockwave/recover.ogg
+
+- type: soundCollection
+  id: NigWebShockwaveWakeUp
+  files:
+    - /Audio/_NigWeb/Enemies/Shockwave/wake_up.ogg
+
+- type: soundCollection
+  id: NigWebShockwaveDeath
+  files:
+    - /Audio/_NigWeb/Enemies/Shockwave/death.ogg

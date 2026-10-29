@@ -4,6 +4,10 @@
   name: командный шлюз
   description: Высокозащищенный командный шлюз.
   components:
+  - type: ApcPowerReceiver
+    needsPower: false
+  - type: Airlock
+    powered: true
   - type: Sprite
     sprite: _NigWeb/Structures/Doors/doorcom.rsi
   - type: Door
@@ -31,6 +35,10 @@
   name: медицинский шлюз
   description: Стеклянный шлюз медицинского отсека.
   components:
+  - type: ApcPowerReceiver
+    needsPower: false
+  - type: Airlock
+    powered: true
   - type: Sprite
     sprite: _NigWeb/Structures/Doors/doormedglass.rsi
   - type: Door
@@ -65,8 +73,10 @@
   id: NigWebCastleGate3x1
   parent: Airlock
   name: врата цитадели
-  description: Огромные железные врата замка (3 тайла).
+  description: Огромные железные врата замка три тайла.
   components:
+  - type: ApcPowerReceiver
+    needsPower: false
   - type: Sprite
     sprite: _NigWeb/Structures/Doors/tgate_3x1.rsi
     snapCardinals: false
@@ -91,6 +101,7 @@
     - 1,0
     - 2,0
   - type: Airlock
+    powered: true
     autoCloseDelay: 4
   - type: Door
     bumpOpen: false
@@ -117,7 +128,7 @@
   id: NigWebMerchantGate3x1
   parent: NigWebCastleGate3x1
   name: торговые врата
-  description: Деревянные врата для торговцев (3 тайла).
+  description: Деревянные врата для торговцев три тайла.
   components:
   - type: Sprite
     sprite: _NigWeb/Structures/Doors/sgate_3x1.rsi
@@ -134,5 +145,3 @@
     sprite: _NigWeb/Structures/Doors/gate_3x1.rsi
     snapCardinals: false
     offset: 1.0,0
-
-

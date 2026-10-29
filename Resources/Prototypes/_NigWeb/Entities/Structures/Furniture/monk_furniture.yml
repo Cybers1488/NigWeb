@@ -1,0 +1,184 @@
+- type: entity
+  id: NigWebMonkChair
+  parent: UnanchoredChairBase
+  name: деревянный стул
+  description: Простой грубый деревянный стул кельи.
+  components:
+  - type: Rotatable
+  - type: Sprite
+    sprite: _NigWeb/Structures/Furniture/monk_chair.rsi
+    state: wooden_chair
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+
+- type: entity
+  id: NigWebMonkTableBase
+  parent: BaseStructure
+  abstract: true
+  components:
+  - type: Animateable
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Wood
+  - type: PlaceableSurface
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 55
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+        - BulletImpassable
+  - type: SpriteFade
+  - type: Sprite
+  - type: Icon
+  - type: Climbable
+  - type: Bonkable
+    bonkDamage:
+      types:
+        Blunt: 4
+  - type: Clickable
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: Wood
+  - type: Tag
+    tags:
+    - ForceFixRotations
+    - Structure
+  - type: RequireProjectileTarget
+    ignoreThrow: true
+  - type: InteractionVerbs
+    allowedVerbs:
+    - KnockOn
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 80
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+
+- type: entity
+  id: NigWebMonkTable
+  parent: NigWebMonkTableBase
+  name: аскетичный деревянный стол
+  description: Массивный деревянный стол для молитв и писаний.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Furniture/monk_table.rsi
+    state: wood_table
+  - type: Icon
+    sprite: _NigWeb/Structures/Furniture/monk_table.rsi
+    state: wood_table
+
+- type: entity
+  id: NigWebGrimTable
+  parent: NigWebMonkTableBase
+  name: мрачный стол
+  description: Потемневший от времени стол с выдвижными ящиками.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Furniture/monk_table.rsi
+    state: table6
+  - type: Icon
+    sprite: _NigWeb/Structures/Furniture/monk_table.rsi
+    state: table6
+
+- type: entity
+  id: NigWebMonkWardrobe
+  parent: ClosetBase
+  name: монашеский шкаф
+  description: Строгий темный деревянный шкаф для облачений и церковной утвари.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Storage/monk_wardrobe.rsi
+    noRot: true
+    layers:
+    - state: closed
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: closed
+      visible: false
+      map: ["enum.StorageVisualLayers.Door"]
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: closed
+    stateBaseOpen: open
+    stateDoorOpen: open
+    stateDoorClosed: closed
+  - type: EntityStorage
+    closeSound:
+      path: /Audio/Effects/closetclose.ogg
+    openSound:
+      path: /Audio/Effects/closetopen.ogg
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+
+- type: entity
+  id: NigWebPoorWardrobe
+  parent: ClosetBase
+  name: ветхий шкаф
+  description: Старый полусгнивший деревянный шкаф с покосившимися дверцами.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Storage/monk_wardrobe.rsi
+    noRot: true
+    layers:
+    - state: decayed_closed
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: decayed_closed
+      visible: false
+      map: ["enum.StorageVisualLayers.Door"]
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: decayed_closed
+    stateBaseOpen: decayed_open
+    stateDoorOpen: decayed_open
+    stateDoorClosed: decayed_closed
+  - type: EntityStorage
+    closeSound:
+      path: /Audio/Effects/closetclose.ogg
+    openSound:
+      path: /Audio/Effects/closetopen.ogg
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 80
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy

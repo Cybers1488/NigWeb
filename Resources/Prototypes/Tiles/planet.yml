@@ -41,6 +41,7 @@
 
 - type: tile
   id: FloorLowDesert
+  parent: BaseFloorPlanet
   name: tiles-low-desert-floor
   footstepSounds:
     collection: FootstepSand

@@ -1,0 +1,15 @@
+# SPDX-License-Identifier: MIT
+
+- type: weather
+  id: NigWebCorruptBloodStorm
+  sprite:
+    sprite: /Textures/_NigWeb/Effects/corrupt_weather.rsi
+    state: blood_ash
+  color: "#c22b3d"
+  startupTime: 3.5
+  shutdownTime: 3.0
+  sound:
+    path: /Audio/_NigWeb/Weather/corrupt_storm_loop.ogg
+    params:
+      loop: true
+      volume: -6

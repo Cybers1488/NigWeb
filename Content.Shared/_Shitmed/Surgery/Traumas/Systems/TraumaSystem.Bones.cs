@@ -66,10 +66,10 @@ public partial class TraumaSystem
 
         var volumeFloat = args.NewSeverity switch
         {
-            BoneSeverity.Damaged => -8f,
-            BoneSeverity.Cracked => 1f,
-            BoneSeverity.Broken => 6f,
-            _ => 0f,
+            BoneSeverity.Damaged => -14f,
+            BoneSeverity.Cracked => -6f,
+            BoneSeverity.Broken => -2f,
+            _ => -8f,
         };
 
         _audio.PlayPvs(bone.Comp.BoneBreakSound, bodyComp.Body.Value, AudioParams.Default.WithVolume(volumeFloat));

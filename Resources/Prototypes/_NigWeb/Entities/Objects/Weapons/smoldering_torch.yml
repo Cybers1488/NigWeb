@@ -1,0 +1,97 @@
+# SPDX-License-Identifier: MIT
+
+- type: entity
+  name: Смоляной Светоч
+  id: ItemSmolderingBrand
+  parent: BaseItem
+  description: Деревянный светоч, пропитанный густой смолой и пеплом сожженных писаний. При зажжении озаряет мрак погребальным пламенем и наносит жгучие ожоги в бою.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/smoldering_torch.rsi
+    layers:
+    - map: ["enum.SmolderingTorchVisualLayers.Base"]
+      state: unlit
+    - map: ["enum.SmolderingTorchVisualLayers.Flame"]
+      state: lit
+      visible: false
+      shader: unshaded
+  - type: Icon
+    sprite: _NigWeb/Objects/Weapons/smoldering_torch.rsi
+    state: icon
+  - type: Item
+    sprite: _NigWeb/Objects/Weapons/smoldering_torch.rsi
+    heldPrefix: unlit
+    size: Normal
+  - type: SmolderingTorch
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 8
+  - type: PointLight
+    enabled: false
+    color: "#e88018"
+    radius: 0.2
+    energy: 5.0
+    netsync: false
+  - type: LightBehaviour
+    behaviours:
+      - !type:RandomizeBehaviour
+        id: turn_on
+        interpolate: Nearest
+        minDuration: 0.02
+        maxDuration: 0.06
+        startValue: 5.0
+        endValue: 7.5
+        property: Energy
+        isLooped: true
+      - !type:FadeBehaviour
+        id: turn_on
+        maxDuration: 3.0
+        startValue: 0.2
+        endValue: 6.0
+      - !type:RandomizeBehaviour
+        id: fade_out
+        interpolate: Nearest
+        minDuration: 0.02
+        maxDuration: 0.06
+        startValue: 2.0
+        endValue: 4.5
+        property: Energy
+        isLooped: true
+      - !type:FadeBehaviour
+        id: fade_out
+        maxDuration: 2.5
+        startValue: 6.0
+        endValue: 0.0
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.SmolderingTorchVisuals.Lit:
+        enum.SmolderingTorchVisualLayers.Flame:
+          True: { visible: true }
+          False: { visible: false }
+
+- type: entity
+  name: Смоляной Светоч
+  id: ItemSmolderingBrandLit
+  parent: ItemSmolderingBrand
+  suffix: Горящий
+  components:
+  - type: SmolderingTorch
+    isLit: true
+  - type: Item
+    heldPrefix: lit
+  - type: PointLight
+    enabled: true
+    radius: 6.0
+    energy: 5.5
+    color: "#e88018"
+    netsync: false
+  - type: Sprite
+    layers:
+    - map: ["enum.SmolderingTorchVisualLayers.Base"]
+      state: unlit
+    - map: ["enum.SmolderingTorchVisualLayers.Flame"]
+      state: lit
+      visible: true
+      shader: unshaded

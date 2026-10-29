@@ -3,7 +3,7 @@ ent-ClothingHeadHelmetNigWebAlguacil = Galea Censoria
     .desc = Тяжёлый украшенный шлем со сплошным забралом, носимый настоятелями и ревнителями Ордена Усечённой Плоти.
 
 ent-ClothingOuterArmorNigWebAlguacil = Lorica Martyrum
-    .desc = Тяжёлые латные доспехи священных мучеников, освящённые во славу Матери Кровавой Бойни (Mater Carnificinae).
+    .desc = Тяжёлые латные доспехи священных мучеников, освящённые во славу Матери Кровавой Бойни.
 
 ent-WeaponGunNigWebSparq = луч «Спарк»
     .desc = Псевдо-тазер, созданный для причинения боли. Очень сильной боли.
@@ -70,7 +70,7 @@ ent-ClothingUniformNigWebCalycifer = власяница консита
 ent-ClothingShoesNigWebCalycifer = башмаки послушника
     .desc = Простые кожаные башмаки, исхоженные в паломничествах по катакомбам.
 
-ent-NigWebChalice = Calix Carnificinae (чаша казни)
+ent-NigWebChalice = ритуальная чаша казни
     .desc = Древняя ритуальная чаша с чеканными ликами мучеников. Предназначена для сбора сукровицы и проведения таинств Ордена во славу Матери Бойни.
 
 ent-WeaponMeleeNigWebSacrificialDagger = жертвенный кинжал

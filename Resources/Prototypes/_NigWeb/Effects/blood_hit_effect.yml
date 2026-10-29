@@ -1,13 +1,13 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-# Blood hit effect — spawned client-side on melee hit against an entity with blood.
-# The client system animates scale, drift, and fadeout over lifeweb_blood.rsi states.
+# Directional body slash spurt effect — spawned client-side right on the torso/body
+# when an entity with blood is slashed or pierced in melee combat.
 - type: entity
   id: EffectBloodHit
   categories: [ HideSpawnMenu ]
   components:
   - type: TimedDespawn
-    lifetime: 0.70
+    lifetime: 0.36
   - type: Sprite
     drawdepth: Effects
     noRot: true
@@ -19,3 +19,11 @@
   - type: Tag
     tags:
     - HideContextMenu
+
+# Deprecated entity stub
+- type: entity
+  id: EffectBloodPixel
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 0.01

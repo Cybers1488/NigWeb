@@ -1,0 +1,130 @@
+# SPDX-License-Identifier: MIT
+
+- type: entity
+  name: Вскормитель Скорби
+  id: MobBereavedFather
+  description: Огромный коленопреклоненный старец, прижимающий к окаменевшей груди восковое чадо. Его тело оледенело от вечной скорби, и лишь жар живой жертвенной крови способен растопить застывшие протоки.
+  components:
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    sprite: _NigWeb/Mobs/Bosses/bereaved_father.rsi
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - state: idle
+  - type: Appearance
+  - type: Clickable
+    bounds:
+      all: "-3.5,-4.8,3.5,4.8"
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix_knees:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-2.6,-5.1,1.8,-3.8"
+        density: 2000
+        mask:
+        - MobMask
+        - Impassable
+        - MidImpassable
+        layer:
+        - Impassable
+        - MidImpassable
+        - HighImpassable
+        - LowImpassable
+        hard: true
+      fix_lap:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-3.5,-3.8,3.5,-1.8"
+        density: 2000
+        mask:
+        - MobMask
+        - Impassable
+        - MidImpassable
+        layer:
+        - Impassable
+        - MidImpassable
+        - HighImpassable
+        - LowImpassable
+        hard: true
+      fix_waist:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-3.7,-1.8,3.6,0.2"
+        density: 2000
+        mask:
+        - MobMask
+        - Impassable
+        - MidImpassable
+        layer:
+        - Impassable
+        - MidImpassable
+        - HighImpassable
+        - LowImpassable
+        hard: true
+      fix_torso:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-3.6,0.2,3.0,2.2"
+        density: 2000
+        mask:
+        - MobMask
+        - Impassable
+        - MidImpassable
+        layer:
+        - Impassable
+        - MidImpassable
+        - HighImpassable
+        - LowImpassable
+        hard: true
+      fix_neck:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-2.4,2.2,2.1,3.6"
+        density: 2000
+        mask:
+        - MobMask
+        - Impassable
+        - MidImpassable
+        layer:
+        - Impassable
+        - MidImpassable
+        - HighImpassable
+        - LowImpassable
+        hard: true
+      fix_head:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.5,3.6,1.0,5.1"
+        density: 2000
+        mask:
+        - MobMask
+        - Impassable
+        - MidImpassable
+        layer:
+        - Impassable
+        - MidImpassable
+        - HighImpassable
+        - LowImpassable
+        hard: true
+  - type: Nutricius
+  - type: AmbientSound
+    enabled: true
+    volume: -12
+    range: 9
+    sound:
+      path: /Audio/_NigWeb/Sacrament/patriarch_ambient.ogg
+  - type: PointLight
+    radius: 3.5
+    energy: 1.2
+    color: "#b0c4de"
+  - type: Damageable
+    damageContainer: Biological
+  - type: Tag
+    tags:
+    - CannotSuicide

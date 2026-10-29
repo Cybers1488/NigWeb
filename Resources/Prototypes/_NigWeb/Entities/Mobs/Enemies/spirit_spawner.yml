@@ -1,0 +1,226 @@
+# SPDX-License-Identifier: MIT
+
+# Spectral Wind Projectile (PR109 - Temple of the Three Winds)
+- type: entity
+  id: SpiritWindProjectile
+  name: призрачный вихрь
+  description: Порыв призрачного ветра, несущий разрушительную духовную силу.
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Mobs/Enemies/spirit_wind.rsi
+    noRot: false
+    drawdepth: Effects
+    layers:
+    - state: loop
+      shader: unshaded
+  - type: Projectile
+    soundHit:
+      collection: NigWebSpiritWindVanish
+    damage:
+      types:
+        Slash: 15
+        Piercing: 10
+  - type: PointLight
+    enabled: true
+    color: "#BA68C8"
+    radius: 2.0
+    energy: 1.2
+    softness: 1.0
+    autoRot: true
+    castShadows: false
+  - type: TimedDespawn
+    lifetime: 3.5
+  - type: Tag
+    tags:
+    - HideContextMenu
+
+# EN116 - Flying Flower (Summoned Spirit Minion)
+- type: entity
+  id: MobFlyingFlower
+  name: Парящий цветок
+  description: Призрачный летающий дух-цветок, расцветающий разрушительным взрывом при приближении.
+  parent:
+  - SimpleSpaceMobBase
+  - MobCombat
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Mobs/Enemies/flying_flower.rsi
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: idle
+  - type: Clickable
+    bounds:
+      all: "-0.65,-0.65,0.65,0.65"
+  - type: StatusIcon
+    bounds: -0.65,-0.85,0.65,0.85
+  - type: InteractionOutline
+  - type: Appearance
+  - type: PointLight
+    enabled: true
+    color: "#E040FB"
+    radius: 2.5
+    energy: 1.5
+    softness: 1.0
+    castShadows: false
+  - type: FlyingFlower
+    moveSpeed: 2.0
+    triggerRadius: 1.8
+    anticipationDur: 0.60
+    explosionDur: 0.45
+    deathDur: 1.00
+    explosionRadius: 2.0
+    damageHeat: 15.0
+    damageSlash: 10.0
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      35: Dead
+  - type: Stamina
+    baseCritThreshold: 50
+  - type: Damageable
+    damageContainer: Biological
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.0
+    baseSprintSpeed: 2.0
+  - type: Tag
+    tags:
+    - CanPilot
+    - FootstepSound
+
+# EN109 - Spirit Spawner
+- type: entity
+  id: MobSpiritSpawner
+  name: Призыватель духов
+  description: Маг в истлевших лохмотьях, непрерывно призывающий мелких летающих духов и направляющий порывы призрачного ветра.
+  parent:
+  - SimpleSpaceMobBase
+  - MobCombat
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Mobs/Enemies/spirit_spawner.rsi
+    noRot: true
+    drawdepth: Mobs
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: idle
+  - type: Clickable
+    bounds:
+      all: "-0.70,-0.35,0.70,1.95"
+  - type: StatusIcon
+    bounds: -0.7,-1.95,0.7,1.95
+  - type: InteractionOutline
+  - type: Appearance
+  - type: PointLight
+    enabled: true
+    color: "#BA68C8"
+    radius: 3.5
+    energy: 1.2
+    softness: 1.0
+    castShadows: true
+  - type: SpiritSpawner
+    range: 12.0
+    spawnCooldown: 6.0
+    attackCooldown: 4.0
+    maxMinions: 3
+    stunThreshold: 45.0
+    stunDur: 1.8
+    deathDur: 1.92
+    minionPrototype: MobFlyingFlower
+    projectilePrototype: SpiritWindProjectile
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 150
+        mask:
+        - MobMask
+        layer:
+        - LargeMobLayer
+      body:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.35,0.45,1.40"
+        density: 100
+        mask:
+        - MobMask
+        layer:
+        - LargeMobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Dead
+  - type: Stamina
+    baseCritThreshold: 220
+  - type: Damageable
+    damageContainer: Biological
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 0
+    baseSprintSpeed: 0
+  - type: Tag
+    tags:
+    - CanPilot
+    - FootstepSound
+
+# Spawner Markers
+- type: entity
+  name: спавнер призывателя духов
+  id: SpawnMobSpiritSpawner
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Mobs/Enemies/spirit_spawner.rsi
+    state: idle
+  - type: ConditionalSpawner
+    prototypes:
+    - MobSpiritSpawner
+
+- type: entity
+  name: спавнер парящего цветка
+  id: SpawnMobFlyingFlower
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Mobs/Enemies/flying_flower.rsi
+    state: idle
+  - type: ConditionalSpawner
+    prototypes:
+    - MobFlyingFlower

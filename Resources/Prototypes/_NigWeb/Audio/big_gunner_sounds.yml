@@ -1,0 +1,45 @@
+- type: soundCollection
+  id: NigWebBigGunnerGunAttack
+  files:
+    - /Audio/_NigWeb/Enemies/BigGunner/en114_gun_attack.ogg
+
+- type: soundCollection
+  id: NigWebBigGunnerGunBlast
+  files:
+    - /Audio/_NigWeb/Enemies/BigGunner/en114_gun_blast.ogg
+
+- type: soundCollection
+  id: NigWebBigGunnerMeleeAttack
+  files:
+    - /Audio/_NigWeb/Enemies/BigGunner/en114_melee_attack.ogg
+
+- type: soundCollection
+  id: NigWebBigGunnerMeleeSlam
+  files:
+    - /Audio/_NigWeb/Enemies/BigGunner/en114_melee_slam.ogg
+
+- type: soundCollection
+  id: NigWebBigGunnerIdle
+  files:
+    - /Audio/_NigWeb/Enemies/BigGunner/en114_idle_001.ogg
+    - /Audio/_NigWeb/Enemies/BigGunner/en114_idle_002.ogg
+
+- type: soundCollection
+  id: NigWebBigGunnerTurn
+  files:
+    - /Audio/_NigWeb/Enemies/BigGunner/en114_turn_around.ogg
+
+- type: soundCollection
+  id: NigWebBigGunnerHurt
+  files:
+    - /Audio/_NigWeb/Enemies/BigGunner/en114_hurt.ogg
+
+- type: soundCollection
+  id: NigWebBigGunnerDeath
+  files:
+    - /Audio/_NigWeb/Enemies/BigGunner/en114_death.ogg
+
+- type: soundCollection
+  id: NigWebBigGunnerProjectileImpact
+  files:
+    - /Audio/_NigWeb/Enemies/BigGunner/en114_projectile_impact.ogg

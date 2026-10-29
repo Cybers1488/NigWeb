@@ -682,7 +682,11 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             target.Value
         };
 
-        DoLungeAnimation(user, weapon, component.Angle, TransformSystem.ToMapCoordinates(target.Value.ToCoordinates()), rangeEv.Range, component.Animation, component.AnimationRotation, component.FlipAnimation); // Goobstation - Edit
+        var animCoords = GetCoordinates(ev.Coordinates);
+        var targetMapCoords = animCoords.IsValid(EntityManager)
+            ? TransformSystem.ToMapCoordinates(animCoords)
+            : TransformSystem.ToMapCoordinates(target.Value.ToCoordinates());
+        DoLungeAnimation(user, weapon, component.Angle, targetMapCoords, rangeEv.Range, component.Animation, component.AnimationRotation, component.FlipAnimation); // Goobstation - Edit
         // We skip weapon -> target interaction, as forensics system applies DNA on hit
         Interaction.DoContactInteraction(user, weapon);
 

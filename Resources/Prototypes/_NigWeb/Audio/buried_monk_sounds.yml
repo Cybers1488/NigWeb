@@ -1,0 +1,53 @@
+- type: soundCollection
+  id: NigWebBuriedMonkUnearth
+  files:
+    - /Audio/_NigWeb/Enemies/BuriedMonk/unearth_1.ogg
+    - /Audio/_NigWeb/Enemies/BuriedMonk/unearth_2.ogg
+
+- type: soundCollection
+  id: NigWebBuriedMonkUnearthVoice
+  files:
+    - /Audio/_NigWeb/Enemies/BuriedMonk/unearth_voice_1.ogg
+    - /Audio/_NigWeb/Enemies/BuriedMonk/unearth_voice_2.ogg
+
+- type: soundCollection
+  id: NigWebBuriedMonkAnticipation
+  files:
+    - /Audio/_NigWeb/Enemies/BuriedMonk/anticipation_1.ogg
+    - /Audio/_NigWeb/Enemies/BuriedMonk/anticipation_2.ogg
+
+- type: soundCollection
+  id: NigWebBuriedMonkAttack
+  files:
+    - /Audio/_NigWeb/Enemies/BuriedMonk/attack_1.ogg
+    - /Audio/_NigWeb/Enemies/BuriedMonk/attack_2.ogg
+
+- type: soundCollection
+  id: NigWebBuriedMonkDeath
+  files:
+    - /Audio/_NigWeb/Enemies/BuriedMonk/death_1.ogg
+    - /Audio/_NigWeb/Enemies/BuriedMonk/death_2.ogg
+
+- type: soundCollection
+  id: NigWebBuriedMonkDeathVoice
+  files:
+    - /Audio/_NigWeb/Enemies/BuriedMonk/death_voice_1.ogg
+    - /Audio/_NigWeb/Enemies/BuriedMonk/death_voice_2.ogg
+
+- type: soundCollection
+  id: NigWebBuriedMonkFootstep
+  files:
+    - /Audio/_NigWeb/Enemies/BuriedMonk/step_1.ogg
+    - /Audio/_NigWeb/Enemies/BuriedMonk/step_2.ogg
+    - /Audio/_NigWeb/Enemies/BuriedMonk/step_3.ogg
+    - /Audio/_NigWeb/Enemies/BuriedMonk/step_4.ogg
+
+- type: soundCollection
+  id: NigWebBuriedMonkLanding
+  files:
+    - /Audio/_NigWeb/Enemies/BuriedMonk/landing.ogg
+
+- type: soundCollection
+  id: NigWebBuriedMonkTurn
+  files:
+    - /Audio/_NigWeb/Enemies/BuriedMonk/turn.ogg

@@ -1,0 +1,31 @@
+# SPDX-License-Identifier: MIT
+
+- type: reagent
+  id: SeraphicWax
+  name: reagent-name-seraphic-wax
+  group: Medicine
+  desc: reagent-desc-seraphic-wax
+  physicalDesc: reagent-physical-desc-viscous
+  flavor: sweet
+  color: "#e6a817"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        damage:
+          groups:
+            Brute: -4
+            Burn: -3
+      - !type:ModifyBleed
+        amount: -2.0
+    Drink:
+      effects:
+      - !type:SatiateThirst
+        factor: 1.0
+      - !type:HealthChange
+        damage:
+          groups:
+            Brute: -3
+            Burn: -2
+      - !type:ModifyBleed
+        amount: -1.5

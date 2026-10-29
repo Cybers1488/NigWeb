@@ -9,7 +9,7 @@ namespace Content.Server._NigWeb.BloodSplatter;
 public sealed partial class ArterialBleedSpurtComponent : Component
 {
     [DataField("partType")]
-    public BodyPartType PartType = BodyPartType.Head;
+    public BodyPartType PartType = BodyPartType.Other;
 
     [DataField("symmetry")]
     public BodyPartSymmetry Symmetry = BodyPartSymmetry.None;

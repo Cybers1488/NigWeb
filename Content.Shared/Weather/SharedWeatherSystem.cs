@@ -76,20 +76,36 @@ public abstract class SharedWeatherSystem : EntitySystem
         var remaining = duration - elapsed;
         float alpha;
 
-        if (remaining < WeatherComponent.ShutdownTime)
+        var shutdownTime = WeatherComponent.ShutdownTime;
+        var startupTime = WeatherComponent.StartupTime;
+
+        if (TryComp<WeatherComponent>(mapUid, out var weatherComp))
         {
-            alpha = (float) (remaining / WeatherComponent.ShutdownTime);
+            foreach (var (protoId, wData) in weatherComp.Weather)
+            {
+                if (wData == component && ProtoMan.TryIndex<WeatherPrototype>(protoId, out var proto))
+                {
+                    shutdownTime = proto.ShutdownTime;
+                    startupTime = proto.StartupTime;
+                    break;
+                }
+            }
         }
-        else if (elapsed < WeatherComponent.StartupTime)
+
+        if (remaining < shutdownTime)
         {
-            alpha = (float) (elapsed / WeatherComponent.StartupTime);
+            alpha = (float) (remaining / shutdownTime);
+        }
+        else if (elapsed < startupTime)
+        {
+            alpha = (float) (elapsed / startupTime);
         }
         else
         {
             alpha = 1f;
         }
 
-        return alpha;
+        return Math.Clamp(alpha, 0f, 1f);
     }
 
 
@@ -129,8 +145,11 @@ public abstract class SharedWeatherSystem : EntitySystem
                     continue;
                 }
 
+                var shutdownTime = weatherProto.ShutdownTime;
+                var startupTime = weatherProto.StartupTime;
+
                 // Shutting down
-                if (endTime != null && remainingTime < WeatherComponent.ShutdownTime)
+                if (endTime != null && remainingTime < shutdownTime)
                 {
                     SetState(uid, WeatherState.Ending, comp, weather, weatherProto);
                 }
@@ -140,7 +159,7 @@ public abstract class SharedWeatherSystem : EntitySystem
                     var startTime = weather.StartTime;
                     var elapsed = Timing.CurTime - startTime;
 
-                    if (elapsed < WeatherComponent.StartupTime)
+                    if (elapsed < startupTime)
                     {
                         SetState(uid, WeatherState.Starting, comp, weather, weatherProto);
                     }
@@ -168,9 +187,13 @@ public abstract class SharedWeatherSystem : EntitySystem
 
         foreach (var (eProto, weather) in weatherComp.Weather)
         {
+            var shutdownTime = WeatherComponent.ShutdownTime;
+            if (ProtoMan.TryIndex<WeatherPrototype>(eProto, out var existingProto))
+                shutdownTime = existingProto.ShutdownTime;
+
             // if we turn off the weather, we don't want endTime = null
             if (proto == null)
-                endTime ??= Timing.CurTime + WeatherComponent.ShutdownTime;
+                endTime ??= Timing.CurTime + shutdownTime;
 
             // Reset cooldown if it's an existing one.
             if (proto is not null && eProto == proto.ID)
@@ -184,7 +207,7 @@ public abstract class SharedWeatherSystem : EntitySystem
             }
 
             // Speedrun
-            var end = Timing.CurTime + WeatherComponent.ShutdownTime;
+            var end = Timing.CurTime + shutdownTime;
 
             if (weather.EndTime == null || weather.EndTime > end)
             {
