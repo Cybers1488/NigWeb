@@ -27,38 +27,39 @@ public sealed class AirlockSystem : SharedAirlockSystem
         if (!TryComp<DoorComponent>(uid, out var door))
             return;
 
-        if (comp.OpenUnlitVisible) // Otherwise there are flashes of the fallback sprite between clicking on the door and the door closing animation starting.
+        if (comp.UnlitLayers)
         {
-            door.OpenSpriteStates.Add((DoorVisualLayers.BaseUnlit, comp.OpenSpriteState));
-            door.ClosedSpriteStates.Add((DoorVisualLayers.BaseUnlit, comp.ClosedSpriteState));
-        }
-
-        ((Animation)door.OpeningAnimation).AnimationTracks.Add(new AnimationTrackSpriteFlick()
-        {
-            LayerKey = DoorVisualLayers.BaseUnlit,
-            KeyFrames = { new AnimationTrackSpriteFlick.KeyFrame(comp.OpeningSpriteState, 0f) },
-        }
-        );
-
-        ((Animation)door.ClosingAnimation).AnimationTracks.Add(new AnimationTrackSpriteFlick()
-        {
-            LayerKey = DoorVisualLayers.BaseUnlit,
-            KeyFrames = { new AnimationTrackSpriteFlick.KeyFrame(comp.ClosingSpriteState, 0f) },
-        }
-        );
-
-        door.DenyingAnimation = new Animation()
-        {
-            Length = TimeSpan.FromSeconds(comp.DenyAnimationTime),
-            AnimationTracks =
+            if (comp.OpenUnlitVisible)
             {
-                new AnimationTrackSpriteFlick()
-                {
-                    LayerKey = DoorVisualLayers.BaseUnlit,
-                    KeyFrames = { new AnimationTrackSpriteFlick.KeyFrame(comp.DenySpriteState, 0f) },
-                }
+                door.OpenSpriteStates.Add((DoorVisualLayers.BaseUnlit, comp.OpenSpriteState));
+                door.ClosedSpriteStates.Add((DoorVisualLayers.BaseUnlit, comp.ClosedSpriteState));
             }
-        };
+
+            ((Animation)door.OpeningAnimation).AnimationTracks.Add(new AnimationTrackSpriteFlick()
+            {
+                LayerKey = DoorVisualLayers.BaseUnlit,
+                KeyFrames = { new AnimationTrackSpriteFlick.KeyFrame(comp.OpeningSpriteState, 0f) },
+            });
+
+            ((Animation)door.ClosingAnimation).AnimationTracks.Add(new AnimationTrackSpriteFlick()
+            {
+                LayerKey = DoorVisualLayers.BaseUnlit,
+                KeyFrames = { new AnimationTrackSpriteFlick.KeyFrame(comp.ClosingSpriteState, 0f) },
+            });
+
+            door.DenyingAnimation = new Animation()
+            {
+                Length = TimeSpan.FromSeconds(comp.DenyAnimationTime),
+                AnimationTracks =
+                {
+                    new AnimationTrackSpriteFlick()
+                    {
+                        LayerKey = DoorVisualLayers.BaseUnlit,
+                        KeyFrames = { new AnimationTrackSpriteFlick.KeyFrame(comp.DenySpriteState, 0f) },
+                    }
+                }
+            };
+        }
 
         if (!comp.AnimatePanel)
             return;
@@ -80,6 +81,17 @@ public sealed class AirlockSystem : SharedAirlockSystem
     {
         if (args.Sprite == null)
             return;
+
+        if (!comp.UnlitLayers)
+        {
+            if (_sprite.LayerMapTryGet((uid, args.Sprite), DoorVisualLayers.BaseUnlit, out _, false))
+                _sprite.LayerSetVisible((uid, args.Sprite), DoorVisualLayers.BaseUnlit, false);
+            if (_sprite.LayerMapTryGet((uid, args.Sprite), DoorVisualLayers.BaseBolted, out _, false))
+                _sprite.LayerSetVisible((uid, args.Sprite), DoorVisualLayers.BaseBolted, false);
+            if (_sprite.LayerMapTryGet((uid, args.Sprite), DoorVisualLayers.BaseEmergencyAccess, out _, false))
+                _sprite.LayerSetVisible((uid, args.Sprite), DoorVisualLayers.BaseEmergencyAccess, false);
+            return;
+        }
 
         var boltedVisible = false;
         var emergencyLightsVisible = false;

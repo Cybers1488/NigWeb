@@ -17,15 +17,15 @@ public abstract class SharedBloodyItemSystem : EntitySystem
     {
         if (ent.Comp.BloodLevel >= 0.7f)
         {
-            args.PushMarkup(Loc.GetString("[color=#820000]Вещь насквозь пропитана густой запекшейся кровью.[/color]"));
+            args.PushMarkup("[color=#820000]Вещь насквозь пропитана густой запекшейся кровью.[/color]");
         }
         else if (ent.Comp.BloodLevel >= 0.35f)
         {
-            args.PushMarkup(Loc.GetString("[color=#8f1111]Поверхность густо испачкана каплями и брызгами крови.[/color]"));
+            args.PushMarkup("[color=#8f1111]Поверхность густо испачкана каплями и брызгами крови.[/color]");
         }
         else
         {
-            args.PushMarkup(Loc.GetString("[color=#9e2222]На поверхности видны засохшие капли крови.[/color]"));
+            args.PushMarkup("[color=#9e2222]На поверхности видны засохшие капли крови.[/color]");
         }
     }
 }

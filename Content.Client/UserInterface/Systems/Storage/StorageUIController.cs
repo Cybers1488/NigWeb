@@ -170,7 +170,10 @@ public sealed class StorageUIController : UIController, IOnSystemChanged<Storage
             // Open at the default position.
             else
             {
-                window.OpenCenteredLeft();
+                var hudWidth = 288f;
+                if (UIManager.GetActiveUIWidgetOrNull<Content.Client.UserInterface.Systems.Inventory.Widgets.InventoryGui>() is { } inv && inv.Width > 0)
+                    hudWidth = inv.Width;
+                window.Open(new Vector2(hudWidth + 15, 120));
             }
         }
 

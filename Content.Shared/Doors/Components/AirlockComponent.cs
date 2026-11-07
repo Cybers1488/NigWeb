@@ -94,6 +94,12 @@ public sealed partial class AirlockComponent : Component
     public bool OpenUnlitVisible = false;
 
     /// <summary>
+    /// Whether any unlit or indicator lights should be displayed on the door.
+    /// </summary>
+    [DataField]
+    public bool UnlitLayers = true;
+
+    /// <summary>
     /// Whether the door should display emergency access lights.
     /// </summary>
     [DataField]

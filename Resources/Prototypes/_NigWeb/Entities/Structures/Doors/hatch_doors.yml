@@ -8,6 +8,8 @@
     needsPower: false
   - type: Airlock
     powered: true
+    unlitLayers: false
+    openUnlitVisible: false
   - type: Sprite
     sprite: _NigWeb/Structures/Doors/doorhatchele.rsi
   - type: Door
@@ -39,6 +41,8 @@
     needsPower: false
   - type: Airlock
     powered: true
+    unlitLayers: false
+    openUnlitVisible: false
   - type: Sprite
     sprite: _NigWeb/Structures/Doors/doorsec.rsi
   - type: Door
@@ -70,6 +74,8 @@
     needsPower: false
   - type: Airlock
     powered: true
+    unlitLayers: false
+    openUnlitVisible: false
   - type: Sprite
     sprite: _NigWeb/Structures/Doors/maintdoor.rsi
   - type: Door

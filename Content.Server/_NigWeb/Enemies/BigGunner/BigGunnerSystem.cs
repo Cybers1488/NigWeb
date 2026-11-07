@@ -187,7 +187,6 @@ public sealed class BigGunnerSystem : EntitySystem
                         {
                             var targetUid = target.Owner;
                             if (targetUid == uid || _faction.IsEntityFriendly(uid, targetUid) ||
-                                HasComp<LadyFaithfulComponent>(targetUid) ||
                                 HasComp<BigGunnerComponent>(targetUid) ||
                                 HasComp<BuriedMonkComponent>(targetUid) ||
                                 HasComp<SpiritSpawnerComponent>(targetUid) ||
@@ -254,7 +253,6 @@ public sealed class BigGunnerSystem : EntitySystem
                     {
                         var tUid = comp.CurrentTarget.Value;
                         if (tUid != uid && !_faction.IsEntityFriendly(uid, tUid) &&
-                            !HasComp<LadyFaithfulComponent>(tUid) &&
                             !HasComp<BigGunnerComponent>(tUid) &&
                             !HasComp<BuriedMonkComponent>(tUid) &&
                             !HasComp<SpiritSpawnerComponent>(tUid) &&
@@ -282,7 +280,6 @@ public sealed class BigGunnerSystem : EntitySystem
                             var cUid = candidate.Owner;
                             if (cUid == uid ||
                                 _faction.IsEntityFriendly(uid, cUid) ||
-                                HasComp<LadyFaithfulComponent>(cUid) ||
                                 HasComp<BigGunnerComponent>(cUid) ||
                                 HasComp<BuriedMonkComponent>(cUid) ||
                                 HasComp<SpiritSpawnerComponent>(cUid) ||

@@ -60,8 +60,14 @@ namespace Content.Client.Administration.UI.Bwoink
             if (!Visible)
                 Unread++;
 
+            var text = message.Text;
+            if (text.Contains("localhost@"))
+                text = text.Replace("localhost@", "");
+            if (text.Contains("guest@"))
+                text = text.Replace("guest@", "");
+
             var formatted = new FormattedMessage(1);
-            formatted.AddMarkupOrThrow($"[color=gray]{message.SentAt.ToShortTimeString()}[/color] {message.Text}");
+            formatted.AddMarkupOrThrow($"[color=gray]{message.SentAt.ToShortTimeString()}[/color] {text}");
             TextOutput.AddMessage(formatted);
             LastMessage = message.SentAt;
         }

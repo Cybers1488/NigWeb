@@ -246,8 +246,7 @@ public sealed class LightbeamSystem : EntitySystem
         if (comp.CurrentTarget != null && Exists(comp.CurrentTarget.Value) && !Deleted(comp.CurrentTarget.Value))
         {
             var targetUid = comp.CurrentTarget.Value;
-            if (!HasComp<LadyFaithfulComponent>(targetUid) &&
-                !_faction.IsEntityFriendly(uid, targetUid) &&
+            if (!_faction.IsEntityFriendly(uid, targetUid) &&
                 TryComp<MobStateComponent>(targetUid, out var targetMobState) && targetMobState.CurrentState != MobState.Dead)
             {
                 var targetMapPos = _transform.GetMapCoordinates(targetUid);
@@ -273,7 +272,6 @@ public sealed class LightbeamSystem : EntitySystem
                 var candidateUid = candidate.Owner;
                 if (candidateUid == uid ||
                     _faction.IsEntityFriendly(uid, candidateUid) ||
-                    HasComp<LadyFaithfulComponent>(candidateUid) ||
                     HasComp<LightbeamComponent>(candidateUid) ||
                     candidate.Comp.CurrentState == MobState.Dead)
                     continue;

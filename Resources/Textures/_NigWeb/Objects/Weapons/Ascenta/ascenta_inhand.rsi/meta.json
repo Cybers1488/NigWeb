@@ -1,0 +1,1387 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-4.0",
+  "copyright": "OpenSourceWeb / LifeWeb",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "adagger-left",
+      "directions": 4
+    },
+    {
+      "name": "adagger-right",
+      "directions": 4
+    },
+    {
+      "name": "admace-left",
+      "directions": 4
+    },
+    {
+      "name": "admace-right",
+      "directions": 4
+    },
+    {
+      "name": "adspear-left",
+      "directions": 4
+    },
+    {
+      "name": "adspear-right",
+      "directions": 4
+    },
+    {
+      "name": "adsword-left",
+      "directions": 4
+    },
+    {
+      "name": "adsword-right",
+      "directions": 4
+    },
+    {
+      "name": "artiaxe2-left",
+      "directions": 4
+    },
+    {
+      "name": "artiaxe2-right",
+      "directions": 4
+    },
+    {
+      "name": "autorifle_kpfw-left",
+      "directions": 4
+    },
+    {
+      "name": "autorifle_kpfw-right",
+      "directions": 4
+    },
+    {
+      "name": "autorifle_mother-left",
+      "directions": 4
+    },
+    {
+      "name": "autorifle_mother-right",
+      "directions": 4
+    },
+    {
+      "name": "axe-left",
+      "directions": 4
+    },
+    {
+      "name": "axe-right",
+      "directions": 4
+    },
+    {
+      "name": "axe2-left",
+      "directions": 4
+    },
+    {
+      "name": "axe2-right",
+      "directions": 4
+    },
+    {
+      "name": "axepickaxe-left",
+      "directions": 4
+    },
+    {
+      "name": "axepickaxe-right",
+      "directions": 4
+    },
+    {
+      "name": "bardiche-left",
+      "directions": 4
+    },
+    {
+      "name": "bardiche-right",
+      "directions": 4
+    },
+    {
+      "name": "bastard-left",
+      "directions": 4
+    },
+    {
+      "name": "bastard-right",
+      "directions": 4
+    },
+    {
+      "name": "bflail-left",
+      "directions": 4
+    },
+    {
+      "name": "bflail-right",
+      "directions": 4
+    },
+    {
+      "name": "bigsword-left",
+      "directions": 4
+    },
+    {
+      "name": "bigsword-right",
+      "directions": 4
+    },
+    {
+      "name": "blunderbuss-left",
+      "directions": 4
+    },
+    {
+      "name": "blunderbuss-right",
+      "directions": 4
+    },
+    {
+      "name": "bmace-left",
+      "directions": 4
+    },
+    {
+      "name": "bmace-right",
+      "directions": 4
+    },
+    {
+      "name": "boneknife-left",
+      "directions": 4
+    },
+    {
+      "name": "boneknife-right",
+      "directions": 4
+    },
+    {
+      "name": "broadsword-left",
+      "directions": 4
+    },
+    {
+      "name": "broadsword-right",
+      "directions": 4
+    },
+    {
+      "name": "carbine_grinder-left",
+      "directions": 4
+    },
+    {
+      "name": "carbine_grinder-right",
+      "directions": 4
+    },
+    {
+      "name": "carbine_oldgrinder-left",
+      "directions": 4
+    },
+    {
+      "name": "carbine_oldgrinder-right",
+      "directions": 4
+    },
+    {
+      "name": "carbine_talon-left",
+      "directions": 4
+    },
+    {
+      "name": "carbine_talon-right",
+      "directions": 4
+    },
+    {
+      "name": "claymore-left",
+      "directions": 4
+    },
+    {
+      "name": "claymore-right",
+      "directions": 4
+    },
+    {
+      "name": "cleaver-left",
+      "directions": 4
+    },
+    {
+      "name": "cleaver-right",
+      "directions": 4
+    },
+    {
+      "name": "cmace-left",
+      "directions": 4
+    },
+    {
+      "name": "cmace-right",
+      "directions": 4
+    },
+    {
+      "name": "combat-left",
+      "directions": 4
+    },
+    {
+      "name": "combat-right",
+      "directions": 4
+    },
+    {
+      "name": "combataxe-left",
+      "directions": 4
+    },
+    {
+      "name": "combataxe-right",
+      "directions": 4
+    },
+    {
+      "name": "copperdagger-left",
+      "directions": 4
+    },
+    {
+      "name": "copperdagger-right",
+      "directions": 4
+    },
+    {
+      "name": "coppersword-left",
+      "directions": 4
+    },
+    {
+      "name": "coppersword-right",
+      "directions": 4
+    },
+    {
+      "name": "cspear-left",
+      "directions": 4
+    },
+    {
+      "name": "cspear-right",
+      "directions": 4
+    },
+    {
+      "name": "dagger-left",
+      "directions": 4
+    },
+    {
+      "name": "dagger-right",
+      "directions": 4
+    },
+    {
+      "name": "detective-left",
+      "directions": 4
+    },
+    {
+      "name": "detective-right",
+      "directions": 4
+    },
+    {
+      "name": "duelista-left",
+      "directions": 4
+    },
+    {
+      "name": "duelista-right",
+      "directions": 4
+    },
+    {
+      "name": "energy_gravpulser-left",
+      "directions": 4
+    },
+    {
+      "name": "energy_gravpulser-right",
+      "directions": 4
+    },
+    {
+      "name": "energy_laser-left",
+      "directions": 4
+    },
+    {
+      "name": "energy_laser-right",
+      "directions": 4
+    },
+    {
+      "name": "energy_maulet-left",
+      "directions": 4
+    },
+    {
+      "name": "energy_maulet-right",
+      "directions": 4
+    },
+    {
+      "name": "energy_mercy-left",
+      "directions": 4
+    },
+    {
+      "name": "energy_mercy-right",
+      "directions": 4
+    },
+    {
+      "name": "energy_mercypistol-left",
+      "directions": 4
+    },
+    {
+      "name": "energy_mercypistol-right",
+      "directions": 4
+    },
+    {
+      "name": "energy_noctis-left",
+      "directions": 4
+    },
+    {
+      "name": "energy_noctis-right",
+      "directions": 4
+    },
+    {
+      "name": "energy_sparq-left",
+      "directions": 4
+    },
+    {
+      "name": "energy_sparq-right",
+      "directions": 4
+    },
+    {
+      "name": "estoc-left",
+      "directions": 4
+    },
+    {
+      "name": "estoc-right",
+      "directions": 4
+    },
+    {
+      "name": "falchion-left",
+      "directions": 4
+    },
+    {
+      "name": "falchion-right",
+      "directions": 4
+    },
+    {
+      "name": "flail-left",
+      "directions": 4
+    },
+    {
+      "name": "flail-right",
+      "directions": 4
+    },
+    {
+      "name": "flintlock-left",
+      "directions": 4
+    },
+    {
+      "name": "flintlock-right",
+      "directions": 4
+    },
+    {
+      "name": "gladius-left",
+      "directions": 4
+    },
+    {
+      "name": "gladius-right",
+      "directions": 4
+    },
+    {
+      "name": "glaive-left",
+      "directions": 4
+    },
+    {
+      "name": "glaive-right",
+      "directions": 4
+    },
+    {
+      "name": "gmace-left",
+      "directions": 4
+    },
+    {
+      "name": "gmace-right",
+      "directions": 4
+    },
+    {
+      "name": "goldensword-left",
+      "directions": 4
+    },
+    {
+      "name": "goldensword-right",
+      "directions": 4
+    },
+    {
+      "name": "halberd-left",
+      "directions": 4
+    },
+    {
+      "name": "halberd-right",
+      "directions": 4
+    },
+    {
+      "name": "harat-left",
+      "directions": 4
+    },
+    {
+      "name": "harat-right",
+      "directions": 4
+    },
+    {
+      "name": "hunting-left",
+      "directions": 4
+    },
+    {
+      "name": "hunting-right",
+      "directions": 4
+    },
+    {
+      "name": "iflail-left",
+      "directions": 4
+    },
+    {
+      "name": "iflail-right",
+      "directions": 4
+    },
+    {
+      "name": "lclub-left",
+      "directions": 4
+    },
+    {
+      "name": "lclub-right",
+      "directions": 4
+    },
+    {
+      "name": "mateba-left",
+      "directions": 4
+    },
+    {
+      "name": "mateba-right",
+      "directions": 4
+    },
+    {
+      "name": "monkstaff-left",
+      "directions": 4
+    },
+    {
+      "name": "monkstaff-right",
+      "directions": 4
+    },
+    {
+      "name": "morningstar-left",
+      "directions": 4
+    },
+    {
+      "name": "morningstar-right",
+      "directions": 4
+    },
+    {
+      "name": "musket-left",
+      "directions": 4
+    },
+    {
+      "name": "musket-right",
+      "directions": 4
+    },
+    {
+      "name": "neoclassic-left",
+      "directions": 4
+    },
+    {
+      "name": "neoclassic-right",
+      "directions": 4
+    },
+    {
+      "name": "paxe-left",
+      "directions": 4
+    },
+    {
+      "name": "paxe-right",
+      "directions": 4
+    },
+    {
+      "name": "pike-left",
+      "directions": 4
+    },
+    {
+      "name": "pike-right",
+      "directions": 4
+    },
+    {
+      "name": "pistol_derringer-left",
+      "directions": 4
+    },
+    {
+      "name": "pistol_derringer-right",
+      "directions": 4
+    },
+    {
+      "name": "pistol_gold-left",
+      "directions": 4
+    },
+    {
+      "name": "pistol_gold-right",
+      "directions": 4
+    },
+    {
+      "name": "pistol_jester-left",
+      "directions": 4
+    },
+    {
+      "name": "pistol_jester-right",
+      "directions": 4
+    },
+    {
+      "name": "pistol_kareck-left",
+      "directions": 4
+    },
+    {
+      "name": "pistol_kareck-right",
+      "directions": 4
+    },
+    {
+      "name": "pistol_magnum-left",
+      "directions": 4
+    },
+    {
+      "name": "pistol_magnum-right",
+      "directions": 4
+    },
+    {
+      "name": "pistol_ml23-left",
+      "directions": 4
+    },
+    {
+      "name": "pistol_ml23-right",
+      "directions": 4
+    },
+    {
+      "name": "pistol_mother-left",
+      "directions": 4
+    },
+    {
+      "name": "pistol_mother-right",
+      "directions": 4
+    },
+    {
+      "name": "pistol_nagant-left",
+      "directions": 4
+    },
+    {
+      "name": "pistol_nagant-right",
+      "directions": 4
+    },
+    {
+      "name": "pistol_screamer-left",
+      "directions": 4
+    },
+    {
+      "name": "pistol_screamer-right",
+      "directions": 4
+    },
+    {
+      "name": "pistol_stribog-left",
+      "directions": 4
+    },
+    {
+      "name": "pistol_stribog-right",
+      "directions": 4
+    },
+    {
+      "name": "pitchfork-left",
+      "directions": 4
+    },
+    {
+      "name": "pitchfork-right",
+      "directions": 4
+    },
+    {
+      "name": "rapier-left",
+      "directions": 4
+    },
+    {
+      "name": "rapier-right",
+      "directions": 4
+    },
+    {
+      "name": "revolver_colt-left",
+      "directions": 4
+    },
+    {
+      "name": "revolver_colt-right",
+      "directions": 4
+    },
+    {
+      "name": "revolver_heavy-left",
+      "directions": 4
+    },
+    {
+      "name": "revolver_heavy-right",
+      "directions": 4
+    },
+    {
+      "name": "richter-left",
+      "directions": 4
+    },
+    {
+      "name": "richter-right",
+      "directions": 4
+    },
+    {
+      "name": "rifle_bolt-left",
+      "directions": 4
+    },
+    {
+      "name": "rifle_bolt-right",
+      "directions": 4
+    },
+    {
+      "name": "rifle_carbine-left",
+      "directions": 4
+    },
+    {
+      "name": "rifle_carbine-right",
+      "directions": 4
+    },
+    {
+      "name": "rifle_kar-left",
+      "directions": 4
+    },
+    {
+      "name": "rifle_kar-right",
+      "directions": 4
+    },
+    {
+      "name": "rifle_lakko-left",
+      "directions": 4
+    },
+    {
+      "name": "rifle_lakko-right",
+      "directions": 4
+    },
+    {
+      "name": "rifle_lever-left",
+      "directions": 4
+    },
+    {
+      "name": "rifle_lever-right",
+      "directions": 4
+    },
+    {
+      "name": "rmace-left",
+      "directions": 4
+    },
+    {
+      "name": "rmace-right",
+      "directions": 4
+    },
+    {
+      "name": "rustyaxe-left",
+      "directions": 4
+    },
+    {
+      "name": "rustyaxe-right",
+      "directions": 4
+    },
+    {
+      "name": "sabre-left",
+      "directions": 4
+    },
+    {
+      "name": "sabre-right",
+      "directions": 4
+    },
+    {
+      "name": "sabre_old-left",
+      "directions": 4
+    },
+    {
+      "name": "sabre_old-right",
+      "directions": 4
+    },
+    {
+      "name": "saxe-left",
+      "directions": 4
+    },
+    {
+      "name": "saxe-right",
+      "directions": 4
+    },
+    {
+      "name": "sbastard-left",
+      "directions": 4
+    },
+    {
+      "name": "sbastard-right",
+      "directions": 4
+    },
+    {
+      "name": "scimitar-left",
+      "directions": 4
+    },
+    {
+      "name": "scimitar-right",
+      "directions": 4
+    },
+    {
+      "name": "sclub-left",
+      "directions": 4
+    },
+    {
+      "name": "sclub-right",
+      "directions": 4
+    },
+    {
+      "name": "shotgun_classic-left",
+      "directions": 4
+    },
+    {
+      "name": "shotgun_classic-right",
+      "directions": 4
+    },
+    {
+      "name": "shotgun_classic_sawed-left",
+      "directions": 4
+    },
+    {
+      "name": "shotgun_classic_sawed-right",
+      "directions": 4
+    },
+    {
+      "name": "shotgun_double-left",
+      "directions": 4
+    },
+    {
+      "name": "shotgun_double-right",
+      "directions": 4
+    },
+    {
+      "name": "shotgun_princess-left",
+      "directions": 4
+    },
+    {
+      "name": "shotgun_princess-right",
+      "directions": 4
+    },
+    {
+      "name": "shotgun_pump-left",
+      "directions": 4
+    },
+    {
+      "name": "shotgun_pump-right",
+      "directions": 4
+    },
+    {
+      "name": "shotgun_sawed-left",
+      "directions": 4
+    },
+    {
+      "name": "shotgun_sawed-right",
+      "directions": 4
+    },
+    {
+      "name": "shotgun_sawnoff-left",
+      "directions": 4
+    },
+    {
+      "name": "shotgun_sawnoff-right",
+      "directions": 4
+    },
+    {
+      "name": "shotgun_trench-left",
+      "directions": 4
+    },
+    {
+      "name": "shotgun_trench-right",
+      "directions": 4
+    },
+    {
+      "name": "siegesword-left",
+      "directions": 4
+    },
+    {
+      "name": "siegesword-right",
+      "directions": 4
+    },
+    {
+      "name": "silverdagger-left",
+      "directions": 4
+    },
+    {
+      "name": "silverdagger-right",
+      "directions": 4
+    },
+    {
+      "name": "silverstake-left",
+      "directions": 4
+    },
+    {
+      "name": "silverstake-right",
+      "directions": 4
+    },
+    {
+      "name": "silversword-left",
+      "directions": 4
+    },
+    {
+      "name": "silversword-right",
+      "directions": 4
+    },
+    {
+      "name": "skinning-left",
+      "directions": 4
+    },
+    {
+      "name": "skinning-right",
+      "directions": 4
+    },
+    {
+      "name": "smace-left",
+      "directions": 4
+    },
+    {
+      "name": "smace-right",
+      "directions": 4
+    },
+    {
+      "name": "smg_ctt-left",
+      "directions": 4
+    },
+    {
+      "name": "smg_ctt-right",
+      "directions": 4
+    },
+    {
+      "name": "smg_grinder-left",
+      "directions": 4
+    },
+    {
+      "name": "smg_grinder-right",
+      "directions": 4
+    },
+    {
+      "name": "smg_kabal-left",
+      "directions": 4
+    },
+    {
+      "name": "smg_kabal-right",
+      "directions": 4
+    },
+    {
+      "name": "smg_karek-left",
+      "directions": 4
+    },
+    {
+      "name": "smg_karek-right",
+      "directions": 4
+    },
+    {
+      "name": "smg_thanati-left",
+      "directions": 4
+    },
+    {
+      "name": "smg_thanati-right",
+      "directions": 4
+    },
+    {
+      "name": "smg_uru-left",
+      "directions": 4
+    },
+    {
+      "name": "smg_uru-right",
+      "directions": 4
+    },
+    {
+      "name": "smg_uzi-left",
+      "directions": 4
+    },
+    {
+      "name": "smg_uzi-right",
+      "directions": 4
+    },
+    {
+      "name": "snakerapier-left",
+      "directions": 4
+    },
+    {
+      "name": "snakerapier-right",
+      "directions": 4
+    },
+    {
+      "name": "spear-left",
+      "directions": 4
+    },
+    {
+      "name": "spear-right",
+      "directions": 4
+    },
+    {
+      "name": "steeldagger-left",
+      "directions": 4
+    },
+    {
+      "name": "steeldagger-right",
+      "directions": 4
+    },
+    {
+      "name": "steelmace-left",
+      "directions": 4
+    },
+    {
+      "name": "steelmace-right",
+      "directions": 4
+    },
+    {
+      "name": "sthrowing-left",
+      "directions": 4
+    },
+    {
+      "name": "sthrowing-right",
+      "directions": 4
+    },
+    {
+      "name": "stiletto-left",
+      "directions": 4
+    },
+    {
+      "name": "stiletto-right",
+      "directions": 4
+    },
+    {
+      "name": "throwing-left",
+      "directions": 4
+    },
+    {
+      "name": "throwing-right",
+      "directions": 4
+    },
+    {
+      "name": "tribunalknife-left",
+      "directions": 4
+    },
+    {
+      "name": "tribunalknife-right",
+      "directions": 4
+    },
+    {
+      "name": "trident-left",
+      "directions": 4
+    },
+    {
+      "name": "trident-right",
+      "directions": 4
+    },
+    {
+      "name": "warhammer-left",
+      "directions": 4
+    },
+    {
+      "name": "warhammer-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-adspear-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-adspear-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-artiaxe2-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-artiaxe2-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-autorifle_kpfw-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-autorifle_kpfw-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-autorifle_mother-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-autorifle_mother-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-axe2-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-axe2-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-axepickaxe-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-axepickaxe-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-bardiche-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-bardiche-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-bastard-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-bastard-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-bigsword-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-bigsword-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-blunderbuss-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-blunderbuss-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-carbine_grinder-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-carbine_grinder-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-carbine_oldgrinder-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-carbine_oldgrinder-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-carbine_talon-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-carbine_talon-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-claymore-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-claymore-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-combataxe-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-combataxe-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-cspear-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-cspear-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-energy_laser-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-energy_laser-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-energy_mercy-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-energy_mercy-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-glaive-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-glaive-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-halberd-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-halberd-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-lclub-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-lclub-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-monkstaff-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-monkstaff-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-musket-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-musket-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-paxe-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-paxe-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-pike-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-pike-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-pitchfork-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-pitchfork-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-rifle_bolt-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-rifle_bolt-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-rifle_carbine-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-rifle_carbine-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-rifle_kar-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-rifle_kar-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-rifle_lakko-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-rifle_lakko-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-rifle_lever-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-rifle_lever-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-sbastard-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-sbastard-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-shotgun_classic-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-shotgun_classic-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-shotgun_double-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-shotgun_double-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-shotgun_princess-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-shotgun_princess-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-shotgun_pump-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-shotgun_pump-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-shotgun_sawnoff-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-shotgun_sawnoff-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-shotgun_trench-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-shotgun_trench-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-siegesword-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-siegesword-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-sledge-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-sledge-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-smg_ctt-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-smg_ctt-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-smg_grinder-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-smg_grinder-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-smg_kabal-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-smg_kabal-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-smg_thanati-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-smg_thanati-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-spear-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-spear-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-trident-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-trident-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-warhammer-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-warhammer-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-woodenstaff-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-woodenstaff-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-wspear-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-wspear-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-yspear-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-yspear-right",
+      "directions": 4
+    },
+    {
+      "name": "woodenstaff-left",
+      "directions": 4
+    },
+    {
+      "name": "woodenstaff-right",
+      "directions": 4
+    },
+    {
+      "name": "wspear-left",
+      "directions": 4
+    },
+    {
+      "name": "wspear-right",
+      "directions": 4
+    },
+    {
+      "name": "wstake-left",
+      "directions": 4
+    },
+    {
+      "name": "wstake-right",
+      "directions": 4
+    },
+    {
+      "name": "yspear-left",
+      "directions": 4
+    },
+    {
+      "name": "yspear-right",
+      "directions": 4
+    }
+  ]
+}

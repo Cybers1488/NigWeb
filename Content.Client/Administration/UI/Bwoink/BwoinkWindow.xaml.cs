@@ -24,7 +24,14 @@ namespace Content.Client.Administration.UI.Bwoink
                     return;
                 }
 
-                Title = $"{sel.CharacterName} / {sel.Username} | {Loc.GetString("generic-playtime-title")}: ";
+                var uname = sel.Username;
+                if (uname.StartsWith("localhost@"))
+                    uname = uname["localhost@".Length..];
+                else if (uname.StartsWith("guest@"))
+                    uname = uname["guest@".Length..];
+                if (uname.StartsWith("@"))
+                    uname = uname.TrimStart('@');
+                Title = $"{sel.CharacterName} / {uname} | {Loc.GetString("generic-playtime-title")}: ";
 
                 Title += sel.OverallPlaytime != null ? sel.PlaytimeString : Loc.GetString("generic-unknown-title");
             };

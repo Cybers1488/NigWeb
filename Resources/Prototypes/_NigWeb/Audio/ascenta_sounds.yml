@@ -1,0 +1,166 @@
+- type: soundCollection
+  id: AscentaWallHit
+  files:
+    - /Audio/_NigWeb/Weapons/Ascenta/wallhit1.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/wallhit2.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/wallhit3.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/ric1.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/ric2.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/ric3.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/ric4.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/ric5.ogg
+
+- type: soundCollection
+  id: AscentaBulletFlyBy
+  files:
+    - /Audio/_NigWeb/Weapons/Ascenta/miss1.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/miss2.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/miss3.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/miss4.ogg
+
+- type: soundCollection
+  id: AscentaCasingFall
+  files:
+    - /Audio/_NigWeb/Weapons/Ascenta/casingfall1.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/casingfall2.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/casingfall3.ogg
+
+- type: soundCollection
+  id: AscentaShotgunCasingFall
+  files:
+    - /Audio/_NigWeb/Weapons/Ascenta/shotgun_fall.ogg
+
+- type: soundCollection
+  id: AscentaChestOpen
+  files:
+    - /Audio/_NigWeb/Weapons/Ascenta/chest_open1.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/chest_open2.ogg
+
+- type: soundCollection
+  id: AscentaChestClose
+  files:
+    - /Audio/_NigWeb/Weapons/Ascenta/chest_close1.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/chest_close2.ogg
+
+- type: soundCollection
+  id: AscentaOldPistolFire
+  files:
+    - /Audio/_NigWeb/Weapons/Ascenta/oldpistol1.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/oldpistol2.ogg
+
+- type: soundCollection
+  id: AscentaNeoclassicFire
+  files:
+    - /Audio/_NigWeb/Weapons/Ascenta/nrevolver1.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/nrevolver2.ogg
+
+- type: soundCollection
+  id: AscentaNewPistolFire
+  files:
+    - /Audio/_NigWeb/Weapons/Ascenta/newpistol1.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/newpistol2.ogg
+
+- type: soundCollection
+  id: AscentaRevolverFire
+  files:
+    - /Audio/_NigWeb/Weapons/Ascenta/revolver1.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/revolver2.ogg
+
+- type: soundCollection
+  id: AscentaGrinderFire
+  files:
+    - /Audio/_NigWeb/Weapons/Ascenta/rifle1.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/rifle2.ogg
+
+- type: soundCollection
+  id: AscentaKabalFire
+  files:
+    - /Audio/_NigWeb/Weapons/Ascenta/kabal1.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/kabal2.ogg
+
+- type: soundCollection
+  id: AscentaPulseFire
+  files:
+    - /Audio/_NigWeb/Weapons/Ascenta/pulse1.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/pulse2.ogg
+
+- type: soundCollection
+  id: AscentaSparqFire
+  files:
+    - /Audio/_NigWeb/Weapons/Ascenta/painfire1.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/painfire2.ogg
+
+- type: soundCollection
+  id: AscentaGravpulserFire
+  files:
+    - /Audio/_NigWeb/Weapons/Ascenta/gravpulser1.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/gravpulser3.ogg
+
+- type: soundCollection
+  id: AscentaShotgunFire
+  files:
+    - /Audio/_NigWeb/Weapons/Ascenta/shotgun.ogg
+    - /Audio/_NigWeb/Weapons/Ascenta/shotgun2.ogg
+
+# Melee Weapon Sound Collections
+- type: soundCollection
+  id: AscentaSwordSwing
+  files:
+    - /Audio/_NigWeb/Weapons/AscentaMelee/sword_swing1.ogg
+    - /Audio/_NigWeb/Weapons/AscentaMelee/sword_swing2.ogg
+    - /Audio/_NigWeb/Weapons/AscentaMelee/sword_swing3.ogg
+
+- type: soundCollection
+  id: AscentaSwordHit
+  files:
+    - /Audio/_NigWeb/Weapons/AscentaMelee/slash1.ogg
+    - /Audio/_NigWeb/Weapons/AscentaMelee/slash2.ogg
+    - /Audio/_NigWeb/Weapons/AscentaMelee/slash3.ogg
+    - /Audio/_NigWeb/Weapons/AscentaMelee/slash4.ogg
+    - /Audio/_NigWeb/Weapons/AscentaMelee/slash5.ogg
+
+- type: soundCollection
+  id: AscentaAxeSwing
+  files:
+    - /Audio/_NigWeb/Weapons/AscentaMelee/axe_swing1.ogg
+    - /Audio/_NigWeb/Weapons/AscentaMelee/axe_swing2.ogg
+
+- type: soundCollection
+  id: AscentaAxeHit
+  files:
+    - /Audio/_NigWeb/Weapons/AscentaMelee/axe_chop1.ogg
+    - /Audio/_NigWeb/Weapons/AscentaMelee/axe_chop2.ogg
+    - /Audio/_NigWeb/Weapons/AscentaMelee/axe_chop3.ogg
+
+- type: soundCollection
+  id: AscentaBluntHit
+  files:
+    - /Audio/_NigWeb/Weapons/AscentaMelee/blunt_smash1.ogg
+    - /Audio/_NigWeb/Weapons/AscentaMelee/blunt_smash2.ogg
+    - /Audio/_NigWeb/Weapons/AscentaMelee/blunt_smash3.ogg
+    - /Audio/_NigWeb/Weapons/AscentaMelee/club_hit.ogg
+
+- type: soundCollection
+  id: AscentaStabHit
+  files:
+    - /Audio/_NigWeb/Weapons/AscentaMelee/stab1.ogg
+    - /Audio/_NigWeb/Weapons/AscentaMelee/stab2.ogg
+    - /Audio/_NigWeb/Weapons/AscentaMelee/stab3.ogg
+
+- type: soundCollection
+  id: AscentaBardicheHit
+  files:
+    - /Audio/_NigWeb/Weapons/AscentaMelee/bardiche1.ogg
+    - /Audio/_NigWeb/Weapons/AscentaMelee/bardiche2.ogg
+    - /Audio/_NigWeb/Weapons/AscentaMelee/bardiche3.ogg
+    - /Audio/_NigWeb/Weapons/AscentaMelee/bardiche4.ogg
+
+- type: soundCollection
+  id: AscentaKlevecHit
+  files:
+    - /Audio/_NigWeb/Weapons/AscentaMelee/klevec.ogg
+
+- type: soundCollection
+  id: AscentaBatonHit
+  files:
+    - /Audio/_NigWeb/Weapons/AscentaMelee/classic_baton.ogg

@@ -130,7 +130,6 @@ public sealed class FlyingFlowerSystem : EntitySystem
                     foreach (var ent in _lookup.GetEntitiesInRange(myCoords, comp.ExplosionRadius))
                     {
                         if (ent == uid || ent == comp.Spawner || _faction.IsEntityFriendly(uid, ent) ||
-                            HasComp<LadyFaithfulComponent>(ent) ||
                             HasComp<FlyingFlowerComponent>(ent) || HasComp<SpiritSpawnerComponent>(ent) ||
                             HasComp<BuriedMonkComponent>(ent) || HasComp<BigGunnerComponent>(ent) ||
                             HasComp<LightbeamComponent>(ent) || HasComp<ShockwaveComponent>(ent))
@@ -164,7 +163,6 @@ public sealed class FlyingFlowerSystem : EntitySystem
                 {
                     var targetUid = candidate.Owner;
                     if (targetUid == uid || targetUid == comp.Spawner || _faction.IsEntityFriendly(uid, targetUid) ||
-                        HasComp<LadyFaithfulComponent>(targetUid) ||
                         HasComp<FlyingFlowerComponent>(targetUid) || HasComp<SpiritSpawnerComponent>(targetUid) ||
                         HasComp<BuriedMonkComponent>(targetUid) || HasComp<BigGunnerComponent>(targetUid) ||
                         HasComp<LightbeamComponent>(targetUid) || HasComp<ShockwaveComponent>(targetUid))

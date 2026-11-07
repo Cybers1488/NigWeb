@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-4.0",
+  "copyright": "OpenSourceWeb / LifeWeb",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "duelista"
+    },
+    {
+      "name": "neoclassic"
+    },
+    {
+      "name": "harat"
+    },
+    {
+      "name": "richter"
+    },
+    {
+      "name": "detective"
+    },
+    {
+      "name": "mateba"
+    },
+    {
+      "name": "pistol_ml23"
+    },
+    {
+      "name": "pistol_gold"
+    },
+    {
+      "name": "pistol_jester"
+    },
+    {
+      "name": "pistol_magnum"
+    },
+    {
+      "name": "pistol_screamer"
+    },
+    {
+      "name": "pistol_mother"
+    },
+    {
+      "name": "pistol_stribog"
+    },
+    {
+      "name": "carbine_grinder"
+    },
+    {
+      "name": "carbine_oldgrinder"
+    },
+    {
+      "name": "rifle_kpfw"
+    },
+    {
+      "name": "rifle_lakko"
+    },
+    {
+      "name": "smg_kabal"
+    },
+    {
+      "name": "smg_thanati"
+    },
+    {
+      "name": "smg_karek"
+    },
+    {
+      "name": "carbine_talon"
+    },
+    {
+      "name": "smg_uru"
+    },
+    {
+      "name": "shotgun_double"
+    },
+    {
+      "name": "shotgun_sawed"
+    },
+    {
+      "name": "shotgun_pump"
+    },
+    {
+      "name": "shotgun_princess"
+    },
+    {
+      "name": "shotgun_classic"
+    },
+    {
+      "name": "shotgun_classic_sawed"
+    },
+    {
+      "name": "energy_laser"
+    },
+    {
+      "name": "energy_taser"
+    },
+    {
+      "name": "energy_sparq"
+    },
+    {
+      "name": "energy_noctis"
+    },
+    {
+      "name": "energy_maulet"
+    },
+    {
+      "name": "energy_gravpulser"
+    },
+    {
+      "name": "energy_mercy"
+    },
+    {
+      "name": "energy_mercypistol"
+    }
+  ]
+}

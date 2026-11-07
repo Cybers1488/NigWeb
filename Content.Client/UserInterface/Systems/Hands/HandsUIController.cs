@@ -313,6 +313,12 @@ public sealed class HandsUIController : UIController, IOnStateEntered<GameplaySt
             var heldEnt = _handsSystem.GetHeldItem((playerEntity, _playerHandsComponent), handName);
 
             var foldedLocation = hand.Value.Location.GetUILocation();
+            var isLeft = foldedLocation == HandUILocation.Left;
+            foreach (var container in _handsContainers)
+            {
+                container.UpdateSwapButton(isLeft);
+            }
+
             if (foldedLocation == HandUILocation.Left)
             {
                 _statusHandLeft = handControl;
@@ -475,6 +481,12 @@ public sealed class HandsUIController : UIController, IOnStateEntered<GameplaySt
 
         _handContainerIndices.Add(name, _handsContainers.Count);
         _handsContainers.Add(handContainer);
+
+        if (_activeHand != null)
+        {
+            var isLeft = _activeHand.HandLocation == HandLocation.Left;
+            handContainer.UpdateSwapButton(isLeft);
+        }
         return name;
     }
 

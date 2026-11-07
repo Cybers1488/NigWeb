@@ -30,6 +30,8 @@
     - 1,0
   - type: Airlock
     powered: true
+    unlitLayers: false
+    openUnlitVisible: false
     autoCloseDelay: 4
   - type: Door
     bumpOpen: false

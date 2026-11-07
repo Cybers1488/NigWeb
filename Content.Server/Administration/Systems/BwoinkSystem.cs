@@ -679,10 +679,18 @@ namespace Content.Server.Administration.Systems
             if (_rateLimit.CountAction(eventArgs.SenderSession, RateLimitKey) != RateLimitStatus.Allowed)
                 return;
 
+            var senderName = eventArgs.SenderSession.Name;
+            if (senderName.StartsWith("localhost@"))
+                senderName = senderName["localhost@".Length..];
+            else if (senderName.StartsWith("guest@"))
+                senderName = senderName["guest@".Length..];
+            if (senderName.StartsWith("@"))
+                senderName = senderName.TrimStart('@');
+
             var bwoinkParams = new BwoinkParams(message,
                 eventArgs.SenderSession.UserId,
                 senderAdmin,
-                eventArgs.SenderSession.Name,
+                senderName,
                 eventArgs.SenderSession.Channel,
                 false,
                 true,
@@ -701,7 +709,15 @@ namespace Content.Server.Administration.Systems
             var escapedText = FormattedMessage.EscapeText(bwoinkParams.Message.Text);
             var adminColor = _config.GetCVar(GoobCVars.AdminBwoinkColor);
             var adminPrefix = "";
-            var bwoinkText = $"{bwoinkParams.SenderName}";
+            var cleanSenderName = bwoinkParams.SenderName;
+            if (cleanSenderName.StartsWith("localhost@"))
+                cleanSenderName = cleanSenderName["localhost@".Length..];
+            else if (cleanSenderName.StartsWith("guest@"))
+                cleanSenderName = cleanSenderName["guest@".Length..];
+            if (cleanSenderName.StartsWith("@"))
+                cleanSenderName = cleanSenderName.TrimStart('@');
+            bwoinkParams.SenderName = cleanSenderName;
+            var bwoinkText = $"{cleanSenderName}";
 
             //Getting an administrator position
             if (_config.GetCVar(CCVars.AhelpAdminPrefix))

@@ -286,7 +286,6 @@ public sealed class SpiritSpawnerSystem : EntitySystem
                     {
                         var targetUid = candidate.Owner;
                         if (targetUid == uid || _faction.IsEntityFriendly(uid, targetUid) ||
-                            HasComp<LadyFaithfulComponent>(targetUid) ||
                             HasComp<SpiritSpawnerComponent>(targetUid) || HasComp<FlyingFlowerComponent>(targetUid) ||
                             HasComp<BuriedMonkComponent>(targetUid) || HasComp<BigGunnerComponent>(targetUid) ||
                             HasComp<LightbeamComponent>(targetUid) || HasComp<ShockwaveComponent>(targetUid) ||

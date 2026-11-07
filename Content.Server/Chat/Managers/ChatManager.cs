@@ -277,7 +277,14 @@ internal sealed partial class ChatManager : IChatManager
         }
 
         Color? colorOverride = null;
-        var wrappedMessage = Loc.GetString("chat-manager-send-ooc-wrap-message", ("playerName",player.Name), ("message", FormattedMessage.EscapeText(message)));
+        var playerName = player.Name;
+        if (playerName.StartsWith("localhost@"))
+            playerName = playerName["localhost@".Length..];
+        else if (playerName.StartsWith("guest@"))
+            playerName = playerName["guest@".Length..];
+        if (playerName.StartsWith("@"))
+            playerName = playerName.TrimStart('@');
+        var wrappedMessage = Loc.GetString("chat-manager-send-ooc-wrap-message", ("playerName", playerName), ("message", FormattedMessage.EscapeText(message)));
         if (_adminManager.HasAdminFlag(player, AdminFlags.NameColor))
         {
             var prefs = _preferencesManager.GetPreferences(player.UserId);
@@ -329,9 +336,16 @@ internal sealed partial class ChatManager : IChatManager
         }
 
         var clients = _adminManager.ActiveAdmins.Select(p => p.Channel);
+        var adminPlayerName = player.Name;
+        if (adminPlayerName.StartsWith("localhost@"))
+            adminPlayerName = adminPlayerName["localhost@".Length..];
+        else if (adminPlayerName.StartsWith("guest@"))
+            adminPlayerName = adminPlayerName["guest@".Length..];
+        if (adminPlayerName.StartsWith("@"))
+            adminPlayerName = adminPlayerName.TrimStart('@');
         var wrappedMessage = Loc.GetString("chat-manager-send-admin-chat-wrap-message",
                                         ("adminChannelName", Loc.GetString("chat-manager-admin-channel-name")),
-                                        ("playerName", player.Name), ("message", FormattedMessage.EscapeText(message)));
+                                        ("playerName", adminPlayerName), ("message", FormattedMessage.EscapeText(message)));
 
         foreach (var client in clients)
         {

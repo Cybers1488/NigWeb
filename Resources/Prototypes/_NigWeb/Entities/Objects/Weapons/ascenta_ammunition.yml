@@ -1,0 +1,675 @@
+# SPDX-License-Identifier: MIT
+
+# Projectiles
+- type: entity
+  parent: BaseBullet
+  id: NigWebAscentaBullet357
+  categories: [ HideSpawnMenu ]
+  name: Proiectile 357
+  suffix: Ascenta
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 70
+    soundHit:
+      collection: AscentaWallHit
+  - type: FlyBySound
+    sound:
+      collection: AscentaBulletFlyBy
+
+- type: entity
+  parent: BaseBullet
+  id: NigWebAscentaBullet38
+  categories: [ HideSpawnMenu ]
+  name: Proiectile 38
+  suffix: Ascenta
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 35
+    soundHit:
+      collection: AscentaWallHit
+  - type: FlyBySound
+    sound:
+      collection: AscentaBulletFlyBy
+
+- type: entity
+  parent: BaseBullet
+  id: NigWebAscentaBullet380
+  categories: [ HideSpawnMenu ]
+  name: Proiectile 380
+  suffix: Ascenta
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 30
+    soundHit:
+      collection: AscentaWallHit
+  - type: FlyBySound
+    sound:
+      collection: AscentaBulletFlyBy
+
+- type: entity
+  parent: BaseBullet
+  id: NigWebAscentaBullet44
+  categories: [ HideSpawnMenu ]
+  name: Proiectile 44
+  suffix: Ascenta
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 65
+    soundHit:
+      collection: AscentaWallHit
+  - type: FlyBySound
+    sound:
+      collection: AscentaBulletFlyBy
+
+- type: entity
+  parent: BaseBullet
+  id: NigWebAscentaBullet9mm
+  categories: [ HideSpawnMenu ]
+  name: Proiectile 9mm
+  suffix: Ascenta
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 27
+    soundHit:
+      collection: AscentaWallHit
+  - type: FlyBySound
+    sound:
+      collection: AscentaBulletFlyBy
+
+- type: entity
+  parent: BaseBullet
+  id: NigWebAscentaBullet45
+  categories: [ HideSpawnMenu ]
+  name: Proiectile 45
+  suffix: Ascenta
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 40
+    soundHit:
+      collection: AscentaWallHit
+  - type: FlyBySound
+    sound:
+      collection: AscentaBulletFlyBy
+
+- type: entity
+  parent: BaseBullet
+  id: NigWebAscentaBullet556
+  categories: [ HideSpawnMenu ]
+  name: Proiectile 556
+  suffix: Ascenta
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 70
+    soundHit:
+      collection: AscentaWallHit
+  - type: FlyBySound
+    sound:
+      collection: AscentaBulletFlyBy
+
+- type: entity
+  parent: BaseBullet
+  id: NigWebAscentaBullet762
+  categories: [ HideSpawnMenu ]
+  name: Proiectile 762
+  suffix: Ascenta
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 25
+    soundHit:
+      collection: AscentaWallHit
+  - type: FlyBySound
+    sound:
+      collection: AscentaBulletFlyBy
+
+- type: entity
+  parent: BaseBullet
+  id: NigWebAscentaPellet12g
+  categories: [ HideSpawnMenu ]
+  name: Globulus 12g
+  suffix: Ascenta
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 35
+        Blunt: 25
+    soundHit:
+      collection: AscentaWallHit
+  - type: FlyBySound
+    sound:
+      collection: AscentaBulletFlyBy
+
+- type: entity
+  parent: BaseBullet
+  id: NigWebAscentaBulletPrincess
+  categories: [ HideSpawnMenu ]
+  name: Proiectile Principissa
+  suffix: Ascenta
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 55
+    soundHit:
+      collection: AscentaWallHit
+  - type: FlyBySound
+    sound:
+      collection: AscentaBulletFlyBy
+
+- type: entity
+  parent: BaseBullet
+  id: NigWebAscentaLaserBolt
+  categories: [ HideSpawnMenu ]
+  name: Fulmen Laser
+  suffix: Ascenta
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Heat: 60
+    soundHit:
+      collection: AscentaWallHit
+
+- type: entity
+  parent: BaseBullet
+  id: NigWebAscentaGravpulserBolt
+  categories: [ HideSpawnMenu ]
+  name: Fulmen Gravitatis
+  suffix: Ascenta
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 40
+    soundHit:
+      collection: AscentaWallHit
+
+- type: entity
+  parent: BaseBullet
+  id: NigWebAscentaSparqBolt
+  categories: [ HideSpawnMenu ]
+  name: Fulmen Doloris
+  suffix: Ascenta
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Stamina: 45
+        Heat: 5
+    soundHit:
+      collection: AscentaWallHit
+
+- type: entity
+  parent: BaseBullet
+  id: NigWebAscentaStunnerBolt
+  categories: [ HideSpawnMenu ]
+  name: Fulmen Soporiferum
+  suffix: Ascenta
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Stamina: 60
+    soundHit:
+      collection: AscentaWallHit
+
+# Base Ascenta Cartridge
+- type: entity
+  abstract: true
+  parent: BaseCartridge
+  id: NigWebAscentaCartridgeBase
+  name: Cartuccia
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_ammo.rsi
+    layers:
+    - state: bullet
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+    state: bullet
+
+# Specific Cartridges
+- type: entity
+  parent: NigWebAscentaCartridgeBase
+  id: NigWebAscentaCartridge357
+  name: Cartuccia 357
+  suffix: Ascenta
+  components:
+  - type: Tag
+    tags:
+    - NigWebAscentaCartridge357
+    - CartridgeMagnum
+  - type: CartridgeAmmo
+    proto: NigWebAscentaBullet357
+
+- type: entity
+  parent: NigWebAscentaCartridgeBase
+  id: NigWebAscentaCartridge38
+  name: Cartuccia 38
+  suffix: Ascenta
+  components:
+  - type: Tag
+    tags:
+    - NigWebAscentaCartridge38
+    - CartridgePistol
+  - type: CartridgeAmmo
+    proto: NigWebAscentaBullet38
+
+- type: entity
+  parent: NigWebAscentaCartridgeBase
+  id: NigWebAscentaCartridge380
+  name: Cartuccia 380
+  suffix: Ascenta
+  components:
+  - type: Tag
+    tags:
+    - NigWebAscentaCartridge380
+    - CartridgePistol
+  - type: CartridgeAmmo
+    proto: NigWebAscentaBullet380
+
+- type: entity
+  parent: NigWebAscentaCartridgeBase
+  id: NigWebAscentaCartridge44
+  name: Cartuccia 44
+  suffix: Ascenta
+  components:
+  - type: Tag
+    tags:
+    - NigWebAscentaCartridge44
+    - CartridgeMagnum
+  - type: CartridgeAmmo
+    proto: NigWebAscentaBullet44
+
+- type: entity
+  parent: NigWebAscentaCartridgeBase
+  id: NigWebAscentaCartridge9mm
+  name: Cartuccia 9mm
+  suffix: Ascenta
+  components:
+  - type: Tag
+    tags:
+    - NigWebAscentaCartridge9mm
+    - CartridgePistol
+  - type: CartridgeAmmo
+    proto: NigWebAscentaBullet9mm
+
+- type: entity
+  parent: NigWebAscentaCartridgeBase
+  id: NigWebAscentaCartridge45
+  name: Cartuccia 45
+  suffix: Ascenta
+  components:
+  - type: Tag
+    tags:
+    - NigWebAscentaCartridge45
+    - CartridgePistol
+  - type: CartridgeAmmo
+    proto: NigWebAscentaBullet45
+
+- type: entity
+  parent: NigWebAscentaCartridgeBase
+  id: NigWebAscentaCartridge556
+  name: Cartuccia 556
+  suffix: Ascenta
+  components:
+  - type: Tag
+    tags:
+    - NigWebAscentaCartridge556
+    - CartridgeRifle
+  - type: CartridgeAmmo
+    proto: NigWebAscentaBullet556
+
+- type: entity
+  parent: NigWebAscentaCartridgeBase
+  id: NigWebAscentaCartridge762
+  name: Cartuccia 762
+  suffix: Ascenta
+  components:
+  - type: Tag
+    tags:
+    - NigWebAscentaCartridge762
+    - CartridgeRifle
+  - type: CartridgeAmmo
+    proto: NigWebAscentaBullet762
+
+- type: entity
+  parent: NigWebAscentaCartridgeBase
+  id: NigWebAscentaCartridgePrincess
+  name: Cartuccia Principissa
+  suffix: Ascenta
+  components:
+  - type: Tag
+    tags:
+    - NigWebAscentaCartridgePrincess
+    - CartridgeRifle
+  - type: CartridgeAmmo
+    proto: NigWebAscentaBulletPrincess
+
+- type: entity
+  parent: BaseShellShotgun
+  id: NigWebAscentaShell12g
+  name: Cartuccia Sclopeti 12g
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_ammo.rsi
+    layers:
+    - state: shell_12g
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: CartridgeAmmo
+    proto: NigWebAscentaPellet12g
+  - type: Appearance
+  - type: SpentAmmoVisuals
+    state: shell_12g
+  - type: Tag
+    tags:
+    - ShellShotgun
+    - NigWebAscentaShell12g
+
+# Base Ascenta Magazine
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: NigWebAscentaMagBase
+  name: Theca Ammunitionis
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_ammo.rsi
+  - type: Item
+    size: Small
+
+# Specific Magazines
+- type: entity
+  parent: NigWebAscentaMagBase
+  id: NigWebAscentaMag9mm
+  name: Theca 9mm
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: mag_9mm
+  - type: Tag
+    tags:
+    - NigWebAscentaMag9mm
+    - MagazinePistol
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWebAscentaCartridge9mm
+    capacity: 15
+
+- type: entity
+  parent: NigWebAscentaMagBase
+  id: NigWebAscentaMag45
+  name: Theca 45
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: mag_45
+  - type: Tag
+    tags:
+    - NigWebAscentaMag45
+    - MagazinePistol
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWebAscentaCartridge45
+    capacity: 7
+
+- type: entity
+  parent: NigWebAscentaMagBase
+  id: NigWebAscentaMagMother
+  name: Theca Mater 357
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: mag_mother
+  - type: Tag
+    tags:
+    - NigWebAscentaMagMother
+    - MagazineMagnum
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWebAscentaCartridge357
+    capacity: 8
+
+- type: entity
+  parent: NigWebAscentaMagBase
+  id: NigWebAscentaMagGrinder
+  name: Theca Molitor 762
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: mag_grinder
+  - type: Tag
+    tags:
+    - NigWebAscentaMagGrinder
+    - MagazineRifle
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWebAscentaCartridge762
+    capacity: 30
+
+- type: entity
+  parent: NigWebAscentaMagBase
+  id: NigWebAscentaMagKpfw
+  name: Theca Kpfw
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: mag_kpfw
+  - type: Tag
+    tags:
+    - NigWebAscentaMagKpfw
+    - MagazineRifle
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWebAscentaCartridge762
+    capacity: 30
+
+- type: entity
+  parent: NigWebAscentaMagBase
+  id: NigWebAscentaMagKabal
+  name: Tympanum Kabal 45
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: mag_kabal
+  - type: Tag
+    tags:
+    - NigWebAscentaMagKabal
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWebAscentaCartridge45
+    capacity: 50
+
+- type: entity
+  parent: NigWebAscentaMagBase
+  id: NigWebAscentaMagThanati
+  name: Tympanum Thanati 45
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: mag_kabal
+  - type: Tag
+    tags:
+    - NigWebAscentaMagThanati
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWebAscentaCartridge45
+    capacity: 50
+
+- type: entity
+  parent: NigWebAscentaMagBase
+  id: NigWebAscentaMagCtt
+  name: Theca CTT 762
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: mag_ctt
+  - type: Tag
+    tags:
+    - NigWebAscentaMagCtt
+    - MagazineRifle
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWebAscentaCartridge762
+    capacity: 30
+
+- type: entity
+  parent: NigWebAscentaMagBase
+  id: NigWebAscentaMagCarbine
+  name: Theca Ungula 556
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: mag_carbine
+  - type: Tag
+    tags:
+    - NigWebAscentaMagCarbine
+    - MagazineRifle
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWebAscentaCartridge556
+    capacity: 30
+
+- type: entity
+  parent: NigWebAscentaMagBase
+  id: NigWebAscentaMagUzi
+  name: Theca Karek 380
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: mag_uzi
+  - type: Tag
+    tags:
+    - NigWebAscentaMagUzi
+    - MagazinePistol
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWebAscentaCartridge380
+    capacity: 25
+
+# Ammo Boxes
+- type: entity
+  parent: BaseItem
+  id: NigWebAscentaBox357
+  name: Capsa 357
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_ammo.rsi
+    layers:
+    - state: box_357
+  - type: Item
+    size: Small
+  - type: BallisticAmmoProvider
+    proto: NigWebAscentaCartridge357
+    capacity: 14
+
+- type: entity
+  parent: BaseItem
+  id: NigWebAscentaBox38
+  name: Capsa 38
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_ammo.rsi
+    layers:
+    - state: box_38
+  - type: Item
+    size: Small
+  - type: BallisticAmmoProvider
+    proto: NigWebAscentaCartridge38
+    capacity: 12
+
+- type: entity
+  parent: BaseItem
+  id: NigWebAscentaBox9mm
+  name: Capsa 9mm
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_ammo.rsi
+    layers:
+    - state: box_9mm
+  - type: Item
+    size: Small
+  - type: BallisticAmmoProvider
+    proto: NigWebAscentaCartridge9mm
+    capacity: 30
+
+- type: entity
+  parent: BaseItem
+  id: NigWebAscentaBox45
+  name: Capsa 45
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_ammo.rsi
+    layers:
+    - state: box_45
+  - type: Item
+    size: Small
+  - type: BallisticAmmoProvider
+    proto: NigWebAscentaCartridge45
+    capacity: 30
+
+- type: entity
+  parent: BaseItem
+  id: NigWebAscentaBox556
+  name: Capsa 556
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_ammo.rsi
+    layers:
+    - state: box_556
+  - type: Item
+    size: Small
+  - type: BallisticAmmoProvider
+    proto: NigWebAscentaCartridge556
+    capacity: 30
+
+- type: entity
+  parent: BaseItem
+  id: NigWebAscentaBoxShotgun
+  name: Capsa Sclopeti 12g
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_ammo.rsi
+    layers:
+    - state: box_shotgun
+  - type: Item
+    size: Small
+  - type: BallisticAmmoProvider
+    proto: NigWebAscentaShell12g
+    capacity: 12

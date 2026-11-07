@@ -52,28 +52,23 @@ public sealed class HotbarUIController : UIController
         {
             foreach (var container in GetAllItemSlotContainers(hotbar))
             {
-                // Yes, this is dirty.
                 container.SlotGroup = container.SlotGroup;
             }
         }
 
+        var inventory = UIManager.ActiveScreen.GetWidget<InventoryGui>();
+        if (inventory != null)
+        {
+            foreach (var container in GetAllItemSlotContainers(inventory))
+            {
+                container.SlotGroup = container.SlotGroup;
+            }
+
+            _inventory?.RegisterInventoryBarContainer(inventory.InventoryHotbar);
+        }
+
         _hands?.ReloadHands();
         _inventory?.ReloadSlots();
-
-        //todo move this over to its own hellhole
-        var inventory = UIManager.ActiveScreen.GetWidget<InventoryGui>();
-        if (inventory == null)
-        {
-            return;
-        }
-
-        foreach (var container in GetAllItemSlotContainers(inventory))
-        {
-            // Yes, this is dirty.
-            container.SlotGroup = container.SlotGroup;
-        }
-
-        _inventory?.RegisterInventoryBarContainer(inventory.InventoryHotbar);
     }
 
     private static IEnumerable<ItemSlotButtonContainer> GetAllItemSlotContainers(Control gui)

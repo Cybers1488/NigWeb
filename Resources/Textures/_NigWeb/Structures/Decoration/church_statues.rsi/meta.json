@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Lifeweb / OpenSourceWeb",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "statua_lapidea"
+    },
+    {
+      "name": "statua_orans"
+    },
+    {
+      "name": "statua_militis"
+    },
+    {
+      "name": "statua_doloris"
+    },
+    {
+      "name": "statua_monachi"
+    },
+    {
+      "name": "statua_praelati"
+    },
+    {
+      "name": "statua_seraphim"
+    },
+    {
+      "name": "statua_angeli"
+    },
+    {
+      "name": "gargoyle_lapideus"
+    },
+    {
+      "name": "gargoyle_minor"
+    },
+    {
+      "name": "gargoyle_custos"
+    },
+    {
+      "name": "gargoyle_alatus"
+    },
+    {
+      "name": "gargoyle_cathedralis"
+    },
+    {
+      "name": "gargoyle_vigilans"
+    },
+    {
+      "name": "statua_patriarchae"
+    },
+    {
+      "name": "statua_patriarchae_fracta"
+    },
+    {
+      "name": "effigies_patriarchae"
+    },
+    {
+      "name": "statua_equitis"
+    },
+    {
+      "name": "statua_equitis_fracta"
+    },
+    {
+      "name": "effigies_equitis"
+    },
+    {
+      "name": "statua_iudicis"
+    },
+    {
+      "name": "statua_iudicis_antiqua"
+    },
+    {
+      "name": "effigies_iudicis"
+    },
+    {
+      "name": "statua_dormientis"
+    },
+    {
+      "name": "statua_sepulcralis"
+    },
+    {
+      "name": "crux_monastica"
+    },
+    {
+      "name": "crux_ferrea"
+    },
+    {
+      "name": "crux_aenea"
+    },
+    {
+      "name": "crux_aurea"
+    }
+  ]
+}

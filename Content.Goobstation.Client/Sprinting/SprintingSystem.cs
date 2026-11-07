@@ -4,6 +4,8 @@ using Content.Goobstation.Shared.Sprinting;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
+using Robust.Client.Player;
+using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Client.Sprinting;
@@ -12,6 +14,10 @@ public sealed class SprintingSystem : SharedSprintingSystem
 {
     [Dependency] private readonly AnimationPlayerSystem _animationPlayer = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private readonly IOverlayManager _overlayMan = default!;
+
+    private ConcussionOverlay _concussionOverlay = default!;
 
     private static readonly Animation InitialAnimation = new()
     {
@@ -44,11 +50,45 @@ public sealed class SprintingSystem : SharedSprintingSystem
             },
         },
     };
+
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<SprinterComponent, SprintStartEvent>(OnSprintStart);
+
+        _concussionOverlay = new();
+        SubscribeLocalEvent<ConcussedComponent, ComponentInit>(OnConcussedInit);
+        SubscribeLocalEvent<ConcussedComponent, ComponentShutdown>(OnConcussedShutdown);
+        SubscribeLocalEvent<ConcussedComponent, LocalPlayerAttachedEvent>(OnConcussedPlayerAttached);
+        SubscribeLocalEvent<ConcussedComponent, LocalPlayerDetachedEvent>(OnConcussedPlayerDetached);
     }
+
+    private void OnConcussedInit(EntityUid uid, ConcussedComponent component, ComponentInit args)
+    {
+        if (_player.LocalEntity == uid)
+        {
+            _overlayMan.AddOverlay(_concussionOverlay);
+        }
+    }
+
+    private void OnConcussedShutdown(EntityUid uid, ConcussedComponent component, ComponentShutdown args)
+    {
+        if (_player.LocalEntity == uid)
+        {
+            _overlayMan.RemoveOverlay(_concussionOverlay);
+        }
+    }
+
+    private void OnConcussedPlayerAttached(EntityUid uid, ConcussedComponent component, LocalPlayerAttachedEvent args)
+    {
+        _overlayMan.AddOverlay(_concussionOverlay);
+    }
+
+    private void OnConcussedPlayerDetached(EntityUid uid, ConcussedComponent component, LocalPlayerDetachedEvent args)
+    {
+        _overlayMan.RemoveOverlay(_concussionOverlay);
+    }
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -66,6 +106,7 @@ public sealed class SprintingSystem : SharedSprintingSystem
             component.LastStep = _timing.CurTime;
         }
     }
+
     private void OnSprintStart(EntityUid uid, SprinterComponent component, ref SprintStartEvent args)
     {
         if (TerminatingOrDeleted(uid)
@@ -80,5 +121,4 @@ public sealed class SprintingSystem : SharedSprintingSystem
     {
         Base,
     }
-
 }

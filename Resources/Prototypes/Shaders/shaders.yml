@@ -32,6 +32,11 @@
   path: "/Textures/Shaders/flashed_effect.swsl"
 
 - type: shader
+  id: Concussion
+  kind: source
+  path: "/Textures/Shaders/concussion.swsl"
+
+- type: shader
   id: Singularity
   kind: source
   path: "/Textures/Shaders/singularity.swsl"

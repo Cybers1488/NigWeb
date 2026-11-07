@@ -1,0 +1,53 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+uniform sampler2D SCREEN_TEXTURE;
+uniform highp float intensity;
+
+void fragment() {
+    highp vec2 coord = FRAGCOORD.xy * SCREEN_PIXEL_SIZE.xy;
+    
+    if (intensity <= 0.001) {
+        COLOR = zTextureSpec(SCREEN_TEXTURE, coord);
+        return;
+    }
+
+    highp float time = TIME * 2.8;
+    
+    // Concussion disorientation sway (dizziness)
+    highp float swayMag = 0.016 * intensity;
+    highp vec2 sway1 = vec2(sin(time * 1.6) * swayMag, cos(time * 1.2) * (swayMag * 0.8));
+    highp vec2 sway2 = vec2(cos(time * 1.1 + 0.6) * (swayMag * 1.3), sin(time * 1.4) * (swayMag * 0.9));
+    highp vec2 sway3 = vec2(sin(time * 0.8 - 0.5) * (swayMag * 1.0), cos(time * 1.0 + 0.4) * (swayMag * 1.0));
+
+    // Double and triple vision layer offsets
+    highp vec2 offset1 = coord + sway1;
+    highp vec2 offset2 = coord - sway2;
+    highp vec2 offset3 = coord + sway3;
+
+    // Multi-tap blur radius
+    highp float blur = 0.0055 * intensity;
+
+    // First layer: heavy 5-tap blur
+    highp vec4 g1 = zTextureSpec(SCREEN_TEXTURE, offset1) * 0.28;
+    g1 += zTextureSpec(SCREEN_TEXTURE, offset1 + vec2(blur, 0.0)) * 0.18;
+    g1 += zTextureSpec(SCREEN_TEXTURE, offset1 - vec2(blur, 0.0)) * 0.18;
+    g1 += zTextureSpec(SCREEN_TEXTURE, offset1 + vec2(0.0, blur)) * 0.18;
+    g1 += zTextureSpec(SCREEN_TEXTURE, offset1 - vec2(0.0, blur)) * 0.18;
+
+    // Second layer: ghost with chromatic aberration (red/blue split)
+    highp vec4 g2;
+    g2.r = zTextureSpec(SCREEN_TEXTURE, offset2 + vec2(blur * 0.6, 0.0)).r;
+    g2.g = zTextureSpec(SCREEN_TEXTURE, offset2).g;
+    g2.b = zTextureSpec(SCREEN_TEXTURE, offset2 - vec2(blur * 0.6, 0.0)).b;
+    g2.a = 1.0;
+
+    // Third layer: ghost with diagonal blur
+    highp vec4 g3 = zTextureSpec(SCREEN_TEXTURE, offset3);
+    g3 = (g3 + zTextureSpec(SCREEN_TEXTURE, offset3 + vec2(blur * 0.7, blur * 0.7))) * 0.5;
+
+    // Blend the triple vision layers together
+    highp vec4 mixed = mix(g1, g2, 0.38 * intensity);
+    mixed = mix(mixed, g3, 0.26 * intensity);
+
+    // Smoothly transition between untouched screen and the concussed effect
+    COLOR = mix(zTextureSpec(SCREEN_TEXTURE, coord), mixed, intensity);
+}

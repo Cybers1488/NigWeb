@@ -172,6 +172,9 @@ namespace Content.Shared.Throwing
 
             var query = EntityQueryEnumerator<ThrownItemComponent, PhysicsComponent>();
             var frozenQuery = GetEntityQuery<FrozenComponent>(); // Goobstation
+            var toLand = new Robust.Shared.Collections.ValueList<(EntityUid Uid, ThrownItemComponent Thrown, PhysicsComponent Physics, bool PlaySound)>();
+            var toStop = new Robust.Shared.Collections.ValueList<(EntityUid Uid, ThrownItemComponent Thrown)>();
+
             while (query.MoveNext(out var uid, out var thrown, out var physics))
             {
                 // If you remove this check verify slipping for other entities is networked properly.
@@ -183,14 +186,28 @@ namespace Content.Shared.Throwing
 
                 if (thrown.LandTime <= _gameTiming.CurTime)
                 {
-                    LandComponent(uid, thrown, physics, thrown.PlayLandSound);
+                    toLand.Add((uid, thrown, physics, thrown.PlayLandSound));
                 }
 
                 var stopThrowTime = thrown.LandTime ?? thrown.ThrownTime;
                 if (stopThrowTime <= _gameTiming.CurTime)
                 {
-                    StopThrow(uid, thrown);
+                    toStop.Add((uid, thrown));
                 }
+            }
+
+            for (var i = 0; i < toLand.Count; i++)
+            {
+                var item = toLand[i];
+                if (!item.Thrown.Deleted && !Deleted(item.Uid))
+                    LandComponent(item.Uid, item.Thrown, item.Physics, item.PlaySound);
+            }
+
+            for (var i = 0; i < toStop.Count; i++)
+            {
+                var item = toStop[i];
+                if (!item.Thrown.Deleted && !Deleted(item.Uid))
+                    StopThrow(item.Uid, item.Thrown);
             }
         }
     }

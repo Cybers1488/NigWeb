@@ -1,0 +1,3596 @@
+# SPDX-License-Identifier: MIT
+
+# Base Melee Weapon Prototype
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: NigWebAscentaMeleeBase
+  name: Ascenta Melee Base
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_melee.rsi
+  - type: Tag
+    tags:
+    - Sidearm
+  - type: UseDelay
+    delay: 0.5
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSwordBroadsword
+  name: Gladius Latus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: broadsword
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.3
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 22
+        Piercing: 8
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: broadsword-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: broadsword-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: broadsword-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: broadsword-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: broadsword-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSwordBastard
+  name: Gladius Nothus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: bastard
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.1
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 16
+        Piercing: 6
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 18
+        Piercing: 6
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bastard-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bastard-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bastard-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bastard-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bastard-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSwordSilverBastard
+  name: Gladius Nothus Argenteus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: sbastard
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.1
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 17
+        Piercing: 6
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 19
+        Piercing: 6
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sbastard-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sbastard-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sbastard-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sbastard-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sbastard-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSwordSilver
+  name: Gladius Argenteus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: silversword
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.3
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 23
+        Piercing: 8
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: silversword-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: silversword-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: silversword-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: silversword-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: silversword-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSwordGolden
+  name: Gladius Aureus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: goldensword
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.2
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 20
+        Blunt: 8
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: goldensword-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: goldensword-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: goldensword-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: goldensword-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: goldensword-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSwordCopper
+  name: Gladius Cupreus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: coppersword
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.3
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 17
+        Piercing: 6
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: coppersword-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: coppersword-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: coppersword-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: coppersword-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: coppersword-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSwordAdamantium
+  name: Gladius Adamantinus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: adsword
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.3
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 28
+        Piercing: 12
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: adsword-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: adsword-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: adsword-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: adsword-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: adsword-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSwordGladius
+  name: Gladius Legionarius
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: gladius
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.4
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 19
+        Piercing: 8
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: gladius-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: gladius-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: gladius-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: gladius-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: gladius-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSwordSabre
+  name: Spatha Equestris
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: sabre
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.4
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 22
+        Piercing: 6
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sabre-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sabre-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sabre-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sabre-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sabre-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSwordOldSabre
+  name: Spatha Vetus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: sabre_old
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.3
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 19
+        Piercing: 5
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sabre_old-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sabre_old-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sabre_old-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sabre_old-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sabre_old-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSwordRustySabre
+  name: Spatha Ferruginea
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: rustysabre
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.3
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 17
+        Piercing: 4
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sabre_old-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sabre_old-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sabre_old-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sabre_old-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sabre_old-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSwordRustyBroadsword
+  name: Gladius Ferrugineus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: rustybroadsword
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.2
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 17
+        Piercing: 6
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: broadsword-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: broadsword-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: broadsword-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: broadsword-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: broadsword-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSwordFalchion
+  name: Falx Bellica
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: falchion
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.2
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 24
+        Blunt: 4
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: falchion-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: falchion-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: falchion-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: falchion-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: falchion-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSwordScimitar
+  name: Acinaces Barbaricus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: scimitar
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.4
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 23
+        Piercing: 6
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: scimitar-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: scimitar-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: scimitar-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: scimitar-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: scimitar-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSwordSiege
+  name: Gladius Obsidionalis
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: siegesword
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 0.9
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 18
+        Piercing: 6
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 26
+        Piercing: 6
+  - type: Item
+    size: Huge
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: siegesword-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: siegesword-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: siegesword-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: siegesword-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: siegesword-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSwordBig
+  name: Gladius Maximus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: bigsword
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.0
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 18
+        Piercing: 6
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 24
+        Piercing: 6
+  - type: Item
+    size: Huge
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bigsword-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bigsword-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bigsword-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bigsword-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bigsword-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSwordWood
+  name: Rudis Lignea
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: wsword
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.4
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Blunt: 14
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: broadsword-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: broadsword-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: broadsword-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: broadsword-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: broadsword-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSwordRapier
+  name: Verutum Nobile
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: rapier
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 0
+    attackRate: 1.6
+    soundHit:
+      collection: AscentaStabHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 24
+        Slash: 4
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: rapier-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: rapier-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: rapier-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: rapier-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: rapier-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSwordSnakeRapier
+  name: Verutum Viperinum
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: snakerapier
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 0
+    attackRate: 1.6
+    soundHit:
+      collection: AscentaStabHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 25
+        Slash: 4
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: snakerapier-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: snakerapier-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: snakerapier-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: snakerapier-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: snakerapier-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSwordRustyRapier
+  name: Verutum Ferrugineum
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: rustyrapier
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 0
+    attackRate: 1.5
+    soundHit:
+      collection: AscentaStabHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 20
+        Slash: 3
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: rapier-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: rapier-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: rapier-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: rapier-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: rapier-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaAxeWood
+  name: Securis Silvestris
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: axe
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.2
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 20
+        Blunt: 4
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: axe-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: axe-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: axe-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: axe-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: axe-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaAxeBattle
+  name: Securis Bellica
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: axe2
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.0
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 18
+        Blunt: 4
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 24
+        Blunt: 6
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: axe2-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: axe2-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: axe2-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: axe2-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: axe2-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaAxeCombat
+  name: Securis Equestris
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: combataxe
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.3
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 22
+        Blunt: 4
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: combataxe-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: combataxe-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: combataxe-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: combataxe-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: combataxe-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaAxeSavage
+  name: Securis Carnificis
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: saxe
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.2
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 24
+        Blunt: 4
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: saxe-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: saxe-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: saxe-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: saxe-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: saxe-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaAxeTraining
+  name: Securis Tirocinaria
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: traxe
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.3
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Blunt: 12
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: axe-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: axe-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: axe-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: axe-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: axe-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaAxeRusty
+  name: Securis Ferruginea
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: rustyaxe
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.1
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 17
+        Blunt: 3
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: rustyaxe-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: rustyaxe-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: rustyaxe-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: rustyaxe-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: rustyaxe-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaAxeArtifact
+  name: Securis Sacrata
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: artiaxe2
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.0
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 20
+        Blunt: 5
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 26
+        Blunt: 6
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: artiaxe2-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: artiaxe2-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: artiaxe2-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: artiaxe2-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: artiaxe2-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaAxePoleaxe
+  name: Securis Hastata
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: paxe
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.0
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 17
+        Piercing: 5
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 24
+        Piercing: 7
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: paxe-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: paxe-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: paxe-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: paxe-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: paxe-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaAxeBardiche
+  name: Bardica Grandis
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: bardiche
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 0.9
+    soundHit:
+      collection: AscentaBardicheHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 20
+        Blunt: 4
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 28
+        Blunt: 6
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bardiche-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bardiche-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bardiche-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bardiche-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bardiche-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaAxePickaxe
+  name: Securis Fossonia
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: axepickaxe
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.1
+    soundHit:
+      collection: AscentaAxeHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 20
+        Structural: 20
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: axepickaxe-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: axepickaxe-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: axepickaxe-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: axepickaxe-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: axepickaxe-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaMaceSteel
+  name: Clava Ferrea
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: steelmace
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.2
+    soundHit:
+      collection: AscentaBluntHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Blunt: 24
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: steelmace-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: steelmace-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: steelmace-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: steelmace-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: steelmace-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaMaceBronze
+  name: Clava Aenea
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: bmace
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.2
+    soundHit:
+      collection: AscentaBluntHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Blunt: 21
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bmace-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bmace-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bmace-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bmace-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bmace-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaClubHeavy
+  name: Clava Gravis
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: club
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.0
+    soundHit:
+      collection: AscentaBluntHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Blunt: 16
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 22
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: lclub-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: lclub-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: lclub-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: lclub-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: lclub-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaClubWood
+  name: Fustis Ligneus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: wclub
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.3
+    soundHit:
+      collection: AscentaBluntHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Blunt: 16
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sclub-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sclub-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sclub-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sclub-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sclub-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaClubBone
+  name: Fustis Osseus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: boneclub
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.3
+    soundHit:
+      collection: AscentaBluntHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Blunt: 17
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bmace-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bmace-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bmace-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bmace-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bmace-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaClubSmall
+  name: Fustis Brevis
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: oclub
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.4
+    soundHit:
+      collection: AscentaBluntHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Blunt: 14
+  - type: Item
+    size: Small
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sclub-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sclub-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sclub-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sclub-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sclub-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaClubSpiked
+  name: Clava Dentata
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: morningstar
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.2
+    soundHit:
+      collection: AscentaBluntHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Blunt: 18
+        Piercing: 6
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: morningstar-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: morningstar-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: morningstar-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: morningstar-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: morningstar-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaFlailIron
+  name: Flagellum Ferreum
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: iflail
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.2
+    soundHit:
+      collection: AscentaBluntHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Blunt: 22
+        Piercing: 4
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: iflail-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: iflail-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: iflail-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: iflail-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: iflail-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaFlailBone
+  name: Flagellum Osseum
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: bflail
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.2
+    soundHit:
+      collection: AscentaBluntHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Blunt: 20
+        Piercing: 3
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bflail-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bflail-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bflail-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bflail-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: bflail-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaFlailSpiked
+  name: Flagellum Spinosum
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: flail
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.2
+    soundHit:
+      collection: AscentaBluntHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Blunt: 20
+        Piercing: 7
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: flail-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: flail-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: flail-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: flail-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: flail-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaKlevec
+  name: Rostrum Corvi Klevetz
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: klevec
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.2
+    soundHit:
+      collection: AscentaKlevecHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 24
+        Blunt: 6
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: morningstar-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: morningstar-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: morningstar-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: morningstar-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: morningstar-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaBlackjack
+  name: Verber Plumbeum
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: blackjack
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.5
+    soundHit:
+      collection: AscentaBatonHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Blunt: 18
+  - type: Item
+    size: Small
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sclub-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sclub-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sclub-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sclub-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sclub-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaKnuckleduster
+  name: Caestus Aeneus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: knuckleduster
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.8
+    soundHit:
+      collection: AscentaBatonHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Blunt: 15
+  - type: Item
+    size: Small
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: combat-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: combat-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: combat-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: combat-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: combat-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaStaffSteel
+  name: Baculus Monachalis
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: monkstaff
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.3
+    soundHit:
+      collection: AscentaBluntHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Blunt: 14
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 18
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: monkstaff-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: monkstaff-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: monkstaff-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: monkstaff-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: monkstaff-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaStaffWood
+  name: Baculus Ligneus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: woodenstaff
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.3
+    soundHit:
+      collection: AscentaBluntHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Blunt: 12
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 16
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: woodenstaff-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: woodenstaff-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: woodenstaff-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: woodenstaff-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: woodenstaff-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaCrossFirethorn
+  name: Crux Ignifera
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: icross
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.1
+    soundHit:
+      collection: AscentaBluntHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Blunt: 16
+        Heat: 6
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 20
+        Heat: 12
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: woodenstaff-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: woodenstaff-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: woodenstaff-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: woodenstaff-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: woodenstaff-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaHammerWar
+  name: Malleus Bellicus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: carverhammer
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.0
+    soundHit:
+      collection: AscentaBluntHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Blunt: 18
+        Piercing: 4
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 24
+        Structural: 15
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: warhammer-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: warhammer-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: warhammer-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: warhammer-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: warhammer-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaHammerSledge
+  name: Malleus Magnus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: sledgehammer
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 0.9
+    soundHit:
+      collection: AscentaBluntHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Blunt: 20
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 28
+        Structural: 25
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: warhammer-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: warhammer-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: warhammer-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: warhammer-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: warhammer-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSpearIron
+  name: Hasta Ferrea
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: spear
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 0
+    attackRate: 1.2
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 18
+        Blunt: 4
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 22
+        Blunt: 6
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: spear-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: spear-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: spear-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: spear-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: spear-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSpearCopper
+  name: Hasta Cuprea
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: cspear
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 0
+    attackRate: 1.2
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 16
+        Blunt: 3
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 18
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: cspear-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: cspear-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: cspear-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: cspear-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: cspear-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSpearWood
+  name: Hasta Lignea
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: wspear
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 0
+    attackRate: 1.3
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 13
+        Blunt: 4
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 15
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: wspear-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: wspear-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: wspear-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: wspear-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: wspear-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSpearAdamantium
+  name: Hasta Adamantina
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: adspear
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 0
+    attackRate: 1.3
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 22
+        Blunt: 5
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 26
+        Blunt: 6
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: adspear-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: adspear-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: adspear-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: adspear-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: adspear-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSpearYew
+  name: Hasta Taxea
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: yspear
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 0
+    attackRate: 1.2
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 17
+        Blunt: 4
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 20
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: yspear-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: yspear-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: yspear-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: yspear-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: yspear-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaSpearTribal
+  name: Hasta Ginkensis
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: tribal_spear
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 0
+    attackRate: 1.3
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 15
+        Blunt: 4
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 16
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: spear-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: spear-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: spear-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: spear-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: spear-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaPitchfork
+  name: Furca Rustica
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: pitchfork
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 0
+    attackRate: 1.2
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 16
+        Blunt: 4
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 20
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pitchfork-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pitchfork-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pitchfork-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pitchfork-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pitchfork-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaTrident
+  name: Tridens Bellicus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: trident
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 0
+    attackRate: 1.2
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 18
+        Blunt: 4
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 24
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: trident-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: trident-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: trident-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: trident-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: trident-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaDaggerIron
+  name: Pugio Ferreus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: dagger
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 0
+    attackRate: 1.8
+    soundHit:
+      collection: AscentaStabHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 16
+        Slash: 4
+  - type: Item
+    size: Small
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: dagger-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: dagger-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: dagger-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: dagger-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: dagger-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaDaggerSteel
+  name: Pugio Chalybeius
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: steeldagger
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 0
+    attackRate: 1.9
+    soundHit:
+      collection: AscentaStabHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 18
+        Slash: 4
+  - type: Item
+    size: Small
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: steeldagger-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: steeldagger-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: steeldagger-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: steeldagger-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: steeldagger-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaDaggerSilver
+  name: Pugio Argenteus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: silverdagger
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 0
+    attackRate: 1.9
+    soundHit:
+      collection: AscentaStabHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 18
+        Slash: 5
+  - type: Item
+    size: Small
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: silverdagger-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: silverdagger-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: silverdagger-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: silverdagger-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: silverdagger-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaDaggerCopper
+  name: Pugio Cupreus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: copperdagger
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 0
+    attackRate: 1.8
+    soundHit:
+      collection: AscentaStabHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 14
+        Slash: 3
+  - type: Item
+    size: Small
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: copperdagger-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: copperdagger-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: copperdagger-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: copperdagger-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: copperdagger-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaDaggerAdamantium
+  name: Pugio Adamantinus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: adagger
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 0
+    attackRate: 2.0
+    soundHit:
+      collection: AscentaStabHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 22
+        Slash: 6
+  - type: Item
+    size: Small
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: adagger-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: adagger-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: adagger-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: adagger-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: adagger-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaKnifeHunting
+  name: Culter Venatorius
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: hunting
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.7
+    soundHit:
+      collection: AscentaStabHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 14
+        Piercing: 8
+  - type: Item
+    size: Small
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: hunting-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: hunting-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: hunting-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: hunting-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: hunting-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaKnifeCombat
+  name: Culter Bellicus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: combat
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.8
+    soundHit:
+      collection: AscentaStabHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 15
+        Piercing: 9
+  - type: Item
+    size: Small
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: combat-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: combat-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: combat-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: combat-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: combat-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaKnifeBone
+  name: Culter Osseus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: boneknife
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.7
+    soundHit:
+      collection: AscentaStabHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 12
+        Piercing: 6
+  - type: Item
+    size: Small
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: boneknife-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: boneknife-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: boneknife-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: boneknife-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: boneknife-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaKnifeTribunal
+  name: Culter Tribunalis
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: tribunalknife
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.8
+    soundHit:
+      collection: AscentaStabHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 16
+        Piercing: 10
+  - type: Item
+    size: Small
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: tribunalknife-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: tribunalknife-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: tribunalknife-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: tribunalknife-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: tribunalknife-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaKnifeCleaver
+  name: Culter Lanionis
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: cleaver
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.4
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 20
+        Blunt: 4
+  - type: Item
+    size: Small
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: cleaver-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: cleaver-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: cleaver-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: cleaver-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: cleaver-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaKnifeSkinning
+  name: Culter Glabrarius
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: skinning
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcSlash
+    wideAnimationRotation: -135
+    attackRate: 1.6
+    soundHit:
+      collection: AscentaSwordHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Slash: 15
+        Piercing: 5
+  - type: Item
+    size: Small
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: skinning-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: skinning-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: skinning-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: skinning-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: skinning-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaStakeWood
+  name: Sudis Lignea
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: wstake
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 0
+    attackRate: 1.7
+    soundHit:
+      collection: AscentaStabHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 12
+        Blunt: 3
+  - type: Item
+    size: Small
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: wstake-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: wstake-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: wstake-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: wstake-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: wstake-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaStakeSilver
+  name: Sudis Argentea
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: silverstake
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 0
+    attackRate: 1.7
+    soundHit:
+      collection: AscentaStabHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 16
+        Slash: 3
+  - type: Item
+    size: Small
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: silverstake-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: silverstake-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: silverstake-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: silverstake-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: silverstake-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaKnifeThrowing
+  name: Spiculum Aeneum
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: throwing
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 0
+    attackRate: 1.8
+    soundHit:
+      collection: AscentaStabHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 14
+  - type: Item
+    size: Small
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: throwing-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: throwing-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: throwing-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: throwing-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: throwing-right
+
+- type: entity
+  parent: NigWebAscentaMeleeBase
+  id: NigWebAscentaKnifeSilverThrowing
+  name: Spiculum Argenteum
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: sthrowing
+  - type: MeleeWeapon
+    canWideSwing: true
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 0
+    attackRate: 1.8
+    soundHit:
+      collection: AscentaStabHit
+    soundNoDamage:
+      collection: AscentaSwordSwing
+    damage:
+      types:
+        Piercing: 16
+  - type: Item
+    size: Small
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sthrowing-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sthrowing-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sthrowing-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sthrowing-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: sthrowing-right

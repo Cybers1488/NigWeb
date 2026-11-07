@@ -22,7 +22,6 @@ public sealed partial class SeparatedChatGameScreen : InGameScreen
     {
         RobustXamlLoader.Load(this);
 
-        // Set the chat panel background texture (Lifeweb style)
         var resCache = IoCManager.Resolve<IResourceCache>();
         var chatPanelTex = resCache.GetResource<TextureResource>("/Textures/Interface/Nano/lfwb_chat_panel.png").Texture;
         var chatPanelBg = new StyleBoxTexture
@@ -37,22 +36,61 @@ public sealed partial class SeparatedChatGameScreen : InGameScreen
         SetAnchorPreset(ScreenContainer, LayoutPreset.Wide);
         SetAnchorPreset(ViewportContainer, LayoutPreset.Wide);
         SetAnchorPreset(MainViewport, LayoutPreset.Wide);
-        SetAnchorAndMarginPreset(Inventory, LayoutPreset.BottomLeft, margin: 5);
-        SetAnchorAndMarginPreset(TopLeftContainer, LayoutPreset.TopLeft, margin: 10);
-        SetAnchorAndMarginPreset(Ghost, LayoutPreset.BottomWide, margin: 80);
-        SetAnchorAndMarginPreset(Hotbar, LayoutPreset.BottomWide, margin: 5);
 
-        SetAnchorAndMarginPreset(Alerts, LayoutPreset.TopRight, margin: 10); // Goobstation Change
+        SetAnchorPreset(Inventory, LayoutPreset.LeftWide);
+        LayoutContainer.SetGrowHorizontal(Inventory, LayoutContainer.GrowDirection.End);
+        LayoutContainer.SetGrowVertical(Inventory, LayoutContainer.GrowDirection.Both);
+        LayoutContainer.SetMarginLeft(Inventory, 0);
+        LayoutContainer.SetMarginTop(Inventory, 0);
+        LayoutContainer.SetMarginBottom(Inventory, 0);
+
+        SetAnchorPreset(Hotbar, LayoutPreset.TopLeft);
+        LayoutContainer.SetGrowHorizontal(Hotbar, LayoutContainer.GrowDirection.End);
+        LayoutContainer.SetGrowVertical(Hotbar, LayoutContainer.GrowDirection.End);
+        LayoutContainer.SetMarginLeft(Hotbar, 0);
+        LayoutContainer.SetMarginRight(Hotbar, 0);
+        LayoutContainer.SetMarginBottom(Hotbar, 0);
+
+        SetAnchorPreset(TopLeftContainer, LayoutPreset.TopLeft);
+        LayoutContainer.SetGrowHorizontal(TopLeftContainer, LayoutContainer.GrowDirection.End);
+        LayoutContainer.SetGrowVertical(TopLeftContainer, LayoutContainer.GrowDirection.End);
+        LayoutContainer.SetMarginTop(TopLeftContainer, 10);
+        LayoutContainer.SetMarginRight(TopLeftContainer, 600);
+        LayoutContainer.SetMarginBottom(TopLeftContainer, 300);
+
+        SetAnchorAndMarginPreset(Ghost, LayoutPreset.BottomWide, margin: 80);
+
+        SetAnchorAndMarginPreset(Alerts, LayoutPreset.TopRight, margin: 10);
         LayoutContainer.SetMarginRight(Alerts, 0);
         LayoutContainer.SetMarginTop(Alerts, 0);
 
         SetAnchorAndMarginPreset(Targeting, LayoutPreset.BottomRight, margin: 5);
         LayoutContainer.SetMarginRight(Targeting, 0);
 
+        UpdateLeftHud();
+
         ScreenContainer.OnSplitResizeFinished += () =>
             OnChatResized?.Invoke(new Vector2(ScreenContainer.SplitFraction, 0));
 
         ViewportContainer.OnResized += ResizeActionContainer;
+        ViewportContainer.OnResized += UpdateLeftHud;
+        OnResized += UpdateLeftHud;
+    }
+
+    private void UpdateLeftHud()
+    {
+        var screenHeight = ViewportContainer.Size.Y > 0 ? ViewportContainer.Size.Y : (Size.Y > 0 ? Size.Y : 1080f);
+        var slotSize = MathF.Floor(screenHeight / 15f);
+        if (slotSize <= 0)
+            slotSize = 96f;
+        var panelWidth = slotSize * 3f;
+
+        LayoutContainer.SetMarginRight(Inventory, panelWidth);
+        LayoutContainer.SetMarginTop(Hotbar, slotSize * 4f - 5f);
+        LayoutContainer.SetMarginLeft(TopLeftContainer, panelWidth + 10f);
+
+        Inventory.UpdateSlotSize(slotSize);
+        Hotbar.UpdateSlotSize(slotSize);
     }
 
     private void ResizeActionContainer()

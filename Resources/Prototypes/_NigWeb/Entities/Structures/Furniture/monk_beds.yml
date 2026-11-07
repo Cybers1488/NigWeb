@@ -1,0 +1,71 @@
+# SPDX-License-Identifier: MIT
+
+- type: entity
+  id: NigWebBedLectusPauperum
+  parent: Bed
+  name: Lectus Pauperum
+  description: Грубая и потемневшая койка нищего парабалана со старым тюфяком.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Furniture/monk_beds.rsi
+    state: lectus_pauperum
+    noRot: true
+  - type: Icon
+    sprite: _NigWeb/Structures/Furniture/monk_beds.rsi
+    state: lectus_pauperum
+
+- type: entity
+  id: NigWebBedLectusMonasticus
+  parent: Bed
+  name: Lectus Monasticus
+  description: Аскетичная келейная койка для смиренного сна и молитв.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Furniture/monk_beds.rsi
+    state: lectus_monasticus
+    noRot: true
+  - type: Icon
+    sprite: _NigWeb/Structures/Furniture/monk_beds.rsi
+    state: lectus_monasticus
+
+- type: entity
+  id: NigWebBedLectusDoloris
+  parent: Bed
+  name: Lectus Doloris
+  description: Ветхая соломенная койка, хранящая следы крови и перенесенных мучений.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Furniture/monk_beds.rsi
+    state: lectus_doloris
+    noRot: true
+  - type: Icon
+    sprite: _NigWeb/Structures/Furniture/monk_beds.rsi
+    state: lectus_doloris
+
+- type: entity
+  id: NigWebBedLectusOrdinis
+  parent: Bed
+  name: Lectus Ordinis
+  description: Кованая казарменная койка священного ордена с железной рамой.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Furniture/monk_beds.rsi
+    state: lectus_ordinis
+    noRot: true
+  - type: Icon
+    sprite: _NigWeb/Structures/Furniture/monk_beds.rsi
+    state: lectus_ordinis
+
+- type: entity
+  id: NigWebBedGrabatus
+  parent: Bed
+  name: Grabatus
+  description: Простой дощатый топчан без подушки для послушников церкви.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Furniture/monk_beds.rsi
+    state: grabatus
+    noRot: true
+  - type: Icon
+    sprite: _NigWeb/Structures/Furniture/monk_beds.rsi
+    state: grabatus

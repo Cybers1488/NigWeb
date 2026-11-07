@@ -1,0 +1,424 @@
+# SPDX-License-Identifier: MIT
+
+- type: entity
+  id: NigWebStatueBase
+  parent: BaseStructure
+  abstract: true
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 2000
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+        - BulletImpassable
+  - type: Sprite
+  - type: Icon
+  - type: InteractionOutline
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+# 1. Classical Statues
+- type: entity
+  id: NigWebStatuaLapidea
+  parent: NigWebStatueBase
+  name: Statua Lapidea
+  description: Древнее каменное изваяние святого на постаменте.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_lapidea
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_lapidea
+
+- type: entity
+  id: NigWebStatuaOrans
+  parent: NigWebStatueBase
+  name: Statua Orans
+  description: Каменное изваяние молящейся девы со смиренно сложенными руками.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_orans
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_orans
+
+- type: entity
+  id: NigWebStatuaMilitis
+  parent: NigWebStatueBase
+  name: Statua Militis
+  description: Изваяние воина в латах, опирающегося на меч.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_militis
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_militis
+
+- type: entity
+  id: NigWebStatuaDoloris
+  parent: NigWebStatueBase
+  name: Statua Doloris
+  description: Монумент скорбящего мученика, опустившего взор долу.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_doloris
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_doloris
+
+- type: entity
+  id: NigWebStatuaMonachi
+  parent: NigWebStatueBase
+  name: Statua Monachi
+  description: Статуя схимника в глубоком монашеском капюшоне.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_monachi
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_monachi
+
+- type: entity
+  id: NigWebStatuaPraelati
+  parent: NigWebStatueBase
+  name: Statua Praelati
+  description: Изваяние церковного прелата с пастырским жезлом.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_praelati
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_praelati
+
+- type: entity
+  id: NigWebStatuaSeraphim
+  parent: NigWebStatueBase
+  name: Statua Seraphim
+  description: Изваяние крылатого небесного серафима в длинных ризах.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_seraphim
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_seraphim
+
+- type: entity
+  id: NigWebStatuaAngeli
+  parent: NigWebStatueBase
+  name: Statua Angeli
+  description: Мраморный ангел с опущенными крыльями, оплакивающий грехи смертных.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_angeli
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_angeli
+
+# 2. Gargoyles
+- type: entity
+  id: NigWebGargoyleLapideus
+  parent: NigWebStatueBase
+  name: Gargoyle Lapideus
+  description: Каменная горгулья, застывшая в хищной позе.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: gargoyle_lapideus
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: gargoyle_lapideus
+
+- type: entity
+  id: NigWebGargoyleMinor
+  parent: NigWebStatueBase
+  name: Gargoyle Minor
+  description: Малая уступная горгулья, сторожащая карниз собора.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: gargoyle_minor
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: gargoyle_minor
+
+- type: entity
+  id: NigWebGargoyleCustos
+  parent: NigWebStatueBase
+  name: Gargoyle Custos
+  description: Горгулья-страж с оскаленной пастью и когтями.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: gargoyle_custos
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: gargoyle_custos
+
+- type: entity
+  id: NigWebGargoyleAlatus
+  parent: NigWebStatueBase
+  name: Gargoyle Alatus
+  description: Крылатая соборная бестия из серого гранита.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: gargoyle_alatus
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: gargoyle_alatus
+
+- type: entity
+  id: NigWebGargoyleCathedralis
+  parent: NigWebStatueBase
+  name: Gargoyle Cathedralis
+  description: Величественная готическая горгулья храмовых стен.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: gargoyle_cathedralis
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: gargoyle_cathedralis
+
+- type: entity
+  id: NigWebGargoyleVigilans
+  parent: NigWebStatueBase
+  name: Gargoyle Vigilans
+  description: Бдящая горгулья, созерцающая грешников с пьедестала.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: gargoyle_vigilans
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: gargoyle_vigilans
+
+# 3. Patriarch Rahl Statues
+- type: entity
+  id: NigWebStatuaPatriarchae
+  parent: NigWebStatueBase
+  name: Statua Patriarchae
+  description: Монументальная статуя патриарха ордена в парадных регалиях.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_patriarchae
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_patriarchae
+
+- type: entity
+  id: NigWebStatuaPatriarchaeFracta
+  parent: NigWebStatueBase
+  name: Statua Patriarchae Fracta
+  description: Треснувшая от времени и осад статуя святого патриарха.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_patriarchae_fracta
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_patriarchae_fracta
+
+- type: entity
+  id: NigWebEffigiesPatriarchae
+  parent: NigWebStatueBase
+  name: Effigies Patriarchae
+  description: Алтарный бюст патриарха на мраморном основании.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: effigies_patriarchae
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: effigies_patriarchae
+
+# 4. Knight Statues
+- type: entity
+  id: NigWebStatuaEquitis
+  parent: NigWebStatueBase
+  name: Statua Equitis
+  description: Статуя благородного рыцаря-храмовника в полном доспехе.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_equitis
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_equitis
+
+- type: entity
+  id: NigWebStatuaEquitisFracta
+  parent: NigWebStatueBase
+  name: Statua Equitis Fracta
+  description: Расколотая статуя рыцаря, лишившаяся меча и забрала.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_equitis_fracta
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_equitis_fracta
+
+- type: entity
+  id: NigWebEffigiesEquitis
+  parent: NigWebStatueBase
+  name: Effigies Equitis
+  description: Каменный барельеф-бюст воина церкви.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: effigies_equitis
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: effigies_equitis
+
+# 5. Judge Statues
+- type: entity
+  id: NigWebStatuaIudicis
+  parent: NigWebStatueBase
+  name: Statua Iudicis
+  description: Статуя верховного инквизиционного судьи со скрижалью веры.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_iudicis
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_iudicis
+
+- type: entity
+  id: NigWebStatuaIudicisAntiqua
+  parent: NigWebStatueBase
+  name: Statua Iudicis Antiqua
+  description: Древний обветренный монумент праведного судилища.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_iudicis_antiqua
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_iudicis_antiqua
+
+- type: entity
+  id: NigWebEffigiesIudicis
+  parent: NigWebStatueBase
+  name: Effigies Iudicis
+  description: Мраморный бюст судьи для украшения нефа и притвора.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: effigies_iudicis
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: effigies_iudicis
+
+# 6. Comatic and Sepulchral Statues
+- type: entity
+  id: NigWebStatuaDormientis
+  parent: NigWebStatueBase
+  name: Statua Dormientis
+  description: Изваяние святого коматозника в вечном безмолвном сне.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_dormientis
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_dormientis
+
+- type: entity
+  id: NigWebStatuaSepulcralis
+  parent: NigWebStatueBase
+  name: Statua Sepulcralis
+  description: Каменное надгробие усопшего с погребальными лентами.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_sepulcralis
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: statua_sepulcralis
+
+# 7. Church Crosses
+- type: entity
+  id: NigWebCruxMonastica
+  parent: NigWebStatueBase
+  name: Crux Monastica
+  description: Строгий каменный монашеский крест с резным оглавием.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: crux_monastica
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: crux_monastica
+
+- type: entity
+  id: NigWebCruxFerrea
+  parent: NigWebStatueBase
+  name: Crux Ferrea
+  description: Кованый железный настенный крест с шипами.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: crux_ferrea
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: crux_ferrea
+
+- type: entity
+  id: NigWebCruxAenea
+  parent: NigWebStatueBase
+  name: Crux Aenea
+  description: Медный освященный крест, покрытый зеленоватой патиной.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: crux_aenea
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: crux_aenea
+
+- type: entity
+  id: NigWebCruxAurea
+  parent: NigWebStatueBase
+  name: Crux Aurea
+  description: Золоченый соборный крест для святых алтарей и часовен.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: crux_aurea
+  - type: Icon
+    sprite: _NigWeb/Structures/Decoration/church_statues.rsi
+    state: crux_aurea

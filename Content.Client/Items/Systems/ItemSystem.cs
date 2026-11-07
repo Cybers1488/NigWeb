@@ -66,8 +66,39 @@ public sealed class ItemSystem : SharedItemSystem
         }
 
         var i = 0;
-        foreach (var layer in layers)
+        foreach (var originalLayer in layers)
         {
+            var layer = originalLayer;
+            if (item.HeldPrefix != null && layer.State != null)
+            {
+                var candidate = $"{item.HeldPrefix}-{layer.State}";
+                RSI? rsi = null;
+                if (layer.RsiPath != null)
+                    rsi = _resCache.GetResource<RSIResource>(SpriteSpecifierSerializer.TextureRoot / layer.RsiPath).RSI;
+                else if (item.RsiPath != null)
+                    rsi = _resCache.GetResource<RSIResource>(SpriteSpecifierSerializer.TextureRoot / item.RsiPath).RSI;
+                else if (TryComp(uid, out SpriteComponent? sprite))
+                    rsi = sprite.BaseRSI;
+
+                if (rsi != null && rsi.TryGetState(candidate, out _))
+                {
+                    layer = new PrototypeLayerData
+                    {
+                        Shader = originalLayer.Shader,
+                        TexturePath = originalLayer.TexturePath,
+                        RsiPath = originalLayer.RsiPath,
+                        State = candidate,
+                        Scale = originalLayer.Scale,
+                        Rotation = originalLayer.Rotation,
+                        Offset = originalLayer.Offset,
+                        Visible = originalLayer.Visible,
+                        Color = originalLayer.Color,
+                        MapKeys = originalLayer.MapKeys,
+                        RenderingStrategy = originalLayer.RenderingStrategy,
+                    };
+                }
+            }
+
             var key = layer.MapKeys?.FirstOrDefault();
             if (key == null)
             {

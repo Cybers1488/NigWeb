@@ -167,7 +167,6 @@ public sealed class BuriedMonkSystem : EntitySystem
                         {
                             var targetUid = target.Owner;
                             if (targetUid == uid || _faction.IsEntityFriendly(uid, targetUid) ||
-                                HasComp<LadyFaithfulComponent>(targetUid) ||
                                 HasComp<BuriedMonkComponent>(targetUid) ||
                                 HasComp<BigGunnerComponent>(targetUid) ||
                                 HasComp<SpiritSpawnerComponent>(targetUid) ||
@@ -257,7 +256,6 @@ public sealed class BuriedMonkSystem : EntitySystem
                     {
                         var tUid = comp.CurrentTarget.Value;
                         if (tUid != uid && !_faction.IsEntityFriendly(uid, tUid) &&
-                            !HasComp<LadyFaithfulComponent>(tUid) &&
                             !HasComp<BuriedMonkComponent>(tUid) &&
                             !HasComp<BigGunnerComponent>(tUid) &&
                             !HasComp<SpiritSpawnerComponent>(tUid) &&
@@ -285,7 +283,6 @@ public sealed class BuriedMonkSystem : EntitySystem
                             var cUid = candidate.Owner;
                             if (cUid == uid ||
                                 _faction.IsEntityFriendly(uid, cUid) ||
-                                HasComp<LadyFaithfulComponent>(cUid) ||
                                 HasComp<BuriedMonkComponent>(cUid) ||
                                 HasComp<BigGunnerComponent>(cUid) ||
                                 HasComp<SpiritSpawnerComponent>(cUid) ||

@@ -8,6 +8,8 @@
     needsPower: false
   - type: Airlock
     powered: true
+    unlitLayers: false
+    openUnlitVisible: false
   - type: Sprite
     sprite: _NigWeb/Structures/Doors/doorcom.rsi
   - type: Door
@@ -39,6 +41,8 @@
     needsPower: false
   - type: Airlock
     powered: true
+    unlitLayers: false
+    openUnlitVisible: false
   - type: Sprite
     sprite: _NigWeb/Structures/Doors/doormedglass.rsi
   - type: Door
@@ -102,6 +106,8 @@
     - 2,0
   - type: Airlock
     powered: true
+    unlitLayers: false
+    openUnlitVisible: false
     autoCloseDelay: 4
   - type: Door
     bumpOpen: false

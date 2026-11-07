@@ -4,12 +4,14 @@ using System.Numerics;
 using Content.Client.Light.EntitySystems;
 using Content.Shared._NigWeb.Bosses.EternalSummoner;
 using Content.Shared.CCVar;
+using Content.Shared.Doors.Components;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
 using Content.Shared.Maps;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Parallax.Biomes;
+using Content.Shared.Weather;
 using Robust.Client.Audio;
 using Robust.Client.Player;
 using Robust.Shared.Audio.Components;
@@ -17,6 +19,7 @@ using Robust.Shared.Audio.Effects;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Physics;
 
 namespace Content.Client._NigWeb.Audio;
 
@@ -35,13 +38,29 @@ public sealed class EnvironmentalReverbSystem : EntitySystem
     [Dependency] private readonly ITileDefinitionManager _tileDefManager = default!;
     [Dependency] private readonly RoofSystem _roof = default!;
 
+    private EntityQuery<BlockWeatherComponent> _blockWeatherQuery;
+    private EntityQuery<DoorComponent> _doorQuery;
+    private EntityQuery<OccluderComponent> _occluderQuery;
+    private EntityQuery<IsRoofComponent> _isRoofQuery;
+
     private EntityUid? _auxiliaryUid;
     private EntityUid? _effectUid;
     private bool? _wasIndoors;
 
+    private Vector2i? _lastPlayerTile;
+    private EntityUid? _lastPlayerGrid;
+    private bool _lastIndoorsResult;
+
+    private const int MaxEnclosureRadius = 18;
+
     public override void Initialize()
     {
         base.Initialize();
+
+        _blockWeatherQuery = GetEntityQuery<BlockWeatherComponent>();
+        _doorQuery = GetEntityQuery<DoorComponent>();
+        _occluderQuery = GetEntityQuery<OccluderComponent>();
+        _isRoofQuery = GetEntityQuery<IsRoofComponent>();
 
         Log.Info("[EnvironmentalReverbSystem] Initiating physical acoustic environment reverb with indoor/outdoor differentiation...");
         _config.OnValueChanged(CCVars.EnvironmentalReverbGain, OnReverbGainChanged);
@@ -108,6 +127,62 @@ public sealed class EnvironmentalReverbSystem : EntitySystem
         );
     }
 
+    private bool IsBoundaryTile(EntityUid gridUid, MapGridComponent grid, RoofComponent? roof, Vector2i indices)
+    {
+        if (roof != null && _roof.IsRooved((gridUid, grid, roof), indices))
+            return true;
+
+        var anchored = _mapSystem.GetAnchoredEntitiesEnumerator(gridUid, grid, indices);
+        while (anchored.MoveNext(out var ent))
+        {
+            if (_isRoofQuery.HasComponent(ent.Value) ||
+                _blockWeatherQuery.HasComponent(ent.Value) ||
+                _doorQuery.HasComponent(ent.Value) ||
+                _occluderQuery.HasComponent(ent.Value))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private static readonly Vector2i[] Directions =
+    {
+        new(0, 1),
+        new(0, -1),
+        new(1, 0),
+        new(-1, 0),
+    };
+
+    private bool IsEnclosedChamber(EntityUid gridUid, MapGridComponent grid, RoofComponent? roof, Vector2i startIndices)
+    {
+        var blockedDirections = 0;
+
+        foreach (var dir in Directions)
+        {
+            for (var dist = 1; dist <= MaxEnclosureRadius; dist++)
+            {
+                var checkPos = startIndices + dir * dist;
+                var tileRef = _mapSystem.GetTileRef(gridUid, grid, checkPos);
+                if (tileRef.Tile.IsEmpty)
+                {
+                    // Hit grid boundary / empty space
+                    break;
+                }
+
+                if (IsBoundaryTile(gridUid, grid, roof, checkPos))
+                {
+                    blockedDirections++;
+                    break;
+                }
+            }
+        }
+
+        // At least 3 directions enclosed by walls/doors/roofs (allows 1 open doorway or wide corridor opening)
+        return blockedDirections >= 3;
+    }
+
     /// <summary>
     /// Determines whether the local player is currently inside an enclosed indoor chamber,
     /// or outside in the open air / on a planet surface.
@@ -131,17 +206,30 @@ public sealed class EnvironmentalReverbSystem : EntitySystem
 
         var tileIndices = _mapSystem.TileIndicesFor(gridUid.Value, grid, xform.Coordinates);
 
-        // Check if explicit roof exists on this tile (e.g. bunker, fortress, indoor shelter on planet)
-        if (TryComp<RoofComponent>(gridUid.Value, out var roof))
-        {
-            if (_roof.IsRooved((gridUid.Value, grid, roof), tileIndices))
-                return true;
+        // Cached lookup: only re-evaluate enclosure when player moves to another tile
+        if (_lastPlayerGrid == gridUid.Value && _lastPlayerTile == tileIndices)
+            return _lastIndoorsResult;
 
-            // If the grid has a RoofComponent and this tile is NOT rooved, it is open to the sky!
-            return false;
+        _lastPlayerGrid = gridUid.Value;
+        _lastPlayerTile = tileIndices;
+
+        TryComp<RoofComponent>(gridUid.Value, out var roof);
+
+        // 1. Direct check: is this exact tile flagged as rooved or does it have a roof entity (like inside a wall)?
+        if (roof != null && _roof.IsRooved((gridUid.Value, grid, roof), tileIndices))
+        {
+            _lastIndoorsResult = true;
+            return true;
         }
 
-        // Check if the current map is a planet or wasteland
+        // 2. Enclosure check: is this tile inside a room/chamber enclosed by walls/doors/roofs?
+        if (IsEnclosedChamber(gridUid.Value, grid, roof, tileIndices))
+        {
+            _lastIndoorsResult = true;
+            return true;
+        }
+
+        // 3. Check if the current map is a planet or wasteland
         // (BiomeComponent, SunShadow components, or EternalSummoner monument on map)
         if (mapUid != null)
         {
@@ -149,6 +237,7 @@ public sealed class EnvironmentalReverbSystem : EntitySystem
                 HasComp<SunShadowCycleComponent>(mapUid.Value) ||
                 HasComp<SunShadowComponent>(mapUid.Value))
             {
+                _lastIndoorsResult = false;
                 return false;
             }
 
@@ -158,24 +247,32 @@ public sealed class EnvironmentalReverbSystem : EntitySystem
                 if (sXform.MapUid == mapUid.Value)
                 {
                     // Planet surface with Eternal Summoner monument -> open air wasteland!
+                    _lastIndoorsResult = false;
                     return false;
                 }
             }
         }
 
-        // Check tile prototype definition
+        // 4. Check tile prototype definition
         var tileRef = _mapSystem.GetTileRef(gridUid.Value, grid, tileIndices);
         if (tileRef.Tile.IsEmpty)
+        {
+            _lastIndoorsResult = false;
             return false;
+        }
 
         if (_tileDefManager[tileRef.Tile.TypeId] is ContentTileDefinition contentTile)
         {
             // Planet surface turf where weather strikes -> outdoors!
             if (contentTile.Weather)
+            {
+                _lastIndoorsResult = false;
                 return false;
+            }
         }
 
         // On space stations: tiles without weather and inside station bounds are indoors
+        _lastIndoorsResult = true;
         return true;
     }
 
@@ -286,6 +383,8 @@ public sealed class EnvironmentalReverbSystem : EntitySystem
             _auxiliaryUid = null;
             _effectUid = null;
             _wasIndoors = null;
+            _lastPlayerTile = null;
+            _lastPlayerGrid = null;
         }
     }
 }

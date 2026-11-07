@@ -1,0 +1,230 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-4.0",
+  "copyright": "OpenSourceWeb / LifeWeb",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "broadsword"
+    },
+    {
+      "name": "bastard"
+    },
+    {
+      "name": "sbastard"
+    },
+    {
+      "name": "silversword"
+    },
+    {
+      "name": "goldensword"
+    },
+    {
+      "name": "coppersword"
+    },
+    {
+      "name": "adsword"
+    },
+    {
+      "name": "gladius"
+    },
+    {
+      "name": "sabre"
+    },
+    {
+      "name": "sabre_old"
+    },
+    {
+      "name": "rustysabre"
+    },
+    {
+      "name": "rustybroadsword"
+    },
+    {
+      "name": "falchion"
+    },
+    {
+      "name": "scimitar"
+    },
+    {
+      "name": "siegesword"
+    },
+    {
+      "name": "bigsword"
+    },
+    {
+      "name": "wsword"
+    },
+    {
+      "name": "rapier"
+    },
+    {
+      "name": "snakerapier"
+    },
+    {
+      "name": "rustyrapier"
+    },
+    {
+      "name": "axe"
+    },
+    {
+      "name": "axe2"
+    },
+    {
+      "name": "combataxe"
+    },
+    {
+      "name": "saxe"
+    },
+    {
+      "name": "traxe"
+    },
+    {
+      "name": "rustyaxe"
+    },
+    {
+      "name": "artiaxe2"
+    },
+    {
+      "name": "paxe"
+    },
+    {
+      "name": "bardiche"
+    },
+    {
+      "name": "axepickaxe"
+    },
+    {
+      "name": "steelmace"
+    },
+    {
+      "name": "lclub"
+    },
+    {
+      "name": "club"
+    },
+    {
+      "name": "wclub"
+    },
+    {
+      "name": "boneclub"
+    },
+    {
+      "name": "oclub"
+    },
+    {
+      "name": "sclub"
+    },
+    {
+      "name": "flail"
+    },
+    {
+      "name": "bflail"
+    },
+    {
+      "name": "iflail"
+    },
+    {
+      "name": "klevec"
+    },
+    {
+      "name": "blackjack"
+    },
+    {
+      "name": "knuckleduster"
+    },
+    {
+      "name": "monkstaff"
+    },
+    {
+      "name": "woodenstaff"
+    },
+    {
+      "name": "carverhammer"
+    },
+    {
+      "name": "sledgehammer"
+    },
+    {
+      "name": "icross"
+    },
+    {
+      "name": "spear"
+    },
+    {
+      "name": "cspear"
+    },
+    {
+      "name": "wspear"
+    },
+    {
+      "name": "adspear"
+    },
+    {
+      "name": "yspear"
+    },
+    {
+      "name": "tribal_spear"
+    },
+    {
+      "name": "pitchfork"
+    },
+    {
+      "name": "trident"
+    },
+    {
+      "name": "dagger"
+    },
+    {
+      "name": "steeldagger"
+    },
+    {
+      "name": "silverdagger"
+    },
+    {
+      "name": "copperdagger"
+    },
+    {
+      "name": "adagger"
+    },
+    {
+      "name": "hunting"
+    },
+    {
+      "name": "combat"
+    },
+    {
+      "name": "boneknife"
+    },
+    {
+      "name": "tribunalknife"
+    },
+    {
+      "name": "cleaver"
+    },
+    {
+      "name": "skinning"
+    },
+    {
+      "name": "wstake"
+    },
+    {
+      "name": "silverstake"
+    },
+    {
+      "name": "throwing"
+    },
+    {
+      "name": "sthrowing"
+    },
+    {
+      "name": "bmace"
+    },
+    {
+      "name": "morningstar"
+    }
+  ]
+}

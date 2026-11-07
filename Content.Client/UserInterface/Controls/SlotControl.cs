@@ -4,6 +4,10 @@ using System.Numerics;
 using Content.Client.Cooldown;
 using Content.Client.UserInterface.Systems.Inventory.Controls;
 using Robust.Client.GameObjects;
+using Robust.Client.Graphics;
+using Robust.Client.ResourceManagement;
+using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Input;
@@ -17,6 +21,7 @@ namespace Content.Client.UserInterface.Controls
         public static int DefaultButtonSize = 64;
 
         public TextureRect ButtonRect { get; }
+        public TextureRect FillAnimRect { get; }
         public TextureRect BlockedRect { get; }
         public TextureRect HighlightRect { get; }
         public SpriteView HoverSpriteView { get; }
@@ -52,7 +57,42 @@ namespace Content.Client.UserInterface.Controls
             }
         }
 
-        public bool Highlight { get => HighlightRect.Visible; set => HighlightRect.Visible = value;}
+        private float _highlightAnimTimer;
+        private float _nextGlitchInterval = 0.08f;
+        private int _highlightFrameIndex;
+        private Texture[]? _cachedHighlightFrames;
+
+        private bool _fillAnimActive;
+        private bool _fillAnimLoop;
+        private float _fillAnimTimer;
+        private int _fillAnimFrame;
+        private Texture[]? _cachedFillFrames;
+
+        public bool Highlight
+        {
+            get => HighlightRect.Visible;
+            set
+            {
+                if (HighlightRect.Visible == value)
+                    return;
+
+                HighlightRect.Visible = value;
+                if (value)
+                {
+                    _highlightAnimTimer = 0f;
+                    _nextGlitchInterval = 0.04f + Random.Shared.NextSingle() * 0.10f;
+                    if (_cachedHighlightFrames == null || _cachedHighlightFrames.Length == 0)
+                    {
+                        LoadHighlightFrames();
+                    }
+                    else
+                    {
+                        _highlightFrameIndex = Random.Shared.Next(_cachedHighlightFrames.Length);
+                        HighlightRect.Texture = _cachedHighlightFrames[_highlightFrameIndex];
+                    }
+                }
+            }
+        }
 
         public bool Blocked { get => BlockedRect.Visible; set => BlockedRect.Visible = value;}
 
@@ -108,6 +148,44 @@ namespace Content.Client.UserInterface.Controls
             set
             {
                 _highlightTexturePath = value;
+                LoadHighlightFrames();
+            }
+        }
+
+        private void LoadHighlightFrames()
+        {
+            var resCache = IoCManager.Resolve<IResourceCache>();
+            var frames = new List<Texture>();
+            for (var i = 0; i < 3; i++)
+            {
+                var path = new ResPath($"/Textures/Interface/NigWeb/sel_hand_{i}.png");
+                if (resCache.TryGetResource<TextureResource>(path, out var res))
+                {
+                    frames.Add(res.Texture);
+                }
+                else
+                {
+                    var fallback = new ResPath($"/Textures/Interface/Default/sel_hand_{i}.png");
+                    if (resCache.TryGetResource<TextureResource>(fallback, out var fallbackRes))
+                        frames.Add(fallbackRes.Texture);
+                }
+            }
+
+            if (frames.Count == 0 && _highlightTexturePath != null)
+            {
+                var fallback = Theme.ResolveTextureOrNull(_highlightTexturePath);
+                if (fallback?.Texture != null)
+                    frames.Add(fallback.Texture);
+            }
+
+            _cachedHighlightFrames = frames.Count > 0 ? frames.ToArray() : null;
+            if (_cachedHighlightFrames != null && _cachedHighlightFrames.Length > 0)
+            {
+                _highlightFrameIndex = Math.Clamp(_highlightFrameIndex, 0, _cachedHighlightFrames.Length - 1);
+                HighlightRect.Texture = _cachedHighlightFrames[_highlightFrameIndex];
+            }
+            else
+            {
                 HighlightRect.Texture = Theme.ResolveTextureOrNull(_highlightTexturePath)?.Texture;
             }
         }
@@ -129,6 +207,12 @@ namespace Content.Client.UserInterface.Controls
             {
                 TextureScale = new Vector2(2, 2),
                 MouseFilter = MouseFilterMode.Stop
+            });
+            AddChild(FillAnimRect = new TextureRect
+            {
+                Visible = false,
+                TextureScale = new Vector2(2, 2),
+                MouseFilter = MouseFilterMode.Ignore
             });
             AddChild(HighlightRect = new TextureRect
             {
@@ -207,6 +291,24 @@ namespace Content.Client.UserInterface.Controls
             BlockedTexturePath = "blocked";
         }
 
+        public void SetButtonSize(float size)
+        {
+            MinSize = new Vector2(size, size);
+            SetSize = new Vector2(size, size);
+            var scale = size / 32f;
+            ButtonRect.TextureScale = new Vector2(scale, scale);
+            FillAnimRect.TextureScale = new Vector2(scale, scale);
+            HighlightRect.TextureScale = new Vector2(scale, scale);
+            BlockedRect.TextureScale = new Vector2(scale, scale);
+            SpriteView.Scale = new Vector2(scale, scale);
+            SpriteView.SetSize = new Vector2(size, size);
+            ProtoView.Scale = new Vector2(scale, scale);
+            ProtoView.SetSize = new Vector2(size, size);
+            HoverSpriteView.Scale = new Vector2(scale, scale);
+            HoverSpriteView.SetSize = new Vector2(size, size);
+            StorageButton.Scale = new Vector2(scale * 0.375f, scale * 0.375f);
+        }
+
         public void ClearHover()
         {
             if (!EntityHover)
@@ -226,6 +328,9 @@ namespace Content.Client.UserInterface.Controls
         /// </summary>
         public void SetEntity(EntityUid? ent)
         {
+            if (ent != null && ent != Entity)
+                PlayFillAnimation();
+
             SpriteView.SetEntity(ent);
             SpriteView.Visible = true;
             ProtoView.Visible = false;
@@ -252,16 +357,23 @@ namespace Content.Client.UserInterface.Controls
 
         private void UpdateButtonTexture()
         {
-            var fullTexture = Theme.ResolveTextureOrNull(_fullButtonTexturePath);
-            var texture = Entity.HasValue && fullTexture != null
-                ? fullTexture.Texture
-                : Theme.ResolveTextureOrNull(_buttonTexturePath)?.Texture;
+            var texture = Theme.ResolveTextureOrNull(_buttonTexturePath)?.Texture
+                ?? Theme.ResolveTextureOrNull(_fullButtonTexturePath)?.Texture;
             ButtonRect.Texture = texture;
         }
 
         private void OnButtonPressed(GUIBoundKeyEventArgs args)
         {
+            if (!Entity.HasValue)
+                PlayFillAnimation();
+
             Pressed?.Invoke(args, this);
+        }
+
+        protected override void EnteredTree()
+        {
+            base.EnteredTree();
+            PlayFillAnimation();
         }
 
         private void OnButtonUnpressed(GUIBoundKeyEventArgs args)
@@ -286,13 +398,106 @@ namespace Content.Client.UserInterface.Controls
             Hover?.Invoke(args, this);
         }
 
+        public void PlayFillAnimation(bool loop = false)
+        {
+            if (_cachedFillFrames == null || _cachedFillFrames.Length == 0)
+                LoadFillFrames();
+
+            if (_cachedFillFrames == null || _cachedFillFrames.Length == 0)
+                return;
+
+            _fillAnimActive = true;
+            _fillAnimLoop = loop;
+            _fillAnimTimer = 0f;
+            _fillAnimFrame = 0;
+            FillAnimRect.Texture = _cachedFillFrames[0];
+            FillAnimRect.Visible = true;
+        }
+
+        private void LoadFillFrames()
+        {
+            var resCache = IoCManager.Resolve<IResourceCache>();
+            var fillFrames = new List<Texture>();
+            for (var i = 0; i < 16; i++)
+            {
+                var path = new ResPath($"/Textures/Interface/NigWeb/hud_fill_{i}.png");
+                if (resCache.TryGetResource<TextureResource>(path, out var res))
+                {
+                    fillFrames.Add(res.Texture);
+                }
+                else
+                {
+                    var fallback = new ResPath($"/Textures/Interface/Default/hud_fill_{i}.png");
+                    if (resCache.TryGetResource<TextureResource>(fallback, out var fallbackRes))
+                        fillFrames.Add(fallbackRes.Texture);
+                    else
+                        break;
+                }
+            }
+
+            _cachedFillFrames = fillFrames.Count > 0 ? fillFrames.ToArray() : null;
+        }
+
         protected override void OnThemeUpdated()
         {
             base.OnThemeUpdated();
 
             StorageButton.TextureNormal = Theme.ResolveTextureOrNull(_storageTexturePath)?.Texture;
-            HighlightRect.Texture = Theme.ResolveTextureOrNull(_highlightTexturePath)?.Texture;
+            LoadHighlightFrames();
+            LoadFillFrames();
             UpdateButtonTexture();
+        }
+
+        protected override void FrameUpdate(FrameEventArgs args)
+        {
+            base.FrameUpdate(args);
+
+            if (_fillAnimActive && _cachedFillFrames != null && _cachedFillFrames.Length > 0)
+            {
+                _fillAnimTimer += args.DeltaSeconds;
+                if (_fillAnimTimer >= 0.06f)
+                {
+                    _fillAnimTimer -= 0.06f;
+                    _fillAnimFrame++;
+                    if (_fillAnimFrame >= _cachedFillFrames.Length)
+                    {
+                        if (_fillAnimLoop)
+                        {
+                            _fillAnimFrame = 0;
+                            FillAnimRect.Texture = _cachedFillFrames[_fillAnimFrame];
+                        }
+                        else
+                        {
+                            _fillAnimActive = false;
+                            FillAnimRect.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        FillAnimRect.Texture = _cachedFillFrames[_fillAnimFrame];
+                    }
+                }
+            }
+
+            if (!HighlightRect.Visible)
+                return;
+
+            if (_cachedHighlightFrames == null || _cachedHighlightFrames.Length <= 1)
+                return;
+
+            _highlightAnimTimer += args.DeltaSeconds;
+            if (_highlightAnimTimer >= _nextGlitchInterval)
+            {
+                _highlightAnimTimer = 0f;
+                _nextGlitchInterval = 0.04f + Random.Shared.NextSingle() * 0.12f;
+
+                var nextFrame = Random.Shared.Next(_cachedHighlightFrames.Length - 1);
+                if (nextFrame >= _highlightFrameIndex)
+                    nextFrame++;
+
+                _highlightFrameIndex = nextFrame;
+                HighlightRect.Texture = _cachedHighlightFrames[_highlightFrameIndex];
+            }
         }
 
         EntityUid? IEntityControl.UiEntity => Entity;

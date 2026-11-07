@@ -9,7 +9,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Goobstation.Shared.Sprinting;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(raiseAfterAutoHandleState: true)]
 public sealed partial class SprinterComponent : Component
 {
     /// <summary>

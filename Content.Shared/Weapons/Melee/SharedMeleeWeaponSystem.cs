@@ -399,6 +399,15 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                 return true;
             }
 
+            if (TryComp<VirtualItemComponent>(held, out var virt) &&
+                TryComp<MeleeWeaponComponent>(virt.BlockingEntity, out var blockingMelee) &&
+                !blockingMelee.MustBeEquippedToUse)
+            {
+                weaponUid = virt.BlockingEntity;
+                melee = blockingMelee;
+                return true;
+            }
+
             if (!HasComp<VirtualItemComponent>(held))
                 return false;
         }

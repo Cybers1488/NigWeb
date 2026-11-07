@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-4.0",
+  "copyright": "OpenSourceWeb / LifeWeb",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "casing"
+    },
+    {
+      "name": "bullet"
+    },
+    {
+      "name": "shell_12g"
+    },
+    {
+      "name": "shell_12g_spent"
+    },
+    {
+      "name": "mag_9mm"
+    },
+    {
+      "name": "mag_45"
+    },
+    {
+      "name": "mag_mother"
+    },
+    {
+      "name": "mag_grinder"
+    },
+    {
+      "name": "mag_kpfw"
+    },
+    {
+      "name": "mag_kabal"
+    },
+    {
+      "name": "mag_ctt"
+    },
+    {
+      "name": "box_357"
+    },
+    {
+      "name": "box_38"
+    },
+    {
+      "name": "box_9mm"
+    },
+    {
+      "name": "box_45"
+    },
+    {
+      "name": "box_556"
+    },
+    {
+      "name": "box_shotgun"
+    },
+    {
+      "name": "mag_carbine"
+    },
+    {
+      "name": "mag_uzi"
+    },
+    {
+      "name": "bullet-spent"
+    },
+    {
+      "name": "casing-spent"
+    },
+    {
+      "name": "spent"
+    },
+    {
+      "name": "shell_12g-spent"
+    },
+    {
+      "name": "shell_12g_spent-spent"
+    }
+  ]
+}

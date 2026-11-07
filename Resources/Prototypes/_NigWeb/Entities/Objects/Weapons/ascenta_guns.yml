@@ -1,0 +1,2207 @@
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: NigWebAscentaGunBase
+  name: Ascenta Gun Base
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_guns.rsi
+  - type: Tag
+    tags:
+    - Sidearm
+  - type: AmmoCounter
+  - type: UseDelay
+    delay: 0.15
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+
+# Revolvers
+
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaDuelista
+  name: Sclopetum Singulare Duelista
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: duelista
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      collection: AscentaOldPistolFire
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWebAscentaCartridge357
+    capacity: 1
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/rev_cock.ogg
+    soundInsert:
+      path: /Audio/_NigWeb/Weapons/Ascenta/rev_magin.ogg
+    soundEject:
+      collection: AscentaCasingFall
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: duelista-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: duelista-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: duelista-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: duelista-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: duelista-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaNeoclassic
+  name: Revolver Neoclassicum
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: neoclassic
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      collection: AscentaNeoclassicFire
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWebAscentaCartridge38
+    capacity: 6
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/rev_cock.ogg
+    soundInsert:
+      path: /Audio/_NigWeb/Weapons/Ascenta/rev_magin.ogg
+    soundEject:
+      collection: AscentaCasingFall
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: neoclassic-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: neoclassic-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: neoclassic-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: neoclassic-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: neoclassic-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaHarat
+  name: Revolver Harat Octoginta
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: harat
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Ascenta/pistol9mm.ogg
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWebAscentaCartridge380
+    capacity: 6
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/rev_cock.ogg
+    soundInsert:
+      path: /Audio/_NigWeb/Weapons/Ascenta/rev_magin.ogg
+    soundEject:
+      collection: AscentaCasingFall
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: harat-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: harat-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: harat-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: harat-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: harat-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaRichter
+  name: Revolver Richter Magnus
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: richter
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      collection: AscentaNewPistolFire
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWebAscentaCartridge44
+    capacity: 6
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/rev_cock.ogg
+    soundInsert:
+      path: /Audio/_NigWeb/Weapons/Ascenta/rev_magin.ogg
+    soundEject:
+      collection: AscentaCasingFall
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: richter-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: richter-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: richter-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: richter-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: richter-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaDetective
+  name: Revolver Indagatoris
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: detective
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      collection: AscentaRevolverFire
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWebAscentaCartridge38
+    capacity: 6
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/rev_cock.ogg
+    soundInsert:
+      path: /Audio/_NigWeb/Weapons/Ascenta/rev_magin.ogg
+    soundEject:
+      collection: AscentaCasingFall
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: detective-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: detective-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: detective-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: detective-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: detective-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaMateba
+  name: Revolver Bellicum Mateba
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: mateba
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      collection: AscentaRevolverFire
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWebAscentaCartridge357
+    capacity: 6
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/rev_cock.ogg
+    soundInsert:
+      path: /Audio/_NigWeb/Weapons/Ascenta/rev_magin.ogg
+    soundEject:
+      collection: AscentaCasingFall
+
+# Pistols  - type: Item
+    size: Normal
+    inhandVisuals:
+      Left:
+      - rsiPath: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: revolver_heavy-left
+      Right:
+      - rsiPath: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: revolver_heavy-right
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: mateba-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: mateba-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: mateba-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: mateba-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: mateba-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaPistolML23
+  name: Pistolium Legionis
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: pistol_ml23
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    fireRate: 4
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gunshot2.ogg
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: NigWebAscentaMag9mm
+        insertSound: /Audio/_NigWeb/Weapons/Ascenta/pistol_magin.ogg
+        ejectSound: /Audio/_NigWeb/Weapons/Ascenta/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - NigWebAscentaMag9mm
+          - MagazinePistol
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - NigWebAscentaCartridge9mm
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/pistol_cock.ogg
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_ml23-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_ml23-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_ml23-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_ml23-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_ml23-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaPistolGoldML23
+  name: Pistolium Aureum
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: pistol_gold
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    fireRate: 4
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gunshot_silenced.ogg
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: NigWebAscentaMag9mm
+        insertSound: /Audio/_NigWeb/Weapons/Ascenta/pistol_magin.ogg
+        ejectSound: /Audio/_NigWeb/Weapons/Ascenta/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - NigWebAscentaMag9mm
+          - MagazinePistol
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - NigWebAscentaCartridge9mm
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/pistol_cock.ogg
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_gold-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_gold-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_gold-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_gold-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_gold-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaPistolJester
+  name: Pistolium Morionis
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: pistol_jester
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    fireRate: 3
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gunshot2.ogg
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: NigWebAscentaMag45
+        insertSound: /Audio/_NigWeb/Weapons/Ascenta/pistol_magin.ogg
+        ejectSound: /Audio/_NigWeb/Weapons/Ascenta/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - NigWebAscentaMag45
+          - MagazinePistol
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - NigWebAscentaCartridge45
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/pistol_cock.ogg
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_jester-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_jester-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_jester-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_jester-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_jester-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaPistolMagnum66
+  name: Pistolium Magnum Sexaginta
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: pistol_magnum
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    fireRate: 2.5
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gunshot2.ogg
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: NigWebAscentaMagMother
+        insertSound: /Audio/_NigWeb/Weapons/Ascenta/pistol_magin.ogg
+        ejectSound: /Audio/_NigWeb/Weapons/Ascenta/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - NigWebAscentaMagMother
+          - MagazineMagnum
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - NigWebAscentaCartridge357
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/pistol_cock.ogg
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_magnum-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_magnum-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_magnum-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_magnum-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_magnum-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaPistolScreamer
+  name: Pistolium Clamatoris
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: pistol_screamer
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    fireRate: 7
+    selectedMode: FullAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gunshot_m9.ogg
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: NigWebAscentaMag45
+        insertSound: /Audio/_NigWeb/Weapons/Ascenta/pistol_magin.ogg
+        ejectSound: /Audio/_NigWeb/Weapons/Ascenta/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - NigWebAscentaMag45
+          - MagazinePistol
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - NigWebAscentaCartridge45
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/pistol_cock.ogg
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_screamer-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_screamer-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_screamer-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_screamer-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_screamer-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaPistolMother
+  name: Pistolium Mater Fati
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: pistol_mother
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    fireRate: 2
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Ascenta/motherfire.ogg
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: NigWebAscentaMagMother
+        insertSound: /Audio/_NigWeb/Weapons/Ascenta/pistol_magin.ogg
+        ejectSound: /Audio/_NigWeb/Weapons/Ascenta/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - NigWebAscentaMagMother
+          - MagazineMagnum
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - NigWebAscentaCartridge357
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/pistol_cock.ogg
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_mother-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_mother-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_mother-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_mother-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_mother-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaPistolStribog
+  name: Pistolium Stribog
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: pistol_stribog
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    fireRate: 5
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gunshot1.ogg
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: NigWebAscentaMag9mm
+        insertSound: /Audio/_NigWeb/Weapons/Ascenta/pistol_magin.ogg
+        ejectSound: /Audio/_NigWeb/Weapons/Ascenta/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - NigWebAscentaMag9mm
+          - MagazinePistol
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - NigWebAscentaCartridge9mm
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/pistol_cock.ogg
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_stribog-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_stribog-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_stribog-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_stribog-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: pistol_stribog-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaGrinder
+  name: Carbina Molitor
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: carbine_grinder
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    minAngle: 16
+    maxAngle: 27
+    fireRate: 8
+    selectedMode: FullAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      collection: AscentaGrinderFire
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: NigWebAscentaMagGrinder
+        insertSound: /Audio/_NigWeb/Weapons/Ascenta/smg_magin.ogg
+        ejectSound: /Audio/_NigWeb/Weapons/Ascenta/smg_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - NigWebAscentaMagGrinder
+          - MagazineRifle
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - NigWebAscentaCartridge762
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/smg_cock.ogg
+  - type: GunWieldBonus
+    minAngle: -15
+    maxAngle: -25
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: carbine_grinder-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: carbine_grinder-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: carbine_grinder-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: carbine_grinder-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: carbine_grinder-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaOldGrinder
+  name: Carbina Molitor Antiqua
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: carbine_oldgrinder
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    minAngle: 16
+    maxAngle: 27
+    fireRate: 7
+    selectedMode: FullAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      collection: AscentaGrinderFire
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: NigWebAscentaMagGrinder
+        insertSound: /Audio/_NigWeb/Weapons/Ascenta/smg_magin.ogg
+        ejectSound: /Audio/_NigWeb/Weapons/Ascenta/smg_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - NigWebAscentaMagGrinder
+          - MagazineRifle
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - NigWebAscentaCartridge762
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/smg_cock.ogg
+  - type: GunWieldBonus
+    minAngle: -15
+    maxAngle: -25
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: carbine_oldgrinder-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: carbine_oldgrinder-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: carbine_oldgrinder-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: carbine_oldgrinder-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: carbine_oldgrinder-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaKpfw
+  name: Fusile Kpfw Impulsum
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: rifle_kpfw
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    minAngle: 16
+    maxAngle: 27
+    fireRate: 8
+    selectedMode: FullAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      collection: AscentaPulseFire
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: NigWebAscentaMagKpfw
+        insertSound: /Audio/_NigWeb/Weapons/Ascenta/smg_magin.ogg
+        ejectSound: /Audio/_NigWeb/Weapons/Ascenta/smg_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - NigWebAscentaMagKpfw
+          - MagazineRifle
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - NigWebAscentaCartridge762
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/smg_cock.ogg
+  - type: GunWieldBonus
+    minAngle: -15
+    maxAngle: -25
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: autorifle_kpfw-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: autorifle_kpfw-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: autorifle_kpfw-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: autorifle_kpfw-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: autorifle_kpfw-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaLakko
+  name: Fusile CTT Praetorium
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: rifle_lakko
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    minAngle: 16
+    maxAngle: 27
+    fireRate: 6
+    selectedMode: FullAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      collection: AscentaNewPistolFire
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: NigWebAscentaMagCtt
+        insertSound: /Audio/_NigWeb/Weapons/Ascenta/rifle_load.ogg
+        ejectSound: /Audio/_NigWeb/Weapons/Ascenta/rifle_boltback.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - NigWebAscentaMagCtt
+          - MagazineRifle
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - NigWebAscentaCartridge762
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/rifle_boltforward.ogg
+  - type: GunWieldBonus
+    minAngle: -15
+    maxAngle: -25
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: rifle_lakko-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: rifle_lakko-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: rifle_lakko-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: rifle_lakko-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: rifle_lakko-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaKabal
+  name: Pyrobolum Kabal Tympanum
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: smg_kabal
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    minAngle: 16
+    maxAngle: 27
+    fireRate: 9
+    selectedMode: FullAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      collection: AscentaKabalFire
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: NigWebAscentaMagKabal
+        insertSound: /Audio/_NigWeb/Weapons/Ascenta/smg_magin.ogg
+        ejectSound: /Audio/_NigWeb/Weapons/Ascenta/smg_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - NigWebAscentaMagKabal
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - NigWebAscentaCartridge45
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/smg_cock.ogg
+  - type: GunWieldBonus
+    minAngle: -15
+    maxAngle: -25
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_kabal-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_kabal-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_kabal-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_kabal-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_kabal-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaThanatiKabal
+  name: Pyrobolum Thanati Sacrum
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: smg_thanati
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    minAngle: 16
+    maxAngle: 27
+    fireRate: 9
+    selectedMode: FullAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Ascenta/thanatikabal.ogg
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: NigWebAscentaMagThanati
+        insertSound: /Audio/_NigWeb/Weapons/Ascenta/smg_magin.ogg
+        ejectSound: /Audio/_NigWeb/Weapons/Ascenta/smg_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - NigWebAscentaMagThanati
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - NigWebAscentaCartridge45
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/smg_cock.ogg
+  - type: GunWieldBonus
+    minAngle: -15
+    maxAngle: -25
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_thanati-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_thanati-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_thanati-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_thanati-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_thanati-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaMiniUzi
+  name: Pyrobolum Karek Celer
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: smg_karek
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    fireRate: 10
+    selectedMode: FullAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Ascenta/smg_fire.ogg
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: NigWebAscentaMagUzi
+        insertSound: /Audio/_NigWeb/Weapons/Ascenta/smg_magin.ogg
+        ejectSound: /Audio/_NigWeb/Weapons/Ascenta/smg_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - NigWebAscentaMagUzi
+          - MagazinePistol
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - NigWebAscentaCartridge380
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/smg_cock.ogg
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_karek-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_karek-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_karek-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_karek-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_karek-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaCarbine
+  name: Carbina Ungula Mortis
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: carbine_talon
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    minAngle: 16
+    maxAngle: 27
+    fireRate: 6
+    selectedMode: FullAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gunshot3.ogg
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: GunWieldBonus
+    minAngle: -15
+    maxAngle: -25
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: NigWebAscentaMagCarbine
+        insertSound: /Audio/_NigWeb/Weapons/Ascenta/rifle_load.ogg
+        ejectSound: /Audio/_NigWeb/Weapons/Ascenta/rifle_boltback.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - NigWebAscentaMagCarbine
+          - MagazineRifle
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - NigWebAscentaCartridge556
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/rifle_boltforward.ogg
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: carbine_talon-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: carbine_talon-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: carbine_talon-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: carbine_talon-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: carbine_talon-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaSubmachineUru
+  name: Pyrobolum Uru Cohortis
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: smg_uru
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    fireRate: 9
+    selectedMode: FullAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Ascenta/smg_fire.ogg
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: NigWebAscentaMag9mm
+        insertSound: /Audio/_NigWeb/Weapons/Ascenta/smg_magin.ogg
+        ejectSound: /Audio/_NigWeb/Weapons/Ascenta/smg_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+          - NigWebAscentaMag9mm
+          - MagazinePistol
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - NigWebAscentaCartridge9mm
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/smg_cock.ogg
+
+# Shotguns  - type: Item
+    size: Normal
+    inhandVisuals:
+      Left:
+      - rsiPath: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_uzi-left
+      Right:
+      - rsiPath: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_uzi-right
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_uru-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_uru-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_uru-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_uru-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: smg_uru-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaDoubleBarrel
+  name: Sclopetum Geminum
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: shotgun_double
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    minAngle: 16
+    maxAngle: 27
+    fireRate: 2
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Ascenta/shotgun2.ogg
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWebAscentaShell12g
+    capacity: 2
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/shotgun_break.ogg
+    soundInsert:
+      path: /Audio/_NigWeb/Weapons/Ascenta/shotgun_insert.ogg
+    soundEject:
+      collection: AscentaShotgunCasingFall
+  - type: GunWieldBonus
+    minAngle: -15
+    maxAngle: -25
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_double-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_double-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_double-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_double-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_double-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaSawedOff
+  name: Sclopetum Decurtatum
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: shotgun_sawed
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    fireRate: 2
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Ascenta/shotgun2.ogg
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWebAscentaShell12g
+    capacity: 2
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/shotgun_break.ogg
+    soundInsert:
+      path: /Audio/_NigWeb/Weapons/Ascenta/shotgun_insert.ogg
+    soundEject:
+      collection: AscentaShotgunCasingFall
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_sawed-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_sawed-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_sawed-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_sawed-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_sawed-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaShotgunPump
+  name: Sclopetum Bellicum Pompam
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: shotgun_pump
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    minAngle: 16
+    maxAngle: 27
+    fireRate: 1.2
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      collection: AscentaShotgunFire
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: BallisticAmmoProvider
+    autoCycle: false
+    capacity: 6
+    proto: NigWebAscentaShell12g
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/shotgun_pump.ogg
+    soundInsert:
+      path: /Audio/_NigWeb/Weapons/Ascenta/shotgun_insert.ogg
+    soundEject:
+      collection: AscentaShotgunCasingFall
+  - type: GunWieldBonus
+    minAngle: -15
+    maxAngle: -25
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_pump-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_pump-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_pump-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_pump-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_pump-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaShotgunPrincess
+  name: Sclopetum Principissa Antiqua
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: shotgun_princess
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    minAngle: 16
+    maxAngle: 27
+    fireRate: 1.5
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Ascenta/princess_fire.ogg
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: BallisticAmmoProvider
+    autoCycle: true
+    capacity: 5
+    proto: NigWebAscentaCartridgePrincess
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/shotgun_pump.ogg
+    soundInsert:
+      path: /Audio/_NigWeb/Weapons/Ascenta/shotgun_insert.ogg
+    soundEject:
+      collection: AscentaCasingFall
+  - type: GunWieldBonus
+    minAngle: -15
+    maxAngle: -25
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_princess-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_princess-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_princess-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_princess-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_princess-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaShotgunClassic
+  name: Sclopetum Rusticum Geminum
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: shotgun_classic
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    minAngle: 16
+    maxAngle: 27
+    fireRate: 2
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      collection: AscentaShotgunFire
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWebAscentaShell12g
+    capacity: 2
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/shotgun_break.ogg
+    soundInsert:
+      path: /Audio/_NigWeb/Weapons/Ascenta/shotgun_insert.ogg
+    soundEject:
+      collection: AscentaShotgunCasingFall
+  - type: GunWieldBonus
+    minAngle: -15
+    maxAngle: -25
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_classic-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_classic-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_classic-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_classic-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_classic-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaShotgunClassicSawed
+  name: Sclopetum Rusticum Decurtatum
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: shotgun_classic_sawed
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    fireRate: 2
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      collection: AscentaShotgunFire
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWebAscentaShell12g
+    capacity: 2
+    soundRack:
+      path: /Audio/_NigWeb/Weapons/Ascenta/shotgun_break.ogg
+    soundInsert:
+      path: /Audio/_NigWeb/Weapons/Ascenta/shotgun_insert.ogg
+    soundEject:
+      collection: AscentaShotgunCasingFall
+
+# Energy Weapons  - type: Item
+    size: Normal
+    inhandVisuals:
+      Left:
+      - rsiPath: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_sawnoff-left
+      Right:
+      - rsiPath: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_sawnoff-right
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_classic_sawed-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_classic_sawed-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_classic_sawed-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_classic_sawed-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: shotgun_classic_sawed-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaLaserGun
+  name: Telum Radians Laser
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: energy_laser
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    minAngle: 16
+    maxAngle: 27
+    fireRate: 3
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Ascenta/laser.ogg
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: Battery
+    maxCharge: 1000
+    startingCharge: 1000
+  - type: BatterySelfRecharger
+    autoRechargeRate: 40
+  - type: BatteryAmmoProvider
+    proto: NigWebAscentaLaserBolt
+    fireCost: 100
+  - type: GunWieldBonus
+    minAngle: -15
+    maxAngle: -25
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_laser-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_laser-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_laser-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_laser-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_laser-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaSparqBeam
+  name: Radius Doloris Sparq
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: energy_sparq
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    fireRate: 3
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      collection: AscentaSparqFire
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: Battery
+    maxCharge: 1000
+    startingCharge: 1000
+  - type: BatterySelfRecharger
+    autoRechargeRate: 50
+  - type: BatteryAmmoProvider
+    proto: NigWebAscentaSparqBolt
+    fireCost: 100
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_sparq-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_sparq-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_sparq-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_sparq-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_sparq-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaNoctis
+  name: Telum Noctis Inquisitoris
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: energy_noctis
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    minAngle: 16
+    maxAngle: 27
+    fireRate: 2.5
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Ascenta/taser.ogg
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: Battery
+    maxCharge: 1000
+    startingCharge: 1000
+  - type: BatterySelfRecharger
+    autoRechargeRate: 40
+  - type: BatteryAmmoProvider
+    proto: NigWebAscentaStunnerBolt
+    fireCost: 100
+  - type: GunWieldBonus
+    minAngle: -15
+    maxAngle: -25
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_noctis-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_noctis-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_noctis-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_noctis-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_noctis-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaMaulet
+  name: Telum Maulet Fulgur
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: energy_maulet
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    minAngle: 16
+    maxAngle: 27
+    fireRate: 3
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Ascenta/taser2.ogg
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: Battery
+    maxCharge: 1000
+    startingCharge: 1000
+  - type: BatterySelfRecharger
+    autoRechargeRate: 40
+  - type: BatteryAmmoProvider
+    proto: NigWebAscentaStunnerBolt
+    fireCost: 100
+  - type: GunWieldBonus
+    minAngle: -15
+    maxAngle: -25
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_maulet-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_maulet-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_maulet-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_maulet-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_maulet-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaGravpulser
+  name: Impulsor Gravitatis Legax
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: energy_gravpulser
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    minAngle: 16
+    maxAngle: 27
+    fireRate: 1.5
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      collection: AscentaGravpulserFire
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: Battery
+    maxCharge: 1000
+    startingCharge: 1000
+  - type: BatterySelfRecharger
+    autoRechargeRate: 25
+  - type: BatteryAmmoProvider
+    proto: NigWebAscentaGravpulserBolt
+    fireCost: 200
+  - type: GunWieldBonus
+    minAngle: -15
+    maxAngle: -25
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_gravpulser-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_gravpulser-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_gravpulser-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_gravpulser-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_gravpulser-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaMercyStunner
+  name: Radius Misericordiae
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: energy_mercy
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    minAngle: 16
+    maxAngle: 27
+    fireRate: 2.5
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Ascenta/stunner.ogg
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: Battery
+    maxCharge: 1000
+    startingCharge: 1000
+  - type: BatterySelfRecharger
+    autoRechargeRate: 40
+  - type: BatteryAmmoProvider
+    proto: NigWebAscentaStunnerBolt
+    fireCost: 100
+  - type: GunWieldBonus
+    minAngle: -15
+    maxAngle: -25
+  - type: Wieldable
+    freeHandsRequired: 1
+    wieldSound: /Audio/Effects/thudswoosh.ogg
+  - type: Item
+    size: Large
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_mercy-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_mercy-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_mercy-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_mercy-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_mercy-right
+- type: entity
+  parent: NigWebAscentaGunBase
+  id: NigWebAscentaMercyPistol
+  name: Pistolium Misericordiae
+  suffix: Ascenta
+  components:
+  - type: Sprite
+    layers:
+    - state: energy_mercypistol
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    fireRate: 3
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_NigWeb/Weapons/Ascenta/stunner.ogg
+    soundEmpty:
+      path: /Audio/_NigWeb/Weapons/Ascenta/gun_empty.ogg
+  - type: Battery
+    maxCharge: 600
+    startingCharge: 600
+  - type: BatterySelfRecharger
+    autoRechargeRate: 40
+  - type: BatteryAmmoProvider
+    proto: NigWebAscentaStunnerBolt
+    fireCost: 100
+  - type: Item
+    size: Normal
+    inhandVisuals:
+      left:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_mercypistol-left
+      right:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_mercypistol-right
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+    - Back
+    - SuitStorage
+    clothingVisuals:
+      belt:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_mercypistol-right
+      back:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_mercypistol-right
+      suitStorage:
+      - sprite: _NigWeb/Objects/Weapons/Ascenta/ascenta_inhand.rsi
+        state: energy_mercypistol-right

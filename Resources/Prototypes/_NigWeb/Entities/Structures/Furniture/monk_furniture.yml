@@ -182,3 +182,92 @@
       - !type:PlaySoundBehavior
         sound:
           collection: WoodDestroy
+
+
+- type: entity
+  id: NigWebChurchPaintingVranovo
+  parent: BaseWallmount
+  name: врановская икона
+  description: Древний потемневший образ в строгом окладе.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Wallmounts/church_paintings.rsi
+    state: vranovo_ikon
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  id: NigWebChurchPaintingSorrow
+  parent: BaseWallmount
+  name: икона скорбящего
+  description: Мрачный церковный лик, глядящий с немым укором.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Wallmounts/church_paintings.rsi
+    state: ikon_sorrow
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  id: NigWebChurchPaintingDeath
+  parent: BaseWallmount
+  name: картина Неизбежность смерти
+  description: Аскетичное полотно, напоминающее о бренности плоти.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Wallmounts/church_paintings.rsi
+    state: death
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  id: NigWebChurchPaintingMonkey
+  parent: BaseWallmount
+  name: ветхая картина
+  description: Старое потускневшее полотно со странным сюжетом из древних времен.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Structures/Wallmounts/church_paintings.rsi
+    state: monkey_painting
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]

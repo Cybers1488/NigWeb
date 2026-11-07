@@ -10,6 +10,7 @@ using Content.Shared.Audio;
 using Content.Shared.CombatMode;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
+using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Examine;
 using Content.Shared.Hands;
 using Content.Shared.Hands.Components;
@@ -234,11 +235,22 @@ public abstract partial class SharedGunSystem : EntitySystem
             return true;
         }
 
-        if (_hands.GetActiveItem(entity) is { } held &&
-            TryComp(held, out GunComponent? gunComp))
+        GunComponent? gunComp;
+
+        if (_hands.GetActiveItem(entity) is { } held)
         {
-            gun = (held, gunComp);
-            return true;
+            if (TryComp(held, out gunComp))
+            {
+                gun = (held, gunComp);
+                return true;
+            }
+
+            if (TryComp<VirtualItemComponent>(held, out var virt) &&
+                TryComp(virt.BlockingEntity, out gunComp))
+            {
+                gun = (virt.BlockingEntity, gunComp);
+                return true;
+            }
         }
 
         // Last resort is check if the entity itself is a gun.

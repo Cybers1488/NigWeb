@@ -1,3 +1,5 @@
+using Content.Goobstation.Shared.Sprinting;
+using Content.Client.CombatMode;
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
@@ -17,6 +19,9 @@ using Content.Shared.Input;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Storage;
 using Robust.Client.GameObjects;
+using Robust.Client.Graphics;
+using Robust.Client.ResourceManagement;
+using Robust.Shared.IoC;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
 using Robust.Client.UserInterface.Controls;
@@ -29,7 +34,7 @@ using static Content.Client.Inventory.ClientInventorySystem;
 namespace Content.Client.UserInterface.Systems.Inventory;
 
 public sealed class InventoryUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>,
-    IOnSystemChanged<ClientInventorySystem>, IOnSystemChanged<HandsSystem>
+    IOnSystemChanged<ClientInventorySystem>, IOnSystemChanged<HandsSystem>, IOnSystemChanged<CombatModeSystem>
 {
     [Dependency] private readonly IEntityManager _entities = default!;
 
@@ -37,6 +42,10 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
     [UISystemDependency] private readonly HandsSystem _handsSystem = default!;
     [UISystemDependency] private readonly ContainerSystem _container = default!;
     [UISystemDependency] private readonly SpriteSystem _sprite = default!;
+    [UISystemDependency] private readonly CombatModeSystem? _combatModeSystem = default;
+
+    private SharedSprintingSystem? GetSprintingSystem() =>
+        _entities.TrySystem<SharedSprintingSystem>(out var sys) ? sys : null;
 
     private EntityUid? _playerUid;
     private InventorySlotsComponent? _playerInventory;
@@ -63,7 +72,18 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
 
         if (UIManager.GetActiveUIWidgetOrNull<InventoryGui>() is { } inventoryGui)
         {
-            // InventoryButton has been removed from XAML
+            inventoryGui.CombatButton.OnPressed += _ => _combatModeSystem?.ToggleCombatMode();
+            if (_combatModeSystem != null)
+                inventoryGui.SetCombatModeActive(_combatModeSystem.IsInCombatMode());
+
+            var sprintSys = GetSprintingSystem();
+            inventoryGui.SprintButton.OnPressed += _ => sprintSys?.ToggleSprint();
+            if (sprintSys != null)
+            {
+                sprintSys.LocalPlayerSprintingUpdated -= OnSprintingUpdated;
+                sprintSys.LocalPlayerSprintingUpdated += OnSprintingUpdated;
+                inventoryGui.SetSprintActive(sprintSys.IsSprinting());
+            }
         }
     }
 
@@ -108,6 +128,10 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
     public void RegisterInventoryBarContainer(ItemSlotButtonContainer inventoryHotbar)
     {
         _inventoryHotbar = inventoryHotbar;
+        _inventoryHotbar.Visible = true;
+        _slotGroups["Default"] = inventoryHotbar;
+        if (_playerInventory != null)
+            UpdateInventoryHotbar(_playerInventory);
     }
 
     public void RegisterInventoryButton(SlotButton? button)
@@ -145,8 +169,16 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
 
         foreach (var (_, data) in clientInv.SlotData)
         {
-            if (!data.ShowInWindow || !_slotGroups.TryGetValue(data.SlotGroup, out var container))
+            if (!data.ShowInWindow)
                 continue;
+
+            if (!_slotGroups.TryGetValue(data.SlotGroup, out var container))
+            {
+                if (data.SlotGroup == "Default" && _inventoryHotbar != null)
+                    container = _inventoryHotbar;
+                else
+                    continue;
+            }
 
             if (!container.TryGetButton(data.SlotName, out var button))
             {
@@ -169,14 +201,23 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
         if (clothing.Count == 0)
             return;
 
+        _inventoryHotbar.Visible = true;
+
         foreach (var child in new List<Control>(_inventoryHotbar.Children))
         {
             if (child is not SlotControl)
                 _inventoryHotbar.RemoveChild(child);
         }
 
-        var maxWidth = clothing.Max(p => p.Value.ButtonOffset.X) + 1;
-        var maxIndex = clothing.Select(p => GetIndex(p.Value.ButtonOffset)).Max();
+        var screenHeight = _inventoryHotbar.Parent?.Height > 0
+            ? _inventoryHotbar.Parent.Height
+            : (UIManager.ActiveScreen?.Size.Y > 0 ? UIManager.ActiveScreen.Size.Y : 1440f);
+        var slotSize = MathF.Floor(screenHeight / 15f);
+        if (slotSize <= 0)
+            slotSize = 96f;
+
+        var maxWidth = 3;
+        var maxIndex = 44;
 
         _inventoryHotbar.MaxColumns = maxWidth;
         _inventoryHotbar.Columns = maxWidth;
@@ -187,13 +228,26 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
             if (clothing.FirstOrNull(p => GetIndex(p.Value.ButtonOffset) == index) is { } pair)
             {
                 if (_inventoryHotbar.TryGetButton(pair.Key, out var slot))
+                {
+                    slot.SetButtonSize(slotSize);
                     slot.SetPositionLast();
+                }
+            }
+            else if (index == 18)
+            {
+                _inventoryHotbar.AddChild(CreateWristSlot("wrist_r.png", slotSize));
+            }
+            else if (index == 20)
+            {
+                _inventoryHotbar.AddChild(CreateWristSlot("wrist_l.png", slotSize));
             }
             else
             {
                 _inventoryHotbar.AddChild(new Control
                 {
-                    MinSize = new Vector2(64, 64)
+                    MinSize = new Vector2(slotSize, slotSize),
+                    SetSize = new Vector2(slotSize, slotSize),
+                    MouseFilter = Control.MouseFilterMode.Ignore
                 });
             }
         }
@@ -202,6 +256,25 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
         {
             return position.Y * maxWidth + position.X;
         }
+    }
+
+    private TextureButton CreateWristSlot(string textureName, float slotSize)
+    {
+        var btn = new TextureButton
+        {
+            MinSize = new Vector2(slotSize, slotSize),
+            SetSize = new Vector2(slotSize, slotSize),
+            MouseFilter = Control.MouseFilterMode.Ignore,
+        };
+
+        var resCache = IoCManager.Resolve<IResourceCache>();
+        if (resCache.TryGetResource<TextureResource>(new ResPath($"/Textures/Interface/NigWeb/Slots/{textureName}"), out var res) ||
+            resCache.TryGetResource<TextureResource>(new ResPath($"/Textures/Interface/Default/Slots/{textureName}"), out res))
+        {
+            btn.TextureNormal = res.Texture;
+        }
+
+        return btn;
     }
 
     private void UpdateStrippingWindow(InventorySlotsComponent? clientInv)
@@ -373,7 +446,12 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
     private void AddSlot(SlotData data)
     {
         if (!_slotGroups.TryGetValue(data.SlotGroup, out var slotGroup))
-            return;
+        {
+            if (data.SlotGroup == "Default" && _inventoryHotbar != null)
+                slotGroup = _inventoryHotbar;
+            else
+                return;
+        }
 
         var button = CreateSlotButton(data);
         slotGroup.AddButton(button);
@@ -382,7 +460,12 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
     private void RemoveSlot(SlotData data)
     {
         if (!_slotGroups.TryGetValue(data.SlotGroup, out var slotGroup))
-            return;
+        {
+            if (data.SlotGroup == "Default" && _inventoryHotbar != null)
+                slotGroup = _inventoryHotbar;
+            else
+                return;
+        }
 
         slotGroup.RemoveButton(data.SlotName);
     }
@@ -436,7 +519,12 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
         }
 
         if (_slotGroups.GetValueOrDefault(group)?.GetButton(name) is not { } button)
-            return;
+        {
+            if (group == "Default" && _inventoryHotbar?.GetButton(name) is { } defButton)
+                button = defButton;
+            else
+                return;
+        }
 
         if (_entities.TryGetComponent(entity, out VirtualItemComponent? virtb))
         {
@@ -498,5 +586,27 @@ public sealed class InventoryUIController : UIController, IOnStateEntered<Gamepl
     {
         if (_lastHovered != null)
             UpdateHover(_lastHovered);
+    }
+
+    public void OnSystemLoaded(CombatModeSystem system)
+    {
+        system.LocalPlayerCombatModeUpdated += OnCombatModeUpdated;
+    }
+
+    public void OnSystemUnloaded(CombatModeSystem system)
+    {
+        system.LocalPlayerCombatModeUpdated -= OnCombatModeUpdated;
+    }
+
+    private void OnCombatModeUpdated(bool inCombat)
+    {
+        if (UIManager.GetActiveUIWidgetOrNull<InventoryGui>() is { } inventoryGui)
+            inventoryGui.SetCombatModeActive(inCombat);
+    }
+
+    private void OnSprintingUpdated(bool isSprinting)
+    {
+        if (UIManager.GetActiveUIWidgetOrNull<InventoryGui>() is { } inventoryGui)
+            inventoryGui.SetSprintActive(isSprinting);
     }
 }

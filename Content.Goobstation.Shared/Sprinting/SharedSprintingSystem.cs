@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System;
+using Robust.Shared.GameStates;
 using Content.Goobstation.Common.Movement;
 using Content.Shared.Damage.Events;
 using Content.Shared._EinsteinEngines.Flight.Events;
@@ -43,6 +45,9 @@ public abstract class SharedSprintingSystem : EntitySystem
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly SharedMoverController _moverController = default!;
     [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
+
+    public event Action<bool>? LocalPlayerSprintingUpdated;
     public override void Initialize()
     {
         SubscribeLocalEvent<SprinterComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshSpeed);
@@ -65,6 +70,9 @@ public abstract class SharedSprintingSystem : EntitySystem
         SubscribeLocalEvent<BuckleComponent, SprintAttemptEvent>(OnBuckleSprintAttempt);
         SubscribeLocalEvent<SprinterComponent, EntityZombifiedEvent>(OnZombified);
         SubscribeLocalEvent<SprinterComponent, DisarmedEvent>(OnDisarm);
+        SubscribeLocalEvent<SprinterComponent, AfterAutoHandleStateEvent>(OnSprinterHandleState);
+        SubscribeLocalEvent<SprinterComponent, LocalPlayerAttachedEvent>(OnPlayerAttached);
+        SubscribeLocalEvent<LocalPlayerDetachedEvent>(OnPlayerDetached);
     }
 
     #region Core Functions
@@ -158,6 +166,43 @@ public abstract class SharedSprintingSystem : EntitySystem
         _movementSpeed.RefreshMovementSpeedModifiers(uid);
         _staminaSystem.ToggleStaminaDrain(uid, component.StaminaDrainRate, newSprintState, true, component.StaminaDrainKey, uid);
         Dirty(uid, component);
+
+        if (uid == _playerManager.LocalEntity)
+            LocalPlayerSprintingUpdated?.Invoke(component.IsSprinting);
+    }
+
+    public bool IsSprinting()
+    {
+        var player = _playerManager.LocalEntity;
+        if (player == null || !TryComp<SprinterComponent>(player, out var sprinter))
+            return false;
+
+        return sprinter.IsSprinting;
+    }
+
+    public void ToggleSprint()
+    {
+        var player = _playerManager.LocalEntity;
+        if (player == null || !TryComp<SprinterComponent>(player, out var sprinter))
+            return;
+
+        ToggleSprint(player.Value, sprinter, !sprinter.IsSprinting);
+    }
+
+    private void OnSprinterHandleState(EntityUid uid, SprinterComponent component, ref AfterAutoHandleStateEvent args)
+    {
+        if (uid == _playerManager.LocalEntity)
+            LocalPlayerSprintingUpdated?.Invoke(component.IsSprinting);
+    }
+
+    private void OnPlayerAttached(EntityUid uid, SprinterComponent component, LocalPlayerAttachedEvent args)
+    {
+        LocalPlayerSprintingUpdated?.Invoke(component.IsSprinting);
+    }
+
+    private void OnPlayerDetached(LocalPlayerDetachedEvent args)
+    {
+        LocalPlayerSprintingUpdated?.Invoke(false);
     }
 
     #endregion

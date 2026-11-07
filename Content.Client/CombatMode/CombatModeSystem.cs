@@ -1,8 +1,11 @@
 // SPDX-License-Identifier: MIT
 
+using Content.Client.Actions;
 using Content.Client.Hands.Systems;
 using Content.Client.NPC.HTN;
 using Content.Shared._CorvaxGoob.CCCVars;
+using Content.Shared.Actions;
+using Content.Shared.Actions.Components;
 using Content.Shared.CCVar;
 using Content.Shared.CombatMode;
 using Robust.Client.Audio;
@@ -10,6 +13,7 @@ using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Player;
 using Robust.Shared.Configuration;
+using Robust.Shared.Player;
 
 namespace Content.Client.CombatMode;
 
@@ -21,6 +25,7 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
     [Dependency] private readonly IInputManager _inputManager = default!;
     [Dependency] private readonly IEyeManager _eye = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly ActionsSystem _actions = default!;
 
     //CorvaxGoob-CombatMode-Sound
     private bool _combatModeSoundEnabled;
@@ -35,11 +40,43 @@ public sealed class CombatModeSystem : SharedCombatModeSystem
         base.Initialize();
 
         SubscribeLocalEvent<CombatModeComponent, AfterAutoHandleStateEvent>(OnHandleState);
+        SubscribeLocalEvent<CombatModeComponent, LocalPlayerAttachedEvent>(OnPlayerAttached);
+        SubscribeLocalEvent<LocalPlayerDetachedEvent>(OnPlayerDetached);
 
         Subs.CVar(_cfg, CCVars.CombatModeIndicatorsPointShow, OnShowCombatIndicatorsChanged, true);
 
         //CorvaxGoob-CombatMode-Sound
         _cfg.OnValueChanged(CCCVars.CombatModeSoundEnabled, v => _combatModeSoundEnabled = v, true);
+    }
+
+    private void OnPlayerAttached(EntityUid uid, CombatModeComponent component, LocalPlayerAttachedEvent args)
+    {
+        UpdateHud(uid);
+    }
+
+    private void OnPlayerDetached(LocalPlayerDetachedEvent args)
+    {
+        LocalPlayerCombatModeUpdated?.Invoke(false);
+    }
+
+    public void ToggleCombatMode()
+    {
+        var player = _playerManager.LocalEntity;
+        if (player == null)
+            return;
+
+        if (!TryComp<CombatModeComponent>(player, out var combatComp))
+            return;
+
+        if (combatComp.CombatToggleActionEntity is { } actionEnt &&
+            TryComp<ActionComponent>(actionEnt, out var actionComp))
+        {
+            _actions.TriggerAction((actionEnt, actionComp));
+        }
+        else
+        {
+            SetInCombatMode(player.Value, !combatComp.IsInCombatMode, combatComp);
+        }
     }
 
     private void OnHandleState(EntityUid uid, CombatModeComponent component, ref AfterAutoHandleStateEvent args)

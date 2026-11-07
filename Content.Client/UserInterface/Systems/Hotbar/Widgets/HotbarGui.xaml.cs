@@ -18,28 +18,36 @@ public sealed partial class HotbarGui : UIWidget
         var hotbarController = UserInterfaceManager.GetUIController<HotbarUIController>();
 
         hotbarController.Setup(HandContainer);
-        LayoutContainer.SetGrowVertical(this, LayoutContainer.GrowDirection.Begin);
+        LayoutContainer.SetGrowHorizontal(this, LayoutContainer.GrowDirection.End);
+        LayoutContainer.SetGrowVertical(this, LayoutContainer.GrowDirection.End);
     }
 
     public void UpdatePanelEntityLeft(EntityUid? entity, Hand? hand)
     {
-        StatusPanelLeft.Update(entity, hand);
+        StatusPanelLeft.Visible = false;
     }
 
     public void UpdatePanelEntityRight(EntityUid? entity, Hand? hand)
     {
-        StatusPanelRight.Update(entity, hand);
+        StatusPanelRight.Visible = false;
     }
 
     public void SetHighlightHand(HandUILocation? hand)
     {
-        StatusPanelLeft.UpdateHighlight(hand is HandUILocation.Left);
-        StatusPanelRight.UpdateHighlight(hand is HandUILocation.Right);
+        StatusPanelLeft.Visible = false;
+        StatusPanelRight.Visible = false;
     }
 
     public void UpdateStatusVisibility(bool left, bool right)
     {
-        StatusPanelLeft.Visible = left;
-        StatusPanelRight.Visible = right;
+        StatusPanelLeft.Visible = false;
+        StatusPanelRight.Visible = false;
+    }
+
+    public void UpdateSlotSize(float slotSize)
+    {
+        Hotbar.MinSize = new System.Numerics.Vector2(slotSize * 3f, slotSize * 2f);
+        Hotbar.SetSize = new System.Numerics.Vector2(slotSize * 3f, slotSize * 2f);
+        HandContainer.SetSlotSize(slotSize);
     }
 }
