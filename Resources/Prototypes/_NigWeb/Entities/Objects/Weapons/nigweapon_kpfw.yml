@@ -1,0 +1,178 @@
+- type: Tag
+  id: NigWeaponKpfw
+
+- type: Tag
+  id: NigWeaponMagazineKpfw
+
+- type: Tag
+  id: NigWeaponCartridgeKpfw
+
+# Projectile
+- type: entity
+  id: NigWeaponBulletKpfw
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  name: Proiectile 5.56 Kpfw
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 10
+      woundSeverityMultipliers:
+        Piercing: 1.0
+    soundHit:
+      collection: NigWeaponKpfwBulletHit
+
+# Cartridge
+- type: entity
+  parent: [ BaseCartridge, BaseSecurityContraband ]
+  id: NigWeaponCartridgeKpfw
+  name: Cartuccia 5.56 Kpfw
+  description: An experimental high-velocity 5.56 intermediate cartridge engineered for the Kpfw-6 combat rifle.
+  components:
+  - type: Tag
+    tags:
+    - NigWeaponCartridgeKpfw
+    - CartridgeLightRifle
+    - IgnorGrab
+  - type: CartridgeAmmo
+    proto: NigWeaponBulletKpfw
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+
+# Magazine (Loaded)
+- type: entity
+  parent: [ BaseItem, BaseSecurityContraband ]
+  id: NigWeaponMagazineKpfw
+  name: NigWeapon Capsula Kpfw Ausf E
+  description: A high-capacity steel box magazine containing 50 rounds of 5.56 ammunition for the Kpfw-6 automatic rifle.
+  components:
+  - type: Tag
+    tags:
+    - NigWeaponMagazineKpfw
+    - MagazineLightRifle
+  - type: Item
+    size: Small
+    inhandVisuals:
+      left:
+      - state: inhand-left-mag
+      right:
+      - state: inhand-right-mag
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Guns/nigweapon_kpfw_mag.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 2
+    zeroVisible: false
+  - type: Appearance
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    proto: NigWeaponCartridgeKpfw
+    capacity: 50
+    whitelist:
+      tags:
+      - NigWeaponCartridgeKpfw
+      - CartridgeLightRifle
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+
+# Magazine (Empty)
+- type: entity
+  parent: NigWeaponMagazineKpfw
+  id: NigWeaponMagazineKpfwEmpty
+  name: NigWeapon Capsula Kpfw Ausf E
+  description: A high-capacity steel box magazine for the Kpfw-6 automatic rifle.
+  components:
+  - type: BallisticAmmoProvider
+    proto: null
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+
+# Kpfw-6 Ausf Combat Rifle
+- type: entity
+  parent: [ BaseItem, BaseGunWieldable, BaseButtStroke, BaseSecurityContraband ]
+  id: NigWeaponKpfw
+  name: NigWeapon Kpfw-6 Ausf
+  description: An experimental automatic rifle forged from darkened combat steel. Equipped with high-capacity box magazine feed and internal recoil dampers for sustained fire.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Guns/nigweapon_kpfw.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,3,1
+    storedRotation: -90
+  - type: Clothing
+    sprite: _NigWeb/Objects/Weapons/Guns/nigweapon_kpfw.rsi
+    quickEquip: false
+    slots:
+    - BACK
+    - SUITSTORAGE
+  - type: AmmoCounter
+  - type: Gun
+    fireRate: 8.5
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    - SemiAuto
+    soundGunshot:
+      collection: NigWeaponKpfwShot
+    soundEmpty:
+      collection: NigWeaponKpfwEmpty
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      collection: NigWeaponKpfwCock
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        startingItem: NigWeaponMagazineKpfw
+        insertSound:
+          collection: NigWeaponKpfwMagIn
+        ejectSound:
+          collection: NigWeaponKpfwMagOut
+        priority: 2
+        whitelist:
+          tags:
+          - NigWeaponMagazineKpfw
+          - MagazineLightRifle
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+          - NigWeaponCartridgeKpfw
+          - CartridgeLightRifle
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: Wieldable
+    wieldedInhandPrefix: wielded
+  - type: Tag
+    tags:
+    - NigWeaponKpfw

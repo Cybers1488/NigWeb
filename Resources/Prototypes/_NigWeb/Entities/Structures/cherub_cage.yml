@@ -1,0 +1,165 @@
+# SPDX-License-Identifier: MIT
+
+- type: entity
+  id: NigWebCherubCage
+  parent: BaseStructure
+  name: Cavea Cherubini
+  description: Древняя злаченая клетка с заточенным духом луны. Разбей оковы, чтобы освободить чистую душу.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 100
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - BulletImpassable
+  - type: Sprite
+    sprite: _NigWeb/Structures/cherub_cage.rsi
+    noRot: true
+    layers:
+    - state: idle
+  - type: Icon
+    sprite: _NigWeb/Structures/cherub_cage.rsi
+    state: icon
+  - type: PointLight
+    radius: 3.2
+    energy: 1.8
+    color: "#f5f8ff"
+    castShadows: false
+  - type: LightBehaviour
+    behaviours:
+    - !type:RandomizeBehaviour
+      id: cage_radius_flicker
+      property: AnimatedRadius
+      isLooped: true
+      enabled: true
+      minDuration: 0.08
+      maxDuration: 0.22
+      startValue: 2.2
+      endValue: 3.6
+    - !type:RandomizeBehaviour
+      id: cage_energy_flicker
+      property: Energy
+      isLooped: true
+      enabled: true
+      minDuration: 0.06
+      maxDuration: 0.18
+      startValue: 1.0
+      endValue: 2.5
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        path: /Audio/_NigWeb/Cherub/cherub_hit.ogg
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/_NigWeb/Cherub/cherub_break.ogg
+          params:
+            volume: 4
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: CherubCage
+
+- type: entity
+  id: NigWebCherubCageShatterEffect
+  name: Fractio Caveae
+  description: Разбитые прутья узницы херувима.
+  components:
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    sprite: _NigWeb/Structures/cherub_cage.rsi
+    noRot: true
+    layers:
+    - state: broken
+  - type: PointLight
+    radius: 3.0
+    energy: 2.0
+    color: "#ffffff"
+  - type: TimedDespawn
+    lifetime: 2.25
+
+- type: entity
+  id: NigWebFreedCherub
+  name: Cherubin Lunaris
+  description: Освобожденный херувим лунного света, сияющий лазурным ореолом и парящий к небесам.
+  components:
+  - type: Transform
+  - type: Clickable
+  - type: Sprite
+    sprite: _NigWeb/Structures/freed_cherub.rsi
+    noRot: true
+    layers:
+    - state: flying
+  - type: PointLight
+    radius: 2.5
+    energy: 2.0
+    color: "#7fd4ff"
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/_NigWeb/Cherub/cherub_free.ogg
+      params:
+        volume: 4
+  - type: FreedCherub
+    ascentSpeed: 1.2
+    lifetime: 4.0
+
+- type: entity
+  id: NigWebCherubFamiliar
+  name: Cherubin Familiaris
+  description: Маленький небесный дух, кружащий над головой паломника. Озаряет тьму и хранит от смертельного удара.
+  components:
+  - type: Transform
+    anchored: false
+    noRot: true
+  - type: Sprite
+    sprite: _NigWeb/Structures/freed_cherub.rsi
+    noRot: true
+    layers:
+    - state: flying
+  - type: PointLight
+    radius: 3.5
+    energy: 2.2
+    color: "#a8f0ff"
+    castShadows: false
+  - type: LightBehaviour
+    behaviours:
+    - !type:RandomizeBehaviour
+      id: familiar_radius_flicker
+      property: AnimatedRadius
+      isLooped: true
+      enabled: true
+      minDuration: 0.12
+      maxDuration: 0.28
+      startValue: 3.0
+      endValue: 3.8
+    - !type:RandomizeBehaviour
+      id: familiar_energy_flicker
+      property: Energy
+      isLooped: true
+      enabled: true
+      minDuration: 0.10
+      maxDuration: 0.25
+      startValue: 1.8
+      endValue: 2.5
+  - type: CherubFamiliar

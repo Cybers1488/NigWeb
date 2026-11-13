@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "sheath-empty"
+    },
+    {
+      "name": "sheath-full"
+    },
+    {
+      "name": "sheath-blade"
+    },
+    {
+      "name": "equipped-BELT",
+      "directions": 4
+    },
+    {
+      "name": "equipped-BACK",
+      "directions": 4
+    },
+    {
+      "name": "sheath-blade-equipped-BELT",
+      "directions": 4
+    },
+    {
+      "name": "sheath-blade-equipped-BACK",
+      "directions": 4
+    }
+  ]
+}

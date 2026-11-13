@@ -1,0 +1,20 @@
+- type: soundCollection
+  id: NigWeaponClubHit
+  files:
+  - "/Audio/_NigWeb/Weapons/Club/club.ogg"
+  - "/Audio/_NigWeb/Weapons/Club/classic_baton.ogg"
+  - "/Audio/_NigWeb/Weapons/Club/genhit1.ogg"
+  - "/Audio/_NigWeb/Weapons/Club/genhit2.ogg"
+  - "/Audio/_NigWeb/Weapons/Club/genhit3.ogg"
+
+- type: soundCollection
+  id: NigWeaponClubSwing
+  files:
+  - "/Audio/_NigWeb/Weapons/Club/swing1.ogg"
+  - "/Audio/_NigWeb/Weapons/Club/swing2.ogg"
+  - "/Audio/_NigWeb/Weapons/Club/swing3.ogg"
+
+- type: soundCollection
+  id: NigWeaponClubDrop
+  files:
+  - "/Audio/_NigWeb/Weapons/Club/wooden_drop.ogg"

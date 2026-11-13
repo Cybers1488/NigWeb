@@ -135,7 +135,12 @@ public sealed class ItemSystem : SharedItemSystem
             : $"{item.HeldPrefix}-{defaultKey}";
 
         if (!rsi.TryGetState(state, out var _))
-            return false;
+        {
+            if (item.HeldPrefix != null && rsi.TryGetState(defaultKey, out var _))
+                state = defaultKey;
+            else
+                return false;
+        }
 
         var layer = new PrototypeLayerData();
         layer.RsiPath = rsi.Path.ToString();

@@ -1,0 +1,37 @@
+- type: soundCollection
+  id: NigWeaponAxeHit
+  files:
+    - /Audio/_NigWeb/Weapons/Axe/npc_kill_chop_01.ogg
+    - /Audio/_NigWeb/Weapons/Axe/npc_kill_chop_02.ogg
+    - /Audio/_NigWeb/Weapons/Axe/npc_kill_chop_03.ogg
+    - /Audio/_NigWeb/Weapons/Axe/chop1.ogg
+    - /Audio/_NigWeb/Weapons/Axe/chop2.ogg
+    - /Audio/_NigWeb/Weapons/Axe/chop3.ogg
+
+- type: soundCollection
+  id: NigWeaponAxeExecution
+  files:
+    - /Audio/_NigWeb/Weapons/Axe/severed.ogg
+    - /Audio/_NigWeb/Weapons/Axe/npc_kill_chop_01.ogg
+    - /Audio/_NigWeb/Weapons/Axe/npc_kill_chop_02.ogg
+
+- type: soundCollection
+  id: NigWeaponAxeSwing
+  files:
+    - /Audio/_NigWeb/Weapons/Axe/wpn_swing_axe_01.ogg
+    - /Audio/_NigWeb/Weapons/Axe/wpn_swing_axe_02.ogg
+
+- type: soundCollection
+  id: NigWeaponAxeDrop
+  files:
+    - /Audio/_NigWeb/Weapons/Axe/axe_drop.ogg
+
+- type: soundCollection
+  id: NigWeaponAxeSheath
+  files:
+    - /Audio/_NigWeb/Weapons/Axe/axe_sheath.ogg
+
+- type: soundCollection
+  id: NigWeaponAxeUnsheath
+  files:
+    - /Audio/_NigWeb/Weapons/Axe/axe_unsheath.ogg

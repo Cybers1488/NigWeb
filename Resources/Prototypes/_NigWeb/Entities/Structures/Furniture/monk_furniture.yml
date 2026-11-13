@@ -55,7 +55,7 @@
   - type: Clickable
   - type: FootstepModifier
     footstepSoundCollection:
-      collection: Wood
+      collection: FootstepWood
   - type: Tag
     tags:
     - ForceFixRotations

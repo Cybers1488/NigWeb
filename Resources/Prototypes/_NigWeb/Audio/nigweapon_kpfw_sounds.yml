@@ -1,0 +1,40 @@
+- type: soundCollection
+  id: NigWeaponKpfwShot
+  files:
+    - /Audio/_NigWeb/Weapons/Guns/Kpfw/kpfw_fire_1.ogg
+    - /Audio/_NigWeb/Weapons/Guns/Kpfw/kpfw_fire_2.ogg
+    - /Audio/_NigWeb/Weapons/Guns/Kpfw/kpfw_fire_3.ogg
+    - /Audio/_NigWeb/Weapons/Guns/Kpfw/kpfw_fire_4.ogg
+    - /Audio/_NigWeb/Weapons/Guns/Kpfw/kpfw_fire_5.ogg
+    - /Audio/_NigWeb/Weapons/Guns/Kpfw/kpfw_fire_6.ogg
+
+- type: soundCollection
+  id: NigWeaponKpfwBulletHit
+  files:
+    - /Audio/_NigWeb/Weapons/Guns/Kpfw/kpfw_hit_1.ogg
+    - /Audio/_NigWeb/Weapons/Guns/Kpfw/kpfw_hit_2.ogg
+    - /Audio/_NigWeb/Weapons/Guns/Kpfw/kpfw_hit_3.ogg
+    - /Audio/_NigWeb/Weapons/Guns/Kpfw/kpfw_hit_4.ogg
+    - /Audio/_NigWeb/Weapons/Guns/Kpfw/kpfw_hit_5.ogg
+    - /Audio/_NigWeb/Weapons/Guns/Kpfw/kpfw_hit_6.ogg
+    - /Audio/_NigWeb/Weapons/Guns/Kpfw/kpfw_hit_7.ogg
+
+- type: soundCollection
+  id: NigWeaponKpfwCock
+  files:
+    - /Audio/_NigWeb/Weapons/Guns/Kpfw/kpfw_cock.ogg
+
+- type: soundCollection
+  id: NigWeaponKpfwMagIn
+  files:
+    - /Audio/_NigWeb/Weapons/Guns/Kpfw/kpfw_magin.ogg
+
+- type: soundCollection
+  id: NigWeaponKpfwMagOut
+  files:
+    - /Audio/_NigWeb/Weapons/Guns/Kpfw/kpfw_magout.ogg
+
+- type: soundCollection
+  id: NigWeaponKpfwEmpty
+  files:
+    - /Audio/_NigWeb/Weapons/Guns/Kpfw/kpfw_empty.ogg

@@ -1,0 +1,169 @@
+- type: Tag
+  id: NigWeaponCrossbow
+
+- type: Tag
+  id: NigWeaponBolt
+
+- type: Tag
+  id: NigWeaponQuiver
+
+- type: entity
+  parent: [BaseArrow, BaseMinorContraband]
+  id: NigWeaponBolt
+  name: NigWeapon Bolus Arcuballistae
+  description: A heavy forged iron bolt with a faceted point engineered to punch clean through heavy armor.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Ranged/nigweapon_bolt.rsi
+    layers:
+    - state: bolt
+  - type: Item
+    sprite: _NigWeb/Objects/Weapons/Ranged/nigweapon_bolt.rsi
+    size: Small
+  - type: Tag
+    tags:
+    - NigWeaponBolt
+    - Arrow
+  - type: ThrowingAngle
+    angle: 225
+  - type: Projectile
+    angle: 225
+    deleteOnCollide: false
+    onlyCollideWhenShot: true
+    damage:
+      types:
+        Piercing: 36
+      woundSeverityMultipliers:
+        Piercing: 2.5
+  - type: EmbeddableProjectile
+    offset: -0.15,0.0
+    sound: /Audio/Weapons/star_hit.ogg
+    embedOnThrow: false
+
+- type: entity
+  parent: [BaseItem, BaseMajorContraband]
+  id: NigWeaponCrossbow
+  name: NigWeapon Arcuballista
+  description: A heavy combat crossbow forged from tempered steel and dark ash. Cocked and loaded with a bolt to loose devastating armor-piercing shots.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Ranged/nigweapon_crossbow.rsi
+    layers:
+    - state: crossbow0
+      map: [ "crossbow0" ]
+    - state: crossbow1
+      map: [ "crossbow1" ]
+      visible: false
+  - type: Item
+    sprite: _NigWeb/Objects/Weapons/Ranged/nigweapon_crossbow.rsi
+    size: Large
+    storedRotation: 90
+  - type: Clothing
+    sprite: _NigWeb/Objects/Weapons/Ranged/nigweapon_crossbow.rsi
+    quickEquip: false
+    slots:
+    - back
+    - suitStorage
+  - type: Tag
+    tags:
+    - NigWeaponCrossbow
+  - type: Wieldable
+    wieldSound:
+      collection: NigWeaponCrossbowDraw
+  - type: GunRequiresWield
+  - type: UnwieldOnShoot
+  - type: Gun
+    minAngle: 0
+    maxAngle: 0
+    fireRate: 1
+    projectileSpeed: 38
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      collection: NigWeaponCrossbowFire
+    soundEmpty: null
+    clumsyProof: true
+  - type: ItemSlots
+    slots:
+      projectiles:
+        name: Bolt
+        startingItem: null
+        insertSound:
+          collection: NigWeaponCrossbowDraw
+        ejectSound:
+          collection: NigWeaponCrossbowUnsheath
+        whitelist:
+          tags:
+          - NigWeaponBolt
+          - Arrow
+  - type: ContainerContainer
+    containers:
+      projectiles: !type:ContainerSlot
+  - type: ContainerAmmoProvider
+    container: projectiles
+  - type: ItemMapper
+    spriteLayers:
+    - crossbow0
+    - crossbow1
+    mapLayers:
+      crossbow0:
+        minCount: 0
+        maxCount: 0
+        whitelist:
+          tags:
+          - NigWeaponBolt
+          - Arrow
+      crossbow1:
+        minCount: 1
+        maxCount: 1
+        whitelist:
+          tags:
+          - NigWeaponBolt
+          - Arrow
+  - type: Appearance
+  - type: EmitSoundOnLand
+    sound:
+      collection: NigWeaponCrossbowSheath
+
+- type: entity
+  parent: [ClothingBeltStorageBase, BaseMinorContraband]
+  id: NigWeaponQuiver
+  name: NigWeapon Pharetra Bolorum
+  description: A sturdy leather bolt quiver designed to carry crossbow bolts on the belt or across the back.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Ranged/nigweapon_quiver.rsi
+    layers:
+    - state: quiver0
+    - map: [ "enum.StorageContainerVisualLayers.Fill" ]
+      visible: false
+  - type: Item
+    sprite: _NigWeb/Objects/Weapons/Ranged/nigweapon_quiver.rsi
+    size: Normal
+  - type: Clothing
+    sprite: _NigWeb/Objects/Weapons/Ranged/nigweapon_quiver.rsi
+    quickEquip: false
+    slots:
+    - belt
+    - back
+    - suitStorage
+  - type: Storage
+    grid:
+    - 0,0,7,1
+    maxItemSize: Small
+    whitelist:
+      tags:
+      - NigWeaponBolt
+      - Arrow
+  - type: StorageFill
+    contents:
+      - id: NigWeaponBolt
+        amount: 16
+  - type: Appearance
+  - type: StorageContainerVisuals
+    maxFillLevels: 4
+    fillBaseName: quiver
+  - type: Tag
+    tags:
+    - NigWeaponQuiver

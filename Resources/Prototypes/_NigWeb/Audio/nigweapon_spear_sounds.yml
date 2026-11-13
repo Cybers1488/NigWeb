@@ -1,0 +1,24 @@
+- type: soundCollection
+  id: NigWeaponSpearHit
+  files:
+    - /Audio/_NigWeb/Weapons/Spear/spear_hit1.ogg
+    - /Audio/_NigWeb/Weapons/Spear/spear_hit2.ogg
+    - /Audio/_NigWeb/Weapons/Spear/spear_hit3.ogg
+    - /Audio/_NigWeb/Weapons/Spear/spear_hit4.ogg
+    - /Audio/_NigWeb/Weapons/Spear/spear_stab1.ogg
+    - /Audio/_NigWeb/Weapons/Spear/spear_stab2.ogg
+    - /Audio/_NigWeb/Weapons/Spear/spear_stab3.ogg
+    - /Audio/_NigWeb/Weapons/Spear/spear_pierce.ogg
+
+- type: soundCollection
+  id: NigWeaponSpearSwing
+  files:
+    - /Audio/_NigWeb/Weapons/Spear/spear_swing1.ogg
+    - /Audio/_NigWeb/Weapons/Spear/spear_swing2.ogg
+    - /Audio/_NigWeb/Weapons/Spear/spear_swing3.ogg
+    - /Audio/_NigWeb/Weapons/Spear/spear_swing4.ogg
+
+- type: soundCollection
+  id: NigWeaponSpearDrop
+  files:
+    - /Audio/_NigWeb/Weapons/Spear/spear_drop.ogg

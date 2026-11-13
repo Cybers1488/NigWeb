@@ -1,0 +1,29 @@
+- type: soundCollection
+  id: NigWeaponBigswordHit
+  files:
+  - "/Audio/_NigWeb/Weapons/Bigsword/bardiche1.ogg"
+  - "/Audio/_NigWeb/Weapons/Bigsword/bardiche2.ogg"
+  - "/Audio/_NigWeb/Weapons/Bigsword/bardiche3.ogg"
+  - "/Audio/_NigWeb/Weapons/Bigsword/bardiche4.ogg"
+  - "/Audio/_NigWeb/Weapons/Bigsword/chop1.ogg"
+  - "/Audio/_NigWeb/Weapons/Bigsword/chop2.ogg"
+  - "/Audio/_NigWeb/Weapons/Bigsword/chop3.ogg"
+  - "/Audio/_NigWeb/Weapons/Bigsword/slash_heavy1.ogg"
+  - "/Audio/_NigWeb/Weapons/Bigsword/slash_heavy2.ogg"
+  - "/Audio/_NigWeb/Weapons/Bigsword/slash_heavy3.ogg"
+  - "/Audio/_NigWeb/Weapons/Bigsword/slash_heavy4.ogg"
+  - "/Audio/_NigWeb/Weapons/Bigsword/blunt_heavy1.ogg"
+  - "/Audio/_NigWeb/Weapons/Bigsword/blunt_heavy2.ogg"
+  - "/Audio/_NigWeb/Weapons/Bigsword/blunt_heavy3.ogg"
+
+- type: soundCollection
+  id: NigWeaponBigswordSwing
+  files:
+  - "/Audio/_NigWeb/Weapons/Bigsword/axe_swing1.ogg"
+  - "/Audio/_NigWeb/Weapons/Bigsword/axe_swing2.ogg"
+  - "/Audio/_NigWeb/Weapons/Bigsword/2hswing.ogg"
+
+- type: soundCollection
+  id: NigWeaponBigswordDrop
+  files:
+  - "/Audio/_NigWeb/Weapons/Bigsword/drop_sword.ogg"

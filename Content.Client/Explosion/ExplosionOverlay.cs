@@ -47,6 +47,9 @@ public sealed class ExplosionOverlay : Overlay
             if (visuals.Epicenter.MapId != args.MapId)
                 continue;
 
+            if (visuals.ExplosionType == "Nuclear" || textures.FireFrames.Count == 0)
+                continue;
+
             if (!_appearance.TryGetData(uid, ExplosionAppearanceData.Progress, out int index))
                 continue;
 
@@ -100,6 +103,9 @@ public sealed class ExplosionOverlay : Overlay
         ushort tileSize,
         ExplosionVisualsTexturesComponent textures)
     {
+        if (textures.FireFrames.Count == 0)
+            return;
+
         for (var j = 0; j <= index; j++)
         {
             if (!tileSets.TryGetValue(j, out var tiles))

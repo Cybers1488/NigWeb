@@ -1,0 +1,28 @@
+- type: soundCollection
+  id: NigWeaponBardicheHit
+  files:
+    - /Audio/_NigWeb/Weapons/Bardiche/bardiche1.ogg
+    - /Audio/_NigWeb/Weapons/Bardiche/bardiche2.ogg
+    - /Audio/_NigWeb/Weapons/Bardiche/bardiche3.ogg
+    - /Audio/_NigWeb/Weapons/Bardiche/bardiche4.ogg
+
+- type: soundCollection
+  id: NigWeaponBardicheSwing
+  files:
+    - /Audio/_NigWeb/Weapons/Bardiche/wpn_swing_axe_01.ogg
+    - /Audio/_NigWeb/Weapons/Bardiche/wpn_swing_axe_02.ogg
+
+- type: soundCollection
+  id: NigWeaponBardicheDrop
+  files:
+    - /Audio/_NigWeb/Weapons/Bardiche/axe_drop.ogg
+
+- type: soundCollection
+  id: NigWeaponBardicheSheath
+  files:
+    - /Audio/_NigWeb/Weapons/Bardiche/axe_sheath.ogg
+
+- type: soundCollection
+  id: NigWeaponBardicheUnsheath
+  files:
+    - /Audio/_NigWeb/Weapons/Bardiche/axe_unsheath.ogg

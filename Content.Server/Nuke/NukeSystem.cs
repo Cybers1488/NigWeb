@@ -17,6 +17,8 @@ using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Item;
 using Content.Shared.Kitchen;
+using Content.Shared._NigWeb.Nuke;
+using Robust.Shared.Player;
 using Content.Shared.Maps;
 using Content.Shared.Nuke;
 using Content.Shared.Popups;
@@ -653,6 +655,9 @@ public sealed class NukeSystem : EntitySystem
             return;
 
         component.Exploded = true;
+
+        var netCoords = GetNetCoordinates(transform.Coordinates);
+        RaiseNetworkEvent(new NukeDetonationCinematicEvent(netCoords), Filter.Broadcast());
 
         _explosions.QueueExplosion(uid,
             component.ExplosionType,

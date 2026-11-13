@@ -168,6 +168,11 @@
         key: Adrenaline
         component: IgnoreSlowOnDamage
         time: 5
+      - !type:GenericStatusEffect # Hotline Miami 2 Apocalypse trip
+        key: ApocalypseTrip
+        component: ApocalypseTrip
+        type: Add
+        time: 8
       - !type:RemoveComponentEffect # goob edit
         component: DelayedKnockdown
         locale: reagent-effect-guidebook-remove-delayed-knockdown

@@ -33,3 +33,4 @@ wieldable-component-requires = { CAPITALIZE(THE($item))} must be wielded!
 gunwieldbonus-component-examine = This weapon has improved accuracy when wielded.
 
 gunrequireswield-component-examine = This weapon can only be fired when wielded.
+wieldable-component-wield-emote = grips their weapon firmly in both hands.

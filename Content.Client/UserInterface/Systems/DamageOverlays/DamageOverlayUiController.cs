@@ -258,6 +258,11 @@ public sealed class DamageOverlayUiController : UIController
             }
         }
         
+        if (EntityManager.HasComponent<Content.Shared._NigWeb.Cherub.CherubFamiliarOwnerComponent>(entity))
+        {
+            _overlay.PainLevel = 0f;
+        }
+
         // Update audio based on the new state
         UpdateAudioState();
     }

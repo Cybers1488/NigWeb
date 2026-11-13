@@ -1,0 +1,44 @@
+- type: soundCollection
+  id: NigWeaponSwordSheath
+  files:
+  - "/Audio/_NigWeb/Weapons/Broadsword/sword_sheath_01.ogg"
+  - "/Audio/_NigWeb/Weapons/Broadsword/sword_sheath_02.ogg"
+
+- type: soundCollection
+  id: NigWeaponSwordUnsheath
+  files:
+  - "/Audio/_NigWeb/Weapons/Broadsword/sword_unsheath_01.ogg"
+  - "/Audio/_NigWeb/Weapons/Broadsword/sword_unsheath_02.ogg"
+  - "/Audio/_NigWeb/Weapons/Broadsword/sword_unsheath_03.ogg"
+
+- type: soundCollection
+  id: NigWeaponSwordHit
+  files:
+  - "/Audio/_NigWeb/Weapons/Broadsword/real_slash1.ogg"
+  - "/Audio/_NigWeb/Weapons/Broadsword/real_slash2.ogg"
+  - "/Audio/_NigWeb/Weapons/Broadsword/real_slash3.ogg"
+  - "/Audio/_NigWeb/Weapons/Broadsword/slash_heavy1.ogg"
+  - "/Audio/_NigWeb/Weapons/Broadsword/slash_heavy2.ogg"
+  - "/Audio/_NigWeb/Weapons/Broadsword/slash_heavy3.ogg"
+  - "/Audio/_NigWeb/Weapons/Broadsword/slash_light1.ogg"
+  - "/Audio/_NigWeb/Weapons/Broadsword/slash_light2.ogg"
+
+- type: soundCollection
+  id: NigWeaponSwordSwing
+  files:
+  - "/Audio/_NigWeb/Weapons/Broadsword/sword_swing1.ogg"
+  - "/Audio/_NigWeb/Weapons/Broadsword/sword_swing2.ogg"
+  - "/Audio/_NigWeb/Weapons/Broadsword/sword_swing3.ogg"
+  - "/Audio/_NigWeb/Weapons/Broadsword/2hswing.ogg"
+
+- type: soundCollection
+  id: NigWeaponSwordDrop
+  files:
+  - "/Audio/_NigWeb/Weapons/Broadsword/drop_sword.ogg"
+
+- type: soundCollection
+  id: NigWeaponSwordParry
+  files:
+  - "/Audio/_NigWeb/Weapons/Broadsword/blade_parry1.ogg"
+  - "/Audio/_NigWeb/Weapons/Broadsword/blade_parry2.ogg"
+  - "/Audio/_NigWeb/Weapons/Broadsword/blade_parry3.ogg"

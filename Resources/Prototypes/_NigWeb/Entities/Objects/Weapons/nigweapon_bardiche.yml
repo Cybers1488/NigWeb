@@ -1,0 +1,67 @@
+- type: Tag
+  id: NigWeaponBardiche
+
+- type: entity
+  parent: [BaseItem, BaseMinorContraband]
+  id: NigWeaponBardiche
+  name: NigWeapon Barducium
+  description: A long-shafted heavy poleaxe with a crescent blade. Delivers devastating cleaving blows without impeding the bearer's stride.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Melee/nigweapon_bardiche.rsi
+    layers:
+    - state: bardiche
+      map: [ "blade" ]
+  - type: Item
+    sprite: _NigWeb/Objects/Weapons/Melee/nigweapon_bardiche.rsi
+    size: Large
+    shape:
+    - 0,0,7,1
+    storedRotation: 45
+  - type: Clothing
+    sprite: _NigWeb/Objects/Weapons/Melee/nigweapon_bardiche.rsi
+    quickEquip: false
+    slots:
+    - back
+    - suitStorage
+  - type: Tag
+    tags:
+    - NigWeaponBardiche
+  - type: Sharp
+  - type: MeleeWeapon
+    animationRotation: -135
+    wideAnimationRotation: -135
+    range: 1.65
+    attackRate: 0.90
+    heavyStaminaCost: 14
+    damage:
+      types:
+        Slash: 18
+        Blunt: 4
+      woundSeverityMultipliers:
+        Slash: 1.8
+        Blunt: 1.3
+    soundHit:
+      collection: NigWeaponBardicheHit
+    soundNoDamage:
+      collection: NigWeaponBardicheSwing
+  - type: Wieldable
+    wieldedInhandPrefix: "wielded"
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 10
+        Blunt: 4
+  - type: EmitSoundOnLand
+    sound:
+      collection: NigWeaponBardicheDrop
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.BloodyBladeVisuals.Bloody:
+        blade:
+          True: {state: bardiche_blood}
+          False: {state: bardiche}
+  - type: BloodyBlade
+    hitsToBloody: 3
+    heldPrefix: blood

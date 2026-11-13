@@ -1,0 +1,85 @@
+- type: Tag
+  id: NigWeaponBroadsword
+
+- type: entity
+  parent: BaseSword
+  id: NigWeaponBroadsword
+  name: NigWeapon Spatha Bellica
+  description: A heavy double-edged broadsword. Delivers light slashes in one hand, devastating heavy strikes when wielded with two hands.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Melee/nigweapon_broadsword.rsi
+    layers:
+    - state: broadsword
+      map: [ "blade" ]
+  - type: Item
+    size: Ginormous
+    storedRotation: 90
+  - type: Tag
+    tags:
+    - NigWeaponBroadsword
+  - type: MeleeWeapon
+    animationRotation: -135
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Slash: 10
+        Piercing: 3
+    soundHit:
+      collection: NigWeaponSwordHit
+    soundNoDamage:
+      collection: NigWeaponSwordSwing
+  - type: Wieldable
+    wieldedInhandPrefix: null
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Slash: 11
+        Piercing: 4
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.BloodyBladeVisuals.Bloody:
+        blade:
+          True: {state: broadsword_blood}
+          False: {state: broadsword}
+  - type: BloodyBlade
+    hitsToBloody: 3
+    heldPrefix: blood
+
+- type: entity
+  parent: [ClothingBeltBase, ClothingSlotBase]
+  id: NigWeaponBroadswordSheath
+  name: NigWeapon Theca Spathae
+  description: A sturdy leather scabbard reinforced with metal bands to carry a broadsword on the belt or across the back.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Melee/nigweapon_broadsword_sheath.rsi
+    state: sheath-empty
+  - type: Clothing
+    sprite: _NigWeb/Objects/Weapons/Melee/nigweapon_broadsword_sheath.rsi
+    slots:
+    - BELT
+    - BACK
+  - type: Item
+    size: Ginormous
+  - type: ItemSlots
+    slots:
+      broadsword:
+        name: broadsword
+        insertVerbText: sheath-insert-verb
+        ejectVerbText: sheath-eject-verb
+        insertSound:
+          collection: NigWeaponSwordSheath
+        ejectSound:
+          collection: NigWeaponSwordUnsheath
+        whitelist:
+          tags:
+          - NigWeaponBroadsword
+  - type: ItemMapper
+    mapLayers:
+      sheath-blade:
+        whitelist:
+          tags:
+          - NigWeaponBroadsword
+  - type: Appearance

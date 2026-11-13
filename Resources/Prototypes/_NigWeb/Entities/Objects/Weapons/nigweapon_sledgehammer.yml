@@ -1,0 +1,67 @@
+- type: Tag
+  id: NigWeaponSledgehammer
+
+- type: entity
+  parent: BaseItem
+  id: NigWeaponSledgehammer
+  name: NigWeapon Malleus Bellicus
+  description: A massive forged sledgehammer of immense crushing power. Must be swung with both hands. Shatters bone and demolishes structures with ease.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Melee/nigweapon_sledgehammer.rsi
+    layers:
+    - state: sledgehammer
+      map: [ "hammer" ]
+  - type: Item
+    size: Ginormous
+    storedRotation: 90
+  - type: Clothing
+    sprite: _NigWeb/Objects/Weapons/Melee/nigweapon_sledgehammer.rsi
+    quickEquip: false
+    slots:
+    - BACK
+  - type: Tag
+    tags:
+    - NigWeaponSledgehammer
+  - type: MeleeWeapon
+    animationRotation: -135
+    wideAnimationRotation: -135
+    attackRate: 0.28
+    heavyStaminaCost: 25
+    damage:
+      types:
+        Blunt: 26
+        Structural: 50
+      woundSeverityMultipliers:
+        Blunt: 2.0
+    soundHit:
+      collection: NigWeaponSledgehammerHit
+    soundNoDamage:
+      collection: NigWeaponSledgehammerSwing
+  - type: MeleeRequiresWield
+  - type: Wieldable
+    wieldedInhandPrefix: wielded
+  - type: ClothingSpeedModifier
+    walkModifier: 0.55
+    sprintModifier: 0.55
+  - type: HeldSpeedModifier
+  - type: SpeedModifiedOnWield
+    walkModifier: 0.85
+    sprintModifier: 0.85
+  - type: Tool
+    qualities:
+      - Prying
+  - type: ToolTileCompatible
+  - type: Prying
+  - type: UseDelay
+    delay: 1
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.BloodyBladeVisuals.Bloody:
+        hammer:
+          True: {state: sledgehammer_blood}
+          False: {state: sledgehammer}
+  - type: BloodyBlade
+    hitsToBloody: 3
+    heldPrefix: blood

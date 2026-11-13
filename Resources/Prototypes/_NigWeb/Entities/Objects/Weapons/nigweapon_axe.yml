@@ -1,0 +1,67 @@
+- type: Tag
+  id: NigWeaponAxe
+
+- type: Tag
+  id: NigWeaponExecutionerAxe
+
+- type: entity
+  parent: [BaseItem, BaseMinorContraband]
+  id: NigWeaponExecutionerAxe
+  name: NigWeapon Securis Carnificis
+  description: An executioner's hand axe forged for decisive decapitations. Deals modest damage in open combat, but cleaves heads from shoulders in executions.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Melee/nigweapon_axe.rsi
+    layers:
+    - state: axe
+      map: [ "blade" ]
+  - type: Item
+    sprite: _NigWeb/Objects/Weapons/Melee/nigweapon_axe.rsi
+    size: Normal
+    storedRotation: 90
+  - type: Clothing
+    sprite: _NigWeb/Objects/Weapons/Melee/nigweapon_axe.rsi
+    quickEquip: false
+    slots:
+    - BELT
+    - BACK
+    - SUITSTORAGE
+  - type: Tag
+    tags:
+    - NigWeaponAxe
+    - NigWeaponExecutionerAxe
+  - type: Sharp
+  - type: MeleeWeapon
+    animationRotation: -135
+    wideAnimationRotation: -135
+    range: 1.3
+    attackRate: 1.10
+    heavyStaminaCost: 8
+    damage:
+      types:
+        Slash: 10
+        Blunt: 3
+      woundSeverityMultipliers:
+        Slash: 1.2
+        Blunt: 1.0
+    soundHit:
+      collection: NigWeaponAxeHit
+    soundNoDamage:
+      collection: NigWeaponAxeSwing
+  - type: Execution
+    doAfterDuration: 3.5
+    damageMultiplier: 10.0
+    decapitation: true
+  - type: EmitSoundOnLand
+    sound:
+      collection: NigWeaponAxeDrop
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.BloodyBladeVisuals.Bloody:
+        blade:
+          True: {state: axe_blood}
+          False: {state: axe}
+  - type: BloodyBlade
+    hitsToBloody: 3
+    heldPrefix: blood

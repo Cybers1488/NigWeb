@@ -1,0 +1,23 @@
+- type: soundCollection
+  id: NigWeaponSledgehammerHit
+  files:
+  - "/Audio/_NigWeb/Weapons/Sledgehammer/club.ogg"
+  - "/Audio/_NigWeb/Weapons/Sledgehammer/smash.ogg"
+  - "/Audio/_NigWeb/Weapons/Sledgehammer/smash1.ogg"
+  - "/Audio/_NigWeb/Weapons/Sledgehammer/smash2.ogg"
+  - "/Audio/_NigWeb/Weapons/Sledgehammer/smash3.ogg"
+  - "/Audio/_NigWeb/Weapons/Sledgehammer/kill_smash1.ogg"
+  - "/Audio/_NigWeb/Weapons/Sledgehammer/kill_smash2.ogg"
+  - "/Audio/_NigWeb/Weapons/Sledgehammer/kill_smash3.ogg"
+
+- type: soundCollection
+  id: NigWeaponSledgehammerSwing
+  files:
+  - "/Audio/_NigWeb/Weapons/Sledgehammer/swing1.ogg"
+  - "/Audio/_NigWeb/Weapons/Sledgehammer/swing2.ogg"
+  - "/Audio/_NigWeb/Weapons/Sledgehammer/2hswing.ogg"
+
+- type: soundCollection
+  id: NigWeaponSledgehammerDrop
+  files:
+  - "/Audio/_NigWeb/Weapons/Sledgehammer/drop_hammer.ogg"

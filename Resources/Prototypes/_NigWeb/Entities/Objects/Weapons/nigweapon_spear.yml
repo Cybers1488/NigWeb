@@ -1,0 +1,73 @@
+- type: Tag
+  id: NigWeaponSpear
+
+- type: entity
+  parent: [BaseItem, BaseMinorContraband]
+  id: NigWeaponSpear
+  name: NigWeapon Hasta Adamantina
+  description: A formidable spear tipped with gleaming adamantine. Thrusts deep into armor and sinew alike.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Melee/nigweapon_adspear.rsi
+    layers:
+    - state: adspear
+      map: [ "spear" ]
+  - type: Item
+    size: Large
+    shape:
+    - 0,0,8,0
+    storedRotation: 45
+  - type: Clothing
+    sprite: _NigWeb/Objects/Weapons/Melee/nigweapon_adspear.rsi
+    quickEquip: false
+    slots:
+    - back
+    - suitStorage
+  - type: Tag
+    tags:
+    - NigWeaponSpear
+    - Spear
+  - type: EmbeddableProjectile
+    offset: -0.15,0.0
+  - type: ThrowingAngle
+    angle: 225
+  - type: LandAtCursor
+  - type: Sharp
+  - type: MeleeWeapon
+    animation: WeaponArcThrust
+    angle: 0
+    canWideSwing: false
+    range: 2.3
+    attackRate: 0.8
+    heavyStaminaCost: 15
+    damage:
+      types:
+        Piercing: 16
+      woundSeverityMultipliers:
+        Piercing: 2.0
+    soundHit:
+      collection: NigWeaponSpearHit
+    soundNoDamage:
+      collection: NigWeaponSpearSwing
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Piercing: 22
+  - type: Wieldable
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Piercing: 10
+  - type: EmitSoundOnLand
+    sound:
+      collection: NigWeaponSpearDrop
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.BloodyBladeVisuals.Bloody:
+        spear:
+          True: {state: adspear_blood}
+          False: {state: adspear}
+  - type: BloodyBlade
+    hitsToBloody: 3
+    heldPrefix: blood

@@ -154,3 +154,28 @@
     - /Audio/_NigWeb/Summoner/retribution_2.ogg
     - /Audio/_NigWeb/Summoner/retribution_3.ogg
     - /Audio/_NigWeb/Summoner/retribution_4.ogg
+
+- type: soundCollection
+  id: Pickaxe
+  files:
+    - /Audio/Effects/_NigWeb/npc_human_pickaxe_01.ogg
+    - /Audio/Effects/_NigWeb/npc_human_pickaxe_02.ogg
+    - /Audio/Effects/_NigWeb/npc_human_pickaxe_03.ogg
+    - /Audio/Effects/_NigWeb/npc_human_pickaxe_05.ogg
+
+- type: soundCollection
+  id: WoodSplat
+  files:
+    - /Audio/Effects/wood_break1.ogg
+    - /Audio/Effects/wood_break2.ogg
+    - /Audio/Effects/wood_break3.ogg
+    - /Audio/Effects/wood_break4.ogg
+
+- type: soundCollection
+  id: Wood
+  files:
+    - /Audio/_NigWeb/Footsteps/wood_step1.ogg
+    - /Audio/_NigWeb/Footsteps/wood_step2.ogg
+    - /Audio/_NigWeb/Footsteps/wood_step3.ogg
+    - /Audio/_NigWeb/Footsteps/wood_step4.ogg
+

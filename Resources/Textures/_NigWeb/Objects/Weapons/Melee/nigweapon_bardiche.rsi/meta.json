@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "bardiche"
+    },
+    {
+      "name": "bardiche_blood"
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left-blood",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right-blood",
+      "directions": 4
+    },
+    {
+      "name": "blood-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "blood-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-blood-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "wielded-blood-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "equipped-BACK",
+      "directions": 4
+    },
+    {
+      "name": "equipped-BACKPACK",
+      "directions": 4
+    },
+    {
+      "name": "equipped-SUITSTORAGE",
+      "directions": 4
+    },
+    {
+      "name": "blood-equipped-BACK",
+      "directions": 4
+    },
+    {
+      "name": "blood-equipped-BACKPACK",
+      "directions": 4
+    },
+    {
+      "name": "blood-equipped-SUITSTORAGE",
+      "directions": 4
+    },
+    {
+      "name": "blood-wielded-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "blood-wielded-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-inhand-left-blood",
+      "directions": 4
+    },
+    {
+      "name": "wielded-inhand-right-blood",
+      "directions": 4
+    }
+  ]
+}

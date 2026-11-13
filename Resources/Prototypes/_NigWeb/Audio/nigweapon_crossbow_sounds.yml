@@ -1,0 +1,20 @@
+- type: soundCollection
+  id: NigWeaponCrossbowFire
+  files:
+    - /Audio/_NigWeb/Weapons/Crossbow/crossbow_fire.ogg
+
+- type: soundCollection
+  id: NigWeaponCrossbowDraw
+  files:
+    - /Audio/_NigWeb/Weapons/Crossbow/bow_draw.ogg
+    - /Audio/_NigWeb/Weapons/Crossbow/bow_string.ogg
+
+- type: soundCollection
+  id: NigWeaponCrossbowSheath
+  files:
+    - /Audio/_NigWeb/Weapons/Crossbow/crossbow_sheath.ogg
+
+- type: soundCollection
+  id: NigWeaponCrossbowUnsheath
+  files:
+    - /Audio/_NigWeb/Weapons/Crossbow/crossbow_unsheath.ogg

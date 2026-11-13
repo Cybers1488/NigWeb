@@ -1,0 +1,22 @@
+- type: soundCollection
+  id: NigWeaponShieldBlock
+  files:
+    - /Audio/_NigWeb/Weapons/Shield/shield_block1.ogg
+    - /Audio/_NigWeb/Weapons/Shield/shield_block2.ogg
+    - /Audio/_NigWeb/Weapons/Shield/shield_block3.ogg
+    - /Audio/_NigWeb/Weapons/Shield/shield_block4.ogg
+    - /Audio/_NigWeb/Weapons/Shield/shield_block_heavy1.ogg
+    - /Audio/_NigWeb/Weapons/Shield/shield_block_heavy2.ogg
+    - /Audio/_NigWeb/Weapons/Shield/shield_block_heavy3.ogg
+
+- type: soundCollection
+  id: NigWeaponShieldBash
+  files:
+    - /Audio/_NigWeb/Weapons/Shield/shield_bash1.ogg
+    - /Audio/_NigWeb/Weapons/Shield/shield_bash2.ogg
+    - /Audio/_NigWeb/Weapons/Shield/shield_bash3.ogg
+
+- type: soundCollection
+  id: NigWeaponShieldDrop
+  files:
+    - /Audio/_NigWeb/Weapons/Shield/shield_drop.ogg

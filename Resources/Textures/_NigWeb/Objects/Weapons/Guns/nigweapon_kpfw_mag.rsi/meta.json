@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "base"
+    },
+    {
+      "name": "kpfw"
+    },
+    {
+      "name": "kpfw-e"
+    },
+    {
+      "name": "mag-0"
+    },
+    {
+      "name": "mag-1"
+    },
+    {
+      "name": "inhand-left-mag",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right-mag",
+      "directions": 4
+    }
+  ]
+}

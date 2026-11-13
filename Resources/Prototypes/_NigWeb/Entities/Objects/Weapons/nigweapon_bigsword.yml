@@ -1,0 +1,62 @@
+- type: Tag
+  id: NigWeaponBigsword
+
+- type: entity
+  parent: BaseSword
+  id: NigWeaponBigsword
+  name: NigWeapon Spatha Immensa
+  description: A colossal two-handed greatsword of immense weight. Can only strike when wielded with two hands. Its sheer heft slows the bearer down, but cleaves foes in twain.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Melee/nigweapon_bigsword.rsi
+    layers:
+    - state: bigsword
+      map: [ "blade" ]
+  - type: Item
+    size: Ginormous
+    storedRotation: 90
+    sprite: _NigWeb/Objects/Weapons/Melee/nigweapon_bigsword_inhand.rsi
+  - type: Clothing
+    sprite: _NigWeb/Objects/Weapons/Melee/nigweapon_bigsword_inhand.rsi
+    slots:
+    - BACK
+  - type: Tag
+    tags:
+    - NigWeaponBigsword
+  - type: MeleeWeapon
+    animationRotation: -135
+    wideAnimationRotation: -135
+    attackRate: 0.22
+    heavyStaminaCost: 35
+    damage:
+      types:
+        Slash: 22
+        Blunt: 8
+        Piercing: 4
+      woundSeverityMultipliers:
+        Slash: 2.0
+        Blunt: 1.5
+    soundHit:
+      collection: NigWeaponBigswordHit
+    soundNoDamage:
+      collection: NigWeaponBigswordSwing
+  - type: MeleeRequiresWield
+  - type: Wieldable
+    wieldedInhandPrefix: null
+  - type: ClothingSpeedModifier
+    walkModifier: 0.50
+    sprintModifier: 0.50
+  - type: HeldSpeedModifier
+  - type: SpeedModifiedOnWield
+    walkModifier: 0.80
+    sprintModifier: 0.80
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.BloodyBladeVisuals.Bloody:
+        blade:
+          True: {state: bigsword_blood}
+          False: {state: bigsword}
+  - type: BloodyBlade
+    hitsToBloody: 3
+    heldPrefix: blood

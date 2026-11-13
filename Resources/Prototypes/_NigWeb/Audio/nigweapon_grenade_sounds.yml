@@ -1,0 +1,19 @@
+- type: soundCollection
+  id: NigWeaponGrenadeExplosion
+  files:
+    - /Audio/_NigWeb/Weapons/Grenades/grenade_bang.ogg
+
+- type: soundCollection
+  id: NigWeaponGrenadePin
+  files:
+    - /Audio/_NigWeb/Weapons/Grenades/grenade_pin.ogg
+
+- type: soundCollection
+  id: NigWeaponGrenadeSmoke
+  files:
+    - /Audio/_NigWeb/Weapons/Grenades/grenade_smoke.ogg
+
+- type: soundCollection
+  id: NigWeaponGrenadeBang
+  files:
+    - /Audio/_NigWeb/Weapons/Grenades/grenade_bang.ogg

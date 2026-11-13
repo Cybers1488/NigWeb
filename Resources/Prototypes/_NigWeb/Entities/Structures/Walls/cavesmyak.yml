@@ -24,4 +24,4 @@
         acts: [ "Destruction" ]
       - !type:PlaySoundBehavior
         sound:
-          collection: Pickaxe
+          collection: NigWebPickaxeHit

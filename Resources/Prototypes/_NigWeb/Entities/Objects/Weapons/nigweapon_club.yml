@@ -1,0 +1,51 @@
+- type: Tag
+  id: NigWeaponClub
+
+- type: entity
+  parent: BaseItem
+  id: NigWeaponClub
+  name: NigWeapon Clava Parva
+  description: A short studded wooden club. A handy one-handed bludgeon for swift, bone-cracking strikes.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Melee/nigweapon_club.rsi
+    layers:
+    - state: club2
+      map: [ "club" ]
+  - type: Item
+    size: Small
+    storedRotation: 90
+  - type: Clothing
+    sprite: _NigWeb/Objects/Weapons/Melee/nigweapon_club.rsi
+    quickEquip: false
+    slots:
+    - BELT
+  - type: Tag
+    tags:
+    - NigWeaponClub
+  - type: MeleeWeapon
+    animationRotation: -90
+    wideAnimationRotation: -90
+    attackRate: 1.35
+    damage:
+      types:
+        Blunt: 12
+      woundSeverityMultipliers:
+        Blunt: 1.2
+    soundHit:
+      collection: NigWeaponClubHit
+    soundNoDamage:
+      collection: NigWeaponClubSwing
+  - type: EmitSoundOnLand
+    sound:
+      collection: NigWeaponClubDrop
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.BloodyBladeVisuals.Bloody:
+        club:
+          True: {state: club2_blood}
+          False: {state: club2}
+  - type: BloodyBlade
+    hitsToBloody: 3
+    heldPrefix: blood

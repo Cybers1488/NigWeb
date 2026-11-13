@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "club2"
+    },
+    {
+      "name": "club2_blood"
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left-blood",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right-blood",
+      "directions": 4
+    },
+    {
+      "name": "blood-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "blood-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "equipped-BELT",
+      "directions": 4
+    },
+    {
+      "name": "blood-equipped-BELT",
+      "directions": 4
+    }
+  ]
+}

@@ -337,7 +337,7 @@ public sealed class EnvironmentalReverbSystem : EntitySystem
             {
                 if (comp.Auxiliary != null)
                 {
-                    _audio.SetAuxiliaryDirect(uid, comp, null);
+                    _audio.SetAuxiliary(uid, comp, null);
                 }
             }
             return;
@@ -358,7 +358,7 @@ public sealed class EnvironmentalReverbSystem : EntitySystem
 
             if (comp.Auxiliary != _auxiliaryUid)
             {
-                _audio.SetAuxiliaryDirect(uid, comp, _auxiliaryUid.Value);
+                _audio.SetAuxiliary(uid, comp, _auxiliaryUid.Value);
             }
         }
     }
@@ -372,7 +372,7 @@ public sealed class EnvironmentalReverbSystem : EntitySystem
             {
                 if (comp.Auxiliary == _auxiliaryUid)
                 {
-                    _audio.SetAuxiliaryDirect(uid, comp, null);
+                    _audio.SetAuxiliary(uid, comp, null);
                 }
             }
 

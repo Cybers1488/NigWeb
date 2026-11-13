@@ -1,0 +1,97 @@
+- type: explosion
+  id: NigWeaponExplosion
+  damagePerIntensity:
+    types:
+      Heat: 8
+      Blunt: 8
+      Slash: 8
+  tileBreakChance: [0, 0.4, 0.8]
+  tileBreakIntensity: [0, 10, 30]
+  tileBreakRerollReduction: 20
+  lightColor: "#00000000"
+  texturePath: /Textures/_NigWeb/Effects/empty_fire.rsi
+  fireStates: 1
+  temperature: 600
+
+- type: Tag
+  id: NigWeaponGrenadeSmokebomb
+
+- type: entity
+  id: NigWeaponExplosionBlastEffect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TimedDespawn
+    lifetime: 1.40
+  - type: Sprite
+    drawdepth: Effects
+    noRot: true
+    loop: false
+    layers:
+    - shader: unshaded
+      map: ["enum.EffectLayers.Unshaded"]
+      sprite: _NigWeb/Effects/nigweapon_explosion.rsi
+      state: explosion
+      loop: false
+  - type: EffectVisuals
+  - type: Tag
+    tags:
+    - HideContextMenu
+  - type: AnimationPlayer
+
+- type: entity
+  parent: [GrenadeBase, BaseSecurityContraband]
+  id: NigWeaponGrenadeSmokebomb
+  name: NigWeapon Granata Fumigena
+  description: A tactical chemical smoke grenade with an explosive bursting charge. Detonates with a deafening blast and releases dense, choking smoke.
+  components:
+  - type: Sprite
+    sprite: _NigWeb/Objects/Weapons/Grenades/nigweapon_smokebomb.rsi
+    layers:
+    - state: icon
+      map: ["enum.TriggerVisualLayers.Base"]
+  - type: Item
+    sprite: _NigWeb/Objects/Weapons/Grenades/nigweapon_smokebomb.rsi
+    size: Small
+  - type: Clothing
+    sprite: _NigWeb/Objects/Weapons/Grenades/nigweapon_smokebomb.rsi
+    quickEquip: false
+    slots:
+    - BELT
+    - POCKET
+  - type: TimerTrigger
+    delay: 2.5
+  - type: TimerTriggerVisuals
+    unprimedSprite: icon
+    primingSprite: primed
+    primingSound:
+      collection: NigWeaponGrenadePin
+  - type: EmitSoundOnTrigger
+    keysIn:
+    - timer
+    sound:
+      collection: NigWeaponGrenadeExplosion
+    positional: false
+  - type: SpawnOnTrigger
+    keysIn:
+    - timer
+    proto: NigWeaponExplosionBlastEffect
+    predicted: true
+  - type: NigWeaponGrenadeTileDebris
+    keysIn:
+    - timer
+    count: 220
+    radius: 10.5
+  - type: ExplodeOnTrigger
+    keysIn:
+    - timer
+  - type: Explosive
+    explosionType: NigWeaponExplosion
+    maxIntensity: 35
+    intensitySlope: 1.8
+    totalIntensity: 360
+    canCreateVacuum: false
+  - type: Tag
+    tags:
+    - Grenade
+    - HandGrenade
+    - NigWeaponGrenadeSmokebomb

@@ -1,0 +1,177 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+uniform sampler2D SCREEN_TEXTURE;
+uniform sampler2D nuclear_smoke;
+uniform sampler2D spread_texture;
+uniform highp float timer;
+uniform highp vec2 epicenter_uv;
+uniform highp float aspect_ratio;
+
+void fragment() {
+    highp vec2 coord = FRAGCOORD.xy * SCREEN_PIXEL_SIZE.xy;
+
+    if (timer <= 0.0 || timer >= 13.5) {
+        COLOR = zTextureSpec(SCREEN_TEXTURE, coord);
+        return;
+    }
+
+    // 5. Фаза полной белизны: чистое белое свечение
+    if (timer >= 5.5 && timer < 8.5) {
+        COLOR = vec4(1.0, 1.0, 1.0, 1.0);
+        return;
+    } else if (timer >= 8.5 && timer < 13.5) {
+        highp float tFade = (timer - 8.5) / 5.0;
+        highp float rem = 1.0 - clamp(tFade, 0.0, 1.0);
+        highp vec3 baseCol = zTextureSpec(SCREEN_TEXTURE, coord).rgb;
+        COLOR = vec4(mix(baseCol, vec3(1.0, 1.0, 1.0), rem * rem), 1.0);
+        return;
+    }
+
+    // Тряска экрана в первые секунды взрыва
+    highp float trauma = clamp(1.0 - timer / 3.5, 0.0, 1.0);
+    highp float shake = trauma * (0.006 + 0.003 * sin(timer * 50.0));
+    highp vec2 jitter = vec2(
+        sin(timer * 77.0) * cos(timer * 53.0),
+        cos(timer * 67.0) * sin(timer * 61.0)
+    ) * shake;
+
+    highp vec2 uv = coord + jitter;
+
+    // Ретро-пиксельная сетка как в оригинале (270p)
+    highp vec2 retroRes = vec2(270.0 * aspect_ratio, 270.0);
+    highp vec2 pixelUv = floor(uv * retroRes) / retroRes;
+
+    // Вычисление направления взрыва от эпицентра
+    highp float dx = pixelUv.x - epicenter_uv.x;
+    highp float distFromBomb = abs(dx);
+    highp float blowDir = (dx >= 0.0) ? 1.0 : -1.0;
+
+    // 1. Фаза 1: Горизонтальные световые шлейфы ауры предметов (фото 1, 2, 3)
+    highp float streakDist = clamp(timer * 0.40, 0.08, 0.95);
+    highp vec3 smear = vec3(0.0);
+    highp float smearWeight = 0.0;
+    const int SMEAR_STEPS = 16;
+    for (int i = 0; i < SMEAR_STEPS; i++) {
+        highp float f = float(i) / float(SMEAR_STEPS);
+        highp float sx = clamp(pixelUv.x - blowDir * (f * streakDist), 0.0, 1.0);
+        highp vec3 sCol = zTextureSpec(SCREEN_TEXTURE, vec2(sx, pixelUv.y)).rgb;
+        highp float lum = dot(sCol, vec3(0.299, 0.587, 0.114));
+        highp float w = 1.0 - f * 0.45;
+        smear += sCol * (1.0 + lum * 1.8) * w;
+        smearWeight += w;
+    }
+    smear /= smearWeight;
+
+    // Нагрев шлейфов до золотисто-оранжевого сияния
+    highp float heat = clamp(timer / 1.8, 0.0, 1.0);
+    highp vec3 goldenGlow = vec3(1.0, 0.85, 0.40);
+    smear = mix(smear, smear * goldenGlow * 1.4 + vec3(0.15, 0.08, 0.02), heat * 0.65);
+
+    highp vec3 col = smear;
+
+    // 2. Фаза 2: Зубчатая черная волна sprNuclearSmoke, осыпающая землю (фото 3 и 5)
+    if (timer >= 1.2) {
+        highp float darkFront = (timer - 1.2) * 0.65;
+
+        // Генерация острых горизонтальных пиков и зубьев (как на фото 5)
+        highp float toothRow = floor(pixelUv.y * 36.0);
+        highp float toothY = fract(pixelUv.y * 36.0);
+        highp float spikeShape = 1.0 - abs(toothY * 2.0 - 1.0);
+        highp float rowHash = fract(sin(toothRow * 127.1 + 31.7) * 43758.5453);
+        highp float spikeLen = 0.025 + rowHash * 0.085;
+        highp float fineJagg = sin(pixelUv.y * 180.0 + rowHash * 6.28) * 0.010;
+
+        // Семплирование клубов sprNuclearSmoke из файлов игры
+        highp float smokeU = (mod(floor(timer * 12.0 + toothRow), 5.0) * 33.0 + clamp((distFromBomb - darkFront) / 0.04, 0.0, 1.0) * 31.0) / 166.0;
+        highp vec4 smokeTex = texture2D(nuclear_smoke, vec2(smokeU, fract(pixelUv.y * 12.0)));
+        highp float smokeBulge = (smokeTex.a > 0.35) ? 0.025 : 0.0;
+
+        highp float darkEdge = darkFront + spikeShape * spikeLen + fineJagg + smokeBulge;
+
+        if (distFromBomb < darkEdge) {
+            // Позади зубчатого фронта: глубокая черная тьма
+            col = vec3(0.0, 0.0, 0.0);
+        }
+    }
+
+    // 3. Фаза 3: Пылающие желто-оранжевые полосы и раскаленный горн (фото 4 и 6)
+    if (timer >= 2.5) {
+        highp float fireFront = (timer - 2.5) * 0.70;
+        highp float fireJagg = sin(pixelUv.y * 45.0) * 0.025 + sin(pixelUv.y * 110.0) * 0.012;
+        highp float fireEdge = fireFront + fireJagg;
+
+        if (distFromBomb < fireEdge) {
+            // Горизонтальные полосы пламени по сканлайнам
+            highp float rowId = floor(pixelUv.y * 270.0);
+            highp float rHash = fract(sin(rowId * 133.7) * 43758.5453);
+            highp float stripe = 0.5 + 0.5 * sin(pixelUv.y * 260.0 + rHash * 6.28);
+
+            highp vec3 deepOrange = vec3(1.0, 0.22, 0.02);
+            highp vec3 brightGold = vec3(1.0, 0.95, 0.28);
+            highp vec3 fireCol = mix(deepOrange, brightGold, stripe);
+
+            // Бело-желтый эпицентр жара
+            highp float coreHeat = clamp((fireEdge - distFromBomb) / 0.28, 0.0, 1.0);
+            fireCol = mix(fireCol, vec3(1.0, 1.0, 0.85), coreHeat * 0.65);
+
+            col = fireCol;
+        }
+    }
+
+    // 4. Фаза 4: Шторм оригинальных белых пузырей sprSpread из Hotline Miami 2 (фото 7)
+    if (timer >= 3.6) {
+        highp float bubbleFront = (timer - 3.6) * 0.75;
+
+        // Если волна пузырей прошла дальше порога, область полностью заливается белизной
+        if (distFromBomb < bubbleFront - 0.32) {
+            col = vec3(1.0, 1.0, 1.0);
+        } else if (distFromBomb < bubbleFront + 0.12) {
+            // Семплирование сетки оригинальных пузырей из атласа spread_texture
+            highp vec2 grid = pixelUv * vec2(270.0 * aspect_ratio / 24.0, 270.0 / 24.0);
+            highp vec2 cellId = floor(grid);
+
+            highp float inBubble = 0.0;
+            for (int dy = -1; dy <= 1; dy++) {
+                for (int dx = -1; dx <= 1; dx++) {
+                    highp vec2 neighbor = cellId + vec2(float(dx), float(dy));
+                    highp float h = fract(sin(dot(neighbor, vec2(12.9898, 78.233))) * 43758.5453);
+                    highp float h2 = fract(sin(dot(neighbor, vec2(39.346, 11.135))) * 23421.631);
+
+                    highp vec2 cCenter = neighbor + vec2(0.5) + (vec2(h, h2) - vec2(0.5)) * 0.45;
+                    highp vec2 diff = grid - cCenter;
+
+                    highp float cellNormX = (cCenter.x * 24.0) / (270.0 * aspect_ratio);
+                    highp float cellDist = abs(cellNormX - epicenter_uv.x);
+                    highp float bubbleAge = (bubbleFront - cellDist) * 12.0 + h * 6.0;
+
+                    if (bubbleAge > 0.0) {
+                        highp float frame = clamp(bubbleAge, 0.0, 28.0);
+                        highp float fIdx = floor(frame);
+
+                        highp vec2 localUV = diff / 1.45 + vec2(0.5);
+                        if (localUV.x >= 0.0 && localUV.x <= 1.0 && localUV.y >= 0.0 && localUV.y <= 1.0) {
+                            highp float colSlot = mod(fIdx, 6.0);
+                            highp float rowSlot = floor(fIdx / 6.0);
+                            highp vec2 atlasUV = (vec2(colSlot, rowSlot) + localUV) / vec2(6.0, 5.0);
+                            highp vec4 bTex = texture2D(spread_texture, atlasUV);
+                            if (bTex.a > 0.35) {
+                                inBubble = 1.0;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (inBubble > 0.5) {
+                col = vec3(1.0, 1.0, 1.0);
+            }
+        }
+    }
+
+    // Первоначальная ослепительная вспышка взрыва
+    if (timer < 0.22) {
+        highp float flash = (1.0 - timer / 0.22) * 1.4;
+        col += vec3(flash);
+    }
+
+    COLOR = vec4(clamp(col, 0.0, 1.0), 1.0);
+}

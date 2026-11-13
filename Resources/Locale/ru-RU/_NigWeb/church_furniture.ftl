@@ -136,4 +136,21 @@ ent-NigWebCruxAenea = Crux Aenea
 ent-NigWebCruxAurea = Crux Aurea
     .desc = Золоченый соборный крест для святых алтарей и часовен.
 
+ent-NigWebJocinero = Jocinero
+    .desc = Из распоротого чрева жертвенного быка восстает дитя в золотой маске, сжимающее рог. Из его глаз непрерывно струятся кровавые слезы.
+
+ent-NigWebCherubCage = Cavea Cherubini
+    .desc = Древняя злаченая клетка с заточенным духом луны. Разбей оковы, чтобы освободить чистую душу.
+
+ent-NigWebCherubCageShatterEffect = Fractio Caveae
+    .desc = Разбитые прутья узницы херувима.
+
+ent-NigWebFreedCherub = Cherubin Lunaris
+    .desc = Освобожденный херувим лунного света, сияющий лазурным ореолом и парящий к небесам.
+
+ent-NigWebCherubFamiliar = Cherubin Familiaris
+    .desc = Маленький небесный дух, кружащий над головой паломника. Озаряет тьму и хранит от смертельного удара.
+
+
+
 

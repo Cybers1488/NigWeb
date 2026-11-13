@@ -25,4 +25,4 @@
         acts: [ "Destruction" ]
       - !type:PlaySoundBehavior
         sound:
-          collection: WoodSplat
+          collection: WoodDestroy
